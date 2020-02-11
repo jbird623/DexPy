@@ -13,6 +13,154 @@ class PokeMongo8:
         self.abilities = self.db.abilities
         self.breedingboxes = self.db.breedingboxes
 
+    def add_filter(self, filters, new_filter):
+        mod_filters = dict()
+        for key in filters:
+            mod_filters[key] = filters[key]
+        for new_filter_key in new_filter:
+            if new_filter_key in mod_filters:
+                mod_filters[new_filter_key] = mod_filters[new_filter_key] + ',' + new_filter[new_filter_key]
+            else:
+                mod_filters[new_filter_key] = new_filter[new_filter_key]
+        return mod_filters
+
+    def string_bool(self, s):
+        if s == 'true' or s == 'True':
+            return True
+        if s == 'false' or s == 'False':
+            return False
+        return None
+
+    def get_object_from_filter_value(self, filter_value):
+        try:
+            return int(filter_value)
+        except:
+            if filter_value[0] == '>':
+                try:
+                    if filter_value[1] == '=':
+                        return {'$gte':int(filter_value[2:])}
+                    else:
+                        return {'$gt':int(filter_value[1:])}
+                except:
+                    return None
+            elif filter_value[0] == '<':
+                try:
+                    if filter_value[1] == '=':
+                        return {'$lte':int(filter_value[2:])}
+                    else:
+                        return {'$lt':int(filter_value[1:])}
+                except:
+                    return None
+            else:
+                return None
+
+    def convert_pokedex_mongo_filters(self, filters, exclude=[]):
+        and_list = []
+        for f in filters:
+            if f == 'a' and 'a' not in exclude:
+                ab_ids = filters['a'].lower().replace(' ','').split(',')
+                and_list.append({'ability_list':{'$in':ab_ids}})
+            if f == 'a-force':
+                ab_ids = filters['a-force'].lower().replace(' ','').split(',')
+                and_list.append({'ability_list':{'$in':ab_ids}})
+            if f == 'hp':
+                hp = self.get_object_from_filter_value(filters['hp'])
+                and_list.append({'baseStats.hp':hp})
+            if f == 'atk':
+                atk = self.get_object_from_filter_value(filters['atk'])
+                and_list.append({'baseStats.atk':atk})
+            if f == 'def':
+                Def = self.get_object_from_filter_value(filters['def'])
+                and_list.append({'baseStats.def':Def})
+            if f == 'spa':
+                spa = self.get_object_from_filter_value(filters['spa'])
+                and_list.append({'baseStats.spa':spa})
+            if f == 'spd':
+                spd = self.get_object_from_filter_value(filters['spd'])
+                and_list.append({'baseStats.spd':spd})
+            if f == 'spe':
+                spe = self.get_object_from_filter_value(filters['spe'])
+                and_list.append({'baseStats.spe':spe})
+            if f == 'evo':
+                evo = self.string_bool(filters['evo'])
+                and_list.append({'evos':{'$exists':evo}})
+            if f == 'prevo':
+                prevo = self.string_bool(filters['prevo'])
+                and_list.append({'prevo':{'$exists':prevo}})
+            if f == 'eg' and 'eg' not in exclude:
+                eg = filters['eg'].lower().replace(' ','')
+                and_list.append({'eggGroups':eg})
+            if f == 'eg-force':
+                eg = filters['eg-force'].lower().replace(' ','')
+                and_list.append({'eggGroups':eg})
+            if f == 't':
+                types = filters['t'].lower().replace(' ','').split(',')
+                caps_types = []
+                for t in types:
+                    caps_types.append(t.capitalize())
+                and_list.append({'types':{'$in':caps_types}})
+            if f == 'ta':
+                types = filters['ta'].lower().replace(' ','').split(',')
+                caps_types = []
+                for t in types:
+                    caps_types.append(t.capitalize())
+                and_list.append({'types':{'$all':caps_types}})
+        if len(and_list) > 0:
+            return {'$and':and_list}
+        else:
+            return {}
+
+    def convert_learnset_mongo_filters(self, filters, exclude=[]):
+        and_list = []
+        for f in filters:
+            if f == 'm' and 'm' not in exclude:
+                mv_ids = filters['m'].lower().replace(' ','').split(',')
+                and_list.append({'allmoves':{'$all':mv_ids}})
+            if f == 'ml' and 'ml' not in exclude:
+                mv_ids = filters['ml'].lower().replace(' ','').split(',')
+                and_list.append({'levelup':{'$all':mv_ids}})
+            if f == 'mm' and 'mm' not in exclude:
+                mv_ids = filters['mm'].lower().replace(' ','').split(',')
+                and_list.append({'machine':{'$all':mv_ids}})
+            if f == 'mb' and 'mb' not in exclude:
+                mv_ids = filters['mb'].lower().replace(' ','').split(',')
+                and_list.append({'breeding':{'$all':mv_ids}})
+        if len(and_list) > 0:
+            return {'$and':and_list}
+        else:
+            return {}
+
+    def convert_moves_mongo_filters(self, filters, exclude=[]):
+        and_list = []
+        for f in filters:
+            if f == 'pow':
+                power = self.get_object_from_filter_value(filters['pow'])
+                and_list.append({'basePower':power})
+            if f == 'acc':
+                acc = self.get_object_from_filter_value(filters['acc'])
+                if acc is None:
+                    acc = self.string_bool(filters['acc'])
+                and_list.append({'accuracy':acc})
+            if f == 'c':
+                cats = filters['c'].lower().replace(' ','').split(',')
+                caps_cats = []
+                for c in cats:
+                    caps_cats.append(c.capitalize())
+                and_list.append({'category':{'$in':caps_cats}})
+            if f == 't':
+                types = filters['t'].lower().replace(' ','').split(',')
+                caps_types = []
+                for t in types:
+                    caps_types.append(t.capitalize())
+                and_list.append({'type':{'$in':caps_types}})
+        if len(and_list) > 0:
+            return {'$and':and_list}
+        else:
+            return {}
+
+    def get_pokedex_post_filters(self, filters):
+        return {}
+
     def insert_pokedex_entry(self, pokedex_entry):
         try:
             pokemon_id = self.pokedex.insert_one(pokedex_entry).inserted_id
@@ -114,10 +262,22 @@ class PokeMongo8:
     def get_move_entry(self, id):
         return self.moves.find_one({'_id':id})
 
-    #TODO: ADD FILTERS
-    def get_move_entries(self, ids, filters={}):
+    def get_move_entries_with_filters(self, filters={}, exclude=[]):
         collection = []
-        entries = self.moves.find({'_id': {'$in': ids}})
+
+        mongo_filters = self.convert_moves_mongo_filters(filters, exclude)
+        entries = self.moves.find(mongo_filters)
+            
+        for entry in entries:
+            collection.append(entry)
+        return collection
+
+    def get_move_entries(self, ids, filters={}, exclude=[]):
+        collection = []
+
+        mongo_filters = {'$and':[{'_id':{'$in':ids}}, self.convert_moves_mongo_filters(filters, exclude)]}
+        entries = self.moves.find(mongo_filters)
+            
         for entry in entries:
             collection.append(entry)
         return collection
@@ -153,19 +313,53 @@ class PokeMongo8:
         learnset['species'] = species
         self.learnsets.update_one({'_id':id}, {'$set': learnset})
 
-    #TODO: ADD FILTERS
-    def get_egg_group(self, egg_group, full_entry=False, filters={}):
+    def get_learnset_entries_with_filters(self, full_entry=False, get_name=True, filters={}, exclude=[]):
         group = []
-        filter = None if full_entry else {'_id':1}
-        entries = self.pokedex.find({'eggGroups':egg_group}, filter)
+
+        projection = None if full_entry else {'_id':1, 'species':1}
+        mongo_filters = self.convert_pokedex_mongo_filters(filters, exclude)
+        dex_entries = self.pokedex.find(mongo_filters, projection)
+
+        #TODO: ADD POST FILTERS
+
+        ids = []
+        for dex_entry in dex_entries:
+            ids.append(dex_entry['_id'])
+
+        mongo_filters = self.convert_learnset_mongo_filters(filters, exclude)
+        entries = self.learnsets.find({'$and':[{'_id':{'$in':ids}},mongo_filters]}, projection)
+            
         for pokemon in entries:
-            group.append(pokemon if full_entry else pokemon['_id'])
+            group.append(pokemon if full_entry or get_name else pokemon['_id'])
         return group
 
-    #TODO: ADD FILTERS
+    def get_pokedex_entries_with_filters(self, full_entry=False, get_name=True, filters={}, exclude=[]):
+        group = []
+
+        projection = None if full_entry else {'_id':1, 'species':1}
+        mongo_filters = self.convert_learnset_mongo_filters(filters, exclude)
+        entries = self.learnsets.find(mongo_filters, projection)
+
+        ids = []
+        for entry in entries:
+            ids.append(entry['_id'])
+
+        mongo_filters = self.convert_pokedex_mongo_filters(filters, exclude)
+        dex_entries = self.pokedex.find({'$and':[{'_id':{'$in':ids}},mongo_filters]}, projection)
+
+        #TODO: ADD POST FILTERS
+            
+        for pokemon in dex_entries:
+            group.append(pokemon if full_entry or get_name else pokemon['_id'])
+        return group
+
+    def get_egg_group(self, egg_group, full_entry=False, get_name=True, filters={}):
+        mod_filters = self.add_filter(filters, {'eg-force':egg_group})
+        return self.get_pokedex_entries_with_filters(full_entry, get_name, mod_filters, ['eg'])
+
     def get_minimum_egg_group(self, egg_group, filters={}):
         group = []
-        entries = self.get_egg_group(egg_group, full_entry=True)
+        entries = self.get_egg_group(egg_group, full_entry=True, filters=filters)
         for pokemon in entries:
             is_prevo = True
             if 'prevo' in pokemon:
@@ -177,23 +371,13 @@ class PokeMongo8:
                 group.append(pokemon)
         return group
 
-    #TODO: ADD FILTERS
-    def get_pokemon_with_ability(self, ability_id, full_entry=False, filters={}):
-        group = []
-        filter = None if full_entry else {'_id':1}
-        entries = self.pokedex.find({'ability_list':ability_id}, filter)
-        for pokemon in entries:
-            group.append(pokemon if full_entry else pokemon['_id'])
-        return group
+    def get_pokemon_with_ability(self, ability_id, full_entry=False, get_name=True, filters={}):
+        mod_filters = self.add_filter(filters, {'a-force':ability_id})
+        return self.get_pokedex_entries_with_filters(full_entry, get_name, mod_filters, ['a'])
 
-    #TODO: ADD FILTERS
     def get_pokemon_with_move(self, learn_method, move, full_entry=False, get_name=True, filters={}):
-        group = []
-        filter = None if full_entry else {'_id':1, 'species':1}
-        entries = self.learnsets.find({learn_method:move}, filter)
-        for pokemon in entries:
-            group.append(pokemon if full_entry or get_name else pokemon['_id'])
-        return group
+        mod_filters = self.add_filter(filters, {('m'+learn_method[0]):move})
+        return self.get_learnset_entries_with_filters(full_entry, get_name, mod_filters)
 
     def get_pokemon_with_move_levelup(self, move, full_entry=False, get_name=True, filters={}):
         return self.get_pokemon_with_move('levelup', move, full_entry, get_name, filters)

@@ -28,6 +28,7 @@ def transform_learnset(learnset):
     machine_moves = []
     egg_moves = []
     level_up_moves = []
+    all_moves = []
     for move in moves:
         learn_array = moves[move]
         for learn_method in learn_array:
@@ -35,13 +36,20 @@ def transform_learnset(learnset):
                 method = learn_method[1:]
                 if method == 'M':
                     machine_moves.append(move)
+                    if move not in all_moves:
+                        all_moves.append(move)
                 if method == 'E':
                     egg_moves.append(move)
+                    if move not in all_moves:
+                        all_moves.append(move)
                 if method[:1] == 'L':
                     level_up_moves.append(move)
+                    if move not in all_moves:
+                        all_moves.append(move)
     entry['machine'] = machine_moves
     entry['breeding'] = egg_moves
     entry['levelup'] = level_up_moves
+    entry['allmoves'] = all_moves
     return entry
 
 def transform_move(move):

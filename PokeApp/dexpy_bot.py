@@ -51,6 +51,9 @@ def is_int(n):
 def is_not_bool(s):
     return s not in ['True', 'False']
 
+def is_filter_shaped(s):
+    return ':' in s or '>' in s or '<' in s
+
 def parse_arguments(arguments, positional_args=[], optional_pos_args=[]):
     arguments = list(arguments)
 
@@ -72,6 +75,38 @@ def parse_arguments(arguments, positional_args=[], optional_pos_args=[]):
                     opt[split_opt[0]] = split_opt[1]
             else:
                 opt[arg] = True
+        
+        elif is_filter_shaped(arg):
+            if ':' in arg:
+                split_filter = arg.split(':')
+                if len(split_filter) < 2:
+                    fil[split_filter[0]] = ''
+                else:
+                    fil[split_filter[0]] = split_filter[1]
+            elif '<=' in arg:
+                split_filter = arg.split('<=')
+                if len(split_filter) < 2:
+                    fil[split_filter[0]] = ''
+                else:
+                    fil[split_filter[0]] = '<=' + split_filter[1]
+            elif '<' in arg:
+                split_filter = arg.split('<')
+                if len(split_filter) < 2:
+                    fil[split_filter[0]] = ''
+                else:
+                    fil[split_filter[0]] = '<' + split_filter[1]
+            elif '>=' in arg:
+                split_filter = arg.split('>=')
+                if len(split_filter) < 2:
+                    fil[split_filter[0]] = ''
+                else:
+                    fil[split_filter[0]] = '>=' + split_filter[1]
+            elif '>' in arg:
+                split_filter = arg.split('>')
+                if len(split_filter) < 2:
+                    fil[split_filter[0]] = ''
+                else:
+                    fil[split_filter[0]] = '>' + split_filter[1]
 
         elif len(optional_pos_args) > 0:
             pos[optional_pos_args[0]] = arg
@@ -198,7 +233,7 @@ async def moveset(ctx, *raw_args):
     if not show_stab and not show_coverage:
         ignore_stats = True
 
-    MoveDex().do_moves_function(pokemon, show_stab, max_stab, ignore_stats, show_coverage, max_coverage, output)
+    MoveDex().do_moves_function(pokemon, args['fil'], show_stab, max_stab, ignore_stats, show_coverage, max_coverage, output)
 
     await output.send(ctx)
 
@@ -287,7 +322,7 @@ async def ability(ctx, *raw_args):
 
     show_list = get_option(args['opt'], 'pokemon')
 
-    AbilityDex().do_ability_search_function(ability, show_list, output)
+    AbilityDex().do_ability_search_function(ability, show_list, args['fil'], output)
 
     await output.send(ctx)
 
@@ -309,7 +344,7 @@ async def move(ctx, *raw_args):
 
     show_list = get_option(args['opt'], 'pokemon')
 
-    MoveDex().do_move_search_function(move, show_list, output)
+    MoveDex().do_move_search_function(move, show_list, args['fil'], output)
 
     await output.send(ctx)
 
@@ -425,7 +460,39 @@ async def eggGroup(ctx, *raw_args):
 
     group = args['pos']['group'].lower().replace(' ','')
     
-    PokeDex().do_egg_group_function(group, output)
+    PokeDex().do_egg_group_function(group, args['fil'], output)
+
+    await output.send(ctx)
+
+@bot.command(aliases=['qp'])
+async def queryPokedex(ctx, *raw_args):
+    message = ctx.message.content
+    print(f'\nQUERYPOKEDEX command triggered, bzzzzrt! Message details:\n{ctx.message.author} @ ({ctx.message.created_at}): {message}\n')
+    output = MessageHelper()
+
+    args = parse_arguments(raw_args)
+    if args is None:
+        print('Error parsing command, bzzzzrt! Type "!help" for usage details.', file=output)
+        await output.send(ctx)
+        return
+    
+    PokeDex().do_pokedex_query_function(args['fil'], output)
+
+    await output.send(ctx)
+
+@bot.command(aliases=['qm'])
+async def queryMoves(ctx, *raw_args):
+    message = ctx.message.content
+    print(f'\nQUERYMOVES command triggered, bzzzzrt! Message details:\n{ctx.message.author} @ ({ctx.message.created_at}): {message}\n')
+    output = MessageHelper()
+
+    args = parse_arguments(raw_args)
+    if args is None:
+        print('Error parsing command, bzzzzrt! Type "!help" for usage details.', file=output)
+        await output.send(ctx)
+        return
+    
+    MoveDex().do_moves_query_function(args['fil'], output)
 
     await output.send(ctx)
 

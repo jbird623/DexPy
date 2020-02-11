@@ -171,8 +171,8 @@ class PokeDex:
             list_str = ', '.join(immune)
             print(f'{listing_prefix}{list_str}', file=print_to)
     
-    def do_egg_group_function(self, group, print_to):
-        egg_group_entries = self.pokemongo.get_minimum_egg_group(group)
+    def do_egg_group_function(self, group, filters, print_to):
+        egg_group_entries = self.pokemongo.get_minimum_egg_group(group, filters)
 
         one_group_list = []
         two_group_list = []
@@ -196,3 +196,14 @@ class PokeDex:
         print(f'\nThese Pokemon are in both the {group.capitalize()} egg group and another egg group:', file=print_to)
         for elem in two_group_list:
             print(f'  - {elem["pokemon"]:25s} [{elem["alt_group"].capitalize()}]', file=print_to)
+
+    def do_pokedex_query_function(self, filters, print_to):
+        dex_entries = self.pokemongo.get_pokedex_entries_with_filters(full_entry=True, filters=filters)
+
+        if len(dex_entries) == 0:
+            print('There are no pokemon that match your query, bzzzzrt.', file=print_to)
+            return
+
+        print('Here are the pokemon that match your query, bzzzzrt:', file=print_to)
+        for entry in dex_entries:
+            print(f'  - {entry["species"]}', file=print_to)
