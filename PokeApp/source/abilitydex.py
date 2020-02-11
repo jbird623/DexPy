@@ -5,7 +5,7 @@ class AbilityDex:
     def __init__(self):
         self.pokemongo = PokeMongo8()
 
-    def do_ability_search_function(self, ability, print_to):
+    def do_ability_search_function(self, ability, show_list, print_to):
         ab = self.pokemongo.get_ability(ability)
         if ab is None:
             print(f'Error: Ability "{ability}" not found, bzzzzrt!', file=print_to)
@@ -15,6 +15,9 @@ class AbilityDex:
         if 'shortDesc' in ab:
             desc = ab['shortDesc']
         print(f'Description: {desc}\n', file=print_to)
+
+        if not show_list:
+            return
 
         ab_name = ability
         if 'name' in ab:

@@ -2,15 +2,17 @@ from source.pokewrap import PokeMongo8
 
 pokemongo = PokeMongo8()
 
-pokemon_names = pokemongo.get_all_pokedex_ids()
+abilities = pokemongo.abilities.find()
 max_length = 0
 longest_ids = []
-for name in pokemon_names:
-    if len(name['_id']) > max_length:
-        max_length = len(name['_id'])
+for ability in abilities:
+    if len(ability['shortDesc']) > 88:
+        continue
+    if len(ability['shortDesc']) > max_length:
+        max_length = len(ability['shortDesc'])
         longest_ids = []
-    if len(name['_id']) == max_length:
-        longest_ids.append(name['_id'])
+    if len(ability['shortDesc']) == max_length:
+        longest_ids.append(ability['_id'])
 
 for id in longest_ids:
     print(id)

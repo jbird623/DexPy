@@ -15,6 +15,11 @@ def transform_entry(pokedex_entry):
     if 'H' in abilities:
         ability_list.append(abilities['H'].lower())
     pokedex_entry['ability_list'] = ability_list
+    egg_groups = pokedex_entry['eggGroups']
+    egg_group_list = []
+    for group in egg_groups:
+        egg_group_list.append(group.lower())
+    pokedex_entry['eggGroups'] = egg_group_list
     return pokedex_entry
 
 def transform_learnset(learnset):

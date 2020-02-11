@@ -6,11 +6,18 @@ class MoveDex:
     def __init__(self):
         self.pokemongo = PokeMongo8()
 
-    def do_move_search_function(self, move, print_to, full_desc=False):
+    def do_move_search_function(self, move, show_list, print_to, full_desc=False):
         m_entry = self.pokemongo.get_move_entry(move)
         if m_entry is None:
             print(f'Error: Move "{move}" not found, bzzzzrt!', file=print_to)
             return
+
+        category = m_entry['category']
+        print(f'Category: {category}', file=print_to)
+
+        power = m_entry['basePower']
+        accuracy = m_entry['accuracy'] 
+        print(f'Base Power: {power}\nAccuracy: {accuracy}', file=print_to)
 
         short_desc = 'No description available.'
         if 'shortDesc' in m_entry:
@@ -18,9 +25,12 @@ class MoveDex:
         desc = 'No description available.'
         if 'desc' in m_entry:
             desc = m_entry['desc']
-        print(f'Description: {short_desc}\n', file=print_to)
+        print(f'Description: {short_desc}', file=print_to)
         if full_desc:
-            print(f'Full Description: {desc}\n', file=print_to)
+            print(f'Full Description: {desc}', file=print_to)
+
+        if not show_list:
+            return
 
         move_name = move
         if 'name' in m_entry:
@@ -31,7 +41,7 @@ class MoveDex:
         breeding_list = self.pokemongo.get_pokemon_with_move_breeding(move)
 
         if len(levelup_list) > 0:
-            print(f'Pokemon that learn {move_name} by level up:', file=print_to)
+            print(f'\nPokemon that learn {move_name} by level up:', file=print_to)
             for pokemon in levelup_list:
                 print(f'  - {pokemon["species"]}', file=print_to)
         if len(machine_list) > 0:
@@ -221,6 +231,9 @@ class MoveDex:
         parent_entries = self.pokemongo.get_pokedex_entries(parents_with_move)
         valid_parents = []
         for entry in parent_entries:
+            if 'prevo' in entry:
+                if entry['prevo'] in parents_with_move:
+                    continue
             if 'gender' in entry:
                 if entry['gender'] == 'N' or entry['gender'] == 'F':
                     continue
@@ -232,7 +245,12 @@ class MoveDex:
             for learnset in parent_learnsets:
                 if move in learnset['breeding']:
                     breeding_chain_parents.append(learnset['_id'])
-            for parent in breeding_chain_parents:
+            breeding_chain_parent_entries = self.pokemongo.get_pokedex_entries(breeding_chain_parents)
+            for entry in breeding_chain_parent_entries:
+                parent = entry['_id']
+                if 'prevo' in entry:
+                    if entry['prevo'] in breeding_chain_parents:
+                        continue
                 options = self.find_egg_move_chain(parent, None, move, move_name, full_parents_list, dex_name_map, print_to)
                 if len(options) > 0:
                     potential_options.append({'name': parent, 'chain': options})
