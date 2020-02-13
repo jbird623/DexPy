@@ -31,28 +31,44 @@ class PokeMongo8:
             return False
         return None
 
-    def get_object_from_filter_value(self, filter_value):
-        try:
-            return int(filter_value)
-        except:
-            if filter_value[0] == '>':
-                try:
-                    if filter_value[1] == '=':
-                        return {'$gte':int(filter_value[2:])}
-                    else:
-                        return {'$gt':int(filter_value[1:])}
-                except:
-                    return None
-            elif filter_value[0] == '<':
-                try:
-                    if filter_value[1] == '=':
-                        return {'$lte':int(filter_value[2:])}
-                    else:
-                        return {'$lt':int(filter_value[1:])}
-                except:
-                    return None
-            else:
-                return None
+    def get_stat_or_none(self, filter_key, filter_value, comparator):
+        if filter_value == 'hp' or filter_value == 'atk' or filter_value == 'def' or filter_value == 'spa' or filter_value == 'spd' or filter_value == 'spe' or filter_value == 'bst':
+            return {'$where': f'this.baseStats.{filter_key} {comparator} this.baseStats.{filter_value}'} 
+        return None
+
+    def get_object_from_filter_value(self, filter_key, filter_value):
+        if ',' in filter_value:
+            filters = []
+            for v in filter_value.split(','):
+                filters.append(self.get_object_from_filter_value(filter_key, v))
+            return {'$and': filters}
+        if filter_value[0] == '>':
+            try:
+                if filter_value[1] == '=':
+                    return {f'baseStats.{filter_key}':{'$gte':int(filter_value[2:])}}
+                else:
+                    return {f'baseStats.{filter_key}':{'$gt':int(filter_value[1:])}}
+            except:
+                if filter_value[1] == '=':
+                    return self.get_stat_or_none(filter_key, filter_value[2:], '>=')
+                else:
+                    return self.get_stat_or_none(filter_key, filter_value[1:], '>')
+        elif filter_value[0] == '<':
+            try:
+                if filter_value[1] == '=':
+                    return {f'baseStats.{filter_key}':{'$lte':int(filter_value[2:])}}
+                else:
+                    return {f'baseStats.{filter_key}':{'$lt':int(filter_value[1:])}}
+            except:
+                if filter_value[1] == '=':
+                    return self.get_stat_or_none(filter_key, filter_value[2:], '<=')
+                else:
+                    return self.get_stat_or_none(filter_key, filter_value[1:], '<')
+        else:
+            try:
+                return {f'baseStats.{filter_key}':int(filter_value)}
+            except:
+                return self.get_stat_or_none(filter_key, filter_value, '==')
 
     def convert_pokedex_mongo_filters(self, filters, exclude=[]):
         and_list = []
@@ -64,23 +80,26 @@ class PokeMongo8:
                 ab_ids = filters['a-force'].lower().replace(' ','').split(',')
                 and_list.append({'ability_list':{'$in':ab_ids}})
             if f == 'hp':
-                hp = self.get_object_from_filter_value(filters['hp'])
-                and_list.append({'baseStats.hp':hp})
+                hp = self.get_object_from_filter_value('hp', filters['hp'])
+                and_list.append(hp)
             if f == 'atk':
-                atk = self.get_object_from_filter_value(filters['atk'])
-                and_list.append({'baseStats.atk':atk})
+                atk = self.get_object_from_filter_value('atk', filters['atk'])
+                and_list.append(atk)
             if f == 'def':
-                Def = self.get_object_from_filter_value(filters['def'])
-                and_list.append({'baseStats.def':Def})
+                Def = self.get_object_from_filter_value('def', filters['def'])
+                and_list.append(Def)
             if f == 'spa':
-                spa = self.get_object_from_filter_value(filters['spa'])
-                and_list.append({'baseStats.spa':spa})
+                spa = self.get_object_from_filter_value('spa', filters['spa'])
+                and_list.append(spa)
             if f == 'spd':
-                spd = self.get_object_from_filter_value(filters['spd'])
-                and_list.append({'baseStats.spd':spd})
+                spd = self.get_object_from_filter_value('spd', filters['spd'])
+                and_list.append(spd)
             if f == 'spe':
-                spe = self.get_object_from_filter_value(filters['spe'])
-                and_list.append({'baseStats.spe':spe})
+                spe = self.get_object_from_filter_value('spe', filters['spe'])
+                and_list.append(spe)
+            if f == 'bst':
+                bst = self.get_object_from_filter_value('bst', filters['bst'])
+                and_list.append(bst)
             if f == 'evo':
                 evo = self.string_bool(filters['evo'])
                 and_list.append({'evos':{'$exists':evo}})
@@ -153,6 +172,9 @@ class PokeMongo8:
                 for t in types:
                     caps_types.append(t.capitalize())
                 and_list.append({'type':{'$in':caps_types}})
+            if f == 'm':
+                moves = filters['m'].lower().replace(' ','').split(',')
+                and_list.append({'_id':{'$in':moves}})
         if len(and_list) > 0:
             return {'$and':and_list}
         else:

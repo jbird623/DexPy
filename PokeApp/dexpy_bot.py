@@ -6,6 +6,7 @@ from source.movedex import MoveDex
 from source.pokedex import PokeDex
 from source.pokehelper import PokemonHelper
 from source.breedingbox import BreedingBox
+from source.pokewrap import PokeMongo8
 from pprint import pprint
 
 import sys
@@ -54,6 +55,15 @@ def is_not_bool(s):
 def is_filter_shaped(s):
     return ':' in s or '>' in s or '<' in s
 
+def split_filter(s):
+    for i in range(len(s)):
+        if s[i] == ':' or s[i] == '>' or s[i] == '<':
+            if s[i] == ':':
+                return [s[:i], s[i+1:]]
+            else:
+                return [s[:i], s[i:]]
+    return s
+
 def parse_arguments(arguments, positional_args=[], optional_pos_args=[]):
     arguments = list(arguments)
 
@@ -77,36 +87,8 @@ def parse_arguments(arguments, positional_args=[], optional_pos_args=[]):
                 opt[arg] = True
         
         elif is_filter_shaped(arg):
-            if ':' in arg:
-                split_filter = arg.split(':')
-                if len(split_filter) < 2:
-                    fil[split_filter[0]] = ''
-                else:
-                    fil[split_filter[0]] = split_filter[1]
-            elif '<=' in arg:
-                split_filter = arg.split('<=')
-                if len(split_filter) < 2:
-                    fil[split_filter[0]] = ''
-                else:
-                    fil[split_filter[0]] = '<=' + split_filter[1]
-            elif '<' in arg:
-                split_filter = arg.split('<')
-                if len(split_filter) < 2:
-                    fil[split_filter[0]] = ''
-                else:
-                    fil[split_filter[0]] = '<' + split_filter[1]
-            elif '>=' in arg:
-                split_filter = arg.split('>=')
-                if len(split_filter) < 2:
-                    fil[split_filter[0]] = ''
-                else:
-                    fil[split_filter[0]] = '>=' + split_filter[1]
-            elif '>' in arg:
-                split_filter = arg.split('>')
-                if len(split_filter) < 2:
-                    fil[split_filter[0]] = ''
-                else:
-                    fil[split_filter[0]] = '>' + split_filter[1]
+            s_filter = split_filter(arg)
+            fil = PokeMongo8().add_filter(fil, {s_filter[0]: s_filter[1]})
 
         elif len(optional_pos_args) > 0:
             pos[optional_pos_args[0]] = arg
@@ -175,19 +157,22 @@ async def help(ctx):
     
     print('Available DexPy Commands:', file=output)
     print('', file=output)
-    print(' Basic Commands:', file=output)
+    print('  Basic Commands:', file=output)
     print('  - !(help|h)                                                    Shows a list of commands.', file=output)
     print('  - !(pokedex|p) (POKEMON)                                       Show the raw pokedex entry for POKEMON.', file=output)
     print('  - !(hiddenAbility|ha) (POKEMON)                                Show the hidden ability for POKEMON.', file=output)
-    print('  - !(ability|a) (ABILITY) [-p]                                  Show the information about ABILITY.', file=output)
+    print('  - !(ability|a) (ABILITY) [-p <filter>]                         Show the information about ABILITY.', file=output)
     print('                                                                 Also lists all pokemon that can have ABILITY if -p is used.', file=output)
-    print('  - !(move|m) (MOVE) [-p]                                        Show the information about MOVE.', file=output)
+    print('                                                                 If -p is used, accepts pokemon query filters (excluding "a").', file=output)
+    print('  - !(move|m) (MOVE) [-p <filter>]                               Show the information about MOVE.', file=output)
     print('                                                                 Also lists all pokemon that can learn MOVE if -p is used.', file=output)
+    print('                                                                 If -p is used, accepts pokemon query filters.', file=output)
     print('  - !(damage|d) (POKEMON)                                        Get the weaknesses/resistances for POKEMON.', file=output)
     print('  - !(damage|d) (TYPE1) [TYPE2]                                  Get the weaknesses/resistances of the given type(s).', file=output)
     print('', file=output)
-    print(' Movesets:', file=output)
-    print('  - !(moveset|ms) (POKEMON)                                      Show the moves that POKEMON can learn.', file=output)
+    print('  Movesets:', file=output)
+    print('  - !(moveset|ms) (POKEMON) <filter>                             Show the moves that POKEMON can learn.', file=output)
+    print('                                                                 All usages of this command accept move query filters.', file=output)
     print('  - !(moveset|ms) (POKEMON) (-s|--stab) [--ignore-stats|-i]      Show the top 5 STAB moves for POKEMON.', file=output)
     print('                                                                 Defaults to taking stats into account. Use -i to ignore them.', file=output)
     print('  - !(moveset|ms) (POKEMON) (-s=X) [--ignore-stats|-i]           Show the top X STAB moves for POKEMON.', file=output)
@@ -195,8 +180,9 @@ async def help(ctx):
     print('                                                                 Defaults to taking stats into account. Use -i to ignore them.', file=output)
     print('  - !(moveset|ms) (POKEMON) (-c=X) [--ignore-stats|-i]           Show the top X coverage moves for POKEMON.', file=output)
     print('', file=output)
-    print(' Breeding:', file=output)
-    print('  - !(eggGroup|eg) (EGG_GROUP)                                   Lists all evolutionary lines in EGG_GROUP.', file=output)
+    print('  Breeding:', file=output)
+    print('  - !(eggGroup|eg) (EGG_GROUP) <filter>                          Lists all evolutionary lines in EGG_GROUP.', file=output)
+    print('                                                                 Accepts pokemon query filters (excluding "eg").', file=output)
     print('  - !(eggMove|em) (POKEMON) [MOVE]                               Show potential breeding chains for breeding MOVE onto POKEMON.', file=output)
     print('                                                                 If MOVE is not supplied, lists the available egg moves for POKEMON.', file=output)
     print('  - !(breedingbox|bb) (-r|--register)=POKEMON                    Register POKEMON to your breeding box.', file=output)
@@ -204,6 +190,49 @@ async def help(ctx):
     print('  - !(breedingbox|bb) (-u|--unregister)=POKEMON                  Unregister POKEMON from your breeding box.', file=output)
     print('  - !(breedingbox|bb) (-q|--query)=POKEMON                       Check to see who has POKEMON with a hidden ability.', file=output)
     print('                                                                 Returns users who have registered a pokemon in the same evolutionary line.', file=output)
+    print('', file=output)
+    print('  Querying:', file=output)
+    print('  - !(queryPokedex|qp) <filter>                                  Accepts pokemon query filters.', file=output)
+    print('  - !(queryMoves|qm) <filter>                                    Accepts move query filters.', file=output)
+    print('', file=output)
+    print('', file=output)
+    print('Available Query Filters:', file=output)
+    print('  Pokemon Filters:', file=output)
+    print('  - m:<moves>                     Filter by pokemon that can learn all of the specified moves.', file=output)
+    print('                                  Accepts a single move or a comma-separated list.', file=output)
+    print('  - ml:<moves>                    Filter by pokemon that can learn all of the specified moves via level up.', file=output)
+    print('                                  Accepts a single move or a comma-separated list.', file=output)
+    print('  - mm:<moves>                    Filter by pokemon that can learn all of the specified moves via TM/TR.', file=output)
+    print('                                  Accepts a single move or a comma-separated list.', file=output)
+    print('  - mb:<moves>                    Filter by pokemon that can learn all of the specified moves via breeding.', file=output)
+    print('                                  Accepts a single move or a comma-separated list.', file=output)
+    print('  - a:<abilities>                 Filter by pokemon that can have any of the abilities specified.', file=output)
+    print('                                  Accepts a single ability or a comma-separated list.', file=output)
+    print('  - t:<types>                     Filter by pokemon that have any of the types specified.', file=output)
+    print('                                  Accepts a single type or a comma-separated list.', file=output)
+    print('  - ta:<types>                    Filter by pokemon that have all of the types specified.', file=output)
+    print('                                  Accepts a single type or a comma-separated list.', file=output)
+    print('  - evo:<bool>                    Filter by pokemon that can evolve (true) or can\'t evolve (false).', file=output)
+    print('  - prevo:<bool>                  Filter by pokemon that have a pre-evolution (true) or do not (false).', file=output)
+    print('  - eg:<eggGroup>                 Filter by pokemon in the specified egg group.', file=output)
+    print('  - Stat Filters:                 All the following filters can be compared via >, <, >=, or <=.', file=output)
+    print('                                  The stats can be compared to int values and/or each other.', file=output)
+    print('    - hp:<value>                  Filter by HP stat.', file=output)
+    print('    - atk:<value>                 Filter by Attack stat.', file=output)
+    print('    - def:<value>                 Filter by Defense stat.', file=output)
+    print('    - spa:<value>                 Filter by Sp. Attack stat.', file=output)
+    print('    - spd:<value>                 Filter by Sp. Defense stat.', file=output)
+    print('    - spe:<value>                 Filter by Speed stat.', file=output)
+    print('    - bst:<value>                 Filter by base stat total.', file=output)
+    print('', file=output)
+    print('  Move Filters:', file=output)
+    print('  - pow:<value>                   Filter by base power. Can use >, <, >=, or <=.', file=output)
+    print('  - acc:<value>                   Filter by accuracy. Can use >, <, >=, or <=.', file=output)
+    print('  - c:<category>                  Filter by status, special, or physical.', file=output)
+    print('                                  Accepts a single category or a comma-separated list.', file=output)
+    print('  - t:<types>                     Filter by moves that are any of the specified types.', file=output)
+    print('                                  Accepts a single type or a comma-separated list.', file=output)
+    print('  - m:<moves>                     Filter by move names. Accepts a single move or a comma-separated list.', file=output)
     print('', file=output)
 
     await output.send(ctx.author)

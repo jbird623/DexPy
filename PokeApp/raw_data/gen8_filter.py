@@ -19,6 +19,10 @@ def transform_entry(pokedex_entry):
     egg_group_list = []
     for group in egg_groups:
         egg_group_list.append(group.lower())
+    bst = 0
+    for stat in pokedex_entry['baseStats']:
+        bst += pokedex_entry['baseStats'][stat]
+    pokedex_entry['baseStats']['bst'] = bst
     pokedex_entry['eggGroups'] = egg_group_list
     return pokedex_entry
 
