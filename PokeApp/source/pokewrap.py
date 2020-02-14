@@ -36,6 +36,34 @@ class PokeMongo8:
             return {'$where': f'this.baseStats.{filter_key} {comparator} this.baseStats.{filter_value}'} 
         return None
 
+    def get_simple_object_from_filter_value(self, filter_value):
+        if ',' in filter_value:
+            filters = []
+            for v in filter_value.split(','):
+                filters.append(self.get_simple_object_from_filter_value(v))
+            return {'$and': filters}
+        if filter_value[0] == '>':
+            try:
+                if filter_value[1] == '=':
+                    return {'$gte':int(filter_value[2:])}
+                else:
+                    return {'$gt':int(filter_value[1:])}
+            except:
+                return None
+        elif filter_value[0] == '<':
+            try:
+                if filter_value[1] == '=':
+                    return {'$lte':int(filter_value[2:])}
+                else:
+                    return {'$lt':int(filter_value[1:])}
+            except:
+                return None
+        else:
+            try:
+                return int(filter_value)
+            except:
+                return None
+
     def get_object_from_filter_value(self, filter_key, filter_value):
         if ',' in filter_value:
             filters = []
@@ -124,6 +152,9 @@ class PokeMongo8:
                 for t in types:
                     caps_types.append(t.capitalize())
                 and_list.append({'types':{'$all':caps_types}})
+            if f == 'tr':
+                tr = self.string_bool(filters['tr'])
+                and_list.append({'transfer_only':tr})
         if len(and_list) > 0:
             return {'$and':and_list}
         else:
@@ -144,6 +175,15 @@ class PokeMongo8:
             if f == 'mb' and 'mb' not in exclude:
                 mv_ids = filters['mb'].lower().replace(' ','').split(',')
                 and_list.append({'breeding':{'$all':mv_ids}})
+            if f == 'mt' and 'mt' not in exclude:
+                mv_ids = filters['mt'].lower().replace(' ','').split(',')
+                and_list.append({'tutor':{'$all':mv_ids}})
+            if f == 'mtr' and 'mtr' not in exclude:
+                mv_ids = filters['mtr'].lower().replace(' ','').split(',')
+                elem_match_list = []
+                for id in mv_ids:
+                    elem_match_list.append({'$elemMatch':{'move':id}})
+                and_list.append({'transfer':{'$all':elem_match_list}})
         if len(and_list) > 0:
             return {'$and':and_list}
         else:
@@ -153,10 +193,10 @@ class PokeMongo8:
         and_list = []
         for f in filters:
             if f == 'pow':
-                power = self.get_object_from_filter_value(filters['pow'])
+                power = self.get_simple_object_from_filter_value(filters['pow'])
                 and_list.append({'basePower':power})
             if f == 'acc':
-                acc = self.get_object_from_filter_value(filters['acc'])
+                acc = self.get_simple_object_from_filter_value(filters['acc'])
                 if acc is None:
                     acc = self.string_bool(filters['acc'])
                 and_list.append({'accuracy':acc})
@@ -294,6 +334,32 @@ class PokeMongo8:
             collection.append(entry)
         return collection
 
+    def get_transfer_move_entries(self, moves, filters={}, exclude=[]):
+        ids = []
+        methods = []
+        for move in moves:
+            ids.append(move['move'])
+            methods.append(move['method'])
+
+        collection = []
+
+        mongo_filters = {'$and':[{'_id':{'$in':ids}}, self.convert_moves_mongo_filters(filters, exclude)]}
+        entries = self.moves.find(mongo_filters)
+
+        entries = list(entries)
+            
+        if len(entries) != len(ids):
+            print(f'WARNING: Transfer Move Length Mismatch! {len(entries)} to {len(ids)}')
+
+        offset = 0
+        for i in range(len(entries)):
+            entry = entries[i]
+            while entry['_id'] != ids[i + offset]:
+                offset += 1
+            entry['method'] = methods[i + offset]
+            collection.append(entry)
+        return collection
+
     def get_move_entries(self, ids, filters={}, exclude=[]):
         collection = []
 
@@ -409,6 +475,9 @@ class PokeMongo8:
 
     def get_pokemon_with_move_breeding(self, move, full_entry=False, get_name=True, filters={}):
         return self.get_pokemon_with_move('breeding', move, full_entry, get_name, filters)
+
+    def get_pokemon_with_move_tutor(self, move, full_entry=False, get_name=True, filters={}):
+        return self.get_pokemon_with_move('tutor', move, full_entry, get_name, filters)
 
     def get_evo_line(self, pokemon):
         evo_line = [pokemon]

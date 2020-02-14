@@ -52,7 +52,7 @@ class PokeDex:
         ability_ids = []
         for key in abilities:
             ability_string = abilities[key]
-            ability_ids.append(abilities[key].lower())
+            ability_ids.append(abilities[key].lower().replace(' ',''))
             if key == 'H':
                 ability_string += ' (hidden)'
             abilities_list.append(ability_string)
@@ -63,12 +63,12 @@ class PokeDex:
             for i in range(len(list(abilities))):
                 entry = None
                 for ab in ab_entries:
-                    if ab['name'].replace(' ','') == abilities[list(abilities)[i]]:
+                    if ab['name'] == abilities[list(abilities)[i]]:
                         entry = ab
                         break
                 ability_name = entry['name']
                 if 'H' in abilities:
-                    if entry['name'].replace(' ','') == abilities['H']:
+                    if entry['name'] == abilities['H']:
                         ability_name += ' (hidden)'
                 print(f'  {ability_name}: {entry["shortDesc"]}', file=print_to)
             print('', file=print_to)

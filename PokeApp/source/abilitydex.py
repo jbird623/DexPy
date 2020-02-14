@@ -27,7 +27,7 @@ class AbilityDex:
         hidden_list = []
         nonhidden_list = []
         for entry in entries:
-            if 'H' in entry['abilities'] and entry['abilities']['H'].lower() == ability:
+            if 'H' in entry['abilities'] and entry['abilities']['H'].lower().replace(' ','') == ability:
                 hidden_list.append(entry['species'])
             else:
                 nonhidden_list.append(entry['species'])

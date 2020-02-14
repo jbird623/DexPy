@@ -2,6 +2,8 @@ from .pokewrap import PokeMongo8
 from .pokehelper import PokemonHelper
 from pprint import pprint
 
+import statistics
+
 class MoveDex:
     def __init__(self):
         self.pokemongo = PokeMongo8()
@@ -39,6 +41,7 @@ class MoveDex:
         levelup_list = self.pokemongo.get_pokemon_with_move_levelup(move, filters=filters)
         machine_list = self.pokemongo.get_pokemon_with_move_machine(move, filters=filters)
         breeding_list = self.pokemongo.get_pokemon_with_move_breeding(move, filters=filters)
+        tutor_list = self.pokemongo.get_pokemon_with_move_tutor(move, filters=filters)
 
         if len(levelup_list) > 0:
             print(f'\nPokemon that learn {move_name} by level up:', file=print_to)
@@ -52,8 +55,14 @@ class MoveDex:
             print(f'\nPokemon that learn {move_name} by breeding:', file=print_to)
             for pokemon in breeding_list:
                 print(f'  - {pokemon["species"]}', file=print_to)
+        if len(tutor_list) > 0:
+            print(f'\nPokemon that learn {move_name} by tutor:', file=print_to)
+            for pokemon in tutor_list:
+                print(f'  - {pokemon["species"]}', file=print_to)
 
-    def do_moves_function(self, pokemon, filters, show_stab=False, max_stab=5, ignore_stats=False, show_coverage=False, max_coverage=3, print_to=None):
+    def do_moves_function(self, pokemon, filters, show_stab=False, max_stab=5, ignore_stats=False, show_coverage=False, max_coverage=3,
+                          show_transfers=False, atk_override=None, spa_override=None, def_override=None, accuracy_check=False,
+                          skill_link=False, adaptability=False, print_to=None):
         dex_entry = self.pokemongo.get_pokedex_entry(pokemon)
         if dex_entry is None:
             print(f'Error: No dex entry found for "{pokemon}", bzzzzrt!', file=print_to)
@@ -67,91 +76,188 @@ class MoveDex:
         breeding_entries = self.pokemongo.get_move_entries(learnset['breeding'], filters)
         machine_entries = self.pokemongo.get_move_entries(learnset['machine'], filters)
         levelup_entries = self.pokemongo.get_move_entries(learnset['levelup'], filters)
+        tutor_entries = self.pokemongo.get_move_entries(learnset['tutor'], filters)
+        transfer_entries = []
+        if show_transfers:
+            transfer_entries = self.pokemongo.get_transfer_move_entries(learnset['transfer'], filters)
 
         all_moves = dict()
         for move in levelup_entries:
-            all_moves[move['_id']] = {'method':'levelup', 'move':move}
+            all_moves[move['_id']] = {'method':'Level Up', 'move':move}
         for move in machine_entries:
             if move['_id'] not in all_moves:
-                all_moves[move['_id']] = {'method':'machine', 'move':move}
+                all_moves[move['_id']] = {'method':'TM/TR', 'move':move}
         for move in breeding_entries:
             if move['_id'] not in all_moves:
-                all_moves[move['_id']] = {'method':'breeding', 'move':move}
+                all_moves[move['_id']] = {'method':'Breeding', 'move':move}
+        for move in tutor_entries:
+            if move['_id'] not in all_moves:
+                all_moves[move['_id']] = {'method':'Tutor', 'move':move}
+        if show_transfers:
+            for move in transfer_entries:
+                if move['_id'] not in all_moves:
+                    all_moves[move['_id']] = {'method':'Transfer', 'move':move}
 
         if show_stab:
-            self.show_stab_moves(max_stab, ignore_stats, dex_entry, all_moves, print_to)
-            return
+            self.show_stab_moves(max_stab, ignore_stats, dex_entry, all_moves,
+                                 atk_override, spa_override, def_override, accuracy_check, skill_link, adaptability, print_to)
 
         if show_coverage:
-            self.show_coverage_moves(max_coverage, ignore_stats, dex_entry, all_moves, print_to)
+            self.show_coverage_moves(max_coverage, ignore_stats, dex_entry, all_moves,
+                                     atk_override, spa_override, def_override, accuracy_check, skill_link, adaptability, print_to)
+
+        if show_coverage or show_stab:
             return
                     
-        self.show_all_moves(breeding_entries, machine_entries, levelup_entries, dex_entry, ignore_stats, print_to)
+        self.show_all_moves(breeding_entries, machine_entries, levelup_entries, tutor_entries, transfer_entries, dex_entry, ignore_stats, show_transfers, print_to)
 
-    def show_all_moves(self, breeding_entries, machine_entries, levelup_entries, dex_entry, ignore_stats, print_to):
-        print('Level Up Moves:', file=print_to)
-        for move in self.format_moves(levelup_entries, dex_entry, ignore_stats):
+    def show_all_moves(self, breeding_entries, machine_entries, levelup_entries, tutor_entries, transfer_entries, dex_entry, ignore_stats, show_transfers, print_to):
+        print('\nLevel Up Moves:', file=print_to)
+        if len(levelup_entries) == 0:
+            print('  None', file=print_to)
+        for move in self.format_moves(levelup_entries, dex_entry, ignore_stats=ignore_stats):
             self.print_move(move, ignore_stats, print_to)
+
         print('\nTM/TR Moves:', file=print_to)
-        for move in self.format_moves(machine_entries, dex_entry, ignore_stats):
-            self.print_move(move, ignore_stats, print_to)
-        print('\nEgg Moves:', file=print_to)
-        for move in self.format_moves(breeding_entries, dex_entry, ignore_stats):
+        if len(machine_entries) == 0:
+            print('  None', file=print_to)
+        for move in self.format_moves(machine_entries, dex_entry, ignore_stats=ignore_stats):
             self.print_move(move, ignore_stats, print_to)
 
-    def show_stab_moves(self, max_stab, ignore_stats, dex_entry, all_moves, print_to):
+        if len(breeding_entries) > 0:
+            print('\nEgg Moves:', file=print_to)
+            for move in self.format_moves(breeding_entries, dex_entry, ignore_stats=ignore_stats):
+                self.print_move(move, ignore_stats, print_to)
+
+        if len(tutor_entries) > 0:
+            print('\nMove Tutor Moves:', file=print_to)
+            for move in self.format_moves(tutor_entries, dex_entry, ignore_stats=ignore_stats):
+                self.print_move(move, ignore_stats, print_to)
+
+        if len(transfer_entries) > 0:
+            print('\nTransfer-Only Moves:', file=print_to)
+            for move in self.format_moves(transfer_entries, dex_entry, ignore_stats=ignore_stats):
+                self.print_move(move, ignore_stats, print_to)
+
+    def show_stab_moves(self, max_stab, ignore_stats, dex_entry, all_moves, atk_override, spa_override, def_override, accuracy_check, skill_link, adaptability, print_to):
+        print(f'\nTop moves with STAB for {dex_entry["species"]}:', file=print_to)
+        printed_moves = False
         for elemental_type in dex_entry['types']:
-            top_moves = self.find_strongest_moves_of_type(all_moves, elemental_type, max_stab, dex_entry, ignore_stats)
+            top_moves = self.find_strongest_moves_of_type(all_moves, elemental_type, max_stab, dex_entry, atk_override, spa_override, def_override, accuracy_check, skill_link, adaptability, ignore_stats)
+            if len(top_moves) == 0:
+                continue
+            printed_moves = True
             num_moves = min(max_stab, len(top_moves))
             self.print_top_moves(top_moves, num_moves, elemental_type, ignore_stats, print_to)
+        if not printed_moves:
+            print('  None', file=print_to)
 
-    def show_coverage_moves(self, max_coverage, ignore_stats, dex_entry, all_moves, print_to):
+    def show_coverage_moves(self, max_coverage, ignore_stats, dex_entry, all_moves, atk_override, spa_override, def_override, accuracy_check, skill_link, adaptability, print_to):
+        print(f'\nTop coverage moves for {dex_entry["species"]}:', file=print_to)
+        printed_moves = False
         for elemental_type in PokemonHelper().get_types():
             if elemental_type in dex_entry['types']:
                 continue
-            top_moves = self.find_strongest_moves_of_type(all_moves, elemental_type, max_coverage, dex_entry, ignore_stats)
+            top_moves = self.find_strongest_moves_of_type(all_moves, elemental_type, max_coverage, dex_entry, atk_override, spa_override, def_override, accuracy_check, skill_link, adaptability, ignore_stats)
             if len(top_moves) == 0:
                 continue
+            printed_moves = True
             num_moves = min(max_coverage, len(top_moves))
             self.print_top_moves(top_moves, num_moves, elemental_type, ignore_stats, print_to)
+        if not printed_moves:
+            print('  None', file=print_to)
 
-    def find_strongest_moves_of_type(self, moves, elemental_type, num, dex_entry, ignore_stats):
-        type_moves = self.filter_moves_by_type(moves, elemental_type, dex_entry, ignore_stats)
+    def find_strongest_moves_of_type(self, moves, elemental_type, num, dex_entry, atk_override, spa_override, def_override, accuracy_check, skill_link, adaptability, ignore_stats):
+        type_moves = self.filter_moves_by_type(moves, elemental_type, dex_entry, atk_override, spa_override, def_override, accuracy_check, skill_link, adaptability, ignore_stats)
         type_moves.sort(key=self.acc_sort, reverse=True)
         type_moves.sort(key=self.pow_sort, reverse=True)
         return type_moves[:num]
 
-    def filter_moves_by_type(self, moves, elemental_type, dex_entry, ignore_stats):
+    def filter_moves_by_type(self, moves, elemental_type, dex_entry, atk_override, spa_override, def_override, accuracy_check, skill_link, adaptability, ignore_stats):
         type_moves = []
         for move in moves:
             if moves[move]['move']['type'] == elemental_type:
                 if moves[move]['move']['category'] == 'Status':
                     continue
-                type_moves.append(moves[move]['move'])
-        return self.format_moves(type_moves, dex_entry, ignore_stats)
+                type_move = moves[move]['move']
+                type_move['method'] = moves[move]['method']
+                type_moves.append(type_move)
+        return self.format_moves(type_moves, dex_entry, atk_override, spa_override, def_override, accuracy_check, skill_link, adaptability, ignore_stats)
 
-    def format_moves(self, moves, dex_entry, ignore_stats):
+    def format_moves(self, moves, dex_entry, atk_override=None, spa_override=None, def_override=None, accuracy_check=False, skill_link=False, adaptability=False, ignore_stats=False):
         formatted_moves = []
         for move in moves:
+            method =''
+            if 'method' in move:
+                method = move['method']
             modified_power = int(move['basePower'])
             move_type = move['category']
+            base_power_str = str(modified_power)
+            acc = int(move['accuracy'])
             if dex_entry:
-                if move_type == 'Special':
-                    attack_mod = int(dex_entry['baseStats']['spa'])
+                if 'useSourceDefensiveAsOffensive' in move:
+                    if def_override is None:
+                        attack_mod = int(dex_entry['baseStats']['def'])
+                    else:
+                        attack_mod = def_override
+                elif move_type == 'Special':
+                    if atk_override is None:
+                        attack_mod = int(dex_entry['baseStats']['spa'])
+                    else:
+                        attack_mod = spa_override
                 elif move_type == 'Physical':
-                    attack_mod = int(dex_entry['baseStats']['atk'])
+                    if spa_override is None:
+                        attack_mod = int(dex_entry['baseStats']['atk'])
+                    else:
+                        attack_mod = atk_override
                 else:
                     attack_mod = 0
+                if move['type'] in dex_entry['types']:
+                    if adaptability:
+                        modified_power = modified_power * 2
+                    else:
+                        modified_power = int(modified_power * 1.5)
             else:
                 attack_mod = 0
             if not ignore_stats:
-                modified_power = modified_power * attack_mod
+                if accuracy_check:
+                    if acc == 1:
+                        modified_power = modified_power * attack_mod
+                    else:
+                        modified_power = int(modified_power * attack_mod * (acc / 100))
+                else:
+                    modified_power = modified_power * attack_mod
+            if 'multihit' in move:
+                multihit = move['multihit']
+                if isinstance(multihit, list):
+                    if skill_link:
+                        times = multihit[1]
+                    else:
+                        times = statistics.mean(multihit)
+                else:
+                    times = multihit
+                modified_power = int(modified_power * times)
+                base_power_str = f'{base_power_str} x{int(times)}'
+            elif 'ohko' in move:
+                base_power_str = 'OHKO   '
+            elif modified_power == 0:
+                if move_type == 'Physical' or move_type == 'Special':
+                    base_power_str = ' var   '
+                else:
+                    base_power_str = '   -   '
+            else:
+                base_power_str = f'{base_power_str}   '
+            if acc == 1:
+                acc_str = '-'
+            else:
+                acc_str = f'{acc}'
             formatted_moves.append({'name':move['name'],
-                                    'pow':move['basePower'],
-                                    'acc':move['accuracy'],
+                                    'pow':base_power_str,
+                                    'acc':acc_str,
                                     'cat':move_type,
                                     'atk':attack_mod,
-                                    'mpow':modified_power})
+                                    'mpow':modified_power,
+                                    'method':method})
         return formatted_moves
 
     def acc_sort(self, move):
@@ -161,13 +267,14 @@ class MoveDex:
         return move['mpow']
 
     def print_top_moves(self, top_moves, num_moves, elemental_type, ignore_stats, print_to):
-        print(f'\n{elemental_type}:', file=print_to)
+        print(f'  {elemental_type}:', file=print_to)
         for move in top_moves:
             self.print_move(move, ignore_stats, print_to)
 
     def print_move(self, move, ignore_stats, print_to):
-        print(f'  - {move["name"]:20s} category: {move["cat"]:12s} pow: {move["pow"]:3d}    acc: {move["acc"]:3d}'
-            + ('' if ignore_stats else f'    ( mod: {move["mpow"]:5d}  stat: {move["atk"]:3d} )'), file=print_to)
+        print(f'    - {move["name"]:20s} category: {move["cat"]:12s} pow: {move["pow"]:>7s}  acc: {move["acc"]:>3s}'
+            + ('' if ignore_stats else f'    (mod: {move["mpow"]:5d}  stat: {move["atk"]:3d})')
+            + ('' if move['method'] == '' else f'   [{move["method"]}]'), file=print_to)
 
     def find_egg_move_chain(self, pokemon, dex_entry, move, move_name, checked_mons, dex_name_map, print_to):
         pokemon = pokemon.lower().replace(' ','')
@@ -207,7 +314,7 @@ class MoveDex:
         egg_groups = dex_entry['eggGroups']
         potential_parents = []
         for egg_group in egg_groups:
-            potential_parents = list(set().union(potential_parents, self.pokemongo.get_egg_group(egg_group)))
+            potential_parents = list(set().union(potential_parents, self.pokemongo.get_egg_group(egg_group, get_name=False)))
 
         parent_entries = self.pokemongo.get_pokedex_entries(potential_parents)
         for entry in parent_entries:
@@ -306,7 +413,7 @@ class MoveDex:
             print('There are no moves that match your query, bzzzzrt.', file=print_to)
             return
 
-        formatted_moves = self.format_moves(entries, None, True)
+        formatted_moves = self.format_moves(entries, None, ignore_stats=True)
 
         print('Here are the moves that match your query, bzzzzrt:', file=print_to)
         for move in formatted_moves:
