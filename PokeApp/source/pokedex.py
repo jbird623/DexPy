@@ -31,6 +31,7 @@ class PokeDex:
         self.print_pokedex_data(dex_entry, verbose, print_to)
 
     def print_pokedex_data(self, dex_entry, verbose, print_to):
+        p_id = dex_entry['_id']
         species = dex_entry['species']
         types = dex_entry['types']
         stats = dex_entry['baseStats']
@@ -95,6 +96,108 @@ class PokeDex:
         else:
             egg_groups_string = ', '.join(egg_groups)
             print(f'Egg Groups: {egg_groups_string}', file=print_to)
+
+        if verbose:
+            print('Evolution:', file=print_to)
+            evo_options = self.pokemongo.get_evo_options(p_id, full_entry=True)
+            longest_name = 1
+            for opt in evo_options:
+                if opt['_id'] == p_id:
+                    continue
+                if len(opt['species']) > longest_name:
+                    longest_name = len(opt['species'])
+            if len(evo_options) > 1:
+                print('  Evolves Into:', file=print_to)
+            for opt in evo_options:
+                if opt['_id'] == p_id:
+                    continue
+                evo_type_str = ''
+                if 'evoType' in opt:
+                    if opt['evoType'] == 'trade':
+                        evo_type_str = 'trade'
+                    elif opt['evoType'] == 'levelFriendship':
+                        evo_type_str = 'level up with friendship'
+                    elif opt['evoType'] == 'levelExtra':
+                        evo_type_str = 'level up'
+                    elif opt['evoType'] == 'levelHold':
+                        evo_type_str = 'level up while holding'
+                evo_gender_str = ''
+                if 'gender' in opt:
+                    if opt['gender'] == 'M':
+                        evo_gender_str = ' (male only)'
+                    if opt['gender'] == 'F':
+                        evo_gender_str = ' (female only)'
+                if 'evoCondition' in opt:
+                    if evo_type_str == '':
+                        print(f'    {opt["species"]:{longest_name}s}   [{opt["evoCondition"]}{evo_gender_str}]', file=print_to)
+                    else:
+                        print(f'    {opt["species"]:{longest_name}s}   [{evo_type_str} {opt["evoCondition"]}{evo_gender_str}]', file=print_to)
+                elif 'evoLevel' in opt:
+                    print(f'    {opt["species"]:{longest_name}s}   [level {opt["evoLevel"]}{evo_gender_str}]', file=print_to)
+                elif 'evoMove' in opt:
+                    print(f'    {opt["species"]:{longest_name}s}   [level up while knowing {opt["evoMove"]}{evo_gender_str}]', file=print_to)
+                elif 'evoItem' in opt:
+                    if evo_type_str == 'trade':
+                        print(f'    {opt["species"]:{longest_name}s}   [trade while holding {opt["evoItem"]}{evo_gender_str}]', file=print_to)
+                    elif evo_type_str == 'level up while holding':
+                        print(f'    {opt["species"]:{longest_name}s}   [level up while holding {opt["evoItem"]}{evo_gender_str}]', file=print_to)
+                    else:
+                        print(f'    {opt["species"]:{longest_name}s}   [use {opt["evoItem"]}{evo_gender_str}]', file=print_to)
+                else:
+                    print(f'    {opt["species"]:{longest_name}s}   [{evo_type_str}{evo_gender_str}]', file=print_to)
+            print('  Tree:', file=print_to)
+            evo_line = self.pokemongo.get_evo_line(p_id, full_entry=True)
+            child = None
+            for evo in evo_line:
+                if 'prevo' not in evo:
+                    child = evo
+                    break
+            if child is None:
+                print('ERROR: Unable to find child of evolutionary line.')
+                return
+            evo_family = self.pokemongo.get_full_evo_family(child['_id'], full_entry=True)
+            if child['_id'] == p_id:
+                child['species'] = f'*{child["species"]}*'
+            stages = []
+            current_stage = [child]
+            while len(current_stage) > 0:
+                next_stage = []
+                for evo in current_stage:
+                    if 'evos' not in evo:
+                        continue
+                    for name in evo['evos']:
+                        for entry in evo_family:
+                            if entry['_id'] == p_id and entry['species'][0] != '*':
+                                entry['species'] = f'*{entry["species"]}*'
+                            if entry['_id'] == name:
+                                next_stage.append(entry)
+                stages.append(current_stage[:])
+                current_stage = next_stage[:]
+            max_evos = 1
+            max_name_lens = []
+            for stage in stages:
+                max_name_lens.append(1)
+                i = len(max_name_lens) - 1
+                if len(stage) > max_evos:
+                    max_evos = len(stage)
+                for evo in stage:
+                    if len(evo['species']) > max_name_lens[i]:
+                        max_name_lens[i] = len(evo['species'])
+            lines = []
+            for i in range(max_evos):
+                line = ''
+                for j in range(len(stages)):
+                    if len(stages[j]) > i:
+                        if line != '':
+                            line += ' ---> '
+                        line += f'{stages[j][i]["species"]:{max_name_lens[j]}s}'
+                    else:
+                        if line != '':
+                            line += '      '
+                        line += (' ' * max_name_lens[j])
+                lines.append(line)
+            for line in lines:
+                print(f'    {line}', file=print_to)
 
     def get_stat_pipes(self, stat):
         return '|' * int(stat / 10)

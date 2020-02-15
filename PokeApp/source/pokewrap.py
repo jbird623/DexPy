@@ -479,32 +479,32 @@ class PokeMongo8:
     def get_pokemon_with_move_tutor(self, move, full_entry=False, get_name=True, filters={}):
         return self.get_pokemon_with_move('tutor', move, full_entry, get_name, filters)
 
-    def get_evo_line(self, pokemon):
-        evo_line = [pokemon]
+    def get_evo_line(self, pokemon, full_entry=False):
         dex_entry = self.get_pokedex_entry(pokemon)
+        evo_line = [dex_entry if full_entry else pokemon]
         if 'prevo' in dex_entry:
-            evo_line.extend(self.get_evo_line(dex_entry['prevo']))
+            evo_line.extend(self.get_evo_line(dex_entry['prevo'], full_entry))
         return evo_line
 
-    def get_evo_options(self, pokemon):
-        evo_line = [pokemon]
+    def get_evo_options(self, pokemon, full_entry=False):
         dex_entry = self.get_pokedex_entry(pokemon)
+        evo_line = [dex_entry if full_entry else pokemon]
         if dex_entry is None:
             return []
         if 'evos' in dex_entry:
             for evo in dex_entry['evos']:
-                evo_line.extend(self.get_evo_options(evo))
+                evo_line.extend(self.get_evo_options(evo, full_entry))
         return evo_line
 
-    def get_full_evo_family(self, pokemon):
-        evo_line = [pokemon]
+    def get_full_evo_family(self, pokemon, full_entry=False):
         dex_entry = self.get_pokedex_entry(pokemon)
+        evo_line = [dex_entry if full_entry else pokemon]
         if dex_entry is None:
             print(f'Error: Cannot find pokedex entry for "{pokemon}".')
             return False
         if 'prevo' in dex_entry:
-            evo_line.extend(self.get_evo_line(dex_entry['prevo']))
+            evo_line.extend(self.get_evo_line(dex_entry['prevo'], full_entry))
         if 'evos' in dex_entry:
             for evo in dex_entry['evos']:
-                evo_line.extend(self.get_evo_options(evo))
+                evo_line.extend(self.get_evo_options(evo, full_entry))
         return evo_line
