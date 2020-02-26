@@ -385,6 +385,9 @@ class PokeMongo8:
         if learnset is None:
             print(f'Unable to find learnset for {id}')
             return
+        for move in egg_moves:
+            if move not in learnset['allmoves']:
+                learnset['allmoves'].append(move)
         learnset['breeding'] = egg_moves
         self.learnsets.update_one({'_id':id}, {'$set': learnset})
 

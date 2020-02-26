@@ -400,7 +400,7 @@ async def damage(ctx, *raw_args):
     pos_args = ['token']
     opt_pos_args = ['type2']
 
-    args = parse_arguments(raw_args, pos_args)
+    args = parse_arguments(raw_args, pos_args, opt_pos_args)
     if args is None:
         print('Error parsing command, bzzzzrt! Type "!help" for usage details.', file=output)
         await output.send(ctx)

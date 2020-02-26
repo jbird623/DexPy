@@ -14,11 +14,25 @@ class MoveDex:
             print(f'Error: Move "{move}" not found, bzzzzrt!', file=print_to)
             return
 
+        print(f'Entry for {m_entry["name"]}:\n', file=print_to)
+
+        print(f'Type: {m_entry["type"]}', file=print_to)
+
         category = m_entry['category']
         print(f'Category: {category}', file=print_to)
 
         power = m_entry['basePower']
-        accuracy = m_entry['accuracy'] 
+        accuracy = m_entry['accuracy']
+
+        if 'ohko' in m_entry:
+            power = 'OHKO'
+        elif power == 0:
+            if category == 'Physical' or category == 'Special':
+                power = 'Varies'
+            else:
+                power = '-'
+        if accuracy == True:
+            accuracy = '-'
         print(f'Base Power: {power}\nAccuracy: {accuracy}', file=print_to)
 
         short_desc = 'No description available.'
@@ -252,6 +266,7 @@ class MoveDex:
             else:
                 acc_str = f'{acc}'
             formatted_moves.append({'name':move['name'],
+                                    'type':move['type'],
                                     'pow':base_power_str,
                                     'acc':acc_str,
                                     'cat':move_type,
@@ -272,7 +287,7 @@ class MoveDex:
             self.print_move(move, ignore_stats, print_to)
 
     def print_move(self, move, ignore_stats, print_to):
-        print(f'    - {move["name"]:20s} category: {move["cat"]:12s} pow: {move["pow"]:>7s}  acc: {move["acc"]:>3s}'
+        print(f'    - {move["name"]:20s}  {move["type"]:>8s} - {move["cat"]:12s} pow: {move["pow"]:>7s}  acc: {move["acc"]:>3s}'
             + ('' if ignore_stats else f'    (mod: {move["mpow"]:5d}  stat: {move["atk"]:3d})')
             + ('' if move['method'] == '' else f'   [{move["method"]}]'), file=print_to)
 
