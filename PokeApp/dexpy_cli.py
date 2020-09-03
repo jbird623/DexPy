@@ -5,6 +5,7 @@ Usage: dexpy_cli.py moves (POKEMON) [--stab|-s=NUM_MOVES] [--ignore-stats]
        dexpy_cli.py pokedex (POKEMON)
        dexpy_cli.py ha (POKEMON)
        dexpy_cli.py ability (ABILITY)
+       dexpy_cli.py helper
 
 Arguments:
   POKEMON       The pokemon to check the moves for.
@@ -27,6 +28,8 @@ from source.pokedex import PokeDex
 
 def main():
     arguments = docopt(__doc__)
+    if arguments['helper']:
+        helper_func()
     if arguments['moves']:
         moves_func(arguments)
     if arguments['eggmove']:
@@ -97,6 +100,13 @@ def ability_func(arguments):
     ability = arguments['ABILITY'].lower().replace(' ','')
 
     AbilityDex().do_ability_search_function(ability, sys.stdout)
+    print('')
+
+def helper_func():
+    print('')
+    with open('isle_of_armor.txt', 'w') as output:
+        PokeDex().do_pokedex_query_function({'ioa':"True"}, output)
+    print('Loaded all base game pokemon.')
     print('')
 
 if __name__ == '__main__':

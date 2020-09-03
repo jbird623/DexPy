@@ -1,3 +1,5 @@
+import math
+
 from .pokewrap import PokeMongo8
 from .pokehelper import PokemonHelper
 from pprint import pprint
@@ -30,6 +32,28 @@ class PokeDex:
 
         self.print_pokedex_data(dex_entry, verbose, print_to)
 
+    def get_hp_range(self, value):
+        if value == 1:
+            return '  1-  1'
+        min = math.floor(2 * value) + 110
+        max = math.floor(2 * value + 94) + 110
+        return f'{min:3d}-{max:3d}'
+
+    def get_stat_range(self, value, nature):
+        min = math.floor((math.floor(2 * value) + 5) * (1 + 0.1 * nature))
+        max = math.floor((math.floor(2 * value + 94) + 5) * (1 + 0.1 * nature))
+        return f'{min:3d}-{max:3d}'
+
+    def format_stat_ranges(self, HP, Atk, Def, SpA, SpD, Spe, nature):
+        stat_ranges = ''
+        stat_ranges += f' {self.get_hp_range(HP)} '
+        stat_ranges += f' {self.get_stat_range(Atk, nature)} '
+        stat_ranges += f' {self.get_stat_range(Def, nature)} '
+        stat_ranges += f' {self.get_stat_range(SpA, nature)} '
+        stat_ranges += f' {self.get_stat_range(SpD, nature)} '
+        stat_ranges += f' {self.get_stat_range(Spe, nature)} '
+        return stat_ranges
+
     def print_pokedex_data(self, dex_entry, verbose, print_to):
         p_id = dex_entry['_id']
         species = dex_entry['species']
@@ -40,6 +64,9 @@ class PokeDex:
         egg_groups = []
         for group in raw_egg_groups:
             egg_groups.append(group.capitalize())
+
+        if dex_entry['past_only']:
+            print('\n[NOTE: This Pokemon is not transferrable to Gen 8 games, bzzzzrt!]\n', file=print_to)
 
         print(f'Pokedex entry for {species}:\n', file=print_to)
 
@@ -84,6 +111,12 @@ class PokeDex:
             print(f'  Sp. Atk: {stats["spa"]:3d} {self.get_stat_pipes(stats["spa"])}', file=print_to)
             print(f'  Sp. Def: {stats["spd"]:3d} {self.get_stat_pipes(stats["spd"])}', file=print_to)
             print(f'    Speed: {stats["spe"]:3d} {self.get_stat_pipes(stats["spe"])}', file=print_to)
+            print('', file=print_to)
+            print(f'Stat Ranges (Level 100):', file=print_to)
+            print(f'   Nature     HP       Atk      Def      SpA      SpD      Spe', file=print_to)
+            print(f' Hindering:{self.format_stat_ranges(stats["hp"], stats["atk"], stats["def"], stats["spa"], stats["spd"], stats["spe"], -1)}', file=print_to)
+            print(f'   Neutral:{self.format_stat_ranges(stats["hp"], stats["atk"], stats["def"], stats["spa"], stats["spd"], stats["spe"], 0)}', file=print_to)
+            print(f'Beneficial:{self.format_stat_ranges(stats["hp"], stats["atk"], stats["def"], stats["spa"], stats["spd"], stats["spe"], 1)}', file=print_to)
             print('', file=print_to)
         else:
             print(f'HP: {stats["hp"]} | Atk: {stats["atk"]} | Def: {stats["def"]} | SpA: {stats["spa"]} | SpD: {stats["spd"]} | Spe: {stats["spe"]}', file=print_to)
@@ -308,5 +341,13 @@ class PokeDex:
             return
 
         print('Here are the pokemon that match your query, bzzzzrt:', file=print_to)
+        past_pokemon = False
         for entry in dex_entries:
-            print(f'  - {entry["species"]}', file=print_to)
+            species = entry['species']
+            if entry['past_only']:
+                species = f'*{species}'
+                past_pokemon = True
+            print(f'  - {species}', file=print_to)
+
+        if past_pokemon:
+            print('\n* Pokemon not available in Gen 8 games.', file=print_to)

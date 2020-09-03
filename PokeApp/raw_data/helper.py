@@ -10,3 +10,4 @@ with open('abilities.txt', 'r') as input:
 
     for key in unique_keys:
         print(key)
+

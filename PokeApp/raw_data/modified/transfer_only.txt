@@ -12,6 +12,7 @@
 - decidueye
 - diglettalola
 - dugtrioalola
+- exeggutoralola
 - farfetchd
 - incineroar
 - ivysaur
@@ -23,6 +24,9 @@
 - linoone
 - litten
 - lunala
+- magearna
+- magearnaoriginal
+- marowakalola
 - marshadow
 - melmetal
 - meltan
@@ -47,6 +51,11 @@
 - rapidash
 - reshiram
 - rowlet
+- sandshrewalola
+- sandslashalola
+- slowbro
+- slowking
+- slowpoke
 - solgaleo
 - squirtle
 - stunfisk

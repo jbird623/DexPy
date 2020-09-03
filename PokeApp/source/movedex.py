@@ -14,6 +14,9 @@ class MoveDex:
             print(f'Error: Move "{move}" not found, bzzzzrt!', file=print_to)
             return
 
+        if m_entry['past_only']:
+            print('\n[NOTE: This move is not available in the Gen 8 games, bzzzzrt!]\n', file=print_to)
+
         print(f'Entry for {m_entry["name"]}:\n', file=print_to)
 
         print(f'Type: {m_entry["type"]}', file=print_to)
@@ -57,26 +60,46 @@ class MoveDex:
         breeding_list = self.pokemongo.get_pokemon_with_move_breeding(move, filters=filters)
         tutor_list = self.pokemongo.get_pokemon_with_move_tutor(move, filters=filters)
 
+        past_pokemon = False
         if len(levelup_list) > 0:
             print(f'\nPokemon that learn {move_name} by level up:', file=print_to)
             for pokemon in levelup_list:
-                print(f'  - {pokemon["species"]}', file=print_to)
+                species = pokemon['species']
+                if pokemon['past_only']:
+                    species = f'*{species}'
+                    past_pokemon = True
+                print(f'  - {species}', file=print_to)
         if len(machine_list) > 0:
             print(f'\nPokemon that learn {move_name} by TM/TR:', file=print_to)
             for pokemon in machine_list:
-                print(f'  - {pokemon["species"]}', file=print_to)
+                species = pokemon['species']
+                if pokemon['past_only']:
+                    species = f'*{species}'
+                    past_pokemon = True
+                print(f'  - {species}', file=print_to)
         if len(breeding_list) > 0:
             print(f'\nPokemon that learn {move_name} by breeding:', file=print_to)
             for pokemon in breeding_list:
-                print(f'  - {pokemon["species"]}', file=print_to)
+                species = pokemon['species']
+                if pokemon['past_only']:
+                    species = f'*{species}'
+                    past_pokemon = True
+                print(f'  - {species}', file=print_to)
         if len(tutor_list) > 0:
             print(f'\nPokemon that learn {move_name} by tutor:', file=print_to)
             for pokemon in tutor_list:
-                print(f'  - {pokemon["species"]}', file=print_to)
+                species = pokemon['species']
+                if pokemon['past_only']:
+                    species = f'*{species}'
+                    past_pokemon = True
+                print(f'  - {species}', file=print_to)
+
+        if past_pokemon:
+            print('\n* Pokemon not available in Gen 8 games.', file=print_to)
 
     def do_moves_function(self, pokemon, filters, show_stab=False, max_stab=5, ignore_stats=False, show_coverage=False, max_coverage=3,
-                          show_transfers=False, atk_override=None, spa_override=None, def_override=None, accuracy_check=False,
-                          skill_link=False, adaptability=False, print_to=None):
+                          show_transfers=False, show_past=False, atk_override=None, spa_override=None, def_override=None, accuracy_check=False,
+                          skill_link=False, adaptability=False, sheer_force=False, tough_claws=False, strong_jaw=False, punk_rock=False, print_to=None):
         dex_entry = self.pokemongo.get_pokedex_entry(pokemon)
         if dex_entry is None:
             print(f'Error: No dex entry found for "{pokemon}", bzzzzrt!', file=print_to)
@@ -86,6 +109,9 @@ class MoveDex:
         if learnset is None:
             print(f'Error: No learnset found for "{pokemon}", bzzzzrt!', file=print_to)
             return
+
+        if not show_past:
+            filters['past'] = 'false'
 
         breeding_entries = self.pokemongo.get_move_entries(learnset['breeding'], filters)
         machine_entries = self.pokemongo.get_move_entries(learnset['machine'], filters)
@@ -112,20 +138,26 @@ class MoveDex:
                 if move['_id'] not in all_moves:
                     all_moves[move['_id']] = {'method':'Transfer', 'move':move}
 
+        if dex_entry['past_only']:
+            print('\n[NOTE: This Pokemon is not transferrable to Gen 8 games, bzzzzrt!]', file=print_to)
+
         if show_stab:
             self.show_stab_moves(max_stab, ignore_stats, dex_entry, all_moves,
-                                 atk_override, spa_override, def_override, accuracy_check, skill_link, adaptability, print_to)
+                                 atk_override, spa_override, def_override, accuracy_check, skill_link, adaptability, sheer_force, tough_claws, strong_jaw, punk_rock, print_to)
 
         if show_coverage:
             self.show_coverage_moves(max_coverage, ignore_stats, dex_entry, all_moves,
-                                     atk_override, spa_override, def_override, accuracy_check, skill_link, adaptability, print_to)
+                                     atk_override, spa_override, def_override, accuracy_check, skill_link, adaptability, sheer_force, tough_claws, strong_jaw, punk_rock, print_to)
 
         if show_coverage or show_stab:
             return
                     
-        self.show_all_moves(breeding_entries, machine_entries, levelup_entries, tutor_entries, transfer_entries, dex_entry, ignore_stats, show_transfers, print_to)
+        self.show_all_moves(breeding_entries, machine_entries, levelup_entries, tutor_entries, transfer_entries, dex_entry, ignore_stats, print_to)
 
-    def show_all_moves(self, breeding_entries, machine_entries, levelup_entries, tutor_entries, transfer_entries, dex_entry, ignore_stats, show_transfers, print_to):
+        if show_past:
+            print('\n* Move not available in Gen 8 games.', file=print_to)
+
+    def show_all_moves(self, breeding_entries, machine_entries, levelup_entries, tutor_entries, transfer_entries, dex_entry, ignore_stats, print_to):
         print('\nLevel Up Moves:', file=print_to)
         if len(levelup_entries) == 0:
             print('  None', file=print_to)
@@ -148,16 +180,22 @@ class MoveDex:
             for move in self.format_moves(tutor_entries, dex_entry, ignore_stats=ignore_stats):
                 self.print_move(move, ignore_stats, print_to)
 
+        past_moves = False
         if len(transfer_entries) > 0:
             print('\nTransfer-Only Moves:', file=print_to)
             for move in self.format_moves(transfer_entries, dex_entry, ignore_stats=ignore_stats):
+                if move['name'][0] == '*':
+                    past_moves = True
                 self.print_move(move, ignore_stats, print_to)
 
-    def show_stab_moves(self, max_stab, ignore_stats, dex_entry, all_moves, atk_override, spa_override, def_override, accuracy_check, skill_link, adaptability, print_to):
+        if past_moves:
+            print('\n* Move not available in Gen 8 games.', file=output)
+
+    def show_stab_moves(self, max_stab, ignore_stats, dex_entry, all_moves, atk_override, spa_override, def_override, accuracy_check, skill_link, adaptability, sheer_force, tough_claws, strong_jaw, punk_rock, print_to):
         print(f'\nTop moves with STAB for {dex_entry["species"]}:', file=print_to)
         printed_moves = False
         for elemental_type in dex_entry['types']:
-            top_moves = self.find_strongest_moves_of_type(all_moves, elemental_type, max_stab, dex_entry, atk_override, spa_override, def_override, accuracy_check, skill_link, adaptability, ignore_stats)
+            top_moves = self.find_strongest_moves_of_type(all_moves, elemental_type, max_stab, dex_entry, atk_override, spa_override, def_override, accuracy_check, skill_link, adaptability, sheer_force, tough_claws, strong_jaw, punk_rock, ignore_stats)
             if len(top_moves) == 0:
                 continue
             printed_moves = True
@@ -166,13 +204,13 @@ class MoveDex:
         if not printed_moves:
             print('  None', file=print_to)
 
-    def show_coverage_moves(self, max_coverage, ignore_stats, dex_entry, all_moves, atk_override, spa_override, def_override, accuracy_check, skill_link, adaptability, print_to):
+    def show_coverage_moves(self, max_coverage, ignore_stats, dex_entry, all_moves, atk_override, spa_override, def_override, accuracy_check, skill_link, adaptability, sheer_force, tough_claws, strong_jaw, punk_rock, print_to):
         print(f'\nTop coverage moves for {dex_entry["species"]}:', file=print_to)
         printed_moves = False
         for elemental_type in PokemonHelper().get_types():
             if elemental_type in dex_entry['types']:
                 continue
-            top_moves = self.find_strongest_moves_of_type(all_moves, elemental_type, max_coverage, dex_entry, atk_override, spa_override, def_override, accuracy_check, skill_link, adaptability, ignore_stats)
+            top_moves = self.find_strongest_moves_of_type(all_moves, elemental_type, max_coverage, dex_entry, atk_override, spa_override, def_override, accuracy_check, skill_link, adaptability, sheer_force, tough_claws, strong_jaw, punk_rock, ignore_stats)
             if len(top_moves) == 0:
                 continue
             printed_moves = True
@@ -181,13 +219,13 @@ class MoveDex:
         if not printed_moves:
             print('  None', file=print_to)
 
-    def find_strongest_moves_of_type(self, moves, elemental_type, num, dex_entry, atk_override, spa_override, def_override, accuracy_check, skill_link, adaptability, ignore_stats):
-        type_moves = self.filter_moves_by_type(moves, elemental_type, dex_entry, atk_override, spa_override, def_override, accuracy_check, skill_link, adaptability, ignore_stats)
+    def find_strongest_moves_of_type(self, moves, elemental_type, num, dex_entry, atk_override, spa_override, def_override, accuracy_check, skill_link, adaptability, sheer_force, tough_claws, strong_jaw, punk_rock, ignore_stats):
+        type_moves = self.filter_moves_by_type(moves, elemental_type, dex_entry, atk_override, spa_override, def_override, accuracy_check, skill_link, adaptability, sheer_force, tough_claws, strong_jaw, punk_rock, ignore_stats)
         type_moves.sort(key=self.acc_sort, reverse=True)
         type_moves.sort(key=self.pow_sort, reverse=True)
         return type_moves[:num]
 
-    def filter_moves_by_type(self, moves, elemental_type, dex_entry, atk_override, spa_override, def_override, accuracy_check, skill_link, adaptability, ignore_stats):
+    def filter_moves_by_type(self, moves, elemental_type, dex_entry, atk_override, spa_override, def_override, accuracy_check, skill_link, adaptability, sheer_force, tough_claws, strong_jaw, punk_rock, ignore_stats):
         type_moves = []
         for move in moves:
             if moves[move]['move']['type'] == elemental_type:
@@ -196,9 +234,9 @@ class MoveDex:
                 type_move = moves[move]['move']
                 type_move['method'] = moves[move]['method']
                 type_moves.append(type_move)
-        return self.format_moves(type_moves, dex_entry, atk_override, spa_override, def_override, accuracy_check, skill_link, adaptability, ignore_stats)
+        return self.format_moves(type_moves, dex_entry, atk_override, spa_override, def_override, accuracy_check, skill_link, adaptability, sheer_force, tough_claws, strong_jaw, punk_rock, ignore_stats)
 
-    def format_moves(self, moves, dex_entry, atk_override=None, spa_override=None, def_override=None, accuracy_check=False, skill_link=False, adaptability=False, ignore_stats=False):
+    def format_moves(self, moves, dex_entry, atk_override=None, spa_override=None, def_override=None, accuracy_check=False, skill_link=False, adaptability=False, sheer_force=False, tough_claws=False, strong_jaw=False, punk_rock=False, ignore_stats=False):
         formatted_moves = []
         for move in moves:
             method =''
@@ -231,6 +269,16 @@ class MoveDex:
                         modified_power = modified_power * 2
                     else:
                         modified_power = int(modified_power * 1.5)
+                if sheer_force and 'secondary' in move:
+                    if move['secondary'] is not None:
+                        modified_power = int(modified_power * 1.3)
+                if 'flags' in move:
+                    if tough_claws and 'contact' in move['flags']:
+                        modified_power = int(modified_power * 1.3)
+                    if strong_jaw and 'bite' in move['flags']:
+                        modified_power = int(modified_power * 1.3)
+                    if punk_rock and 'sound' in move['flags']:
+                        modified_power = int(modified_power * 1.3)
             else:
                 attack_mod = 0
             if not ignore_stats:
@@ -265,7 +313,10 @@ class MoveDex:
                 acc_str = '-'
             else:
                 acc_str = f'{acc}'
-            formatted_moves.append({'name':move['name'],
+            move_name = move['name']
+            if move['past_only']:
+                move_name = f'*{move_name}'
+            formatted_moves.append({'name':move_name,
                                     'type':move['type'],
                                     'pow':base_power_str,
                                     'acc':acc_str,
@@ -430,6 +481,12 @@ class MoveDex:
 
         formatted_moves = self.format_moves(entries, None, ignore_stats=True)
 
+        past_moves = False
         print('Here are the moves that match your query, bzzzzrt:', file=print_to)
         for move in formatted_moves:
+            if move['name'][0] == '*':
+                past_moves = True
             self.print_move(move, True, print_to)
+
+        if past_moves:
+            print('\n* Move not available in Gen 8 games.', file=print_to)

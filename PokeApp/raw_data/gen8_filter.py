@@ -1,11 +1,12 @@
 import yaml
+import re
 
 from pprint import pprint
 
 source_dir = 'modified'
 destination_dir = 'gen8'
 
-def transform_entry(pokedex_entry, id, transfer_only_list):
+def transform_entry(pokedex_entry, id, base_game_list, transfer_only_list, isle_of_armor_list):
     abilities = pokedex_entry['abilities']
     ability_list = []
     if '0' in abilities:
@@ -22,9 +23,21 @@ def transform_entry(pokedex_entry, id, transfer_only_list):
     bst = 0
     for stat in pokedex_entry['baseStats']:
         bst += pokedex_entry['baseStats'][stat]
+    pokedex_entry['species'] = pokedex_entry.pop('name')
+    if 'prevo' in pokedex_entry:
+        pokedex_entry['prevo'] = re.sub(r'\W+', '', pokedex_entry['prevo'].lower())
+    if 'evos' in pokedex_entry:
+        evos = pokedex_entry['evos']
+        evo_list = []
+        for evo in evos:
+            evo_list.append(re.sub(r'\W+', '', evo.lower()))
+        pokedex_entry['evos'] = evo_list
     pokedex_entry['baseStats']['bst'] = bst
     pokedex_entry['eggGroups'] = egg_group_list
+    pokedex_entry['base_game'] = (id in base_game_list)
     pokedex_entry['transfer_only'] = (id in transfer_only_list)
+    pokedex_entry['isle_of_armor'] = (id in isle_of_armor_list)
+    pokedex_entry['past_only'] = (id not in base_game_list and id not in transfer_only_list and id not in isle_of_armor_list)
     return pokedex_entry
 
 def transform_learnset(learnset):
@@ -87,10 +100,12 @@ def transform_learnset(learnset):
     entry['transfer'] = transfer_moves
     return entry
 
-def transform_move(move):
+def transform_move(move, isPast):
+    move['past_only'] = isPast
     return move
 
-def transform_ability(ability):
+def transform_ability(ability, isPast):
+    ability['past_only'] = isPast
     return ability
 
 def main():
@@ -104,35 +119,53 @@ def filter_pokedex():
     print('Filtering Pokedex...')
     gen8dex = dict()
 
+    with open(f'{source_dir}/base_game.txt', 'r') as input:
+        base_game_list = yaml.load(input.read(), Loader=yaml.SafeLoader)
+
     with open(f'{source_dir}/transfer_only.txt', 'r') as input:
         transfer_only_list = yaml.load(input.read(), Loader=yaml.SafeLoader)
+
+    with open(f'{source_dir}/isle_of_armor.txt', 'r') as input:
+        isle_of_armor_list = yaml.load(input.read(), Loader=yaml.SafeLoader)
 
     with open(f'{source_dir}/pokedex.txt', 'r') as input:
         pokedex = yaml.load(input.read(), Loader=yaml.SafeLoader)
 
-        ignore_list = ['basculinbluestriped','keldeoresolute']
-        
+        ignore_list = ['basculinbluestriped','keldeoresolute','polteageistantique','sinisteaantique', 'floetteeternal',
+                       'giratinaorigin', 'hoopaunbound', 'pichuspikyeared', 'shayminsky', 'vivillonfancy', 'vivillonpokeball', 'zygarde10']
+        outputList = []
+
         for pokemon in pokedex:
             isGen8 = True
+            isPast = False
             for key in pokedex[pokemon]:
                 if key == 'isNonstandard':
-                    isGen8 = False
+                    if pokedex[pokemon]['isNonstandard'].lower() == 'past':
+                        isPast = True
+                    else:
+                        isGen8 = False
                     break
-                if key == 'tier' and pokedex[pokemon]['tier'] == 'Unreleased':
+                if key == 'tier' and pokedex[pokemon]['tier'].lower() == 'unreleased':
                     isGen8 = False
                     break
                 #if key == 'baseSpecies':
-                #    if pokemon[-5:] != 'galar' and pokemon[-5:] != 'alola':
-                #        isGen8 = False
-                #        break
-                if key == 'battleOnly' and pokedex[pokemon]['battleOnly'] == True:
+                if key == 'battleOnly':
                     isGen8 = False
                     break
             
             if pokemon[-4:] == 'gmax':
                 isGen8 = False
 
-            if pokemon[-4:] == 'mega':
+            if pokemon[-4:] == 'mega' or pokemon[-5:] == 'megay' or pokemon[-5:] == 'megax':
+                isGen8 = False
+
+            if pokemon[-5:] == 'totem':
+                isGen8 = False
+
+            if pokemon[-6:] == 'primal':
+                isGen8 = False
+
+            if pokemon[-7:] == 'therian':
                 isGen8 = False
 
             if pokemon[:9] == 'pumpkaboo' and pokemon != 'pumpkaboo':
@@ -144,12 +177,30 @@ def filter_pokedex():
             if pokemon[:8] == 'silvally' and pokemon != 'silvally':
                 isGen8 = False
 
+            if pokemon[:6] == 'arceus' and pokemon != 'arceus':
+                isGen8 = False
+
+            if pokemon[:6] == 'deoxys' and pokemon != 'deoxys':
+                isGen8 = False
+
+            if pokemon[:8] == 'genesect' and pokemon != 'genesect':
+                isGen8 = False
+
+            if pokemon[:8] == 'oricorio' and pokemon != 'oricorio':
+                isGen8 = False
+
+            if pokemon[:7] == 'pikachu' and pokemon != 'pikachu':
+                isGen8 = False
+
             if pokemon in ignore_list:
                 isGen8 = False
 
             if isGen8:
-                gen8dex[pokemon] = transform_entry(pokedex[pokemon], pokemon, transfer_only_list)
+                gen8dex[pokemon] = transform_entry(pokedex[pokemon], pokemon, base_game_list, transfer_only_list, isle_of_armor_list)
                 #print(pokemon)
+
+        #for id in outputList:
+        #    print(id)
 
         with open(f'{destination_dir}/gen8_pokedex.txt', 'wt') as output:
             yaml.dump(gen8dex, stream=output)
@@ -181,12 +232,16 @@ def filter_moves():
 
         for move in moves:
             isGen8 = True
+            isPast = False
             for key in moves[move]:
                 if key == 'isNonstandard':
-                    isGen8 = False
+                    if moves[move]['isNonstandard'].lower() == 'past':
+                        isPast = True
+                    else:
+                        isGen8 = False
                     break
             if isGen8:
-                gen8moves[move] = transform_move(moves[move])
+                gen8moves[move] = transform_move(moves[move], isPast)
         
         with open(f'{destination_dir}/gen8_moves.txt', 'wt') as output:
             yaml.dump(gen8moves, stream=output)
@@ -198,16 +253,20 @@ def filter_abilities():
     gen8abilities = dict()
 
     with open(f'{source_dir}/abilities.txt', 'r') as input:
-        abilities = yaml.load(input.read(), Loader=yaml.BaseLoader)
+        abilities = yaml.load(input.read(), Loader=yaml.SafeLoader)
 
         for ability in abilities:
             isGen8 = True
+            isPast = False
             for key in abilities[ability]:
                 if key == 'isNonstandard':
-                    isGen8 = False
+                    if abilities[ability]['isNonstandard'].lower() == 'past':
+                        isPast = True
+                    else:
+                        isGen8 = False
                     break
             if isGen8:
-                gen8abilities[ability] = transform_ability(abilities[ability])
+                gen8abilities[ability] = transform_ability(abilities[ability], isPast)
         
         with open(f'{destination_dir}/gen8_abilities.txt', 'wt') as output:
             yaml.dump(gen8abilities, stream=output)

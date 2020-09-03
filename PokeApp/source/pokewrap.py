@@ -36,12 +36,23 @@ class PokeMongo8:
             return {'$where': f'this.baseStats.{filter_key} {comparator} this.baseStats.{filter_value}'} 
         return None
 
-    def get_simple_object_from_filter_value(self, filter_value):
+    def get_simple_object_from_filter_value(self, filter_value, negate=False):
         if ',' in filter_value:
             filters = []
             for v in filter_value.split(','):
-                filters.append(self.get_simple_object_from_filter_value(v))
+                filters.append(self.get_simple_object_from_filter_value(v, negate))
             return {'$and': filters}
+        if negate:
+            if '>' in filter_value:
+                if '=' in filter_value:
+                    filter_value = filter_value.replace('>=', '<')
+                else:
+                    filter_value = filter_value.replace('>', '<=')
+            elif '<' in filter_value:
+                if '=' in filter_value:
+                    filter_value = filter_value.replace('<=', '>')
+                else:
+                    filter_value = filter_value.replace('<', '>=')
         if filter_value[0] == '>':
             try:
                 if filter_value[1] == '=':
@@ -60,16 +71,30 @@ class PokeMongo8:
                 return None
         else:
             try:
-                return int(filter_value)
+                if negate:
+                    return {'$ne':int(filter_value)}
+                else:
+                    return int(filter_value)
             except:
                 return None
 
-    def get_object_from_filter_value(self, filter_key, filter_value):
+    def get_object_from_filter_value(self, filter_key, filter_value, negate=False):
         if ',' in filter_value:
             filters = []
             for v in filter_value.split(','):
-                filters.append(self.get_object_from_filter_value(filter_key, v))
+                filters.append(self.get_object_from_filter_value(filter_key, v, negate))
             return {'$and': filters}
+        if negate:
+            if '>' in filter_value:
+                if '=' in filter_value:
+                    filter_value = filter_value.replace('>=', '<')
+                else:
+                    filter_value = filter_value.replace('>', '<=')
+            elif '<' in filter_value:
+                if '=' in filter_value:
+                    filter_value = filter_value.replace('<=', '>')
+                else:
+                    filter_value = filter_value.replace('<', '>=')
         if filter_value[0] == '>':
             try:
                 if filter_value[1] == '=':
@@ -94,67 +119,118 @@ class PokeMongo8:
                     return self.get_stat_or_none(filter_key, filter_value[1:], '<')
         else:
             try:
-                return {f'baseStats.{filter_key}':int(filter_value)}
+                if negate:
+                    return {f'baseStats.{filter_key}':{'$ne':int(filter_value)}}
+                else:
+                    return {f'baseStats.{filter_key}':int(filter_value)}
             except:
-                return self.get_stat_or_none(filter_key, filter_value, '==')
+                if negate:
+                    return self.get_stat_or_none(filter_key, filter_value, '!=')
+                else:
+                    return self.get_stat_or_none(filter_key, filter_value, '==')
 
     def convert_pokedex_mongo_filters(self, filters, exclude=[]):
         and_list = []
         for f in filters:
-            if f == 'a' and 'a' not in exclude:
-                ab_ids = filters['a'].lower().replace(' ','').split(',')
-                and_list.append({'ability_list':{'$in':ab_ids}})
-            if f == 'a-force':
-                ab_ids = filters['a-force'].lower().replace(' ','').split(',')
-                and_list.append({'ability_list':{'$in':ab_ids}})
-            if f == 'hp':
-                hp = self.get_object_from_filter_value('hp', filters['hp'])
+            negate = False
+            ft = f[:]
+            new_key = None
+            new_filter = None
+            if f[0] == '~':
+                negate = True
+                ft = f[1:]
+            if (ft == 'a' and 'a' not in exclude) or ft == 'a-force':
+                ab_ids = filters[f].lower().replace(' ','').split(',')
+                new_key = 'ability_list'
+                if negate:
+                    new_filter = {'$nin':ab_ids}
+                else:
+                    new_filter = {'$in':ab_ids}
+            if ft == 'hp':
+                hp = self.get_object_from_filter_value('hp', filters[f], negate)
                 and_list.append(hp)
-            if f == 'atk':
-                atk = self.get_object_from_filter_value('atk', filters['atk'])
+            if ft == 'atk':
+                atk = self.get_object_from_filter_value('atk', filters[f], negate)
                 and_list.append(atk)
-            if f == 'def':
-                Def = self.get_object_from_filter_value('def', filters['def'])
+            if ft == 'def':
+                Def = self.get_object_from_filter_value('def', filters[f], negate)
                 and_list.append(Def)
-            if f == 'spa':
-                spa = self.get_object_from_filter_value('spa', filters['spa'])
+            if ft == 'spa':
+                spa = self.get_object_from_filter_value('spa', filters[f], negate)
                 and_list.append(spa)
-            if f == 'spd':
-                spd = self.get_object_from_filter_value('spd', filters['spd'])
+            if ft == 'spd':
+                spd = self.get_object_from_filter_value('spd', filters[f], negate)
                 and_list.append(spd)
-            if f == 'spe':
-                spe = self.get_object_from_filter_value('spe', filters['spe'])
+            if ft == 'spe':
+                spe = self.get_object_from_filter_value('spe', filters[f], negate)
                 and_list.append(spe)
-            if f == 'bst':
-                bst = self.get_object_from_filter_value('bst', filters['bst'])
+            if ft == 'bst':
+                bst = self.get_object_from_filter_value('bst', filters[f], negate)
                 and_list.append(bst)
-            if f == 'evo':
-                evo = self.string_bool(filters['evo'])
-                and_list.append({'evos':{'$exists':evo}})
-            if f == 'prevo':
-                prevo = self.string_bool(filters['prevo'])
-                and_list.append({'prevo':{'$exists':prevo}})
-            if f == 'eg' and 'eg' not in exclude:
-                eg = filters['eg'].lower().replace(' ','')
-                and_list.append({'eggGroups':eg})
-            if f == 'eg-force':
-                eg = filters['eg-force'].lower().replace(' ','')
-                and_list.append({'eggGroups':eg})
-            if f == 't':
-                types = filters['t'].lower().replace(' ','').split(',')
+            if ft == 'evo':
+                evo = self.string_bool(filters[f])
+                new_key = 'evos'
+                if negate:
+                    evo = not evo
+                new_filter = {'$exists':evo}
+            if ft == 'prevo':
+                prevo = self.string_bool(filters[f])
+                new_key = 'prevo'
+                if negate:
+                    prevo = not prevo
+                new_filter = {'$exists':prevo}
+            if (ft == 'eg' and 'eg' not in exclude) or ft == 'eg-force':
+                eg = filters[f].lower().replace(' ','').split(',')
+                new_key = 'eggGroups'
+                if negate:
+                    new_filter = {'$nin':eg}
+                else:
+                    new_filter = {'$in':eg}
+            if ft == 'ega':
+                eg = filters[f].lower().replace(' ','').split(',')
+                if negate:
+                    and_list.append({'eggGroups':{'$nin':eg}})
+                else:
+                    and_list.append({'$or':[{'eggGroups':{'$eq':eg}},{'eggGroups':{'$eq':eg[::-1]}}]})
+            if ft == 't':
+                types = filters[f].lower().replace(' ','').split(',')
                 caps_types = []
                 for t in types:
                     caps_types.append(t.capitalize())
-                and_list.append({'types':{'$in':caps_types}})
-            if f == 'ta':
-                types = filters['ta'].lower().replace(' ','').split(',')
+                new_key = 'types'
+                if negate:
+                    new_filter = {'$nin':caps_types}
+                else:
+                    new_filter = {'$in':caps_types}
+            if ft == 'ta':
+                types = filters[f].lower().replace(' ','').split(',')
                 caps_types = []
                 for t in types:
                     caps_types.append(t.capitalize())
-                and_list.append({'types':{'$all':caps_types}})
-            if f == 'tr':
-                tr = self.string_bool(filters['tr'])
-                and_list.append({'transfer_only':tr})
+                if negate:
+                    and_list.append({'types':{'$nin':caps_types}})
+                else:
+                    and_list.append({'$or':[{'types':{'$eq':caps_types}},{'types':{'$eq':caps_types[::-1]}}]})
+            if ft == 'tr':
+                tr = self.string_bool(filters[f])
+                new_key = 'transfer_only'
+                if negate:
+                    tr = not tr
+                new_filter = tr
+            if ft == 'ioa':
+                ioa = self.string_bool(filters[f])
+                new_key = 'isle_of_armor'
+                if negate:
+                    ioa = not ioa
+                new_filter = ioa
+            if ft == 'past':
+                past = self.string_bool(filters[f])
+                new_key = 'past_only'
+                if negate:
+                    past = not past
+                new_filter = past
+            if new_key is not None:
+                and_list.append({new_key:new_filter})
         if len(and_list) > 0:
             return {'$and':and_list}
         else:
@@ -163,27 +239,67 @@ class PokeMongo8:
     def convert_learnset_mongo_filters(self, filters, exclude=[]):
         and_list = []
         for f in filters:
-            if f == 'm' and 'm' not in exclude:
-                mv_ids = filters['m'].lower().replace(' ','').split(',')
-                and_list.append({'allmoves':{'$all':mv_ids}})
-            if f == 'ml' and 'ml' not in exclude:
-                mv_ids = filters['ml'].lower().replace(' ','').split(',')
-                and_list.append({'levelup':{'$all':mv_ids}})
-            if f == 'mm' and 'mm' not in exclude:
-                mv_ids = filters['mm'].lower().replace(' ','').split(',')
-                and_list.append({'machine':{'$all':mv_ids}})
-            if f == 'mb' and 'mb' not in exclude:
-                mv_ids = filters['mb'].lower().replace(' ','').split(',')
-                and_list.append({'breeding':{'$all':mv_ids}})
-            if f == 'mt' and 'mt' not in exclude:
-                mv_ids = filters['mt'].lower().replace(' ','').split(',')
-                and_list.append({'tutor':{'$all':mv_ids}})
-            if f == 'mtr' and 'mtr' not in exclude:
-                mv_ids = filters['mtr'].lower().replace(' ','').split(',')
+            negate = False
+            ft = f[:]
+            new_key = None
+            new_filter = None
+            if f[0] == '~':
+                negate = True
+                ft = f[1:]
+            if ft == 'm' and 'm' not in exclude:
+                mv_ids = filters[f].lower().replace(' ','').split(',')
+                new_key = 'allmoves'
+                if negate:
+                    new_filter = {'$nin':mv_ids}
+                else:
+                    new_filter = {'$all':mv_ids}
+            if ft == 'ml' and 'ml' not in exclude:
+                mv_ids = filters[f].lower().replace(' ','').split(',')
+                new_key = 'levelup'
+                if negate:
+                    new_filter = {'$nin':mv_ids}
+                else:
+                    new_filter = {'$all':mv_ids}
+            if ft == 'mm' and 'mm' not in exclude:
+                mv_ids = filters[f].lower().replace(' ','').split(',')
+                new_key = 'machine'
+                if negate:
+                    new_filter = {'$nin':mv_ids}
+                else:
+                    new_filter = {'$all':mv_ids}
+            if ft == 'mb' and 'mb' not in exclude:
+                mv_ids = filters[f].lower().replace(' ','').split(',')
+                new_key = 'breeding'
+                if negate:
+                    new_filter = {'$nin':mv_ids}
+                else:
+                    new_filter = {'$all':mv_ids}
+            if ft == 'mt' and 'mt' not in exclude:
+                mv_ids = filters[f].lower().replace(' ','').split(',')
+                new_key = 'tutor'
+                if negate:
+                    new_filter = {'$nin':mv_ids}
+                else:
+                    new_filter = {'$all':mv_ids}
+            if ft == 'mtr' and 'mtr' not in exclude:
+                mv_ids = filters[f].lower().replace(' ','').split(',')
                 elem_match_list = []
-                for id in mv_ids:
-                    elem_match_list.append({'$elemMatch':{'move':id}})
-                and_list.append({'transfer':{'$all':elem_match_list}})
+                if negate:
+                    for id in mv_ids:
+                        elem_match_list.append({'transfer':{'$elemMatch':{'move':id}}})
+                    and_list.append({'$nor':elem_match_list})
+                else:
+                    for id in mv_ids:
+                        elem_match_list.append({'$elemMatch':{'move':id}})
+                    and_list.append({'transfer':{'$all':elem_match_list}})
+            if ft == 'past':
+                past = self.string_bool(filters[f])
+                new_key = 'past_only'
+                if negate:
+                    past = not past
+                new_filter = past
+            if new_key is not None:
+                and_list.append({new_key:new_filter})
         if len(and_list) > 0:
             return {'$and':and_list}
         else:
@@ -192,29 +308,90 @@ class PokeMongo8:
     def convert_moves_mongo_filters(self, filters, exclude=[]):
         and_list = []
         for f in filters:
-            if f == 'pow':
-                power = self.get_simple_object_from_filter_value(filters['pow'])
-                and_list.append({'basePower':power})
-            if f == 'acc':
-                acc = self.get_simple_object_from_filter_value(filters['acc'])
+            negate = False
+            ft = f[:]
+            new_key = None
+            new_filter = None
+            if f[0] == '~':
+                negate = True
+                ft = f[1:]
+            if ft == 'pow':
+                power = self.get_simple_object_from_filter_value(filters[f], negate)
+                new_key = 'basePower'
+                new_filter = power
+            if ft == 'acc':
+                acc = self.get_simple_object_from_filter_value(filters[f], negate)
                 if acc is None:
-                    acc = self.string_bool(filters['acc'])
-                and_list.append({'accuracy':acc})
-            if f == 'c':
-                cats = filters['c'].lower().replace(' ','').split(',')
+                    acc = self.string_bool(filters[f])
+                    if negate:
+                        acc = {'$ne':acc}
+                new_key = 'accuracy'
+                new_filter = acc
+            if ft == 'c':
+                cats = filters[f].lower().replace(' ','').split(',')
                 caps_cats = []
                 for c in cats:
                     caps_cats.append(c.capitalize())
-                and_list.append({'category':{'$in':caps_cats}})
-            if f == 't':
-                types = filters['t'].lower().replace(' ','').split(',')
+                new_key = 'category'
+                if negate:
+                    new_filter = {'$nin':caps_cats}
+                else:
+                    new_filter = {'$in':caps_cats}
+            if ft == 't':
+                types = filters[f].lower().replace(' ','').split(',')
                 caps_types = []
                 for t in types:
                     caps_types.append(t.capitalize())
-                and_list.append({'type':{'$in':caps_types}})
-            if f == 'm':
-                moves = filters['m'].lower().replace(' ','').split(',')
-                and_list.append({'_id':{'$in':moves}})
+                new_key = 'type'
+                if negate:
+                    new_filter = {'$nin':caps_types}
+                else:
+                    new_filter = {'$in':caps_types}
+            if ft == 'm':
+                moves = filters[f].lower().replace(' ','').split(',')
+                new_key = '_id'
+                if negate:
+                    new_filter = {'$nin':moves}
+                else:
+                    new_filter = {'$in':moves}
+            if ft == 'sec':
+                sec = self.string_bool(filters[f])
+                if negate:
+                    sec = not sec
+                if sec:
+                    and_list.append({'$and':[{'secondary':{'$exists':True}}, {'secondary':{'$not':{'$eq':None}}}]})
+                else:
+                    and_list.append({'$or':[{'secondary':{'$exists':False}}, {'secondary':None}]})
+            if ft == 'bite':
+                bite = self.string_bool(filters[f])
+                if negate:
+                    bite = not bite
+                new_key = 'flags.bite'
+                new_filter = {'$exists':bite}
+            if ft == 'con':
+                con = self.string_bool(filters[f])
+                if negate:
+                    con = not con
+                new_key = 'flags.contact'
+                new_filter = {'$exists':con}
+            if ft == 'snd':
+                snd = self.string_bool(filters[f])
+                if negate:
+                    snd = not snd
+                new_key = 'flags.sound'
+                new_filter = {'$exists':snd}
+            if ft == 'p':
+                p = self.get_simple_object_from_filter_value(filters[f], negate)
+                new_key = 'priority'
+                new_filter = p
+            if ft == 'past':
+                past = self.string_bool(filters[f])
+                if negate:
+                    past = not past
+                new_key = 'past_only'
+                new_filter = past
+            if new_key is not None:
+                and_list.append({new_key:new_filter})
         if len(and_list) > 0:
             return {'$and':and_list}
         else:
@@ -400,14 +577,14 @@ class PokeMongo8:
         if learnset is None:
             print(f'Unable to find learnset for {id}')
             return
-        species = dex_entry['species']
-        learnset['species'] = species
+        learnset['species'] = dex_entry['species']
+        learnset['past_only'] = dex_entry['past_only']
         self.learnsets.update_one({'_id':id}, {'$set': learnset})
 
-    def get_learnset_entries_with_filters(self, full_entry=False, get_name=True, filters={}, exclude=[]):
+    def get_learnset_entries_with_filters(self, full_entry=False, get_name=True, get_past=True, filters={}, exclude=[]):
         group = []
 
-        projection = None if full_entry else {'_id':1, 'species':1}
+        projection = None if full_entry else {'_id':1, 'species':1, 'past_only':1} if get_past else {'_id':1, 'species':1}
         mongo_filters = self.convert_pokedex_mongo_filters(filters, exclude)
         dex_entries = self.pokedex.find(mongo_filters, projection)
 
@@ -421,7 +598,7 @@ class PokeMongo8:
         entries = self.learnsets.find({'$and':[{'_id':{'$in':ids}},mongo_filters]}, projection)
             
         for pokemon in entries:
-            group.append(pokemon if full_entry or get_name else pokemon['_id'])
+            group.append(pokemon if full_entry or get_name or get_past else pokemon['_id'])
         return group
 
     def get_pokedex_entries_with_filters(self, full_entry=False, get_name=True, filters={}, exclude=[]):
@@ -429,6 +606,7 @@ class PokeMongo8:
 
         projection = None if full_entry else {'_id':1, 'species':1}
         mongo_filters = self.convert_learnset_mongo_filters(filters, exclude)
+        print(mongo_filters)
         entries = self.learnsets.find(mongo_filters, projection)
 
         ids = []
@@ -436,6 +614,7 @@ class PokeMongo8:
             ids.append(entry['_id'])
 
         mongo_filters = self.convert_pokedex_mongo_filters(filters, exclude)
+        print(mongo_filters)
         dex_entries = self.pokedex.find({'$and':[{'_id':{'$in':ids}},mongo_filters]}, projection)
 
         #TODO: ADD POST FILTERS
@@ -466,21 +645,21 @@ class PokeMongo8:
         mod_filters = self.add_filter(filters, {'a-force':ability_id})
         return self.get_pokedex_entries_with_filters(full_entry, get_name, mod_filters, ['a'])
 
-    def get_pokemon_with_move(self, learn_method, move, full_entry=False, get_name=True, filters={}):
+    def get_pokemon_with_move(self, learn_method, move, full_entry=False, get_name=True, get_past=True, filters={}):
         mod_filters = self.add_filter(filters, {('m'+learn_method[0]):move})
-        return self.get_learnset_entries_with_filters(full_entry, get_name, mod_filters)
+        return self.get_learnset_entries_with_filters(full_entry, get_name, get_past, mod_filters)
 
-    def get_pokemon_with_move_levelup(self, move, full_entry=False, get_name=True, filters={}):
-        return self.get_pokemon_with_move('levelup', move, full_entry, get_name, filters)
+    def get_pokemon_with_move_levelup(self, move, full_entry=False, get_name=True, get_past=True, filters={}):
+        return self.get_pokemon_with_move('levelup', move, full_entry, get_name, get_past, filters)
 
-    def get_pokemon_with_move_machine(self, move, full_entry=False, get_name=True, filters={}):
-        return self.get_pokemon_with_move('machine', move, full_entry, get_name, filters)
+    def get_pokemon_with_move_machine(self, move, full_entry=False, get_name=True, get_past=True, filters={}):
+        return self.get_pokemon_with_move('machine', move, full_entry, get_name, get_past, filters)
 
-    def get_pokemon_with_move_breeding(self, move, full_entry=False, get_name=True, filters={}):
-        return self.get_pokemon_with_move('breeding', move, full_entry, get_name, filters)
+    def get_pokemon_with_move_breeding(self, move, full_entry=False, get_name=True, get_past=True, filters={}):
+        return self.get_pokemon_with_move('breeding', move, full_entry, get_name, get_past, filters)
 
-    def get_pokemon_with_move_tutor(self, move, full_entry=False, get_name=True, filters={}):
-        return self.get_pokemon_with_move('tutor', move, full_entry, get_name, filters)
+    def get_pokemon_with_move_tutor(self, move, full_entry=False, get_name=True, get_past=True, filters={}):
+        return self.get_pokemon_with_move('tutor', move, full_entry, get_name, get_past, filters)
 
     def get_evo_line(self, pokemon, full_entry=False):
         dex_entry = self.get_pokedex_entry(pokemon)
