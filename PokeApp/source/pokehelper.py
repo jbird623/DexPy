@@ -141,27 +141,34 @@ class PokemonHelper:
             return ['Dragon']
         print(f'Error: Unknown type "{t}"!')
 
-    def get_type_damage(self, defense_type):
+    def get_type_damage(self, defense_type, levitate=False, wonderguard=False, one_type=False):
         damage = dict()
         for attack_type in self.get_types():
-            damage[attack_type] = 1
+            damage[attack_type] = 0 if wonderguard and one_type else 1
             if attack_type in self.get_weaknesses(defense_type):
                 damage[attack_type] = 2
             if attack_type in self.get_resistances(defense_type):
-                damage[attack_type] = 0.5
+                if wonderguard:
+                    damage[attack_type] = 0
+                else:
+                    damage[attack_type] = 0.5
             if attack_type in self.get_immunities(defense_type):
+                damage[attack_type] = 0
+            if levitate and attack_type == 'Ground':
                 damage[attack_type] = 0
         return damage
 
-    def get_damage_modifiers(self, types):
+    def get_damage_modifiers(self, types, levitate=False, wonderguard=False):
         if len(types) == 1:
-            return self.get_type_damage(types[0])
+            return self.get_type_damage(types[0], levitate, wonderguard, one_type=True)
         if len(types) == 2:
             total_damage = dict()
-            type1_damage = self.get_type_damage(types[0])
-            type2_damage = self.get_type_damage(types[1])
+            type1_damage = self.get_type_damage(types[0], levitate, wonderguard)
+            type2_damage = self.get_type_damage(types[1], levitate, wonderguard)
             for t in type1_damage:
                 total_damage[t] = type1_damage[t] * type2_damage[t]
+                if wonderguard and total_damage[t] <= 1:
+                    total_damage[t] = 0
             return total_damage
         else:
             print('Error: Invalid number of types!')

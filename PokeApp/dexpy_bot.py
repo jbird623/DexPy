@@ -64,12 +64,13 @@ def split_filter(s):
                 return [s[:i], s[i:]]
     return s
 
-def parse_arguments(arguments, positional_args=[], optional_pos_args=[]):
+def parse_arguments(arguments, positional_args=[], optional_pos_args=[], params=False):
     arguments = list(arguments)
 
     pos = dict()
     opt = dict()
     fil = dict()
+    par = []
 
     for arg in arguments:
         if len(positional_args) > 0:
@@ -94,10 +95,13 @@ def parse_arguments(arguments, positional_args=[], optional_pos_args=[]):
             pos[optional_pos_args[0]] = arg
             optional_pos_args.pop(0)
 
+        elif params:
+            par.append(arg)
+
     if len(positional_args) > 0:
         return None
 
-    return {'pos':pos, 'opt':opt, 'fil':fil}
+    return {'pos':pos, 'opt':opt, 'fil':fil, 'par':par}
 
 def get_option(options, full_opt, short_opt=None):
     if short_opt is None:
@@ -190,6 +194,7 @@ async def help(ctx):
     print('     -tc, --toughclaws                            Calculate move power as though the pokemon had Tough Claws.', file=output)
     print('     -sj, --strongjaw                             Calculate move power as though the pokemon had Strong Jaw.', file=output)
     print('     -pr, --punkrock                              Calculate move power as though the pokemon had Punk Rock.', file=output)
+    print('     -if, --ironfist                              Calculate move power as though the pokemon had Iron Fist.', file=output)
     print('', file=output)
     print('  Breeding:', file=output)
     print('  - !(eggGroup|eg) (EGG_GROUP) <filter>           Lists all evolutionary lines in EGG_GROUP.', file=output)
@@ -254,6 +259,7 @@ async def help(ctx):
     print('  - bite:<bool>                   Filter by moves that are/aren\'t affected by Strong Jaw.', file=output)
     print('  - con:<bool>                    Filter by moves that do/don\'t make contact.', file=output)
     print('  - snd:<bool>                    Filter by moves that are/aren\'t sound-based.', file=output)
+    print('  - pnch:<bool>                   Filter by moves that are/aren\'t punch moves.', file=output)
     print('  - p:<value>                     Filter by move priority. Can use >, <, >=, or <=.', file=output)
     print('', file=output)
 
@@ -292,13 +298,14 @@ async def moveset(ctx, *raw_args):
     tough_claws = get_option(args['opt'], 'toughclaws', 'tc')
     strong_jaw = get_option(args['opt'], 'strongjaw', 'sj')
     punk_rock = get_option(args['opt'], 'punkrock', 'pr')
+    iron_fist = get_option(args['opt'], 'ironfist', 'if')
 
     if not show_stab and not show_coverage:
         ignore_stats = True
 
     MoveDex().do_moves_function(pokemon, args['fil'], show_stab, max_stab, ignore_stats, show_coverage, max_coverage,
                                 show_transfers, show_past, atk_override, spa_override, def_override, accuracy_check,
-                                skill_link, adaptability, sheer_force, tough_claws, strong_jaw, punk_rock, output)
+                                skill_link, adaptability, sheer_force, tough_claws, strong_jaw, punk_rock, iron_fist, output)
 
     await output.send(ctx)
 
@@ -448,6 +455,35 @@ async def damage(ctx, *raw_args):
             PokeDex().do_types_damage_function([type1, type2], output)
         else:
             PokeDex().do_type_damage_function(type1, output)
+
+    await output.send(ctx)
+
+@bot.command(aliases=['c'])
+async def coverage(ctx, *raw_args):
+    message = ctx.message.content
+    print(f'\nCOVERAGE command triggered, bzzzzrt! Message details:\n{ctx.message.author} @ ({ctx.message.created_at}): {message}\n')
+    output = MessageHelper()
+
+    pos_args = ['type1']
+
+    args = parse_arguments(raw_args, pos_args, params=True)
+    if args is None:
+        print('Error parsing command, bzzzzrt! Type "!help" for usage details.', file=output)
+        await output.send(ctx)
+        return
+
+    types = []
+    type1 = args['pos']['type1'].lower().replace(' ','').capitalize()
+    if ',' in type1:
+        types = type1.split(',')
+        for i in range(len(types)):
+            types[i] = types[i].lower().replace(' ','').capitalize()
+    else:
+        types = [type1]
+    for param in args['par']:
+        types.append(param.lower().replace(' ','').capitalize())
+
+    PokeDex().do_coverage_calculator_function(types, args['fil'], output)
 
     await output.send(ctx)
 

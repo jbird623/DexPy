@@ -380,6 +380,12 @@ class PokeMongo8:
                     snd = not snd
                 new_key = 'flags.sound'
                 new_filter = {'$exists':snd}
+            if ft == 'pnch':
+                pnch = self.string_bool(filters[f])
+                if negate:
+                    pnch = not pnch
+                new_key = 'flags.punch'
+                new_filter = {'$exists':pnch}
             if ft == 'p':
                 p = self.get_simple_object_from_filter_value(filters[f], negate)
                 new_key = 'priority'
@@ -457,8 +463,8 @@ class PokeMongo8:
                 collection.append({'name':entry['username'], 'pokemon':id})
         return collection
 
-    def get_pokedex_entry(self, id):
-        return self.pokedex.find_one({'_id':id})
+    def get_pokedex_entry(self, id, projection=None):
+        return self.pokedex.find_one({'_id':id}, projection)
 
     def get_pokedex_entries(self, ids):
         collection = []
@@ -477,6 +483,13 @@ class PokeMongo8:
     def get_all_pokedex_ids(self):
         collection = []
         entries = self.pokedex.find({}, {'_id':1})
+        for entry in entries:
+            collection.append(entry)
+        return collection
+
+    def get_all_pokemon_type_info(self, filters):
+        collection = []
+        entries = self.get_pokedex_entries_with_filters(filters=filters, projection={'_id':1, 'species':1, 'types':1, 'ability_list':1, 'baseStats.bst':1})
         for entry in entries:
             collection.append(entry)
         return collection
@@ -601,12 +614,12 @@ class PokeMongo8:
             group.append(pokemon if full_entry or get_name or get_past else pokemon['_id'])
         return group
 
-    def get_pokedex_entries_with_filters(self, full_entry=False, get_name=True, filters={}, exclude=[]):
+    def get_pokedex_entries_with_filters(self, full_entry=False, get_name=True, filters={}, exclude=[], projection=None):
         group = []
 
-        projection = None if full_entry else {'_id':1, 'species':1}
+        if projection is None:
+            projection = None if full_entry else {'_id':1, 'species':1}
         mongo_filters = self.convert_learnset_mongo_filters(filters, exclude)
-        print(mongo_filters)
         entries = self.learnsets.find(mongo_filters, projection)
 
         ids = []
@@ -614,7 +627,6 @@ class PokeMongo8:
             ids.append(entry['_id'])
 
         mongo_filters = self.convert_pokedex_mongo_filters(filters, exclude)
-        print(mongo_filters)
         dex_entries = self.pokedex.find({'$and':[{'_id':{'$in':ids}},mongo_filters]}, projection)
 
         #TODO: ADD POST FILTERS

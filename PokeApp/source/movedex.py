@@ -99,7 +99,7 @@ class MoveDex:
 
     def do_moves_function(self, pokemon, filters, show_stab=False, max_stab=5, ignore_stats=False, show_coverage=False, max_coverage=3,
                           show_transfers=False, show_past=False, atk_override=None, spa_override=None, def_override=None, accuracy_check=False,
-                          skill_link=False, adaptability=False, sheer_force=False, tough_claws=False, strong_jaw=False, punk_rock=False, print_to=None):
+                          skill_link=False, adaptability=False, sheer_force=False, tough_claws=False, strong_jaw=False, punk_rock=False, iron_fist=False, print_to=None):
         dex_entry = self.pokemongo.get_pokedex_entry(pokemon)
         if dex_entry is None:
             print(f'Error: No dex entry found for "{pokemon}", bzzzzrt!', file=print_to)
@@ -143,11 +143,11 @@ class MoveDex:
 
         if show_stab:
             self.show_stab_moves(max_stab, ignore_stats, dex_entry, all_moves,
-                                 atk_override, spa_override, def_override, accuracy_check, skill_link, adaptability, sheer_force, tough_claws, strong_jaw, punk_rock, print_to)
+                                 atk_override, spa_override, def_override, accuracy_check, skill_link, adaptability, sheer_force, tough_claws, strong_jaw, punk_rock, iron_fist, print_to)
 
         if show_coverage:
             self.show_coverage_moves(max_coverage, ignore_stats, dex_entry, all_moves,
-                                     atk_override, spa_override, def_override, accuracy_check, skill_link, adaptability, sheer_force, tough_claws, strong_jaw, punk_rock, print_to)
+                                     atk_override, spa_override, def_override, accuracy_check, skill_link, adaptability, sheer_force, tough_claws, strong_jaw, punk_rock, iron_fist, print_to)
 
         if show_coverage or show_stab:
             return
@@ -191,11 +191,11 @@ class MoveDex:
         if past_moves:
             print('\n* Move not available in Gen 8 games.', file=output)
 
-    def show_stab_moves(self, max_stab, ignore_stats, dex_entry, all_moves, atk_override, spa_override, def_override, accuracy_check, skill_link, adaptability, sheer_force, tough_claws, strong_jaw, punk_rock, print_to):
+    def show_stab_moves(self, max_stab, ignore_stats, dex_entry, all_moves, atk_override, spa_override, def_override, accuracy_check, skill_link, adaptability, sheer_force, tough_claws, strong_jaw, punk_rock, iron_fist, print_to):
         print(f'\nTop moves with STAB for {dex_entry["species"]}:', file=print_to)
         printed_moves = False
         for elemental_type in dex_entry['types']:
-            top_moves = self.find_strongest_moves_of_type(all_moves, elemental_type, max_stab, dex_entry, atk_override, spa_override, def_override, accuracy_check, skill_link, adaptability, sheer_force, tough_claws, strong_jaw, punk_rock, ignore_stats)
+            top_moves = self.find_strongest_moves_of_type(all_moves, elemental_type, max_stab, dex_entry, atk_override, spa_override, def_override, accuracy_check, skill_link, adaptability, sheer_force, tough_claws, strong_jaw, punk_rock, iron_fist, ignore_stats)
             if len(top_moves) == 0:
                 continue
             printed_moves = True
@@ -204,13 +204,13 @@ class MoveDex:
         if not printed_moves:
             print('  None', file=print_to)
 
-    def show_coverage_moves(self, max_coverage, ignore_stats, dex_entry, all_moves, atk_override, spa_override, def_override, accuracy_check, skill_link, adaptability, sheer_force, tough_claws, strong_jaw, punk_rock, print_to):
+    def show_coverage_moves(self, max_coverage, ignore_stats, dex_entry, all_moves, atk_override, spa_override, def_override, accuracy_check, skill_link, adaptability, sheer_force, tough_claws, strong_jaw, punk_rock, iron_fist, print_to):
         print(f'\nTop coverage moves for {dex_entry["species"]}:', file=print_to)
         printed_moves = False
         for elemental_type in PokemonHelper().get_types():
             if elemental_type in dex_entry['types']:
                 continue
-            top_moves = self.find_strongest_moves_of_type(all_moves, elemental_type, max_coverage, dex_entry, atk_override, spa_override, def_override, accuracy_check, skill_link, adaptability, sheer_force, tough_claws, strong_jaw, punk_rock, ignore_stats)
+            top_moves = self.find_strongest_moves_of_type(all_moves, elemental_type, max_coverage, dex_entry, atk_override, spa_override, def_override, accuracy_check, skill_link, adaptability, sheer_force, tough_claws, strong_jaw, punk_rock, iron_fist, ignore_stats)
             if len(top_moves) == 0:
                 continue
             printed_moves = True
@@ -219,13 +219,13 @@ class MoveDex:
         if not printed_moves:
             print('  None', file=print_to)
 
-    def find_strongest_moves_of_type(self, moves, elemental_type, num, dex_entry, atk_override, spa_override, def_override, accuracy_check, skill_link, adaptability, sheer_force, tough_claws, strong_jaw, punk_rock, ignore_stats):
-        type_moves = self.filter_moves_by_type(moves, elemental_type, dex_entry, atk_override, spa_override, def_override, accuracy_check, skill_link, adaptability, sheer_force, tough_claws, strong_jaw, punk_rock, ignore_stats)
+    def find_strongest_moves_of_type(self, moves, elemental_type, num, dex_entry, atk_override, spa_override, def_override, accuracy_check, skill_link, adaptability, sheer_force, tough_claws, strong_jaw, punk_rock, iron_fist, ignore_stats):
+        type_moves = self.filter_moves_by_type(moves, elemental_type, dex_entry, atk_override, spa_override, def_override, accuracy_check, skill_link, adaptability, sheer_force, tough_claws, strong_jaw, punk_rock, iron_fist, ignore_stats)
         type_moves.sort(key=self.acc_sort, reverse=True)
         type_moves.sort(key=self.pow_sort, reverse=True)
         return type_moves[:num]
 
-    def filter_moves_by_type(self, moves, elemental_type, dex_entry, atk_override, spa_override, def_override, accuracy_check, skill_link, adaptability, sheer_force, tough_claws, strong_jaw, punk_rock, ignore_stats):
+    def filter_moves_by_type(self, moves, elemental_type, dex_entry, atk_override, spa_override, def_override, accuracy_check, skill_link, adaptability, sheer_force, tough_claws, strong_jaw, punk_rock, iron_fist, ignore_stats):
         type_moves = []
         for move in moves:
             if moves[move]['move']['type'] == elemental_type:
@@ -234,9 +234,9 @@ class MoveDex:
                 type_move = moves[move]['move']
                 type_move['method'] = moves[move]['method']
                 type_moves.append(type_move)
-        return self.format_moves(type_moves, dex_entry, atk_override, spa_override, def_override, accuracy_check, skill_link, adaptability, sheer_force, tough_claws, strong_jaw, punk_rock, ignore_stats)
+        return self.format_moves(type_moves, dex_entry, atk_override, spa_override, def_override, accuracy_check, skill_link, adaptability, sheer_force, tough_claws, strong_jaw, punk_rock, iron_fist, ignore_stats)
 
-    def format_moves(self, moves, dex_entry, atk_override=None, spa_override=None, def_override=None, accuracy_check=False, skill_link=False, adaptability=False, sheer_force=False, tough_claws=False, strong_jaw=False, punk_rock=False, ignore_stats=False):
+    def format_moves(self, moves, dex_entry, atk_override=None, spa_override=None, def_override=None, accuracy_check=False, skill_link=False, adaptability=False, sheer_force=False, tough_claws=False, strong_jaw=False, punk_rock=False, iron_fist=False, ignore_stats=False):
         formatted_moves = []
         for move in moves:
             method =''
@@ -279,6 +279,8 @@ class MoveDex:
                         modified_power = int(modified_power * 1.3)
                     if punk_rock and 'sound' in move['flags']:
                         modified_power = int(modified_power * 1.3)
+                    if iron_fist and 'punch' in move['flags']:
+                        modified_power = int(modified_power * 1.2)
             else:
                 attack_mod = 0
             if not ignore_stats:

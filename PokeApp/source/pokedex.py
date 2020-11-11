@@ -242,19 +242,112 @@ class PokeDex:
             return
         types = dex_entry['types']
         species = dex_entry['species']
+        abilities = dex_entry['ability_list']
+        lv = False
+        wg = False
+        if len(abilities) == 1:
+            if abilities[0] == 'levitate':
+                lv = True
+            if abilities[0] == 'wonderguard':
+                wg = True
         type_str = '[Undefined]'
         if len(types) == 1:
             type_str = types[0]
         if len(types) == 2:
             type_str = f'{types[0]}/{types[1]}'
         print(f'{species} is {type_str} type.', file=print_to)
-        self.do_types_damage_function(types, print_to)
+        if lv:
+            print(f'It always has the Levitate ability.', file=print_to)
+        if wg:
+            print(f'It always has the Wonder Guard ability.', file=print_to)
+        self.do_types_damage_function(types, print_to, levitate=lv, wonderguard=wg)
 
     def do_type_damage_function(self, elemental_type, print_to):
-        self.print_types_damage(PokemonHelper().get_damage_modifiers([elemental_type]), print_to)
+        self.do_types_damage_function([elemental_type], print_to)
 
-    def do_types_damage_function(self, types, print_to, pokedex_format=False):
-        self.print_types_damage(PokemonHelper().get_damage_modifiers(types), print_to, pokedex_format)
+    def do_types_damage_function(self, types, print_to, pokedex_format=False, levitate=False, wonderguard=False):
+        self.print_types_damage(PokemonHelper().get_damage_modifiers(types, levitate, wonderguard), print_to, pokedex_format)
+
+    def do_coverage_calculator_function(self, check_types, filters, print_to):
+        pHelp = PokemonHelper()
+        all_types = pHelp.get_types()
+        for t in check_types:
+            if t not in all_types:
+                print(f'Error: Invalid type "{t}", bzzzzrt!', file=print_to)
+                return
+        pokedex_entries = PokeMongo8().get_all_pokemon_type_info(filters)
+        super_effective = []
+        effective = []
+        resistant = []
+        immune = []
+        for entry in pokedex_entries:
+            types = entry['types']
+            abilities = entry['ability_list']
+            wonderguard = False
+            levitate = False
+            if len(abilities) == 1:
+                if abilities[0] == 'levitate':
+                    levitate = True
+                if abilities[0] == 'wonderguard':
+                    wonderguard = True
+            damage_dict = pHelp.get_damage_modifiers(types, levitate, wonderguard)
+            super_effective_hit = False
+            for t in check_types:
+                if damage_dict[t] > 1:
+                    super_effective_hit = True
+                    break
+            if super_effective_hit:
+                super_effective.append(entry)
+                continue
+            effective_hit = False
+            for t in check_types:
+                if damage_dict[t] == 1:
+                    effective_hit = True
+                    break
+            if effective_hit:
+                effective.append(entry)
+                continue
+            resistant_hit = False
+            for t in check_types:
+                if damage_dict[t] < 1 and damage_dict[t] > 0:
+                    resistant_hit = True
+                    break
+            if resistant_hit:
+                resistant.append(entry)
+                continue
+            immune_hit = False
+            for t in check_types:
+                if damage_dict[t] == 0:
+                    immune_hit = True
+                    break
+            if immune_hit:
+                immune.append(entry)
+                continue
+            print(f'This message should never be printed. Pokedex Entry: {entry}')
+        self.print_type_coverage_results(super_effective, effective, resistant, immune, print_to)
+        
+    def print_type_coverage_results(self, super_effective, effective, resistant, immune, print_to):
+        print('Here are the results for the types you specified, bzzzzrt:\n', file=print_to)
+
+        print(f'Super Effective against {len(super_effective)} Pokemon.', file=print_to)
+        print(f'Effective against {len(effective)} Pokemon.', file=print_to)
+        print(f'Not Very Effective against {len(resistant)} Pokemon.', file=print_to)
+        print(f'No Effect against {len(immune)} Pokemon.', file=print_to)
+
+        if len(immune) > 0:
+            immune_sorted = sorted(immune, key = lambda p: p['baseStats']['bst'])
+            immune_sorted.reverse()
+            print('\nNotable Pokemon with Immunity:', file=print_to)
+            for i in range(min(len(immune_sorted), 5)):
+                print(f'  - {immune_sorted[i]["species"]}', file=print_to)
+
+        if len(resistant) > 0:
+            resistant_sorted = sorted(resistant, key = lambda p: p['baseStats']['bst'])
+            resistant_sorted.reverse()
+            print('\nNotable Pokemon with Resistance:', file=print_to)
+            for i in range(min(len(resistant_sorted), 5)):
+                print(f'  - {resistant_sorted[i]["species"]}', file=print_to)
+        
 
     def print_types_damage(self, damage_dict, print_to, pokedex_format=False):
         double_weak = []
