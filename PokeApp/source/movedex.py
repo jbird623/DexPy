@@ -38,6 +38,10 @@ class MoveDex:
             accuracy = '-'
         print(f'Base Power: {power}\nAccuracy: {accuracy}', file=print_to)
 
+        print(f'Priority: {m_entry["priority"]}', file=print_to)
+
+        print(f'Power Points: {m_entry["pp"]}', file=print_to)
+
         short_desc = 'No description available.'
         if 'shortDesc' in m_entry:
             short_desc = m_entry['shortDesc']
@@ -98,8 +102,7 @@ class MoveDex:
             print('\n* Pokemon not available in Gen 8 games.', file=print_to)
 
     def do_moves_function(self, pokemon, filters, show_stab=False, max_stab=5, ignore_stats=False, show_coverage=False, max_coverage=3,
-                          show_transfers=False, show_past=False, atk_override=None, spa_override=None, def_override=None, accuracy_check=False,
-                          skill_link=False, adaptability=False, sheer_force=False, tough_claws=False, strong_jaw=False, punk_rock=False, iron_fist=False, print_to=None):
+                          show_transfers=False, show_past=False, atk_override=None, spa_override=None, def_override=None, accuracy_check=False, ability=None, print_to=None):
         dex_entry = self.pokemongo.get_pokedex_entry(pokemon)
         if dex_entry is None:
             print(f'Error: No dex entry found for "{pokemon}", bzzzzrt!', file=print_to)
@@ -143,47 +146,53 @@ class MoveDex:
 
         if show_stab:
             self.show_stab_moves(max_stab, ignore_stats, dex_entry, all_moves,
-                                 atk_override, spa_override, def_override, accuracy_check, skill_link, adaptability, sheer_force, tough_claws, strong_jaw, punk_rock, iron_fist, print_to)
+                                 atk_override, spa_override, def_override, accuracy_check, ability, print_to)
 
         if show_coverage:
             self.show_coverage_moves(max_coverage, ignore_stats, dex_entry, all_moves,
-                                     atk_override, spa_override, def_override, accuracy_check, skill_link, adaptability, sheer_force, tough_claws, strong_jaw, punk_rock, iron_fist, print_to)
+                                     atk_override, spa_override, def_override, accuracy_check, ability, print_to)
+
+        offensive_abilities = PokemonHelper().get_offensive_ability_dict()
+        if ability in offensive_abilities:
+            print(f'\n* Moves calculated with the {offensive_abilities[ability]} ability.', file=print_to)
+            if ability not in dex_entry['ability_list']:
+                print(f'* This pokemon cannot naturally have this ability.', file=print_to)
 
         if show_coverage or show_stab:
             return
                     
-        self.show_all_moves(breeding_entries, machine_entries, levelup_entries, tutor_entries, transfer_entries, dex_entry, ignore_stats, print_to)
+        self.show_all_moves(breeding_entries, machine_entries, levelup_entries, tutor_entries, transfer_entries, dex_entry, ability, ignore_stats, print_to)
 
         if show_past:
             print('\n* Move not available in Gen 8 games.', file=print_to)
 
-    def show_all_moves(self, breeding_entries, machine_entries, levelup_entries, tutor_entries, transfer_entries, dex_entry, ignore_stats, print_to):
+    def show_all_moves(self, breeding_entries, machine_entries, levelup_entries, tutor_entries, transfer_entries, dex_entry, ability, ignore_stats, print_to):
         print('\nLevel Up Moves:', file=print_to)
         if len(levelup_entries) == 0:
             print('  None', file=print_to)
-        for move in self.format_moves(levelup_entries, dex_entry, ignore_stats=ignore_stats):
+        for move in self.format_moves(levelup_entries, dex_entry, ability=ability, ignore_stats=ignore_stats):
             self.print_move(move, ignore_stats, print_to)
 
         print('\nTM/TR Moves:', file=print_to)
         if len(machine_entries) == 0:
             print('  None', file=print_to)
-        for move in self.format_moves(machine_entries, dex_entry, ignore_stats=ignore_stats):
+        for move in self.format_moves(machine_entries, dex_entry, ability=ability, ignore_stats=ignore_stats):
             self.print_move(move, ignore_stats, print_to)
 
         if len(breeding_entries) > 0:
             print('\nEgg Moves:', file=print_to)
-            for move in self.format_moves(breeding_entries, dex_entry, ignore_stats=ignore_stats):
+            for move in self.format_moves(breeding_entries, dex_entry, ability=ability, ignore_stats=ignore_stats):
                 self.print_move(move, ignore_stats, print_to)
 
         if len(tutor_entries) > 0:
             print('\nMove Tutor Moves:', file=print_to)
-            for move in self.format_moves(tutor_entries, dex_entry, ignore_stats=ignore_stats):
+            for move in self.format_moves(tutor_entries, dex_entry, ability=ability, ignore_stats=ignore_stats):
                 self.print_move(move, ignore_stats, print_to)
 
         past_moves = False
         if len(transfer_entries) > 0:
             print('\nTransfer-Only Moves:', file=print_to)
-            for move in self.format_moves(transfer_entries, dex_entry, ignore_stats=ignore_stats):
+            for move in self.format_moves(transfer_entries, dex_entry, ability=ability, ignore_stats=ignore_stats):
                 if move['name'][0] == '*':
                     past_moves = True
                 self.print_move(move, ignore_stats, print_to)
@@ -191,11 +200,11 @@ class MoveDex:
         if past_moves:
             print('\n* Move not available in Gen 8 games.', file=output)
 
-    def show_stab_moves(self, max_stab, ignore_stats, dex_entry, all_moves, atk_override, spa_override, def_override, accuracy_check, skill_link, adaptability, sheer_force, tough_claws, strong_jaw, punk_rock, iron_fist, print_to):
+    def show_stab_moves(self, max_stab, ignore_stats, dex_entry, all_moves, atk_override, spa_override, def_override, accuracy_check, ability, print_to):
         print(f'\nTop moves with STAB for {dex_entry["species"]}:', file=print_to)
         printed_moves = False
         for elemental_type in dex_entry['types']:
-            top_moves = self.find_strongest_moves_of_type(all_moves, elemental_type, max_stab, dex_entry, atk_override, spa_override, def_override, accuracy_check, skill_link, adaptability, sheer_force, tough_claws, strong_jaw, punk_rock, iron_fist, ignore_stats)
+            top_moves = self.find_strongest_moves_of_type(all_moves, elemental_type, max_stab, dex_entry, atk_override, spa_override, def_override, accuracy_check, ability, ignore_stats)
             if len(top_moves) == 0:
                 continue
             printed_moves = True
@@ -204,13 +213,13 @@ class MoveDex:
         if not printed_moves:
             print('  None', file=print_to)
 
-    def show_coverage_moves(self, max_coverage, ignore_stats, dex_entry, all_moves, atk_override, spa_override, def_override, accuracy_check, skill_link, adaptability, sheer_force, tough_claws, strong_jaw, punk_rock, iron_fist, print_to):
+    def show_coverage_moves(self, max_coverage, ignore_stats, dex_entry, all_moves, atk_override, spa_override, def_override, accuracy_check, ability, print_to):
         print(f'\nTop coverage moves for {dex_entry["species"]}:', file=print_to)
         printed_moves = False
         for elemental_type in PokemonHelper().get_types():
             if elemental_type in dex_entry['types']:
                 continue
-            top_moves = self.find_strongest_moves_of_type(all_moves, elemental_type, max_coverage, dex_entry, atk_override, spa_override, def_override, accuracy_check, skill_link, adaptability, sheer_force, tough_claws, strong_jaw, punk_rock, iron_fist, ignore_stats)
+            top_moves = self.find_strongest_moves_of_type(all_moves, elemental_type, max_coverage, dex_entry, atk_override, spa_override, def_override, accuracy_check, ability, ignore_stats)
             if len(top_moves) == 0:
                 continue
             printed_moves = True
@@ -219,24 +228,42 @@ class MoveDex:
         if not printed_moves:
             print('  None', file=print_to)
 
-    def find_strongest_moves_of_type(self, moves, elemental_type, num, dex_entry, atk_override, spa_override, def_override, accuracy_check, skill_link, adaptability, sheer_force, tough_claws, strong_jaw, punk_rock, iron_fist, ignore_stats):
-        type_moves = self.filter_moves_by_type(moves, elemental_type, dex_entry, atk_override, spa_override, def_override, accuracy_check, skill_link, adaptability, sheer_force, tough_claws, strong_jaw, punk_rock, iron_fist, ignore_stats)
+    def find_strongest_moves_of_type(self, moves, elemental_type, num, dex_entry, atk_override, spa_override, def_override, accuracy_check, ability, ignore_stats):
+        type_moves = self.filter_moves_by_type(moves, elemental_type, dex_entry, atk_override, spa_override, def_override, accuracy_check, ability, ignore_stats)
         type_moves.sort(key=self.acc_sort, reverse=True)
         type_moves.sort(key=self.pow_sort, reverse=True)
         return type_moves[:num]
 
-    def filter_moves_by_type(self, moves, elemental_type, dex_entry, atk_override, spa_override, def_override, accuracy_check, skill_link, adaptability, sheer_force, tough_claws, strong_jaw, punk_rock, iron_fist, ignore_stats):
+    def filter_moves_by_type(self, moves, elemental_type, dex_entry, atk_override, spa_override, def_override, accuracy_check, ability, ignore_stats):
         type_moves = []
         for move in moves:
+            if moves[move]['move']['type'] == 'Normal':
+                if ability == 'aerilate':
+                    moves[move]['move']['type'] = 'Flying'
+                    moves[move]['move']['basePower'] = int(moves[move]['move']['basePower'] * 1.2)
+                if ability == 'galvanize':
+                    moves[move]['move']['type'] = 'Electric'
+                    moves[move]['move']['basePower'] = int(moves[move]['move']['basePower'] * 1.2)
+                if ability == 'normalize':
+                    moves[move]['move']['basePower'] = int(moves[move]['move']['basePower'] * 1.2)
+                if ability == 'pixilate':
+                    moves[move]['move']['type'] = 'Fairy'
+                    moves[move]['move']['basePower'] = int(moves[move]['move']['basePower'] * 1.2)
+                if ability == 'refrigerate':
+                    moves[move]['move']['type'] = 'Ice'
+                    moves[move]['move']['basePower'] = int(moves[move]['move']['basePower'] * 1.2)
+            if 'sound' in moves[move]['move']['flags']:
+                if 'ability' == 'liquidvoice':
+                    moves[move]['move']['type'] = 'Water'
             if moves[move]['move']['type'] == elemental_type:
                 if moves[move]['move']['category'] == 'Status':
                     continue
                 type_move = moves[move]['move']
                 type_move['method'] = moves[move]['method']
                 type_moves.append(type_move)
-        return self.format_moves(type_moves, dex_entry, atk_override, spa_override, def_override, accuracy_check, skill_link, adaptability, sheer_force, tough_claws, strong_jaw, punk_rock, iron_fist, ignore_stats)
+        return self.format_moves(type_moves, dex_entry, atk_override, spa_override, def_override, accuracy_check, ability, ignore_stats)
 
-    def format_moves(self, moves, dex_entry, atk_override=None, spa_override=None, def_override=None, accuracy_check=False, skill_link=False, adaptability=False, sheer_force=False, tough_claws=False, strong_jaw=False, punk_rock=False, iron_fist=False, ignore_stats=False):
+    def format_moves(self, moves, dex_entry, atk_override=None, spa_override=None, def_override=None, accuracy_check=False, ability=None, ignore_stats=False):
         formatted_moves = []
         for move in moves:
             method =''
@@ -253,34 +280,72 @@ class MoveDex:
                     else:
                         attack_mod = def_override
                 elif move_type == 'Special':
-                    if atk_override is None:
+                    if spa_override is None:
                         attack_mod = int(dex_entry['baseStats']['spa'])
                     else:
                         attack_mod = spa_override
                 elif move_type == 'Physical':
-                    if spa_override is None:
+                    if atk_override is None:
                         attack_mod = int(dex_entry['baseStats']['atk'])
                     else:
                         attack_mod = atk_override
                 else:
                     attack_mod = 0
-                if move['type'] in dex_entry['types']:
-                    if adaptability:
+                if move_type == 'Physical':
+                    if ability == 'hustle':
+                        move['basePower'] = int(int(move['basePower']) * 1.5)
+                        if acc >= 20:
+                            acc = acc - 20
+                    if ability == 'hugepower' or ability == 'purepower':
+                        move['basePower'] = int(move['basePower']) * 2
+                if move['type'] == 'Normal':
+                    if ability == 'aerilate':
+                        move['type'] = 'Flying'
+                    if ability == 'galvanize':
+                        move['type'] = 'Electric'
+                    if ability == 'pixilate':
+                        move['type'] = 'Fairy'
+                    if ability == 'refrigerate':
+                        move['type'] = 'Ice'
+                if move['type'] == 'Steel':
+                    if ability == 'steelworker' or ability == 'steelyspirit':
+                        move['basePower'] = int(int(move['basePower']) * 1.5)
+                if move['type'] == 'Water' and ability == 'waterbubble':
+                    move['basePower'] = int(move['basePower']) * 2
+                if move['type'] == 'Dark' and ability == 'darkaura':
+                    move['basePower'] = int(int(move['basePower']) * 1.33)
+                if move['type'] == 'Fairy' and ability == 'fairyaura':
+                    move['basePower'] = int(int(move['basePower']) * 1.33)
+                if ability == 'technician' and int(move['basePower']) <= 60:
+                    move['basePower'] = int(int(move['basePower']) * 1.5)
+                if ability == 'sheerforce' and 'secondary' in move:
+                    if move['secondary'] is not None:
+                        move['basePower'] = int(int(move['basePower']) * 1.3)
+                if ability == 'reckless' and 'recoil' in move:
+                    if move['recoil'] is not None:
+                        move['basePower'] = int(int(move['basePower']) * 1.2)
+                if 'flags' in move:
+                    if ability == 'toughclaws' and 'contact' in move['flags']:
+                        move['basePower'] = int(int(move['basePower']) * 1.3)
+                    if ability == 'strongjaw' and 'bite' in move['flags']:
+                        move['basePower'] = int(int(move['basePower']) * 1.3)
+                    if 'sound' in move['flags']:
+                        if ability == 'punkrock':
+                            move['basePower'] = int(int(move['basePower']) * 1.3)
+                        if ability == 'liquidvoice':
+                            move['type'] = 'Water'
+                    if ability == 'ironfist' and 'punch' in move['flags']:
+                        move['basePower'] = int(int(move['basePower']) * 1.2)
+                    if ability == 'megalauncher' and 'pulse' in move['flags']:
+                        move['basePower'] = int(int(move['basePower']) * 1.5)
+
+                modified_power = int(move['basePower'])
+                base_power_str = str(modified_power)
+                if move['type'] in dex_entry['types'] or ability == 'libero' or ability == 'protean':
+                    if ability == 'adaptability':
                         modified_power = modified_power * 2
                     else:
                         modified_power = int(modified_power * 1.5)
-                if sheer_force and 'secondary' in move:
-                    if move['secondary'] is not None:
-                        modified_power = int(modified_power * 1.3)
-                if 'flags' in move:
-                    if tough_claws and 'contact' in move['flags']:
-                        modified_power = int(modified_power * 1.3)
-                    if strong_jaw and 'bite' in move['flags']:
-                        modified_power = int(modified_power * 1.3)
-                    if punk_rock and 'sound' in move['flags']:
-                        modified_power = int(modified_power * 1.3)
-                    if iron_fist and 'punch' in move['flags']:
-                        modified_power = int(modified_power * 1.2)
             else:
                 attack_mod = 0
             if not ignore_stats:
@@ -294,7 +359,7 @@ class MoveDex:
             if 'multihit' in move:
                 multihit = move['multihit']
                 if isinstance(multihit, list):
-                    if skill_link:
+                    if ability == 'skilllink':
                         times = multihit[1]
                     else:
                         times = statistics.mean(multihit)

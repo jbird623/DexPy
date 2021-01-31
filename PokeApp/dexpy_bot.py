@@ -174,6 +174,7 @@ async def help(ctx):
     print('                                                  If -p is used, accepts pokemon query filters.', file=output)
     print('  - !(damage|d) (POKEMON)                         Get the weaknesses/resistances for POKEMON.', file=output)
     print('  - !(damage|d) (TYPE1) [TYPE2]                   Get the weaknesses/resistances of the given type(s).', file=output)
+    print('                                                  Add -a=ABILITY to use that ability for calculations.', file=output)
     print('', file=output)
     print('  Movesets:', file=output)
     print('  - !(moveset|ms) (POKEMON) <filter>              Show the moves that POKEMON can learn.', file=output)
@@ -187,14 +188,8 @@ async def help(ctx):
     print('     -atk=X                                       Override Attack stat for move power calculations.', file=output)
     print('     -spa=X                                       Override Sp. Attack stat for move power calculations.', file=output)
     print('     -def=X                                       Override Defense stat for move power calculations.', file=output)
-    print('     -a, --accuracy                               Include accuracy in move power calculations.', file=output)
-    print('     -sl, --skilllink                             Calculate move power as though the pokemon had Skill Link.', file=output)
-    print('     -ad, --adaptability                          Calculate move power as though the pokemon had Adaptability.', file=output)
-    print('     -sf, --sheerforce                            Calculate move power as though the pokemon had Sheer Force.', file=output)
-    print('     -tc, --toughclaws                            Calculate move power as though the pokemon had Tough Claws.', file=output)
-    print('     -sj, --strongjaw                             Calculate move power as though the pokemon had Strong Jaw.', file=output)
-    print('     -pr, --punkrock                              Calculate move power as though the pokemon had Punk Rock.', file=output)
-    print('     -if, --ironfist                              Calculate move power as though the pokemon had Iron Fist.', file=output)
+    print('     -acc, --accuracy                             Include accuracy in move power calculations.', file=output)
+    print('     -a=ABILITY                                   Calculate move power as though the pokemon had ABILITY.', file=output)
     print('', file=output)
     print('  Breeding:', file=output)
     print('  - !(eggGroup|eg) (EGG_GROUP) <filter>           Lists all evolutionary lines in EGG_GROUP.', file=output)
@@ -236,6 +231,7 @@ async def help(ctx):
     print('                                  Accepts a single egg group or a comma-separated list.', file=output)
     print('  - tr:<bool>                     Filter by pokemon that are only obtainable via transfer.', file=output)
     print('  - ioa:<bool>                    Filter by pokemon that are only obtainable on the Isle of Armor.', file=output)
+    print('  - ct:<bool>                     Filter by pokemon that are only obtainable in the Crown Tundra.', file=output)
     print('  - past:<bool>                   Filter by pokemon that are only available prior to Gen 8.', file=output)
     print('    Stat Filters:                 All the following filters can also be compared via >, <, >=, or <=.', file=output)
     print('                                  The stats can be compared to int values and/or each other.', file=output)
@@ -246,6 +242,13 @@ async def help(ctx):
     print('    - spd:<value>                 Filter by Sp. Defense stat.', file=output)
     print('    - spe:<value>                 Filter by Speed stat.', file=output)
     print('    - bst:<value>                 Filter by base stat total.', file=output)
+    print('    Sorting:                      Sort query results by various stats. Negate to reverse order.', file=output)
+    print('    - o:<stat>                    Sort by stat. Defaults to descending.', file=output)
+    print('                                  Accepts any of the following values:', file=output)
+    print('                                  hp, atk, def, spa, spd, spe, bst', file=output)
+    print('    - o:num                       Sort by pokedex number. Defaults to ascending.', file=output)
+    print('    - o:w, o:weight               Sort by weight. Defaults to descending.', file=output)
+    print('    - o:h, o:height               Sort by height. Defaults to descending.', file=output)
     print('', file=output)
     print('  Move Filters:', file=output)
     print('  - pow:<value>                   Filter by base power. Can use >, <, >=, or <=.', file=output)
@@ -261,6 +264,13 @@ async def help(ctx):
     print('  - snd:<bool>                    Filter by moves that are/aren\'t sound-based.', file=output)
     print('  - pnch:<bool>                   Filter by moves that are/aren\'t punch moves.', file=output)
     print('  - p:<value>                     Filter by move priority. Can use >, <, >=, or <=.', file=output)
+    print('    Sorting:                      Sort query results by various stats. Negate to reverse order.', file=output)
+    print('    - o:pow                       Sort by base power. Defaults to descending.', file=output)
+    print('    - o:acc                       Sort by accuracy. Defaults to descending.', file=output)
+    print('    - o:c, o:cat                  Sort by category. Defaults to descending.', file=output)
+    print('    - o:p, o:prio                 Sort by priority. Defaults to descending.', file=output)
+    print('    - o:pp                        Sort by power points. Defaults to descending.', file=output)
+    print('    - o:num                       Sort by movedex number. Defaults to ascending.', file=output)
     print('', file=output)
 
     await output.send(ctx.author)
@@ -291,21 +301,14 @@ async def moveset(ctx, *raw_args):
     atk_override = get_option_int_value(args['opt'], 'atk', 'atk')
     spa_override = get_option_int_value(args['opt'], 'spa', 'spa')
     def_override = get_option_int_value(args['opt'], 'def', 'def')
-    accuracy_check = get_option(args['opt'], 'accuracy')
-    skill_link = get_option(args['opt'], 'skilllink', 'sl')
-    adaptability = get_option(args['opt'], 'adaptability', 'ad')
-    sheer_force = get_option(args['opt'], 'sheerforce', 'sf')
-    tough_claws = get_option(args['opt'], 'toughclaws', 'tc')
-    strong_jaw = get_option(args['opt'], 'strongjaw', 'sj')
-    punk_rock = get_option(args['opt'], 'punkrock', 'pr')
-    iron_fist = get_option(args['opt'], 'ironfist', 'if')
+    accuracy_check = get_option(args['opt'], 'accuracy', 'acc')
+    ability = get_option_string_value(args['opt'], 'ability')
 
     if not show_stab and not show_coverage:
         ignore_stats = True
 
     MoveDex().do_moves_function(pokemon, args['fil'], show_stab, max_stab, ignore_stats, show_coverage, max_coverage,
-                                show_transfers, show_past, atk_override, spa_override, def_override, accuracy_check,
-                                skill_link, adaptability, sheer_force, tough_claws, strong_jaw, punk_rock, iron_fist, output)
+                                show_transfers, show_past, atk_override, spa_override, def_override, accuracy_check, ability, output)
 
     await output.send(ctx)
 
@@ -447,14 +450,19 @@ async def damage(ctx, *raw_args):
         type2 = args['pos']['type2'].lower().replace(' ','').capitalize()
     else:
         type2 = None
+
+    abilities = None
+    ability = get_option_string_value(args['opt'], 'ability')
+    if ability is not None:
+        abilities = [ability]
     
     if pokemon:
-        PokeDex().do_pokemon_damage_function(pokemon, output)
+        PokeDex().do_pokemon_damage_function(pokemon, output, abilities)
     else:
         if type2:
-            PokeDex().do_types_damage_function([type1, type2], output)
+            PokeDex().do_types_damage_function([type1, type2], output, False, abilities)
         else:
-            PokeDex().do_type_damage_function(type1, output)
+            PokeDex().do_type_damage_function(type1, output, abilities)
 
     await output.send(ctx)
 

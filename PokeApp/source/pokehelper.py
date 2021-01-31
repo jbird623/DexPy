@@ -141,35 +141,135 @@ class PokemonHelper:
             return ['Dragon']
         print(f'Error: Unknown type "{t}"!')
 
-    def get_type_damage(self, defense_type, levitate=False, wonderguard=False, one_type=False):
+    def get_type_damage(self, defense_type, abilities=None, one_type=False):
         damage = dict()
+        if abilities is None or len(abilities) > 1:
+            abilities = []
         for attack_type in self.get_types():
-            damage[attack_type] = 0 if wonderguard and one_type else 1
+            damage[attack_type] = 0 if 'wonderguard' in abilities and one_type else 1
             if attack_type in self.get_weaknesses(defense_type):
                 damage[attack_type] = 2
             if attack_type in self.get_resistances(defense_type):
-                if wonderguard:
+                if 'wonderguard' in abilities:
                     damage[attack_type] = 0
                 else:
                     damage[attack_type] = 0.5
             if attack_type in self.get_immunities(defense_type):
                 damage[attack_type] = 0
-            if levitate and attack_type == 'Ground':
+            if attack_type == 'Ground' and 'levitate' in abilities:
                 damage[attack_type] = 0
+            if attack_type == 'Water':
+                if 'dryskin' in abilities or 'waterabsorb' in abilities or 'stormdrain' in abilities:
+                    damage[attack_type] = 0
+            if attack_type == 'Fire':
+                if 'flashfire' in abilities:
+                    damage[attack_type] = 0
+                if 'heatproof' in abilities or 'thickfat' in abilities or 'waterbubble' in abilities:
+                    damage[attack_type] = damage[attack_type] * 0.5
+                if 'fluffy' in abilities:
+                    damage[attack_type] = damage[attack_type] * 2
+            if attack_type == 'Electric':
+                if 'voltabsorb' in abilities or 'motordrive' in abilities or 'lightningrod' in abilities:
+                    damage[attack_type] = 0
+            if attack_type == 'Grass':
+                if 'sapsipper' in abilities:
+                    damage[attack_type] = 0
+            if attack_type == 'Ice':
+                if 'thickfat' in abilities:
+                    damage[attack_type] = damage[attack_type] * 0.5
         return damage
 
-    def get_damage_modifiers(self, types, levitate=False, wonderguard=False):
+    def get_damage_modifiers(self, types, abilities=None):
+        if abilities is None or len(abilities) > 1:
+            abilities = []
         if len(types) == 1:
-            return self.get_type_damage(types[0], levitate, wonderguard, one_type=True)
+            return self.get_type_damage(types[0], abilities, one_type=True)
         if len(types) == 2:
             total_damage = dict()
-            type1_damage = self.get_type_damage(types[0], levitate, wonderguard)
-            type2_damage = self.get_type_damage(types[1], levitate, wonderguard)
+            type1_damage = self.get_type_damage(types[0], abilities)
+            type2_damage = self.get_type_damage(types[1], abilities)
             for t in type1_damage:
                 total_damage[t] = type1_damage[t] * type2_damage[t]
-                if wonderguard and total_damage[t] <= 1:
+                if 'wonderguard' in abilities and total_damage[t] <= 1:
                     total_damage[t] = 0
             return total_damage
         else:
             print('Error: Invalid number of types!')
             return None
+
+    def get_defensive_ability_dict(self):
+        return {
+            'levitate': 'Levitate',
+            'wonderguard': 'Wonder Guard',
+            'bulletproof': 'Bulletproof',
+            'disguise': 'Disguise',
+            'dryskin': 'Dry Skin',
+            'filter': 'Filter',
+            'flashfire': 'Flash Fire',
+            'fluffy': 'Fluffy',
+            'friendguard': 'Friend Guard',
+            'heatproof': 'Heatproof',
+            'iceface': 'Ice Face',
+            'lightningrod': 'Lightning Rod',
+            'motordrive': 'Motor Drive',
+            'multiscale': 'Multiscale',
+            'prismarmor': 'Prism Armor',
+            'punkrock': 'Punk Rock',
+            'sapsipper': 'Sap Sipper',
+            'shadowshield': 'Shadow Shield',
+            'solidrock': 'Solid Rock',
+            'soundproof': 'Soundproof',
+            'stormdrain': 'Storm Drain',
+            'thickfat': 'Thick Fat',
+            'voltabsorb': 'Volt Absorb',
+            'waterabsorb': 'Water Absorb',
+            'waterbubble': 'Water Bubble'
+        }
+
+    def get_type_effectiveness_ability_dict(self):
+        return {
+            'levitate': 'Levitate',
+            'wonderguard': 'Wonder Guard',
+            'dryskin': 'Dry Skin',
+            'flashfire': 'Flash Fire',
+            'fluffy': 'Fluffy',
+            'heatproof': 'Heatproof',
+            'lightningrod': 'Lightning Rod',
+            'motordrive': 'Motor Drive',
+            'sapsipper': 'Sap Sipper',
+            'stormdrain': 'Storm Drain',
+            'thickfat': 'Thick Fat',
+            'voltabsorb': 'Volt Absorb',
+            'waterabsorb': 'Water Absorb',
+            'waterbubble': 'Water Bubble'
+        }
+
+    def get_offensive_ability_dict(self):
+        return {
+            'adaptability': 'Adaptability',
+            'aerilate': 'Aerilate',
+            'galvanize': 'Galvanize',
+            'ironfist': 'Iron Fist',
+            'megalauncher': 'Mega Launcher',
+            'normalize': 'Normalize',
+            'pixilate': 'Pixilate',
+            'punkrock': 'Punk Rock',
+            'reckless': 'Reckless',
+            'refrigerate': 'Refrigerate',
+            'sheerforce': 'Sheer Force',
+            'steelworker': 'Steelworker',
+            'steelyspirit': 'Steely Spirit',
+            'strongjaw': 'Strong Jaw',
+            'technician': 'Technician',
+            'toughclaws': 'Tough Claws',
+            'waterbubble': 'Water Bubble',
+            'skilllink': 'Skill Link',
+            'libero': 'Libero',
+            'protean': 'Protean',
+            'hustle': 'Hustle',
+            'hugepower': 'Huge Power',
+            'purepower': 'Pure Power',
+            'darkaura': 'Dark Aura',
+            'fairyaura': 'Fairy Aura',
+            'liquidvoice': 'Liquid Voice'
+        }

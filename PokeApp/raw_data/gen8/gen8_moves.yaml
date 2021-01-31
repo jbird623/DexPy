@@ -8,7 +8,7 @@
   flags: {}
   isNonstandard: Past
   isZ: pikashuniumz
-  name: 10,000,000 Volt Thunderbolt
+  name: 10, 000, 000 Volt Thunderbolt
   num: 719
   past_only: true
   pp: 1
@@ -106,6 +106,7 @@ aciddownpour:
   basePower: 1
   category: Physical
   contestType: Cool
+  desc: Power is equal to the base move's Z-Power.
   flags: {}
   isNonstandard: Past
   isZ: poisoniumz
@@ -145,6 +146,7 @@ acrobatics:
   basePower: 55
   category: Physical
   contestType: Cool
+  desc: Power doubles if the user has no held item.
   flags:
     contact: 1
     distance: 1
@@ -184,6 +186,7 @@ aerialace:
   basePower: 60
   category: Physical
   contestType: Cool
+  desc: This move does not check accuracy.
   flags:
     contact: 1
     distance: 1
@@ -209,10 +212,9 @@ aeroblast:
     distance: 1
     mirror: 1
     protect: 1
-  isNonstandard: Past
   name: Aeroblast
   num: 177
-  past_only: true
+  past_only: false
   pp: 5
   priority: 0
   secondary: null
@@ -287,7 +289,7 @@ airslash:
   basePower: 75
   category: Special
   contestType: Cool
-  desc: Has a 30% chance to flinch the target.
+  desc: Has a 30% chance to make the target flinch.
   flags:
     distance: 1
     mirror: 1
@@ -300,7 +302,7 @@ airslash:
   secondary:
     chance: 30
     volatileStatus: flinch
-  shortDesc: 30% chance to flinch the target.
+  shortDesc: 30% chance to make the target flinch.
   target: any
   type: Flying
 alloutpummeling:
@@ -308,6 +310,7 @@ alloutpummeling:
   basePower: 1
   category: Physical
   contestType: Cool
+  desc: Power is equal to the base move's Z-Power.
   flags: {}
   isNonstandard: Past
   isZ: fightiniumz
@@ -367,8 +370,8 @@ anchorshot:
   category: Physical
   contestType: Tough
   desc: Prevents the target from switching out. The target can still switch out if
-    it is holding Shed Shell or uses Baton Pass, Parting Shot, Teleport, U-turn, or
-    Volt Switch. If the target leaves the field using Baton Pass, the replacement
+    it is holding Shed Shell or uses Baton Pass, Flip Turn, Parting Shot, Teleport,
+    U-turn, or Volt Switch. If the target leaves the field using Baton Pass, the replacement
     will remain trapped. The effect ends if the user leaves the field.
   flags:
     contact: 1
@@ -481,6 +484,7 @@ aquatail:
   basePower: 90
   category: Physical
   contestType: Beautiful
+  desc: No additional effect.
   flags:
     contact: 1
     mirror: 1
@@ -499,8 +503,8 @@ armthrust:
   basePower: 15
   category: Physical
   contestType: Tough
-  desc: Hits two to five times. Has a 1/3 chance to hit two or three times, and a
-    1/6 chance to hit four or five times. If one of the hits breaks the target's substitute,
+  desc: Hits two to five times. Has a 35% chance to hit two or three times and a 15%
+    chance to hit four or five times. If one of the hits breaks the target's substitute,
     it will take damage for the remaining hits. If the user has the Skill Link Ability,
     this move will always hit five times.
   flags:
@@ -524,7 +528,7 @@ aromatherapy:
   basePower: 0
   category: Status
   contestType: Clever
-  desc: Every Pokemon in the user's party is cured of its major status condition.
+  desc: Every Pokemon in the user's party is cured of its non-volatile status condition.
     Active Pokemon with the Sap Sipper Ability are not cured, unless they are the
     user.
   flags:
@@ -612,7 +616,7 @@ astonish:
   basePower: 30
   category: Physical
   contestType: Cute
-  desc: Has a 30% chance to flinch the target.
+  desc: Has a 30% chance to make the target flinch.
   flags:
     contact: 1
     mirror: 1
@@ -625,8 +629,25 @@ astonish:
   secondary:
     chance: 30
     volatileStatus: flinch
-  shortDesc: 30% chance to flinch the target.
+  shortDesc: 30% chance to make the target flinch.
   target: normal
+  type: Ghost
+astralbarrage:
+  accuracy: 100
+  basePower: 120
+  category: Special
+  desc: No additional effect.
+  flags:
+    mirror: 1
+    protect: 1
+  name: Astral Barrage
+  num: 825
+  past_only: false
+  pp: 5
+  priority: 0
+  secondary: null
+  shortDesc: No additional effect. Hits adjacent foes.
+  target: allAdjacentFoes
   type: Ghost
 attackorder:
   accuracy: 100
@@ -682,6 +703,7 @@ aurasphere:
   basePower: 80
   category: Special
   contestType: Beautiful
+  desc: This move does not check accuracy.
   flags:
     bullet: 1
     distance: 1
@@ -876,8 +898,8 @@ barrage:
   basePower: 15
   category: Physical
   contestType: Cute
-  desc: Hits two to five times. Has a 1/3 chance to hit two or three times, and a
-    1/6 chance to hit four or five times. If one of the hits breaks the target's substitute,
+  desc: Hits two to five times. Has a 35% chance to hit two or three times and a 15%
+    chance to hit four or five times. If one of the hits breaks the target's substitute,
     it will take damage for the remaining hits. If the user has the Skill Link Ability,
     this move will always hit five times.
   flags:
@@ -934,6 +956,7 @@ batonpass:
   pp: 40
   priority: 0
   secondary: null
+  self: {}
   selfSwitch: copyvolatile
   shortDesc: User switches, passing stat changes and more.
   target: self
@@ -968,9 +991,9 @@ beatup:
   category: Physical
   contestType: Clever
   desc: Hits one time for the user and one time for each unfainted Pokemon without
-    a major status condition in the user's party. The power of each hit is equal to
-    5+(X/10), where X is each participating Pokemon's base Attack; each hit is considered
-    to come from the user.
+    a non-volatile status condition in the user's party. The power of each hit is
+    equal to 5+(X/10), where X is each participating Pokemon's base Attack; each hit
+    is considered to come from the user.
   flags:
     mirror: 1
     mystery: 1
@@ -988,6 +1011,7 @@ behemothbash:
   accuracy: 100
   basePower: 100
   category: Physical
+  desc: Damage doubles if the target is Dynamaxed.
   flags:
     contact: 1
     mirror: 1
@@ -1005,6 +1029,7 @@ behemothblade:
   accuracy: 100
   basePower: 100
   category: Physical
+  desc: Damage doubles if the target is Dynamaxed.
   flags:
     contact: 1
     mirror: 1
@@ -1129,8 +1154,8 @@ bind:
     the user is holding Grip Claw). Causes damage to the target equal to 1/8 of its
     maximum HP (1/6 if the user is holding Binding Band), rounded down, at the end
     of each turn during effect. The target can still switch out if it is holding Shed
-    Shell or uses Baton Pass, Parting Shot, Teleport, U-turn, or Volt Switch. The
-    effect ends if either the user or the target leaves the field, or if the target
+    Shell or uses Baton Pass, Flip Turn, Parting Shot, Teleport, U-turn, or Volt Switch.
+    The effect ends if either the user or the target leaves the field, or if the target
     uses Rapid Spin or Substitute successfully. This effect is not stackable or reset
     by using this or another binding move.
   flags:
@@ -1152,7 +1177,7 @@ bite:
   basePower: 60
   category: Physical
   contestType: Tough
-  desc: Has a 30% chance to flinch the target.
+  desc: Has a 30% chance to make the target flinch.
   flags:
     bite: 1
     contact: 1
@@ -1166,7 +1191,7 @@ bite:
   secondary:
     chance: 30
     volatileStatus: flinch
-  shortDesc: 30% chance to flinch the target.
+  shortDesc: 30% chance to make the target flinch.
   target: normal
   type: Dark
 blackholeeclipse:
@@ -1174,6 +1199,7 @@ blackholeeclipse:
   basePower: 1
   category: Physical
   contestType: Cool
+  desc: Power is equal to the base move's Z-Power.
   flags: {}
   isNonstandard: Past
   isZ: darkiniumz
@@ -1257,8 +1283,8 @@ block:
   category: Status
   contestType: Cute
   desc: Prevents the target from switching out. The target can still switch out if
-    it is holding Shed Shell or uses Baton Pass, Parting Shot, Teleport, U-turn, or
-    Volt Switch. If the target leaves the field using Baton Pass, the replacement
+    it is holding Shed Shell or uses Baton Pass, Flip Turn, Parting Shot, Teleport,
+    U-turn, or Volt Switch. If the target leaves the field using Baton Pass, the replacement
     will remain trapped. The effect ends if the user leaves the field.
   flags:
     mirror: 1
@@ -1280,6 +1306,7 @@ bloomdoom:
   basePower: 1
   category: Physical
   contestType: Cool
+  desc: Power is equal to the base move's Z-Power.
   flags: {}
   isNonstandard: Past
   isZ: grassiumz
@@ -1399,7 +1426,7 @@ boneclub:
   basePower: 65
   category: Physical
   contestType: Tough
-  desc: Has a 10% chance to flinch the target.
+  desc: Has a 10% chance to make the target flinch.
   flags:
     mirror: 1
     protect: 1
@@ -1412,7 +1439,7 @@ boneclub:
   secondary:
     chance: 10
     volatileStatus: flinch
-  shortDesc: 10% chance to flinch the target.
+  shortDesc: 10% chance to make the target flinch.
   target: normal
   type: Ground
 bonemerang:
@@ -1442,8 +1469,8 @@ bonerush:
   basePower: 25
   category: Physical
   contestType: Tough
-  desc: Hits two to five times. Has a 1/3 chance to hit two or three times, and a
-    1/6 chance to hit four or five times. If one of the hits breaks the target's substitute,
+  desc: Hits two to five times. Has a 35% chance to hit two or three times and a 15%
+    chance to hit four or five times. If one of the hits breaks the target's substitute,
     it will take damage for the remaining hits. If the user has the Skill Link Ability,
     this move will always hit five times.
   flags:
@@ -1583,6 +1610,7 @@ breakneckblitz:
   basePower: 1
   category: Physical
   contestType: Cool
+  desc: Power is equal to the base move's Z-Power.
   flags: {}
   isNonstandard: Past
   isZ: normaliumz
@@ -1811,8 +1839,8 @@ bulletseed:
   basePower: 25
   category: Physical
   contestType: Cool
-  desc: Hits two to five times. Has a 1/3 chance to hit two or three times, and a
-    1/6 chance to hit four or five times. If one of the hits breaks the target's substitute,
+  desc: Hits two to five times. Has a 35% chance to hit two or three times and a 15%
+    chance to hit four or five times. If one of the hits breaks the target's substitute,
     it will take damage for the remaining hits. If the user has the Skill Link Ability,
     this move will always hit five times.
   flags:
@@ -1954,6 +1982,7 @@ catastropika:
   basePower: 210
   category: Physical
   contestType: Cool
+  desc: No additional effect.
   flags:
     contact: 1
   isNonstandard: Past
@@ -1972,6 +2001,7 @@ celebrate:
   basePower: 0
   category: Status
   contestType: Cute
+  desc: No competitive use.
   flags: {}
   name: Celebrate
   num: 606
@@ -2141,8 +2171,8 @@ clamp:
     the user is holding Grip Claw). Causes damage to the target equal to 1/8 of its
     maximum HP (1/6 if the user is holding Binding Band), rounded down, at the end
     of each turn during effect. The target can still switch out if it is holding Shed
-    Shell or uses Baton Pass, Parting Shot, Teleport, U-turn, or Volt Switch. The
-    effect ends if either the user or the target leaves the field, or if the target
+    Shell or uses Baton Pass, Flip Turn, Parting Shot, Teleport, U-turn, or Volt Switch.
+    The effect ends if either the user or the target leaves the field, or if the target
     uses Rapid Spin or Substitute successfully. This effect is not stackable or reset
     by using this or another binding move.
   flags:
@@ -2184,7 +2214,7 @@ clangingscales:
   target: allAdjacentFoes
   type: Dragon
 clangoroussoul:
-  accuracy: true
+  accuracy: 100
   basePower: 0
   boosts:
     atk: 1
@@ -2243,6 +2273,7 @@ clearsmog:
   basePower: 50
   category: Special
   contestType: Beautiful
+  desc: Resets all of the target's stat stages to 0.
   flags:
     mirror: 1
     protect: 1
@@ -2326,8 +2357,8 @@ cometpunch:
   basePower: 18
   category: Physical
   contestType: Tough
-  desc: Hits two to five times. Has a 1/3 chance to hit two or three times, and a
-    1/6 chance to hit four or five times. If one of the hits breaks the target's substitute,
+  desc: Hits two to five times. Has a 35% chance to hit two or three times and a 15%
+    chance to hit four or five times. If one of the hits breaks the target's substitute,
     it will take damage for the remaining hits. If the user has the Skill Link Ability,
     this move will always hit five times.
   flags:
@@ -2446,6 +2477,7 @@ continentalcrush:
   basePower: 1
   category: Physical
   contestType: Cool
+  desc: Power is equal to the base move's Z-Power.
   flags: {}
   isNonstandard: Past
   isZ: rockiumz
@@ -2541,17 +2573,16 @@ coreenforcer:
   contestType: Tough
   desc: If the user moves after the target, the target's Ability is rendered ineffective
     as long as it remains active. If the target uses Baton Pass, the replacement will
-    remain under this effect. If the target's Ability is Battle Bond, Comatose, Disguise,
-    Multitype, Power Construct, RKS System, Schooling, Shields Down, Stance Change,
-    or Zen Mode, this effect does not happen, and receiving the effect through Baton
-    Pass ends the effect immediately.
+    remain under this effect. If the target's Ability is As One, Battle Bond, Comatose,
+    Disguise, Gulp Missile, Ice Face, Multitype, Power Construct, RKS System, Schooling,
+    Shields Down, Stance Change, or Zen Mode, this effect does not happen, and receiving
+    the effect through Baton Pass ends the effect immediately.
   flags:
     mirror: 1
     protect: 1
-  isNonstandard: Past
   name: Core Enforcer
   num: 687
-  past_only: true
+  past_only: false
   pp: 10
   priority: 0
   secondary: null
@@ -2565,6 +2596,7 @@ corkscrewcrash:
   basePower: 1
   category: Physical
   contestType: Cool
+  desc: Power is equal to the base move's Z-Power.
   flags: {}
   isNonstandard: Past
   isZ: steeliumz
@@ -2886,12 +2918,11 @@ crushgrip:
     contact: 1
     mirror: 1
     protect: 1
-  isNonstandard: Past
   maxMove:
     basePower: 140
   name: Crush Grip
   num: 462
-  past_only: true
+  past_only: false
   pp: 5
   priority: 0
   secondary: null
@@ -2934,6 +2965,7 @@ cut:
   basePower: 50
   category: Physical
   contestType: Cool
+  desc: No additional effect.
   flags:
     contact: 1
     mirror: 1
@@ -2973,7 +3005,7 @@ darkpulse:
   basePower: 80
   category: Special
   contestType: Cool
-  desc: Has a 20% chance to flinch the target.
+  desc: Has a 20% chance to make the target flinch.
   flags:
     distance: 1
     mirror: 1
@@ -2987,7 +3019,7 @@ darkpulse:
   secondary:
     chance: 20
     volatileStatus: flinch
-  shortDesc: 20% chance to flinch the target.
+  shortDesc: 20% chance to make the target flinch.
   target: any
   type: Dark
 darkvoid:
@@ -3187,6 +3219,7 @@ devastatingdrake:
   basePower: 1
   category: Physical
   contestType: Cool
+  desc: Power is equal to the base move's Z-Power.
   flags: {}
   isNonstandard: Past
   isZ: dragoniumz
@@ -3208,17 +3241,16 @@ diamondstorm:
   flags:
     mirror: 1
     protect: 1
-  isNonstandard: Past
   name: Diamond Storm
   num: 591
-  past_only: true
+  past_only: false
   pp: 5
   priority: 0
-  secondary:
+  secondary: {}
+  self:
+    boosts:
+      def: 2
     chance: 50
-    self:
-      boosts:
-        def: 2
   shortDesc: 50% chance to raise user's Def by 2 for each hit.
   target: allAdjacentFoes
   type: Rock
@@ -3443,7 +3475,7 @@ doubleironbash:
   category: Physical
   contestType: Clever
   desc: Hits twice. If the first hit breaks the target's substitute, it will take
-    damage for the second hit. Has a 30% chance to flinch the target.
+    damage for the second hit. Has a 30% chance to make the target flinch.
   flags:
     contact: 1
     mirror: 1
@@ -3460,7 +3492,7 @@ doubleironbash:
   secondary:
     chance: 30
     volatileStatus: flinch
-  shortDesc: Hits twice. 30% chance to flinch.
+  shortDesc: Hits twice. 30% chance to make the target flinch.
   target: normal
   type: Steel
   zMove:
@@ -3493,8 +3525,8 @@ doubleslap:
   basePower: 15
   category: Physical
   contestType: Cute
-  desc: Hits two to five times. Has a 1/3 chance to hit two or three times, and a
-    1/6 chance to hit four or five times. If one of the hits breaks the target's substitute,
+  desc: Hits two to five times. Has a 35% chance to hit two or three times and a 15%
+    chance to hit four or five times. If one of the hits breaks the target's substitute,
     it will take damage for the remaining hits. If the user has the Skill Link Ability,
     this move will always hit five times.
   flags:
@@ -3567,10 +3599,9 @@ dragonascent:
     distance: 1
     mirror: 1
     protect: 1
-  isNonstandard: Past
   name: Dragon Ascent
   num: 620
-  past_only: true
+  past_only: false
   pp: 5
   priority: 0
   self:
@@ -3605,6 +3636,7 @@ dragonclaw:
   basePower: 80
   category: Physical
   contestType: Cool
+  desc: No additional effect.
   flags:
     contact: 1
     mirror: 1
@@ -3667,11 +3699,30 @@ dragondarts:
   smartTarget: true
   target: normal
   type: Dragon
+dragonenergy:
+  accuracy: 100
+  basePower: 150
+  category: Special
+  desc: Power is equal to (user's current HP * 150 / user's maximum HP), rounded down,
+    but not less than 1.
+  flags:
+    mirror: 1
+    protect: 1
+  name: Dragon Energy
+  num: 820
+  past_only: false
+  pp: 5
+  priority: 0
+  secondary: null
+  shortDesc: Less power as user's HP decreases. Hits foe(s).
+  target: allAdjacentFoes
+  type: Dragon
 dragonhammer:
   accuracy: 100
   basePower: 90
   category: Physical
   contestType: Tough
+  desc: No additional effect.
   flags:
     contact: 1
     mirror: 1
@@ -3690,6 +3741,7 @@ dragonpulse:
   basePower: 85
   category: Special
   contestType: Beautiful
+  desc: No additional effect.
   flags:
     distance: 1
     mirror: 1
@@ -3710,6 +3762,7 @@ dragonrage:
   category: Special
   contestType: Cool
   damage: 40
+  desc: Deals 40 HP of damage to the target.
   flags:
     mirror: 1
     protect: 1
@@ -3728,8 +3781,8 @@ dragonrush:
   basePower: 100
   category: Physical
   contestType: Tough
-  desc: Has a 20% chance to flinch the target. Damage doubles and no accuracy check
-    is done if the target has used Minimize while active.
+  desc: Has a 20% chance to make the target flinch. Damage doubles and no accuracy
+    check is done if the target has used Minimize while active.
   flags:
     contact: 1
     mirror: 1
@@ -3742,7 +3795,7 @@ dragonrush:
   secondary:
     chance: 20
     volatileStatus: flinch
-  shortDesc: 20% chance to flinch the target.
+  shortDesc: 20% chance to make the target flinch.
   target: normal
   type: Dragon
 dragontail:
@@ -3845,6 +3898,7 @@ drillpeck:
   basePower: 80
   category: Physical
   contestType: Cool
+  desc: No additional effect.
   flags:
     contact: 1
     distance: 1
@@ -3948,6 +4002,7 @@ dynamaxcannon:
   accuracy: 100
   basePower: 100
   category: Special
+  desc: Damage doubles if the target is Dynamaxed.
   flags:
     protect: 1
   name: Dynamax Cannon
@@ -4070,11 +4125,33 @@ eerieimpulse:
   zMove:
     boost:
       spd: 1
+eeriespell:
+  accuracy: 100
+  basePower: 80
+  category: Special
+  desc: If this move is successful and the user has not fainted, the target loses
+    3 PP from its last move.
+  flags:
+    authentic: 1
+    mirror: 1
+    protect: 1
+    sound: 1
+  name: Eerie Spell
+  num: 826
+  past_only: false
+  pp: 5
+  priority: 0
+  secondary:
+    chance: 100
+  shortDesc: Removes 3 PP from the target's last move.
+  target: normal
+  type: Psychic
 eggbomb:
   accuracy: 75
   basePower: 100
   category: Physical
   contestType: Cute
+  desc: No additional effect.
   flags:
     bullet: 1
     mirror: 1
@@ -4101,7 +4178,8 @@ electricterrain:
   contestType: Clever
   desc: For 5 turns, the terrain becomes Electric Terrain. During the effect, the
     power of Electric-type attacks made by grounded Pokemon is multiplied by 1.3 and
-    grounded Pokemon cannot fall asleep; Pokemon already asleep do not wake up. Camouflage
+    grounded Pokemon cannot fall asleep; Pokemon already asleep do not wake up. Grounded
+    Pokemon cannot become affected by Yawn or fall asleep from its effect. Camouflage
     transforms the user into an Electric type, Nature Power becomes Thunderbolt, and
     Secret Power has a 30% chance to cause paralysis. Fails if the current terrain
     is Electric Terrain.
@@ -4360,12 +4438,13 @@ entrainment:
   category: Status
   contestType: Cute
   desc: Causes the target's Ability to become the same as the user's. Fails if the
-    target's Ability is Battle Bond, Comatose, Disguise, Multitype, Power Construct,
-    RKS System, Schooling, Shields Down, Stance Change, Truant, or the same Ability
-    as the user, or if the user's Ability is Battle Bond, Comatose, Disguise, Flower
-    Gift, Forecast, Illusion, Imposter, Multitype, Neutralizing Gas, Power Construct,
-    Power of Alchemy, Receiver, RKS System, Schooling, Shields Down, Stance Change,
-    Trace, or Zen Mode.
+    target's Ability is As One, Battle Bond, Comatose, Disguise, Gulp Missile, Ice
+    Face, Multitype, Power Construct, RKS System, Schooling, Shields Down, Stance
+    Change, Truant, or Zen Mode, or the same Ability as the user, or if the user's
+    Ability is As One, Battle Bond, Comatose, Disguise, Flower Gift, Forecast, Gulp
+    Missile, Hunger Switch, Ice Face, Illusion, Imposter, Multitype, Neutralizing
+    Gas, Power Construct, Power of Alchemy, Receiver, RKS System, Schooling, Shields
+    Down, Stance Change, Trace, Wonder Guard, or Zen Mode.
   flags:
     mirror: 1
     mystery: 1
@@ -4415,7 +4494,7 @@ eternabeam:
   name: Eternabeam
   num: 795
   past_only: false
-  pp: 10
+  pp: 5
   priority: 0
   secondary: null
   self:
@@ -4467,7 +4546,7 @@ extrasensory:
   basePower: 80
   category: Special
   contestType: Cool
-  desc: Has a 10% chance to flinch the target.
+  desc: Has a 10% chance to make the target flinch.
   flags:
     mirror: 1
     protect: 1
@@ -4479,7 +4558,7 @@ extrasensory:
   secondary:
     chance: 10
     volatileStatus: flinch
-  shortDesc: 10% chance to flinch the target.
+  shortDesc: 10% chance to make the target flinch.
   target: normal
   type: Psychic
 extremeevoboost:
@@ -4554,8 +4633,8 @@ fairylock:
     duration: 2
   contestType: Clever
   desc: Prevents all active Pokemon from switching next turn. A Pokemon can still
-    switch out if it is holding Shed Shell or uses Baton Pass, Parting Shot, Teleport,
-    U-turn, or Volt Switch. Fails if the effect is already active.
+    switch out if it is holding Shed Shell or uses Baton Pass, Flip Turn, Parting
+    Shot, Teleport, U-turn, or Volt Switch. Fails if the effect is already active.
   flags:
     authentic: 1
     mirror: 1
@@ -4577,6 +4656,7 @@ fairywind:
   basePower: 40
   category: Special
   contestType: Beautiful
+  desc: No additional effect.
   flags:
     mirror: 1
     protect: 1
@@ -4594,8 +4674,8 @@ fakeout:
   basePower: 40
   category: Physical
   contestType: Cute
-  desc: Has a 100% chance to flinch the target. Fails unless it is the user's first
-    turn on the field.
+  desc: Has a 100% chance to make the target flinch. Fails unless it is the user's
+    first turn on the field.
   flags:
     contact: 1
     mirror: 1
@@ -4640,6 +4720,7 @@ falsesurrender:
   accuracy: true
   basePower: 80
   category: Physical
+  desc: This move does not check accuracy.
   flags:
     contact: 1
     mirror: 1
@@ -4664,8 +4745,8 @@ falseswipe:
     mirror: 1
     protect: 1
   name: False Swipe
-  noFaint: true
   num: 206
+  onDamagePriority: -20
   past_only: false
   pp: 40
   priority: 0
@@ -4726,6 +4807,7 @@ feintattack:
   basePower: 60
   category: Physical
   contestType: Clever
+  desc: This move does not check accuracy.
   flags:
     contact: 1
     mirror: 1
@@ -4782,6 +4864,25 @@ fierydance:
   shortDesc: 50% chance to raise the user's Sp. Atk by 1.
   target: normal
   type: Fire
+fierywrath:
+  accuracy: 100
+  basePower: 90
+  category: Special
+  desc: Has a 20% chance to make the target flinch.
+  flags:
+    mirror: 1
+    protect: 1
+  name: Fiery Wrath
+  num: 822
+  past_only: false
+  pp: 10
+  priority: 0
+  secondary:
+    chance: 20
+    volatileStatus: flinch
+  shortDesc: 20% chance to make the foe(s) flinch.
+  target: allAdjacentFoes
+  type: Dark
 finalgambit:
   accuracy: 100
   basePower: 0
@@ -4828,7 +4929,7 @@ firefang:
   basePower: 65
   category: Physical
   contestType: Cool
-  desc: Has a 10% chance to burn the target and a 10% chance to flinch it.
+  desc: Has a 10% chance to burn the target and a 10% chance to make it flinch.
   flags:
     bite: 1
     contact: 1
@@ -4933,8 +5034,8 @@ firespin:
     the user is holding Grip Claw). Causes damage to the target equal to 1/8 of its
     maximum HP (1/6 if the user is holding Binding Band), rounded down, at the end
     of each turn during effect. The target can still switch out if it is holding Shed
-    Shell or uses Baton Pass, Parting Shot, Teleport, U-turn, or Volt Switch. The
-    effect ends if either the user or the target leaves the field, or if the target
+    Shell or uses Baton Pass, Flip Turn, Parting Shot, Teleport, U-turn, or Volt Switch.
+    The effect ends if either the user or the target leaves the field, or if the target
     uses Rapid Spin or Substitute successfully. This effect is not stackable or reset
     by using this or another binding move.
   flags:
@@ -5249,6 +5350,7 @@ fling:
   accuracy: 100
   basePower: 0
   category: Physical
+  condition: {}
   contestType: Cute
   desc: The power of this move is based on the user's held item. The held item is
     lost and it activates for the target if applicable. If there is no target or the
@@ -5628,6 +5730,25 @@ freezeshock:
   shortDesc: Charges turn 1. Hits turn 2. 30% paralyze.
   target: normal
   type: Ice
+freezingglare:
+  accuracy: 100
+  basePower: 90
+  category: Special
+  desc: Has a 10% chance to freeze the target.
+  flags:
+    mirror: 1
+    protect: 1
+  name: Freezing Glare
+  num: 821
+  past_only: false
+  pp: 10
+  priority: 0
+  secondary:
+    chance: 10
+    status: frz
+  shortDesc: 10% chance to freeze the target.
+  target: normal
+  type: Psychic
 frenzyplant:
   accuracy: 90
   basePower: 150
@@ -5701,8 +5822,8 @@ furyattack:
   basePower: 15
   category: Physical
   contestType: Cool
-  desc: Hits two to five times. Has a 1/3 chance to hit two or three times, and a
-    1/6 chance to hit four or five times. If one of the hits breaks the target's substitute,
+  desc: Hits two to five times. Has a 35% chance to hit two or three times and a 15%
+    chance to hit four or five times. If one of the hits breaks the target's substitute,
     it will take damage for the remaining hits. If the user has the Skill Link Ability,
     this move will always hit five times.
   flags:
@@ -5748,8 +5869,8 @@ furyswipes:
   basePower: 18
   category: Physical
   contestType: Tough
-  desc: Hits two to five times. Has a 1/3 chance to hit two or three times, and a
-    1/6 chance to hit four or five times. If one of the hits breaks the target's substitute,
+  desc: Hits two to five times. Has a 35% chance to hit two or three times and a 15%
+    chance to hit four or five times. If one of the hits breaks the target's substitute,
     it will take damage for the remaining hits. If the user has the Skill Link Ability,
     this move will always hit five times.
   flags:
@@ -5838,9 +5959,10 @@ gastroacid:
   contestType: Tough
   desc: Causes the target's Ability to be rendered ineffective as long as it remains
     active. If the target uses Baton Pass, the replacement will remain under this
-    effect. If the target's Ability is Battle Bond, Comatose, Disguise, Multitype,
-    Power Construct, RKS System, Schooling, Shields Down, Stance Change, or Zen Mode,
-    this move fails, and receiving the effect through Baton Pass ends the effect immediately.
+    effect. If the target's Ability is As One, Battle Bond, Comatose, Disguise, Gulp
+    Missile, Ice Face, Multitype, Power Construct, RKS System, Schooling, Shields
+    Down, Stance Change, or Zen Mode, this move fails, and receiving the effect through
+    Baton Pass ends the effect immediately.
   flags:
     mirror: 1
     mystery: 1
@@ -5941,10 +6063,9 @@ geomancy:
   flags:
     charge: 1
     nonsky: 1
-  isNonstandard: Past
   name: Geomancy
   num: 601
-  past_only: true
+  past_only: false
   pp: 10
   priority: 0
   secondary: null
@@ -6009,6 +6130,7 @@ gigavolthavoc:
   basePower: 1
   category: Physical
   contestType: Cool
+  desc: Power is equal to the base move's Z-Power.
   flags: {}
   isNonstandard: Past
   isZ: electriumz
@@ -6021,6 +6143,23 @@ gigavolthavoc:
   shortDesc: Power is equal to the base move's Z-Power.
   target: normal
   type: Electric
+glaciallance:
+  accuracy: 100
+  basePower: 130
+  category: Physical
+  desc: No additional effect.
+  flags:
+    mirror: 1
+    protect: 1
+  name: Glacial Lance
+  num: 824
+  past_only: false
+  pp: 5
+  priority: 0
+  secondary: null
+  shortDesc: No additional effect. Hits adjacent foes.
+  target: allAdjacentFoes
+  type: Ice
 glaciate:
   accuracy: 95
   basePower: 65
@@ -6126,6 +6265,7 @@ grasswhistle:
   basePower: 0
   category: Status
   contestType: Clever
+  desc: Causes the target to fall asleep.
   flags:
     authentic: 1
     mirror: 1
@@ -6175,6 +6315,7 @@ grassyterrain:
     onBasePowerPriority: 6
     onResidualOrder: 5
     onResidualSubOrder: 3
+    onTerrainPriority: 1
   contestType: Beautiful
   desc: For 5 turns, the terrain becomes Grassy Terrain. During the effect, the power
     of Grass-type attacks used by grounded Pokemon is multiplied by 1.3, the power
@@ -6537,6 +6678,7 @@ happyhour:
   basePower: 0
   category: Status
   contestType: Cute
+  desc: No competitive use.
   flags: {}
   name: Happy Hour
   num: 603
@@ -6600,7 +6742,7 @@ headbutt:
   basePower: 70
   category: Physical
   contestType: Tough
-  desc: Has a 30% chance to flinch the target.
+  desc: Has a 30% chance to make the target flinch.
   flags:
     contact: 1
     mirror: 1
@@ -6613,7 +6755,7 @@ headbutt:
   secondary:
     chance: 30
     volatileStatus: flinch
-  shortDesc: 30% chance to flinch the target.
+  shortDesc: 30% chance to make the target flinch.
   target: normal
   type: Normal
 headcharge:
@@ -6667,7 +6809,7 @@ healbell:
   basePower: 0
   category: Status
   contestType: Beautiful
-  desc: Every Pokemon in the user's party is cured of its major status condition.
+  desc: Every Pokemon in the user's party is cured of its non-volatile status condition.
     Active Pokemon with the Soundproof Ability are not cured, unless they are the
     user.
   flags:
@@ -6724,10 +6866,10 @@ healingwish:
   condition: {}
   contestType: Beautiful
   desc: The user faints and the next injured or statused Pokemon brought in has its
-    HP fully restored along with having any major status condition cured. The healing
-    happens before hazards take effect. Is not consumed if the Pokemon sent out is
-    not injured or statused. Fails if the user is the last unfainted Pokemon in its
-    party.
+    HP fully restored along with having any non-volatile status condition cured. The
+    healing happens before hazards take effect. Is not consumed if the Pokemon sent
+    out is not injured or statused. Fails if the user is the last unfainted Pokemon
+    in its party.
   flags:
     heal: 1
     snatch: 1
@@ -6797,7 +6939,7 @@ heartstamp:
   basePower: 60
   category: Physical
   contestType: Cute
-  desc: Has a 30% chance to flinch the target.
+  desc: Has a 30% chance to make the target flinch.
   flags:
     contact: 1
     mirror: 1
@@ -6811,7 +6953,7 @@ heartstamp:
   secondary:
     chance: 30
     volatileStatus: flinch
-  shortDesc: 30% chance to flinch the target.
+  shortDesc: 30% chance to make the target flinch.
   target: normal
   type: Psychic
 heartswap:
@@ -6941,7 +7083,7 @@ hex:
   basePower: 65
   category: Special
   contestType: Clever
-  desc: Power doubles if the target has a major status condition.
+  desc: Power doubles if the target has a non-volatile status condition.
   flags:
     mirror: 1
     protect: 1
@@ -6981,7 +7123,6 @@ hiddenpowerbug:
   basePower: 60
   category: Special
   contestType: Clever
-  desc: ''
   flags:
     mirror: 1
     protect: 1
@@ -6993,7 +7134,6 @@ hiddenpowerbug:
   priority: 0
   realMove: Hidden Power
   secondary: null
-  shortDesc: ''
   target: normal
   type: Bug
 hiddenpowerdark:
@@ -7001,7 +7141,6 @@ hiddenpowerdark:
   basePower: 60
   category: Special
   contestType: Clever
-  desc: ''
   flags:
     mirror: 1
     protect: 1
@@ -7013,7 +7152,6 @@ hiddenpowerdark:
   priority: 0
   realMove: Hidden Power
   secondary: null
-  shortDesc: ''
   target: normal
   type: Dark
 hiddenpowerdragon:
@@ -7021,7 +7159,6 @@ hiddenpowerdragon:
   basePower: 60
   category: Special
   contestType: Clever
-  desc: ''
   flags:
     mirror: 1
     protect: 1
@@ -7033,7 +7170,6 @@ hiddenpowerdragon:
   priority: 0
   realMove: Hidden Power
   secondary: null
-  shortDesc: ''
   target: normal
   type: Dragon
 hiddenpowerelectric:
@@ -7041,7 +7177,6 @@ hiddenpowerelectric:
   basePower: 60
   category: Special
   contestType: Clever
-  desc: ''
   flags:
     mirror: 1
     protect: 1
@@ -7053,7 +7188,6 @@ hiddenpowerelectric:
   priority: 0
   realMove: Hidden Power
   secondary: null
-  shortDesc: ''
   target: normal
   type: Electric
 hiddenpowerfighting:
@@ -7061,7 +7195,6 @@ hiddenpowerfighting:
   basePower: 60
   category: Special
   contestType: Clever
-  desc: ''
   flags:
     mirror: 1
     protect: 1
@@ -7073,7 +7206,6 @@ hiddenpowerfighting:
   priority: 0
   realMove: Hidden Power
   secondary: null
-  shortDesc: ''
   target: normal
   type: Fighting
 hiddenpowerfire:
@@ -7081,7 +7213,6 @@ hiddenpowerfire:
   basePower: 60
   category: Special
   contestType: Clever
-  desc: ''
   flags:
     mirror: 1
     protect: 1
@@ -7093,7 +7224,6 @@ hiddenpowerfire:
   priority: 0
   realMove: Hidden Power
   secondary: null
-  shortDesc: ''
   target: normal
   type: Fire
 hiddenpowerflying:
@@ -7101,7 +7231,6 @@ hiddenpowerflying:
   basePower: 60
   category: Special
   contestType: Clever
-  desc: ''
   flags:
     mirror: 1
     protect: 1
@@ -7113,7 +7242,6 @@ hiddenpowerflying:
   priority: 0
   realMove: Hidden Power
   secondary: null
-  shortDesc: ''
   target: normal
   type: Flying
 hiddenpowerghost:
@@ -7121,7 +7249,6 @@ hiddenpowerghost:
   basePower: 60
   category: Special
   contestType: Clever
-  desc: ''
   flags:
     mirror: 1
     protect: 1
@@ -7133,7 +7260,6 @@ hiddenpowerghost:
   priority: 0
   realMove: Hidden Power
   secondary: null
-  shortDesc: ''
   target: normal
   type: Ghost
 hiddenpowergrass:
@@ -7141,7 +7267,6 @@ hiddenpowergrass:
   basePower: 60
   category: Special
   contestType: Clever
-  desc: ''
   flags:
     mirror: 1
     protect: 1
@@ -7153,7 +7278,6 @@ hiddenpowergrass:
   priority: 0
   realMove: Hidden Power
   secondary: null
-  shortDesc: ''
   target: normal
   type: Grass
 hiddenpowerground:
@@ -7161,7 +7285,6 @@ hiddenpowerground:
   basePower: 60
   category: Special
   contestType: Clever
-  desc: ''
   flags:
     mirror: 1
     protect: 1
@@ -7173,7 +7296,6 @@ hiddenpowerground:
   priority: 0
   realMove: Hidden Power
   secondary: null
-  shortDesc: ''
   target: normal
   type: Ground
 hiddenpowerice:
@@ -7181,7 +7303,6 @@ hiddenpowerice:
   basePower: 60
   category: Special
   contestType: Clever
-  desc: ''
   flags:
     mirror: 1
     protect: 1
@@ -7193,7 +7314,6 @@ hiddenpowerice:
   priority: 0
   realMove: Hidden Power
   secondary: null
-  shortDesc: ''
   target: normal
   type: Ice
 hiddenpowerpoison:
@@ -7201,7 +7321,6 @@ hiddenpowerpoison:
   basePower: 60
   category: Special
   contestType: Clever
-  desc: ''
   flags:
     mirror: 1
     protect: 1
@@ -7213,7 +7332,6 @@ hiddenpowerpoison:
   priority: 0
   realMove: Hidden Power
   secondary: null
-  shortDesc: ''
   target: normal
   type: Poison
 hiddenpowerpsychic:
@@ -7221,7 +7339,6 @@ hiddenpowerpsychic:
   basePower: 60
   category: Special
   contestType: Clever
-  desc: ''
   flags:
     mirror: 1
     protect: 1
@@ -7233,7 +7350,6 @@ hiddenpowerpsychic:
   priority: 0
   realMove: Hidden Power
   secondary: null
-  shortDesc: ''
   target: normal
   type: Psychic
 hiddenpowerrock:
@@ -7241,7 +7357,6 @@ hiddenpowerrock:
   basePower: 60
   category: Special
   contestType: Clever
-  desc: ''
   flags:
     mirror: 1
     protect: 1
@@ -7253,7 +7368,6 @@ hiddenpowerrock:
   priority: 0
   realMove: Hidden Power
   secondary: null
-  shortDesc: ''
   target: normal
   type: Rock
 hiddenpowersteel:
@@ -7261,7 +7375,6 @@ hiddenpowersteel:
   basePower: 60
   category: Special
   contestType: Clever
-  desc: ''
   flags:
     mirror: 1
     protect: 1
@@ -7273,7 +7386,6 @@ hiddenpowersteel:
   priority: 0
   realMove: Hidden Power
   secondary: null
-  shortDesc: ''
   target: normal
   type: Steel
 hiddenpowerwater:
@@ -7281,7 +7393,6 @@ hiddenpowerwater:
   basePower: 60
   category: Special
   contestType: Clever
-  desc: ''
   flags:
     mirror: 1
     protect: 1
@@ -7293,7 +7404,6 @@ hiddenpowerwater:
   priority: 0
   realMove: Hidden Power
   secondary: null
-  shortDesc: ''
   target: normal
   type: Water
 highhorsepower:
@@ -7301,6 +7411,7 @@ highhorsepower:
   basePower: 95
   category: Physical
   contestType: Tough
+  desc: No additional effect.
   flags:
     contact: 1
     mirror: 1
@@ -7348,8 +7459,8 @@ holdback:
     mirror: 1
     protect: 1
   name: Hold Back
-  noFaint: true
   num: 610
+  onDamagePriority: -20
   past_only: false
   pp: 40
   priority: 0
@@ -7366,7 +7477,7 @@ holdhands:
   flags:
     authentic: 1
   name: Hold Hands
-  num: 615
+  num: 607
   past_only: false
   pp: 40
   priority: 0
@@ -7409,6 +7520,7 @@ hornattack:
   basePower: 65
   category: Physical
   contestType: Cool
+  desc: No additional effect.
   flags:
     contact: 1
     mirror: 1
@@ -7548,6 +7660,7 @@ hydropump:
   basePower: 110
   category: Special
   contestType: Beautiful
+  desc: No additional effect.
   flags:
     mirror: 1
     protect: 1
@@ -7565,6 +7678,7 @@ hydrovortex:
   basePower: 1
   category: Physical
   contestType: Cool
+  desc: Power is equal to the base move's Z-Power.
   flags: {}
   isNonstandard: Past
   isZ: wateriumz
@@ -7604,7 +7718,7 @@ hyperfang:
   basePower: 80
   category: Physical
   contestType: Cool
-  desc: Has a 10% chance to flinch the target.
+  desc: Has a 10% chance to make the target flinch.
   flags:
     bite: 1
     contact: 1
@@ -7619,7 +7733,7 @@ hyperfang:
   secondary:
     chance: 10
     volatileStatus: flinch
-  shortDesc: 10% chance to flinch the target.
+  shortDesc: 10% chance to make the target flinch.
   target: normal
   type: Normal
 hyperspacefury:
@@ -7700,6 +7814,7 @@ hypnosis:
   basePower: 0
   category: Status
   contestType: Clever
+  desc: Causes the target to fall asleep.
   flags:
     mirror: 1
     protect: 1
@@ -7795,7 +7910,7 @@ icefang:
   basePower: 65
   category: Physical
   contestType: Cool
-  desc: Has a 10% chance to freeze the target and a 10% chance to flinch it.
+  desc: Has a 10% chance to freeze the target and a 10% chance to make it flinch.
   flags:
     bite: 1
     contact: 1
@@ -7883,7 +7998,7 @@ iciclecrash:
   basePower: 85
   category: Physical
   contestType: Beautiful
-  desc: Has a 30% chance to flinch the target.
+  desc: Has a 30% chance to make the target flinch.
   flags:
     mirror: 1
     protect: 1
@@ -7895,7 +8010,7 @@ iciclecrash:
   secondary:
     chance: 30
     volatileStatus: flinch
-  shortDesc: 30% chance to flinch the target.
+  shortDesc: 30% chance to make the target flinch.
   target: normal
   type: Ice
 iciclespear:
@@ -7903,8 +8018,8 @@ iciclespear:
   basePower: 25
   category: Physical
   contestType: Beautiful
-  desc: Hits two to five times. Has a 1/3 chance to hit two or three times, and a
-    1/6 chance to hit four or five times. If one of the hits breaks the target's substitute,
+  desc: Hits two to five times. Has a 35% chance to hit two or three times and a 15%
+    chance to hit four or five times. If one of the hits breaks the target's substitute,
     it will take damage for the remaining hits. If the user has the Skill Link Ability,
     this move will always hit five times.
   flags:
@@ -8019,6 +8134,7 @@ infernooverdrive:
   basePower: 1
   category: Physical
   contestType: Cool
+  desc: Power is equal to the base move's Z-Power.
   flags: {}
   isNonstandard: Past
   isZ: firiumz
@@ -8040,8 +8156,8 @@ infestation:
     the user is holding Grip Claw). Causes damage to the target equal to 1/8 of its
     maximum HP (1/6 if the user is holding Binding Band), rounded down, at the end
     of each turn during effect. The target can still switch out if it is holding Shed
-    Shell or uses Baton Pass, Parting Shot, Teleport, U-turn, or Volt Switch. The
-    effect ends if either the user or the target leaves the field, or if the target
+    Shell or uses Baton Pass, Flip Turn, Parting Shot, Teleport, U-turn, or Volt Switch.
+    The effect ends if either the user or the target leaves the field, or if the target
     uses Rapid Spin or Substitute successfully. This effect is not stackable or reset
     by using this or another binding move.
   flags:
@@ -8067,12 +8183,12 @@ ingrain:
   contestType: Clever
   desc: The user has 1/16 of its maximum HP restored at the end of each turn, but
     it is prevented from switching out and other Pokemon cannot force the user to
-    switch out. The user can still switch out if it uses Baton Pass, Parting Shot,
-    Teleport, U-turn, or Volt Switch. If the user leaves the field using Baton Pass,
-    the replacement will remain trapped and still receive the healing effect. During
-    the effect, the user can be hit normally by Ground-type attacks and be affected
-    by Spikes, Toxic Spikes, and Sticky Web, even if the user is a Flying type or
-    has the Levitate Ability.
+    switch out. The user can still switch out if it uses Baton Pass, Flip Turn, Parting
+    Shot, Teleport, U-turn, or Volt Switch. If the user leaves the field using Baton
+    Pass, the replacement will remain trapped and still receive the healing effect.
+    During the effect, the user can be hit normally by Ground-type attacks and be
+    affected by Spikes, Toxic Spikes, and Sticky Web, even if the user is a Flying
+    type or has the Levitate Ability.
   flags:
     nonsky: 1
     snatch: 1
@@ -8095,12 +8211,13 @@ instruct:
   category: Status
   contestType: Clever
   desc: The target immediately uses its last used move. Fails if the target has not
-    made a move, if the move has 0 PP, if the target is preparing to use Beak Blast,
-    Focus Punch, or Shell Trap, or if the move is Assist, Beak Blast, Belch, Bide,
-    Celebrate, Copycat, Dynamax Cannon, Focus Punch, Ice Ball, Instruct, King's Shield,
-    Me First, Metronome, Mimic, Mirror Move, Nature Power, Outrage, Petal Dance, Rollout,
-    Shell Trap, Sketch, Sleep Talk, Struggle, Thrash, Transform, Uproar, any two-turn
-    move, any recharge move, or any Z-Move.
+    made a move, if the move has 0 PP, if the target is Dynamaxed, if the target is
+    preparing to use Beak Blast, Focus Punch, or Shell Trap, or if the move is Assist,
+    Beak Blast, Belch, Bide, Celebrate, Copycat, Dynamax Cannon, Focus Punch, Ice
+    Ball, Instruct, King's Shield, Me First, Metronome, Mimic, Mirror Move, Nature
+    Power, Obstruct, Outrage, Petal Dance, Rollout, Shell Trap, Sketch, Sleep Talk,
+    Struggle, Thrash, Transform, Uproar, any two-turn move, any recharge move, any
+    Z-Move, or any Max or G-Max Move.
   flags:
     authentic: 1
     mystery: 1
@@ -8168,7 +8285,7 @@ ironhead:
   basePower: 80
   category: Physical
   contestType: Tough
-  desc: Has a 30% chance to flinch the target.
+  desc: Has a 30% chance to make the target flinch.
   flags:
     contact: 1
     mirror: 1
@@ -8181,7 +8298,7 @@ ironhead:
   secondary:
     chance: 30
     volatileStatus: flinch
-  shortDesc: 30% chance to flinch the target.
+  shortDesc: 30% chance to make the target flinch.
   target: normal
   type: Steel
 irontail:
@@ -8212,9 +8329,8 @@ jawlock:
   category: Physical
   desc: Prevents the user and the target from switching out. The user and the target
     can still switch out if either of them is holding Shed Shell or uses Baton Pass,
-    Parting Shot, Teleport, U-turn, or Volt Switch. If the target leaves the field
-    using Baton Pass, the replacement will remain trapped. The effect ends if either
-    the user or the target leaves the field.
+    Flip Turn, Parting Shot, Teleport, U-turn, or Volt Switch. The effect ends if
+    either the user or the target leaves the field.
   flags:
     bite: 1
     contact: 1
@@ -8223,7 +8339,7 @@ jawlock:
   name: Jaw Lock
   num: 746
   past_only: false
-  pp: 15
+  pp: 10
   priority: 0
   secondary: null
   shortDesc: Prevents both user and target from switching out.
@@ -8280,12 +8396,8 @@ junglehealing:
     up, and has its status condition cured.
   flags:
     authentic: 1
-    distance: 1
     heal: 1
     mystery: 1
-  heal:
-  - 1
-  - 4
   name: Jungle Healing
   num: 816
   past_only: false
@@ -8406,10 +8518,9 @@ landswrath:
     mirror: 1
     nonsky: 1
     protect: 1
-  isNonstandard: Past
   name: Land's Wrath
   num: 616
-  past_only: true
+  past_only: false
   pp: 10
   priority: 0
   secondary: null
@@ -8505,6 +8616,7 @@ leafage:
   basePower: 40
   category: Physical
   contestType: Tough
+  desc: No additional effect.
   flags:
     mirror: 1
     protect: 1
@@ -8661,6 +8773,7 @@ letssnuggleforever:
   basePower: 190
   category: Physical
   contestType: Cool
+  desc: No additional effect.
   flags:
     contact: 1
   isNonstandard: Past
@@ -8846,14 +8959,14 @@ lovelykiss:
   basePower: 0
   category: Status
   contestType: Beautiful
+  desc: Causes the target to fall asleep.
   flags:
     mirror: 1
     protect: 1
     reflectable: 1
-  isNonstandard: Past
   name: Lovely Kiss
   num: 142
-  past_only: true
+  past_only: false
   pp: 10
   priority: 0
   secondary: null
@@ -8941,28 +9054,25 @@ lunardance:
   accuracy: true
   basePower: 0
   category: Status
-  condition:
-    duration: 2
-    onSwitchInPriority: 1
+  condition: {}
   contestType: Beautiful
   desc: The user faints and the Pokemon brought out to replace it has its HP and PP
-    fully restored along with having any major status condition cured. The new Pokemon
-    is sent out at the end of the turn, and the healing happens before hazards take
-    effect. Fails if the user is the last unfainted Pokemon in its party.
+    fully restored along with having any non-volatile status condition cured. The
+    new Pokemon is sent out at the end of the turn, and the healing happens before
+    hazards take effect. Fails if the user is the last unfainted Pokemon in its party.
   flags:
     dance: 1
     heal: 1
     snatch: 1
-  isNonstandard: Past
   name: Lunar Dance
   num: 461
-  past_only: true
+  past_only: false
   pp: 10
   priority: 0
   secondary: null
   selfdestruct: ifHit
   shortDesc: User faints. Replacement is fully healed, with PP.
-  sideCondition: lunardance
+  slotCondition: lunardance
   target: self
   type: Psychic
 lunge:
@@ -8996,10 +9106,9 @@ lusterpurge:
   flags:
     mirror: 1
     protect: 1
-  isNonstandard: Past
   name: Luster Purge
   num: 295
-  past_only: true
+  past_only: false
   pp: 5
   priority: 0
   secondary:
@@ -9034,6 +9143,7 @@ magicalleaf:
   basePower: 60
   category: Special
   contestType: Beautiful
+  desc: This move does not check accuracy.
   flags:
     mirror: 1
     protect: 1
@@ -9133,17 +9243,16 @@ magmastorm:
     the user is holding Grip Claw). Causes damage to the target equal to 1/8 of its
     maximum HP (1/6 if the user is holding Binding Band), rounded down, at the end
     of each turn during effect. The target can still switch out if it is holding Shed
-    Shell or uses Baton Pass, Parting Shot, Teleport, U-turn, or Volt Switch. The
-    effect ends if either the user or the target leaves the field, or if the target
+    Shell or uses Baton Pass, Flip Turn, Parting Shot, Teleport, U-turn, or Volt Switch.
+    The effect ends if either the user or the target leaves the field, or if the target
     uses Rapid Spin or Substitute successfully. This effect is not stackable or reset
     by using this or another binding move.
   flags:
     mirror: 1
     protect: 1
-  isNonstandard: Past
   name: Magma Storm
   num: 463
-  past_only: true
+  past_only: false
   pp: 5
   priority: 0
   secondary: null
@@ -9156,6 +9265,7 @@ magnetbomb:
   basePower: 60
   category: Physical
   contestType: Cool
+  desc: This move does not check accuracy.
   flags:
     bullet: 1
     mirror: 1
@@ -9311,7 +9421,7 @@ maxairstream:
   name: Max Airstream
   num: 766
   past_only: false
-  pp: 5
+  pp: 10
   priority: 0
   self: {}
   shortDesc: 'Base move affects power. Allies:  +1 Speed.'
@@ -9330,7 +9440,7 @@ maxdarkness:
   name: Max Darkness
   num: 772
   past_only: false
-  pp: 5
+  pp: 10
   priority: 0
   self: {}
   shortDesc: 'Base move affects power. Foes:  -1 Sp. Def.'
@@ -9348,7 +9458,7 @@ maxflare:
   name: Max Flare
   num: 757
   past_only: false
-  pp: 5
+  pp: 10
   priority: 0
   self: {}
   shortDesc: Base move affects power. Starts Sunny Day.
@@ -9367,7 +9477,7 @@ maxflutterby:
   name: Max Flutterby
   num: 758
   past_only: false
-  pp: 5
+  pp: 10
   priority: 0
   self: {}
   shortDesc: 'Base move affects power. Foes:  -1 Sp. Atk.'
@@ -9385,7 +9495,7 @@ maxgeyser:
   name: Max Geyser
   num: 765
   past_only: false
-  pp: 5
+  pp: 10
   priority: 0
   self: {}
   shortDesc: Base move affects power. Starts Rain Dance.
@@ -9411,7 +9521,7 @@ maxguard:
   name: Max Guard
   num: 743
   past_only: false
-  pp: 5
+  pp: 10
   priority: 4
   secondary: null
   shortDesc: Protects user from moves & Max Moves this turn.
@@ -9431,7 +9541,7 @@ maxhailstorm:
   name: Max Hailstorm
   num: 763
   past_only: false
-  pp: 5
+  pp: 10
   priority: 0
   self: {}
   shortDesc: Base move affects power. Starts Hail.
@@ -9449,7 +9559,7 @@ maxknuckle:
   name: Max Knuckle
   num: 761
   past_only: false
-  pp: 5
+  pp: 10
   priority: 0
   self: {}
   shortDesc: 'Base move affects power. Allies:  +1 Attack.'
@@ -9467,7 +9577,7 @@ maxlightning:
   name: Max Lightning
   num: 759
   past_only: false
-  pp: 5
+  pp: 10
   priority: 0
   self: {}
   shortDesc: Base move affects power. Starts Electric Terrain.
@@ -9485,7 +9595,7 @@ maxmindstorm:
   name: Max Mindstorm
   num: 769
   past_only: false
-  pp: 5
+  pp: 10
   priority: 0
   self: {}
   shortDesc: Base move affects power. Starts Psychic Terrain.
@@ -9504,7 +9614,7 @@ maxooze:
   name: Max Ooze
   num: 764
   past_only: false
-  pp: 5
+  pp: 10
   priority: 0
   self: {}
   shortDesc: 'Base move affects power. Allies:  +1 Sp. Atk.'
@@ -9522,7 +9632,7 @@ maxovergrowth:
   name: Max Overgrowth
   num: 773
   past_only: false
-  pp: 5
+  pp: 10
   priority: 0
   self: {}
   shortDesc: Base move affects power. Starts Grassy Terrain.
@@ -9541,7 +9651,7 @@ maxphantasm:
   name: Max Phantasm
   num: 762
   past_only: false
-  pp: 5
+  pp: 10
   priority: 0
   self: {}
   shortDesc: 'Base move affects power. Foes:  -1 Defense.'
@@ -9560,7 +9670,7 @@ maxquake:
   name: Max Quake
   num: 771
   past_only: false
-  pp: 5
+  pp: 10
   priority: 0
   self: {}
   shortDesc: 'Base move affects power. Allies:  +1 Sp. Def.'
@@ -9578,7 +9688,7 @@ maxrockfall:
   name: Max Rockfall
   num: 770
   past_only: false
-  pp: 5
+  pp: 10
   priority: 0
   self: {}
   shortDesc: Base move affects power. Starts Sandstorm.
@@ -9596,7 +9706,7 @@ maxstarfall:
   name: Max Starfall
   num: 767
   past_only: false
-  pp: 5
+  pp: 10
   priority: 0
   self: {}
   shortDesc: Base move affects power. Starts Misty Terrain.
@@ -9615,7 +9725,7 @@ maxsteelspike:
   name: Max Steelspike
   num: 774
   past_only: false
-  pp: 5
+  pp: 10
   priority: 0
   self: {}
   shortDesc: 'Base move affects power. Allies:  +1 Defense.'
@@ -9634,7 +9744,7 @@ maxstrike:
   name: Max Strike
   num: 760
   past_only: false
-  pp: 5
+  pp: 10
   priority: 0
   self: {}
   shortDesc: 'Base move affects power. Foes:  -1 Speed.'
@@ -9653,7 +9763,7 @@ maxwyrmwind:
   name: Max Wyrmwind
   num: 768
   past_only: false
-  pp: 5
+  pp: 10
   priority: 0
   self: {}
   shortDesc: 'Base move affects power. Foes:  -1 Attack.'
@@ -9665,8 +9775,8 @@ meanlook:
   category: Status
   contestType: Beautiful
   desc: Prevents the target from switching out. The target can still switch out if
-    it is holding Shed Shell or uses Baton Pass, Parting Shot, Teleport, U-turn, or
-    Volt Switch. If the target leaves the field using Baton Pass, the replacement
+    it is holding Shed Shell or uses Baton Pass, Flip Turn, Parting Shot, Teleport,
+    U-turn, or Volt Switch. If the target leaves the field using Baton Pass, the replacement
     will remain trapped. The effect ends if the user leaves the field.
   flags:
     mirror: 1
@@ -9765,6 +9875,7 @@ megahorn:
   basePower: 120
   category: Physical
   contestType: Cool
+  desc: No additional effect.
   flags:
     contact: 1
     mirror: 1
@@ -9783,6 +9894,7 @@ megakick:
   basePower: 120
   category: Physical
   contestType: Cool
+  desc: No additional effect.
   flags:
     contact: 1
     mirror: 1
@@ -9801,6 +9913,7 @@ megapunch:
   basePower: 80
   category: Physical
   contestType: Tough
+  desc: No additional effect.
   flags:
     contact: 1
     mirror: 1
@@ -9864,18 +9977,14 @@ metalburst:
   accuracy: 100
   basePower: 0
   category: Physical
-  condition:
-    duration: 1
-    noCopy: true
-    onRedirectTargetPriority: -1
   contestType: Cool
-  desc: Deals damage to the last opposing Pokemon to hit the user with an attack this
-    turn equal to 1.5 times the HP lost by the user from that attack, rounded down.
-    If the user did not lose HP from the attack, this move deals 1 HP of damage instead.
-    If that opposing Pokemon's position is no longer in use and there is another opposing
-    Pokemon on the field, the damage is done to it instead. Only the last hit of a
-    multi-hit attack is counted. Fails if the user was not hit by an opposing Pokemon's
-    attack this turn.
+  desc: Deals damage to the last opposing Pokemon to hit the user with a physical
+    or special attack this turn equal to 1.5 times the HP lost by the user from that
+    attack, rounded down. If the user did not lose HP from that attack, this move
+    deals 1 HP of damage instead. If that opposing Pokemon's position is no longer
+    in use and there is another opposing Pokemon on the field, the damage is done
+    to it instead. Only the last hit of a multi-hit attack is counted. Fails if the
+    user was not hit by an opposing Pokemon's physical or special attack this turn.
   flags:
     mirror: 1
     protect: 1
@@ -10009,27 +10118,29 @@ metronome:
   category: Status
   contestType: Cute
   desc: A random move is selected for use, other than After You, Apple Acid, Assist,
-    Aura Wheel, Baneful Bunker, Beak Blast, Behemoth Bash, Behemoth Blade, Belch,
-    Bestow, Body Press, Branch Poke, Breaking Swipe, Celebrate, Chatter, Clangorous
-    Soul, Copycat, Counter, Covet, Crafty Shield, Decorate, Destiny Bond, Detect,
-    Diamond Storm, Double Iron Bash, Dragon Ascent, Drum Beating, Dynamax Cannon,
-    Endure, Eternabeam, False Surrender, Feint, Fleur Cannon, Focus Punch, Follow
-    Me, Freeze Shock, Grav Apple, Helping Hand, Hold Hands, Hyperspace Fury, Hyperspace
-    Hole, Ice Burn, Instruct, King's Shield, Life Dew, Light of Ruin, Mat Block, Me
-    First, Meteor Assault, Metronome, Mimic, Mind Blown, Mirror Coat, Mirror Move,
-    Moongeist Beam, Nature Power, Nature's Madness, Obstruct, Origin Pulse, Overdrive,
-    Photon Geyser, Plasma Fists, Precipice Blades, Protect, Pyro Ball, Quash, Quick
-    Guard, Rage Powder, Relic Song, Secret Sword, Shell Trap, Sketch, Sleep Talk,
-    Snap Trap, Snarl, Snatch, Snore, Spectral Thief, Spiky Shield, Spirit Break, Spotlight,
-    Steam Eruption, Steel Beam, Strange Steam, Struggle, Sunsteel Strike, Switcheroo,
-    Techno Blast, Thief, Thousand Arrows, Thousand Waves, Transform, Trick, V-create,
-    or Wide Guard.
+    Astral Barrage, Aura Wheel, Baneful Bunker, Beak Blast, Behemoth Bash, Behemoth
+    Blade, Belch, Bestow, Body Press, Branch Poke, Breaking Swipe, Celebrate, Chatter,
+    Clangorous Soul, Copycat, Counter, Covet, Crafty Shield, Decorate, Destiny Bond,
+    Detect, Diamond Storm, Double Iron Bash, Dragon Ascent, Dragon Energy, Drum Beating,
+    Dynamax Cannon, Endure, Eternabeam, False Surrender, Feint, Fiery Wrath, Fleur
+    Cannon, Focus Punch, Follow Me, Freeze Shock, Freezing Glare, Glacial Lance, Grav
+    Apple, Helping Hand, Hold Hands, Hyperspace Fury, Hyperspace Hole, Ice Burn, Instruct,
+    Jungle Healing, King's Shield, Life Dew, Light of Ruin, Mat Block, Me First, Meteor
+    Assault, Metronome, Mimic, Mind Blown, Mirror Coat, Mirror Move, Moongeist Beam,
+    Nature Power, Nature's Madness, Obstruct, Origin Pulse, Overdrive, Photon Geyser,
+    Plasma Fists, Precipice Blades, Protect, Pyro Ball, Quash, Quick Guard, Rage Powder,
+    Relic Song, Secret Sword, Shell Trap, Sketch, Sleep Talk, Snap Trap, Snarl, Snatch,
+    Snore, Spectral Thief, Spiky Shield, Spirit Break, Spotlight, Steam Eruption,
+    Steel Beam, Strange Steam, Struggle, Sunsteel Strike, Surging Strikes, Switcheroo,
+    Techno Blast, Thief, Thousand Arrows, Thousand Waves, Thunder Cage, Thunderous
+    Kick, Transform, Trick, V-create, Wicked Blow, or Wide Guard.
   flags: {}
   name: Metronome
   noMetronome:
   - After You
   - Apple Acid
   - Assist
+  - Astral Barrage
   - Aura Wheel
   - Baneful Bunker
   - Beak Blast
@@ -10053,16 +10164,20 @@ metronome:
   - Diamond Storm
   - Double Iron Bash
   - Dragon Ascent
+  - Dragon Energy
   - Drum Beating
   - Dynamax Cannon
   - Endure
   - Eternabeam
   - False Surrender
   - Feint
+  - Fiery Wrath
   - Fleur Cannon
   - Focus Punch
   - Follow Me
   - Freeze Shock
+  - Freezing Glare
+  - Glacial Lance
   - Grav Apple
   - Helping Hand
   - Hold Hands
@@ -10120,6 +10235,8 @@ metronome:
   - Thief
   - Thousand Arrows
   - Thousand Waves
+  - Thunder Cage
+  - Thunderous Kick
   - Transform
   - Trick
   - V-create
@@ -10195,11 +10312,10 @@ mindblown:
   flags:
     mirror: 1
     protect: 1
-  isNonstandard: Past
   mindBlownRecoil: true
   name: Mind Blown
   num: 720
-  past_only: true
+  past_only: false
   pp: 5
   priority: 0
   secondary: null
@@ -10394,10 +10510,9 @@ mistball:
     bullet: 1
     mirror: 1
     protect: 1
-  isNonstandard: Past
   name: Mist Ball
   num: 296
-  past_only: true
+  past_only: false
   pp: 5
   priority: 0
   secondary:
@@ -10440,10 +10555,11 @@ mistyterrain:
   contestType: Beautiful
   desc: For 5 turns, the terrain becomes Misty Terrain. During the effect, the power
     of Dragon-type attacks used against grounded Pokemon is multiplied by 0.5 and
-    grounded Pokemon cannot be inflicted with a major status condition nor confusion.
-    Camouflage transforms the user into a Fairy type, Nature Power becomes Moonblast,
-    and Secret Power has a 30% chance to lower Special Attack by 1 stage. Fails if
-    the current terrain is Misty Terrain.
+    grounded Pokemon cannot be inflicted with a non-volatile status condition nor
+    confusion. Grounded Pokemon can become affected by Yawn but cannot fall asleep
+    from its effect. Camouflage transforms the user into a Fairy type, Nature Power
+    becomes Moonblast, and Secret Power has a 30% chance to lower Special Attack by
+    1 stage. Fails if the current terrain is Misty Terrain.
   flags:
     nonsky: 1
   name: Misty Terrain
@@ -10777,10 +10893,9 @@ naturesmadness:
   flags:
     mirror: 1
     protect: 1
-  isNonstandard: Past
   name: Nature's Madness
   num: 717
-  past_only: true
+  past_only: false
   pp: 10
   priority: 0
   secondary: null
@@ -10792,7 +10907,7 @@ needlearm:
   basePower: 60
   category: Physical
   contestType: Clever
-  desc: Has a 30% chance to flinch the target.
+  desc: Has a 30% chance to make the target flinch.
   flags:
     contact: 1
     mirror: 1
@@ -10806,7 +10921,7 @@ needlearm:
   secondary:
     chance: 30
     volatileStatus: flinch
-  shortDesc: 30% chance to flinch the target.
+  shortDesc: 30% chance to make the target flinch.
   target: normal
   type: Grass
 neverendingnightmare:
@@ -10814,6 +10929,7 @@ neverendingnightmare:
   basePower: 1
   category: Physical
   contestType: Cool
+  desc: Power is equal to the base move's Z-Power.
   flags: {}
   isNonstandard: Past
   isZ: ghostiumz
@@ -10955,9 +11071,9 @@ noretreat:
   condition: {}
   desc: Raises the user's Attack, Defense, Special Attack, Special Defense, and Speed
     by 1 stage, but it becomes prevented from switching out. The user can still switch
-    out if it uses Baton Pass, Parting Shot, Teleport, U-turn, or Volt Switch. If
-    the user leaves the field using Baton Pass, the replacement will remain trapped.
-    Fails if the user has already been prevented from switching by this effect.
+    out if it uses Baton Pass, Flip Turn, Parting Shot, Teleport, U-turn, or Volt
+    Switch. If the user leaves the field using Baton Pass, the replacement will remain
+    trapped. Fails if the user has already been prevented from switching by this effect.
   flags:
     snatch: 1
   name: No Retreat
@@ -11006,10 +11122,9 @@ oblivionwing:
     heal: 1
     mirror: 1
     protect: 1
-  isNonstandard: Past
   name: Oblivion Wing
   num: 613
-  past_only: true
+  past_only: false
   pp: 10
   priority: 0
   secondary: null
@@ -11017,7 +11132,7 @@ oblivionwing:
   target: any
   type: Flying
 obstruct:
-  accuracy: true
+  accuracy: 100
   basePower: 0
   category: Status
   condition:
@@ -11048,6 +11163,7 @@ oceanicoperetta:
   basePower: 195
   category: Special
   contestType: Cool
+  desc: No additional effect.
   flags: {}
   isNonstandard: Past
   isZ: primariumz
@@ -11090,9 +11206,10 @@ octolock:
     onResidualOrder: 11
   desc: Prevents the target from switching out. At the end of each turn during effect,
     the target's Defense and Special Defense are lowered by 1 stage. The target can
-    still switch out if it is holding Shed Shell or uses Baton Pass, Parting Shot,
-    Teleport, U-turn, or Volt Switch. If the target leaves the field using Baton Pass,
-    the replacement will remain trapped. The effect ends if the user leaves the field.
+    still switch out if it is holding Shed Shell or uses Baton Pass, Flip Turn, Parting
+    Shot, Teleport, U-turn, or Volt Switch. If the target leaves the field using Baton
+    Pass, the replacement will remain trapped. The effect ends if the user leaves
+    the field.
   flags:
     mirror: 1
     protect: 1
@@ -11173,10 +11290,9 @@ originpulse:
     mirror: 1
     protect: 1
     pulse: 1
-  isNonstandard: Past
   name: Origin Pulse
   num: 618
-  past_only: true
+  past_only: false
   pp: 10
   priority: 0
   shortDesc: No additional effect. Hits adjacent foes.
@@ -11368,6 +11484,7 @@ peck:
   basePower: 35
   category: Physical
   contestType: Cool
+  desc: No additional effect.
   flags:
     contact: 1
     distance: 1
@@ -11514,8 +11631,8 @@ pinmissile:
   basePower: 25
   category: Physical
   contestType: Cool
-  desc: Hits two to five times. Has a 1/3 chance to hit two or three times, and a
-    1/6 chance to hit four or five times. If one of the hits breaks the target's substitute,
+  desc: Hits two to five times. Has a 35% chance to hit two or three times and a 15%
+    chance to hit four or five times. If one of the hits breaks the target's substitute,
     it will take damage for the remaining hits. If the user has the Skill Link Ability,
     this move will always hit five times.
   flags:
@@ -11784,6 +11901,7 @@ poltergeist:
   accuracy: 90
   basePower: 110
   category: Physical
+  desc: Fails if the target has no held item.
   flags:
     mirror: 1
     protect: 1
@@ -11801,6 +11919,7 @@ pound:
   basePower: 40
   category: Physical
   contestType: Tough
+  desc: No additional effect.
   flags:
     contact: 1
     mirror: 1
@@ -11870,6 +11989,7 @@ powergem:
   basePower: 80
   category: Special
   contestType: Beautiful
+  desc: No additional effect.
   flags:
     mirror: 1
     protect: 1
@@ -12008,6 +12128,7 @@ powerwhip:
   basePower: 120
   category: Physical
   contestType: Tough
+  desc: No additional effect.
   flags:
     contact: 1
     mirror: 1
@@ -12031,10 +12152,9 @@ precipiceblades:
     mirror: 1
     nonsky: 1
     protect: 1
-  isNonstandard: Past
   name: Precipice Blades
   num: 619
-  past_only: true
+  past_only: false
   pp: 10
   priority: 0
   shortDesc: No additional effect. Hits adjacent foes.
@@ -12251,9 +12371,9 @@ psychoshift:
   basePower: 0
   category: Status
   contestType: Clever
-  desc: The user's major status condition is transferred to the target, and the user
-    is then cured. Fails if the user has no major status condition or if the target
-    already has one.
+  desc: The user's non-volatile status condition is transferred to the target, and
+    the user is then cured. Fails if the user has no non-volatile status condition
+    or if the target already has one.
   flags:
     mirror: 1
     protect: 1
@@ -12353,6 +12473,7 @@ pulverizingpancake:
   basePower: 210
   category: Physical
   contestType: Cool
+  desc: No additional effect.
   flags:
     contact: 1
   isNonstandard: Past
@@ -12396,8 +12517,8 @@ purify:
   basePower: 0
   category: Status
   contestType: Beautiful
-  desc: The target is cured if it has a major status condition. If the target was
-    cured, the user restores 1/2 of its maximum HP, rounded half up.
+  desc: The target is cured if it has a non-volatile status condition. If the target
+    was cured, the user restores 1/2 of its maximum HP, rounded half up.
   flags:
     heal: 1
     protect: 1
@@ -12427,11 +12548,11 @@ pursuit:
   contestType: Clever
   desc: If an opposing Pokemon switches out this turn, this move hits that Pokemon
     before it leaves the field, even if it was not the original target. If the user
-    moves after an opponent using Parting Shot, U-turn, or Volt Switch, but not Baton
-    Pass, it will hit that opponent before it leaves the field. Power doubles and
-    no accuracy check is done if the user hits an opponent switching out, and the
-    user's turn is over; if an opponent faints from this, the replacement Pokemon
-    does not become active until the end of the turn.
+    moves after an opponent using Flip Turn, Parting Shot, Teleport, U-turn, or Volt
+    Switch, but not Baton Pass, it will hit that opponent before it leaves the field.
+    Power doubles and no accuracy check is done if the user hits an opponent switching
+    out, and the user's turn is over; if an opponent faints from this, the replacement
+    Pokemon does not become active until the end of the turn.
   flags:
     contact: 1
     mirror: 1
@@ -12889,8 +13010,8 @@ rest:
   category: Status
   contestType: Cute
   desc: The user falls asleep for the next two turns and restores all of its HP, curing
-    itself of any major status condition in the process. Fails if the user has full
-    HP, is already asleep, or if another effect is preventing sleep.
+    itself of any non-volatile status condition in the process. Fails if the user
+    has full HP, is already asleep, or if another effect is preventing sleep.
   flags:
     heal: 1
     snatch: 1
@@ -13072,10 +13193,9 @@ roaroftime:
     mirror: 1
     protect: 1
     recharge: 1
-  isNonstandard: Past
   name: Roar of Time
   num: 459
-  past_only: true
+  past_only: false
   pp: 5
   priority: 0
   secondary: null
@@ -13089,8 +13209,8 @@ rockblast:
   basePower: 25
   category: Physical
   contestType: Tough
-  desc: Hits two to five times. Has a 1/3 chance to hit two or three times, and a
-    1/6 chance to hit four or five times. If one of the hits breaks the target's substitute,
+  desc: Hits two to five times. Has a 35% chance to hit two or three times and a 15%
+    chance to hit four or five times. If one of the hits breaks the target's substitute,
     it will take damage for the remaining hits. If the user has the Skill Link Ability,
     this move will always hit five times.
   flags:
@@ -13161,7 +13281,7 @@ rockslide:
   basePower: 75
   category: Physical
   contestType: Tough
-  desc: Has a 30% chance to flinch the target.
+  desc: Has a 30% chance to make the target flinch.
   flags:
     mirror: 1
     protect: 1
@@ -13173,7 +13293,7 @@ rockslide:
   secondary:
     chance: 30
     volatileStatus: flinch
-  shortDesc: 30% chance to flinch the foe(s).
+  shortDesc: 30% chance to make the foe(s) flinch.
   target: allAdjacentFoes
   type: Rock
 rocksmash:
@@ -13203,6 +13323,7 @@ rockthrow:
   basePower: 50
   category: Physical
   contestType: Tough
+  desc: No additional effect.
   flags:
     mirror: 1
     protect: 1
@@ -13265,12 +13386,13 @@ roleplay:
   category: Status
   contestType: Cute
   desc: The user's Ability changes to match the target's Ability. Fails if the user's
-    Ability is Battle Bond, Comatose, Disguise, Multitype, Power Construct, RKS System,
-    Schooling, Shields Down, Stance Change, or already matches the target, or if the
-    target's Ability is Battle Bond, Comatose, Disguise, Flower Gift, Forecast, Illusion,
-    Imposter, Multitype, Neutralizing Gas, Power Construct, Power of Alchemy, Receiver,
-    RKS System, Schooling, Shields Down, Stance Change, Trace, Wonder Guard, or Zen
-    Mode.
+    Ability is As One, Battle Bond, Comatose, Disguise, Gulp Missile, Ice Face, Multitype,
+    Power Construct, RKS System, Schooling, Shields Down, Stance Change, Zen Mode,
+    or already matches the target, or if the target's Ability is As One, Battle Bond,
+    Comatose, Disguise, Flower Gift, Forecast, Gulp Missile, Hunger Switch, Ice Face,
+    Illusion, Imposter, Multitype, Neutralizing Gas, Power Construct, Power of Alchemy,
+    Receiver, RKS System, Schooling, Shields Down, Stance Change, Trace, Wonder Guard,
+    or Zen Mode.
   flags:
     authentic: 1
     mystery: 1
@@ -13291,7 +13413,7 @@ rollingkick:
   basePower: 60
   category: Physical
   contestType: Cool
-  desc: Has a 30% chance to flinch the target.
+  desc: Has a 30% chance to make the target flinch.
   flags:
     contact: 1
     mirror: 1
@@ -13305,7 +13427,7 @@ rollingkick:
   secondary:
     chance: 30
     volatileStatus: flinch
-  shortDesc: 30% chance to flinch the target.
+  shortDesc: 30% chance to make the target flinch.
   target: normal
   type: Fighting
 rollout:
@@ -13422,10 +13544,9 @@ sacredfire:
     defrost: 1
     mirror: 1
     protect: 1
-  isNonstandard: Past
   name: Sacred Fire
   num: 221
-  past_only: true
+  past_only: false
   pp: 5
   priority: 0
   secondary:
@@ -13464,10 +13585,11 @@ safeguard:
     onResidualOrder: 21
     onResidualSubOrder: 2
   contestType: Beautiful
-  desc: For 5 turns, the user and its party members cannot have major status conditions
-    or confusion inflicted on them by other Pokemon. It is removed from the user's
-    side if the user or an ally is successfully hit by Defog. Fails if the effect
-    is already active on the user's side.
+  desc: For 5 turns, the user and its party members cannot have non-volatile status
+    conditions or confusion inflicted on them by other Pokemon. Pokemon on the user's
+    side cannot become affected by Yawn but can fall asleep from its effect. It is
+    removed from the user's side if the user or an ally is successfully hit by Defog.
+    Fails if the effect is already active on the user's side.
   flags:
     snatch: 1
   name: Safeguard
@@ -13542,8 +13664,8 @@ sandtomb:
     the user is holding Grip Claw). Causes damage to the target equal to 1/8 of its
     maximum HP (1/6 if the user is holding Binding Band), rounded down, at the end
     of each turn during effect. The target can still switch out if it is holding Shed
-    Shell or uses Baton Pass, Parting Shot, Teleport, U-turn, or Volt Switch. The
-    effect ends if either the user or the target leaves the field, or if the target
+    Shell or uses Baton Pass, Flip Turn, Parting Shot, Teleport, U-turn, or Volt Switch.
+    The effect ends if either the user or the target leaves the field, or if the target
     uses Rapid Spin or Substitute successfully. This effect is not stackable or reset
     by using this or another binding move.
   flags:
@@ -13564,6 +13686,7 @@ savagespinout:
   basePower: 1
   category: Physical
   contestType: Cool
+  desc: Power is equal to the base move's Z-Power.
   flags: {}
   isNonstandard: Past
   isZ: buginiumz
@@ -13603,8 +13726,8 @@ scaleshot:
   basePower: 25
   category: Physical
   desc: Hits two to five times. Lowers the user's Defense by 1 stage and raises the
-    user's Speed by 1 stage after the last hit. Has a 1/3 chance to hit two or three
-    times, and a 1/6 chance to hit four or five times. If one of the hits breaks the
+    user's Speed by 1 stage after the last hit. Has a 35% chance to hit two or three
+    times and a 15% chance to hit four or five times. If one of the hits breaks the
     target's substitute, it will take damage for the remaining hits. If the user has
     the Skill Link Ability, this move will always hit five times.
   flags:
@@ -13681,6 +13804,7 @@ scratch:
   basePower: 40
   category: Physical
   contestType: Tough
+  desc: No additional effect.
   flags:
     contact: 1
     mirror: 1
@@ -13731,10 +13855,9 @@ searingshot:
     bullet: 1
     mirror: 1
     protect: 1
-  isNonstandard: Past
   name: Searing Shot
   num: 545
-  past_only: true
+  past_only: false
   pp: 5
   priority: 0
   secondary:
@@ -13811,6 +13934,7 @@ seedbomb:
   basePower: 80
   category: Physical
   contestType: Tough
+  desc: No additional effect.
   flags:
     bullet: 1
     mirror: 1
@@ -13974,10 +14098,9 @@ shadowforce:
     charge: 1
     contact: 1
     mirror: 1
-  isNonstandard: Past
   name: Shadow Force
   num: 467
-  past_only: true
+  past_only: false
   pp: 5
   priority: 0
   secondary: null
@@ -13989,6 +14112,7 @@ shadowpunch:
   basePower: 60
   category: Physical
   contestType: Clever
+  desc: This move does not check accuracy.
   flags:
     contact: 1
     mirror: 1
@@ -14050,6 +14174,7 @@ shatteredpsyche:
   basePower: 1
   category: Physical
   contestType: Cool
+  desc: Power is equal to the base move's Z-Power.
   flags: {}
   isNonstandard: Past
   isZ: psychiumz
@@ -14111,7 +14236,7 @@ shellsidearm:
   secondary:
     chance: 20
     status: psn
-  shortDesc: 20% poison. Phys+contact if it would be stronger.
+  shortDesc: 20% psn. Physical+contact if it would be stronger.
   target: normal
   type: Poison
 shellsmash:
@@ -14190,6 +14315,7 @@ shockwave:
   basePower: 60
   category: Special
   contestType: Cool
+  desc: This move does not check accuracy.
   flags:
     mirror: 1
     protect: 1
@@ -14278,8 +14404,9 @@ simplebeam:
   category: Status
   contestType: Cute
   desc: Causes the target's Ability to become Simple. Fails if the target's Ability
-    is Battle Bond, Comatose, Disguise, Multitype, Power Construct, RKS System, Schooling,
-    Shields Down, Simple, Stance Change, Truant, or Zen Mode.
+    is As One, Battle Bond, Comatose, Disguise, Gulp Missile, Ice Face, Multitype,
+    Power Construct, RKS System, Schooling, Shields Down, Simple, Stance Change, Truant,
+    or Zen Mode.
   flags:
     mirror: 1
     mystery: 1
@@ -14302,6 +14429,7 @@ sing:
   basePower: 0
   category: Status
   contestType: Cute
+  desc: Causes the target to fall asleep.
   flags:
     authentic: 1
     mirror: 1
@@ -14326,6 +14454,7 @@ sinisterarrowraid:
   basePower: 180
   category: Physical
   contestType: Cool
+  desc: No additional effect.
   flags: {}
   isNonstandard: Past
   isZ: decidiumz
@@ -14353,6 +14482,7 @@ sketch:
   isNonstandard: Past
   name: Sketch
   noPPBoosts: true
+  noSketch: true
   num: 166
   past_only: true
   pp: 1
@@ -14374,9 +14504,10 @@ skillswap:
   category: Status
   contestType: Clever
   desc: The user swaps its Ability with the target's Ability. Fails if either the
-    user or the target's Ability is Battle Bond, Comatose, Disguise, Gulp Missile,
-    Hunger Switch, Ice Face, Illusion, Multitype, Neutralizing Gas, Power Construct,
-    RKS System, Schooling, Shields Down, Stance Change, Wonder Guard, or Zen Mode.
+    user or the target's Ability is As One, Battle Bond, Comatose, Disguise, Gulp
+    Missile, Hunger Switch, Ice Face, Illusion, Multitype, Neutralizing Gas, Power
+    Construct, RKS System, Schooling, Shields Down, Stance Change, Wonder Guard, or
+    Zen Mode.
   flags:
     authentic: 1
     mirror: 1
@@ -14443,9 +14574,9 @@ skyattack:
   category: Physical
   contestType: Cool
   critRatio: 2
-  desc: Has a 30% chance to flinch the target and a higher chance for a critical hit.
-    This attack charges on the first turn and executes on the second. If the user
-    is holding a Power Herb, the move completes in one turn.
+  desc: Has a 30% chance to make the target flinch and a higher chance for a critical
+    hit. This attack charges on the first turn and executes on the second. If the
+    user is holding a Power Herb, the move completes in one turn.
   flags:
     charge: 1
     distance: 1
@@ -14547,6 +14678,7 @@ slam:
   basePower: 80
   category: Physical
   contestType: Tough
+  desc: No additional effect.
   flags:
     contact: 1
     mirror: 1
@@ -14586,6 +14718,7 @@ sleeppowder:
   basePower: 0
   category: Status
   contestType: Clever
+  desc: Causes the target to fall asleep.
   flags:
     mirror: 1
     powder: 1
@@ -14722,6 +14855,7 @@ smartstrike:
   basePower: 70
   category: Physical
   contestType: Cool
+  desc: This move does not check accuracy.
   flags:
     contact: 1
     mirror: 1
@@ -14808,8 +14942,8 @@ snaptrap:
     the user is holding Grip Claw). Causes damage to the target equal to 1/8 of its
     maximum HP (1/6 if the user is holding Binding Band), rounded down, at the end
     of each turn during effect. The target can still switch out if it is holding Shed
-    Shell or uses Baton Pass, Parting Shot, Teleport, U-turn, or Volt Switch. The
-    effect ends if either the user or the target leaves the field, or if the target
+    Shell or uses Baton Pass, Flip Turn, Parting Shot, Teleport, U-turn, or Volt Switch.
+    The effect ends if either the user or the target leaves the field, or if the target
     uses Rapid Spin or Substitute successfully. This effect is not stackable or reset
     by using this or another binding move.
   flags:
@@ -14855,6 +14989,7 @@ snatch:
   category: Status
   condition:
     duration: 1
+    onAnyPrepareHitPriority: -1
   contestType: Clever
   desc: If another Pokemon uses certain non-damaging moves this turn, the user steals
     that move to use itself. If multiple Pokemon use one of those moves this turn,
@@ -14903,7 +15038,7 @@ snore:
   basePower: 50
   category: Special
   contestType: Cute
-  desc: Has a 30% chance to flinch the target. Fails if the user is not asleep.
+  desc: Has a 30% chance to make the target flinch. Fails if the user is not asleep.
   flags:
     authentic: 1
     mirror: 1
@@ -15042,6 +15177,7 @@ soulstealing7starstrike:
   basePower: 195
   category: Physical
   contestType: Cool
+  desc: No additional effect.
   flags:
     contact: 1
   isNonstandard: Past
@@ -15065,10 +15201,9 @@ spacialrend:
   flags:
     mirror: 1
     protect: 1
-  isNonstandard: Past
   name: Spacial Rend
   num: 460
-  past_only: true
+  past_only: false
   pp: 5
   priority: 0
   secondary: null
@@ -15169,8 +15304,8 @@ spiderweb:
   category: Status
   contestType: Clever
   desc: Prevents the target from switching out. The target can still switch out if
-    it is holding Shed Shell or uses Baton Pass, Parting Shot, Teleport, U-turn, or
-    Volt Switch. If the target leaves the field using Baton Pass, the replacement
+    it is holding Shed Shell or uses Baton Pass, Flip Turn, Parting Shot, Teleport,
+    U-turn, or Volt Switch. If the target leaves the field using Baton Pass, the replacement
     will remain trapped. The effect ends if the user leaves the field.
   flags:
     mirror: 1
@@ -15194,8 +15329,8 @@ spikecannon:
   basePower: 20
   category: Physical
   contestType: Cool
-  desc: Hits two to five times. Has a 1/3 chance to hit two or three times, and a
-    1/6 chance to hit four or five times. If one of the hits breaks the target's substitute,
+  desc: Hits two to five times. Has a 35% chance to hit two or three times and a 15%
+    chance to hit four or five times. If one of the hits breaks the target's substitute,
     it will take damage for the remaining hits. If the user has the Skill Link Ability,
     this move will always hit five times.
   flags:
@@ -15288,7 +15423,7 @@ spiritbreak:
   name: Spirit Break
   num: 789
   past_only: false
-  pp: 10
+  pp: 15
   priority: 0
   secondary:
     boosts:
@@ -15303,8 +15438,8 @@ spiritshackle:
   category: Physical
   contestType: Tough
   desc: Prevents the target from switching out. The target can still switch out if
-    it is holding Shed Shell or uses Baton Pass, Parting Shot, Teleport, U-turn, or
-    Volt Switch. If the target leaves the field using Baton Pass, the replacement
+    it is holding Shed Shell or uses Baton Pass, Flip Turn, Parting Shot, Teleport,
+    U-turn, or Volt Switch. If the target leaves the field using Baton Pass, the replacement
     will remain trapped. The effect ends if the user leaves the field.
   flags:
     mirror: 1
@@ -15367,6 +15502,7 @@ splash:
   basePower: 0
   category: Status
   contestType: Cute
+  desc: No competitive use.
   flags:
     gravity: 1
   name: Splash
@@ -15405,6 +15541,7 @@ spore:
   basePower: 0
   category: Status
   contestType: Beautiful
+  desc: Causes the target to fall asleep.
   flags:
     mirror: 1
     powder: 1
@@ -15439,9 +15576,10 @@ spotlight:
     mystery: 1
     protect: 1
     reflectable: 1
+  isNonstandard: Past
   name: Spotlight
   num: 671
-  past_only: false
+  past_only: true
   pp: 15
   priority: 3
   secondary: null
@@ -15489,10 +15627,9 @@ steameruption:
     defrost: 1
     mirror: 1
     protect: 1
-  isNonstandard: Past
   name: Steam Eruption
   num: 592
-  past_only: true
+  past_only: false
   pp: 5
   priority: 0
   secondary:
@@ -15507,8 +15644,8 @@ steamroller:
   basePower: 65
   category: Physical
   contestType: Tough
-  desc: Has a 30% chance to flinch the target. Damage doubles and no accuracy check
-    is done if the target has used Minimize while active.
+  desc: Has a 30% chance to make the target flinch. Damage doubles and no accuracy
+    check is done if the target has used Minimize while active.
   flags:
     contact: 1
     mirror: 1
@@ -15522,7 +15659,7 @@ steamroller:
   secondary:
     chance: 30
     volatileStatus: flinch
-  shortDesc: 30% chance to flinch the target.
+  shortDesc: 30% chance to make the target flinch.
   target: normal
   type: Bug
 steelbeam:
@@ -15561,7 +15698,7 @@ steelroller:
   pp: 5
   priority: 0
   secondary: null
-  shortDesc: Ends the effects of terrain; fails if none is active.
+  shortDesc: Fails if there is no terrain active. Ends the terrain.
   target: normal
   type: Steel
 steelwing:
@@ -15604,6 +15741,7 @@ stickyweb:
   num: 564
   past_only: false
   pp: 20
+  pressureTarget: self
   priority: 0
   secondary: null
   shortDesc: Lowers Speed of grounded foes by 1 on switch-in.
@@ -15662,8 +15800,8 @@ stomp:
   basePower: 65
   category: Physical
   contestType: Tough
-  desc: Has a 30% chance to flinch the target. Damage doubles and no accuracy check
-    is done if the target has used Minimize while active.
+  desc: Has a 30% chance to make the target flinch. Damage doubles and no accuracy
+    check is done if the target has used Minimize while active.
   flags:
     contact: 1
     mirror: 1
@@ -15677,7 +15815,7 @@ stomp:
   secondary:
     chance: 30
     volatileStatus: flinch
-  shortDesc: 30% chance to flinch the target.
+  shortDesc: 30% chance to make the target flinch.
   target: normal
   type: Normal
 stompingtantrum:
@@ -15794,6 +15932,7 @@ strength:
   basePower: 80
   category: Physical
   contestType: Tough
+  desc: No additional effect.
   flags:
     contact: 1
     mirror: 1
@@ -16008,6 +16147,7 @@ subzeroslammer:
   basePower: 1
   category: Physical
   contestType: Cool
+  desc: Power is equal to the base move's Z-Power.
   flags: {}
   isNonstandard: Past
   isZ: iciumz
@@ -16131,6 +16271,7 @@ supersonic:
   basePower: 0
   category: Status
   contestType: Clever
+  desc: Causes the target to become confused.
   flags:
     authentic: 1
     mirror: 1
@@ -16155,6 +16296,7 @@ supersonicskystrike:
   basePower: 1
   category: Physical
   contestType: Cool
+  desc: Power is equal to the base move's Z-Power.
   flags: {}
   isNonstandard: Past
   isZ: flyiniumz
@@ -16194,7 +16336,9 @@ surgingstrikes:
     under the effect of Lucky Chant or has the Battle Armor or Shell Armor Abilities.
   flags:
     contact: 1
+    mirror: 1
     protect: 1
+    punch: 1
   maxMove:
     basePower: 130
   multihit: 3
@@ -16264,6 +16408,7 @@ sweetkiss:
   basePower: 0
   category: Status
   contestType: Cute
+  desc: Causes the target to become confused.
   flags:
     mirror: 1
     protect: 1
@@ -16420,6 +16565,7 @@ tackle:
   basePower: 40
   category: Physical
   contestType: Tough
+  desc: No additional effect.
   flags:
     contact: 1
     mirror: 1
@@ -16460,8 +16606,8 @@ tailslap:
   basePower: 25
   category: Physical
   contestType: Cute
-  desc: Hits two to five times. Has a 1/3 chance to hit two or three times, and a
-    1/6 chance to hit four or five times. If one of the hits breaks the target's substitute,
+  desc: Hits two to five times. Has a 35% chance to hit two or three times and a 15%
+    chance to hit four or five times. If one of the hits breaks the target's substitute,
     it will take damage for the remaining hits. If the user has the Skill Link Ability,
     this move will always hit five times.
   flags:
@@ -16573,7 +16719,7 @@ tarshot:
   name: Tar Shot
   num: 749
   past_only: false
-  pp: 20
+  pp: 15
   priority: 0
   secondary: null
   shortDesc: Target gets -1 Spe and becomes weaker to Fire.
@@ -16661,10 +16807,9 @@ technoblast:
   flags:
     mirror: 1
     protect: 1
-  isNonstandard: Past
   name: Techno Blast
   num: 546
-  past_only: true
+  past_only: false
   pp: 5
   priority: 0
   secondary: null
@@ -16676,6 +16821,7 @@ tectonicrage:
   basePower: 1
   category: Physical
   contestType: Cool
+  desc: Power is equal to the base move's Z-Power.
   flags: {}
   isNonstandard: Past
   isZ: groundiumz
@@ -16843,10 +16989,9 @@ thousandarrows:
     protect: 1
   ignoreImmunity:
     Ground: true
-  isNonstandard: Past
   name: Thousand Arrows
   num: 614
-  past_only: true
+  past_only: false
   pp: 10
   priority: 0
   secondary: null
@@ -16862,17 +17007,16 @@ thousandwaves:
   category: Physical
   contestType: Tough
   desc: Prevents the target from switching out. The target can still switch out if
-    it is holding Shed Shell or uses Baton Pass, Parting Shot, Teleport, U-turn, or
-    Volt Switch. If the target leaves the field using Baton Pass, the replacement
+    it is holding Shed Shell or uses Baton Pass, Flip Turn, Parting Shot, Teleport,
+    U-turn, or Volt Switch. If the target leaves the field using Baton Pass, the replacement
     will remain trapped. The effect ends if the user leaves the field.
   flags:
     mirror: 1
     nonsky: 1
     protect: 1
-  isNonstandard: Past
   name: Thousand Waves
   num: 615
-  past_only: true
+  past_only: false
   pp: 10
   priority: 0
   secondary: null
@@ -16975,12 +17119,37 @@ thunderbolt:
   shortDesc: 10% chance to paralyze the target.
   target: normal
   type: Electric
+thundercage:
+  accuracy: 90
+  basePower: 80
+  category: Special
+  desc: Prevents the target from switching for four or five turns (seven turns if
+    the user is holding Grip Claw). Causes damage to the target equal to 1/8 of its
+    maximum HP (1/6 if the user is holding Binding Band), rounded down, at the end
+    of each turn during effect. The target can still switch out if it is holding Shed
+    Shell or uses Baton Pass, Flip Turn, Parting Shot, Teleport, U-turn, or Volt Switch.
+    The effect ends if either the user or the target leaves the field, or if the target
+    uses Rapid Spin or Substitute successfully. This effect is not stackable or reset
+    by using this or another binding move.
+  flags:
+    mirror: 1
+    protect: 1
+  name: Thunder Cage
+  num: 819
+  past_only: false
+  pp: 15
+  priority: 0
+  secondary: null
+  shortDesc: Traps and damages the target for 4-5 turns.
+  target: normal
+  type: Electric
+  volatileStatus: partiallytrapped
 thunderfang:
   accuracy: 95
   basePower: 65
   category: Physical
   contestType: Cool
-  desc: Has a 10% chance to paralyze the target and a 10% chance to flinch it.
+  desc: Has a 10% chance to paralyze the target and a 10% chance to make it flinch.
   flags:
     bite: 1
     contact: 1
@@ -16999,6 +17168,27 @@ thunderfang:
   shortDesc: 10% chance to paralyze. 10% chance to flinch.
   target: normal
   type: Electric
+thunderouskick:
+  accuracy: 100
+  basePower: 90
+  category: Physical
+  desc: Has a 100% chance to lower the target's Defense by 1 stage.
+  flags:
+    contact: 1
+    mirror: 1
+    protect: 1
+  name: Thunderous Kick
+  num: 823
+  past_only: false
+  pp: 10
+  priority: 0
+  secondary:
+    boosts:
+      def: -1
+    chance: 100
+  shortDesc: 100% chance to lower the target's Defense by 1.
+  target: normal
+  type: Fighting
 thunderpunch:
   accuracy: 100
   basePower: 75
@@ -17484,6 +17674,7 @@ twinkletackle:
   basePower: 1
   category: Physical
   contestType: Cool
+  desc: Power is equal to the base move's Z-Power.
   flags: {}
   isNonstandard: Past
   isZ: fairiumz
@@ -17501,8 +17692,8 @@ twister:
   basePower: 40
   category: Special
   contestType: Cool
-  desc: Has a 20% chance to flinch the target. Power doubles if the target is using
-    Bounce, Fly, or Sky Drop, or is under the effect of Sky Drop.
+  desc: Has a 20% chance to make the target flinch. Power doubles if the target is
+    using Bounce, Fly, or Sky Drop, or is under the effect of Sky Drop.
   flags:
     mirror: 1
     protect: 1
@@ -17514,7 +17705,7 @@ twister:
   secondary:
     chance: 20
     volatileStatus: flinch
-  shortDesc: 20% chance to flinch the foe(s).
+  shortDesc: 20% chance to make the foe(s) flinch.
   target: allAdjacentFoes
   type: Dragon
 uproar:
@@ -17661,6 +17852,7 @@ vinewhip:
   basePower: 45
   category: Physical
   contestType: Cool
+  desc: No additional effect.
   flags:
     contact: 1
     mirror: 1
@@ -17679,6 +17871,7 @@ visegrip:
   basePower: 55
   category: Physical
   contestType: Tough
+  desc: No additional effect.
   flags:
     contact: 1
     mirror: 1
@@ -17786,7 +17979,7 @@ waterfall:
   basePower: 80
   category: Physical
   contestType: Tough
-  desc: Has a 20% chance to flinch the target.
+  desc: Has a 20% chance to make the target flinch.
   flags:
     contact: 1
     mirror: 1
@@ -17799,7 +17992,7 @@ waterfall:
   secondary:
     chance: 20
     volatileStatus: flinch
-  shortDesc: 20% chance to flinch the target.
+  shortDesc: 20% chance to make the target flinch.
   target: normal
   type: Water
 watergun:
@@ -17807,6 +18000,7 @@ watergun:
   basePower: 40
   category: Special
   contestType: Cute
+  desc: No additional effect.
   flags:
     mirror: 1
     protect: 1
@@ -17876,8 +18070,8 @@ watershuriken:
   basePower: 15
   category: Special
   contestType: Cool
-  desc: Hits two to five times. Has a 1/3 chance to hit two or three times, and a
-    1/6 chance to hit four or five times. If one of the hits breaks the target's substitute,
+  desc: Hits two to five times. Has a 35% chance to hit two or three times and a 15%
+    chance to hit four or five times. If one of the hits breaks the target's substitute,
     it will take damage for the remaining hits. If the user has the Skill Link Ability,
     this move will always hit five times. If the user is an Ash-Greninja with the
     Battle Bond Ability, this move has a power of 20 and always hits three times.
@@ -17979,8 +18173,8 @@ whirlpool:
     the user is holding Grip Claw). Causes damage to the target equal to 1/8 of its
     maximum HP (1/6 if the user is holding Binding Band), rounded down, at the end
     of each turn during effect. The target can still switch out if it is holding Shed
-    Shell or uses Baton Pass, Parting Shot, Teleport, U-turn, or Volt Switch. The
-    effect ends if either the user or the target leaves the field, or if the target
+    Shell or uses Baton Pass, Flip Turn, Parting Shot, Teleport, U-turn, or Volt Switch.
+    The effect ends if either the user or the target leaves the field, or if the target
     uses Rapid Spin or Substitute successfully. This effect is not stackable or reset
     by using this or another binding move.
   flags:
@@ -18030,7 +18224,9 @@ wickedblow:
     Lucky Chant or has the Battle Armor or Shell Armor Abilities.
   flags:
     contact: 1
+    mirror: 1
     protect: 1
+    punch: 1
   name: Wicked Blow
   num: 817
   past_only: false
@@ -18125,6 +18321,7 @@ wingattack:
   basePower: 60
   category: Physical
   contestType: Cool
+  desc: No additional effect.
   flags:
     contact: 1
     distance: 1
@@ -18266,8 +18463,9 @@ worryseed:
   category: Status
   contestType: Clever
   desc: Causes the target's Ability to become Insomnia. Fails if the target's Ability
-    is Battle Bond, Comatose, Disguise, Insomnia, Multitype, Power Construct, RKS
-    System, Schooling, Shields Down, Stance Change, Truant, or Zen Mode.
+    is As One, Battle Bond, Comatose, Disguise, Gulp Missile, Ice Face, Insomnia,
+    Multitype, Power Construct, RKS System, Schooling, Shields Down, Stance Change,
+    Truant, or Zen Mode.
   flags:
     mirror: 1
     mystery: 1
@@ -18294,8 +18492,8 @@ wrap:
     the user is holding Grip Claw). Causes damage to the target equal to 1/8 of its
     maximum HP (1/6 if the user is holding Binding Band), rounded down, at the end
     of each turn during effect. The target can still switch out if it is holding Shed
-    Shell or uses Baton Pass, Parting Shot, Teleport, U-turn, or Volt Switch. The
-    effect ends if either the user or the target leaves the field, or if the target
+    Shell or uses Baton Pass, Flip Turn, Parting Shot, Teleport, U-turn, or Volt Switch.
+    The effect ends if either the user or the target leaves the field, or if the target
     uses Rapid Spin or Substitute successfully. This effect is not stackable or reset
     by using this or another binding move.
   flags:
@@ -18342,6 +18540,7 @@ xscissor:
   basePower: 80
   category: Physical
   contestType: Cool
+  desc: No additional effect.
   flags:
     contact: 1
     mirror: 1
@@ -18365,8 +18564,8 @@ yawn:
     onResidualOrder: 19
   contestType: Cute
   desc: Causes the target to fall asleep at the end of the next turn. Fails when used
-    if the target cannot fall asleep or if it already has a major status condition.
-    At the end of the next turn, if the target is still active, does not have a major
+    if the target cannot fall asleep or if it already has a non-volatile status condition.
+    At the end of the next turn, if the target is still active, does not have a non-volatile
     status condition, and can fall asleep, it falls asleep. If the target becomes
     affected, this effect cannot be prevented by Safeguard or a substitute, or by
     falling asleep and waking up during the effect.
@@ -18413,7 +18612,7 @@ zenheadbutt:
   basePower: 80
   category: Physical
   contestType: Clever
-  desc: Has a 20% chance to flinch the target.
+  desc: Has a 20% chance to make the target flinch.
   flags:
     contact: 1
     mirror: 1
@@ -18426,7 +18625,7 @@ zenheadbutt:
   secondary:
     chance: 20
     volatileStatus: flinch
-  shortDesc: 20% chance to flinch the target.
+  shortDesc: 20% chance to make the target flinch.
   target: normal
   type: Psychic
 zingzap:
@@ -18434,7 +18633,7 @@ zingzap:
   basePower: 80
   category: Physical
   contestType: Cool
-  desc: Has a 30% chance to flinch the target.
+  desc: Has a 30% chance to make the target flinch.
   flags:
     contact: 1
     mirror: 1
@@ -18447,6 +18646,6 @@ zingzap:
   secondary:
     chance: 30
     volatileStatus: flinch
-  shortDesc: 30% chance to flinch the target.
+  shortDesc: 30% chance to make the target flinch.
   target: normal
   type: Electric

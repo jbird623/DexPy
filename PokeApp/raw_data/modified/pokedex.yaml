@@ -23,7 +23,7 @@ abomasnow:
   otherFormes:
   - Abomasnow-Mega
   prevo: Snover
-  tier: NU
+  tier: (PU)
   types:
   - Grass
   - Ice
@@ -100,12 +100,11 @@ absol:
   - Absol
   - Absol-Mega
   heightm: 1.2
-  isNonstandard: Past
   name: Absol
   num: 359
   otherFormes:
   - Absol-Mega
-  tier: Illegal
+  tier: PU
   types:
   - Dark
   weightkg: 47
@@ -154,7 +153,7 @@ accelgor:
   name: Accelgor
   num: 617
   prevo: Shelmet
-  tier: NU
+  tier: (PU)
   types:
   - Bug
   weightkg: 25.3
@@ -234,12 +233,11 @@ aerodactyl:
     F: 0.125
     M: 0.875
   heightm: 1.8
-  isNonstandard: Past
   name: Aerodactyl
   num: 142
   otherFormes:
   - Aerodactyl-Mega
-  tier: Illegal
+  tier: NU
   types:
   - Rock
   - Flying
@@ -292,13 +290,12 @@ aggron:
   - Aggron
   - Aggron-Mega
   heightm: 2.1
-  isNonstandard: Past
   name: Aggron
   num: 306
   otherFormes:
   - Aggron-Mega
   prevo: Lairon
-  tier: Illegal
+  tier: PU
   types:
   - Steel
   - Rock
@@ -380,7 +377,7 @@ alakazam:
   otherFormes:
   - Alakazam-Mega
   prevo: Kadabra
-  tier: OU
+  tier: UU
   types:
   - Psychic
   weightkg: 48
@@ -454,7 +451,7 @@ alcremie:
   name: Alcremie
   num: 869
   prevo: Milcery
-  tier: NU
+  tier: (PU)
   types:
   - Fairy
   weightkg: 0.5
@@ -481,7 +478,7 @@ alcremiegmax:
   isNonstandard: Gigantamax
   name: Alcremie-Gmax
   num: 869
-  tier: (Uber)
+  tier: AG
   types:
   - Fairy
   weightkg: 0
@@ -529,13 +526,12 @@ altaria:
   - Altaria
   - Altaria-Mega
   heightm: 1.1
-  isNonstandard: Past
   name: Altaria
   num: 334
   otherFormes:
   - Altaria-Mega
   prevo: Swablu
-  tier: Illegal
+  tier: (PU)
   types:
   - Dragon
   - Flying
@@ -586,10 +582,9 @@ amaura:
     F: 0.125
     M: 0.875
   heightm: 1.3
-  isNonstandard: Past
   name: Amaura
   num: 698
-  tier: Illegal
+  tier: LC
   types:
   - Rock
   - Ice
@@ -639,7 +634,7 @@ amoonguss:
   name: Amoonguss
   num: 591
   prevo: Foongus
-  tier: OU
+  tier: UU
   types:
   - Grass
   - Poison
@@ -720,10 +715,9 @@ anorith:
     F: 0.125
     M: 0.875
   heightm: 0.7
-  isNonstandard: Past
   name: Anorith
   num: 347
-  tier: Illegal
+  tier: LC
   types:
   - Rock
   - Bug
@@ -751,7 +745,7 @@ appletun:
   name: Appletun
   num: 842
   prevo: Applin
-  tier: PU
+  tier: (PU)
   types:
   - Grass
   - Dragon
@@ -779,7 +773,7 @@ appletungmax:
   isNonstandard: Gigantamax
   name: Appletun-Gmax
   num: 842
-  tier: (Uber)
+  tier: AG
   types:
   - Grass
   - Dragon
@@ -836,7 +830,7 @@ araquanid:
   otherFormes:
   - Araquanid-Totem
   prevo: Dewpider
-  tier: RU
+  tier: NU
   types:
   - Water
   - Bug
@@ -916,7 +910,7 @@ arcanine:
   name: Arcanine
   num: 59
   prevo: Growlithe
-  tier: RU
+  tier: NU
   types:
   - Fire
   weightkg: 155
@@ -992,7 +986,7 @@ arceusbug:
     spd: 120
     spe: 120
   changesFrom: Arceus
-  color: Gray
+  color: White
   eggGroups:
   - Undiscovered
   forme: Bug
@@ -1019,7 +1013,7 @@ arceusdark:
     spd: 120
     spe: 120
   changesFrom: Arceus
-  color: Gray
+  color: White
   eggGroups:
   - Undiscovered
   forme: Dark
@@ -1046,7 +1040,7 @@ arceusdragon:
     spd: 120
     spe: 120
   changesFrom: Arceus
-  color: Gray
+  color: White
   eggGroups:
   - Undiscovered
   forme: Dragon
@@ -1073,7 +1067,7 @@ arceuselectric:
     spd: 120
     spe: 120
   changesFrom: Arceus
-  color: Gray
+  color: White
   eggGroups:
   - Undiscovered
   forme: Electric
@@ -1100,7 +1094,7 @@ arceusfairy:
     spd: 120
     spe: 120
   changesFrom: Arceus
-  color: Gray
+  color: White
   eggGroups:
   - Undiscovered
   forme: Fairy
@@ -1128,7 +1122,7 @@ arceusfighting:
     spd: 120
     spe: 120
   changesFrom: Arceus
-  color: Gray
+  color: White
   eggGroups:
   - Undiscovered
   forme: Fighting
@@ -1155,7 +1149,7 @@ arceusfire:
     spd: 120
     spe: 120
   changesFrom: Arceus
-  color: Gray
+  color: White
   eggGroups:
   - Undiscovered
   forme: Fire
@@ -1182,7 +1176,7 @@ arceusflying:
     spd: 120
     spe: 120
   changesFrom: Arceus
-  color: Gray
+  color: White
   eggGroups:
   - Undiscovered
   forme: Flying
@@ -1209,7 +1203,7 @@ arceusghost:
     spd: 120
     spe: 120
   changesFrom: Arceus
-  color: Gray
+  color: White
   eggGroups:
   - Undiscovered
   forme: Ghost
@@ -1236,7 +1230,7 @@ arceusgrass:
     spd: 120
     spe: 120
   changesFrom: Arceus
-  color: Gray
+  color: White
   eggGroups:
   - Undiscovered
   forme: Grass
@@ -1263,7 +1257,7 @@ arceusground:
     spd: 120
     spe: 120
   changesFrom: Arceus
-  color: Gray
+  color: White
   eggGroups:
   - Undiscovered
   forme: Ground
@@ -1290,7 +1284,7 @@ arceusice:
     spd: 120
     spe: 120
   changesFrom: Arceus
-  color: Gray
+  color: White
   eggGroups:
   - Undiscovered
   forme: Ice
@@ -1317,7 +1311,7 @@ arceuspoison:
     spd: 120
     spe: 120
   changesFrom: Arceus
-  color: Gray
+  color: White
   eggGroups:
   - Undiscovered
   forme: Poison
@@ -1344,7 +1338,7 @@ arceuspsychic:
     spd: 120
     spe: 120
   changesFrom: Arceus
-  color: Gray
+  color: White
   eggGroups:
   - Undiscovered
   forme: Psychic
@@ -1371,7 +1365,7 @@ arceusrock:
     spd: 120
     spe: 120
   changesFrom: Arceus
-  color: Gray
+  color: White
   eggGroups:
   - Undiscovered
   forme: Rock
@@ -1398,7 +1392,7 @@ arceussteel:
     spd: 120
     spe: 120
   changesFrom: Arceus
-  color: Gray
+  color: White
   eggGroups:
   - Undiscovered
   forme: Steel
@@ -1425,7 +1419,7 @@ arceuswater:
     spd: 120
     spe: 120
   changesFrom: Arceus
-  color: Gray
+  color: White
   eggGroups:
   - Undiscovered
   forme: Water
@@ -1460,10 +1454,9 @@ archen:
     F: 0.125
     M: 0.875
   heightm: 0.5
-  isNonstandard: Past
   name: Archen
   num: 566
-  tier: Illegal
+  tier: LC
   types:
   - Rock
   - Flying
@@ -1487,11 +1480,10 @@ archeops:
     F: 0.125
     M: 0.875
   heightm: 1.4
-  isNonstandard: Past
   name: Archeops
   num: 567
   prevo: Archen
-  tier: Illegal
+  tier: PU
   types:
   - Rock
   - Flying
@@ -1515,11 +1507,10 @@ arctovish:
   heightm: 2
   name: Arctovish
   num: 883
-  tier: NU
+  tier: PU
   types:
   - Water
   - Ice
-  unreleasedHidden: true
   weightkg: 175
 arctozolt:
   abilities:
@@ -1540,68 +1531,11 @@ arctozolt:
   heightm: 2.3
   name: Arctozolt
   num: 881
-  tier: PUBL
+  tier: NUBL
   types:
   - Electric
   - Ice
-  unreleasedHidden: true
   weightkg: 150
-argalis:
-  abilities:
-    '0': Shed Skin
-    '1': Compound Eyes
-    H: Overcoat
-  baseStats:
-    atk: 90
-    def: 89
-    hp: 60
-    spa: 87
-    spd: 40
-    spe: 54
-  color: Gray
-  eggGroups:
-  - Bug
-  evoLevel: 30
-  evos:
-  - Aurumoth
-  gen: 5
-  heightm: 1.3
-  isNonstandard: CAP
-  name: Argalis
-  num: -26
-  prevo: Cupra
-  tier: CAP NFE
-  types:
-  - Bug
-  - Psychic
-  weightkg: 341.4
-arghonaut:
-  abilities:
-    '0': Unaware
-    H: Technician
-  baseStats:
-    atk: 110
-    def: 95
-    hp: 105
-    spa: 70
-    spd: 100
-    spe: 75
-  color: Green
-  eggGroups:
-  - Water 1
-  - Water 3
-  evoLevel: 37
-  gen: 4
-  heightm: 1.7
-  isNonstandard: CAP
-  name: Arghonaut
-  num: -13
-  prevo: Privatyke
-  tier: CAP
-  types:
-  - Water
-  - Fighting
-  weightkg: 151
 ariados:
   abilities:
     '0': Swarm
@@ -1647,11 +1581,10 @@ armaldo:
     F: 0.125
     M: 0.875
   heightm: 1.5
-  isNonstandard: Past
   name: Armaldo
   num: 348
   prevo: Anorith
-  tier: Illegal
+  tier: (PU)
   types:
   - Rock
   - Bug
@@ -1676,7 +1609,7 @@ aromatisse:
   name: Aromatisse
   num: 683
   prevo: Spritzee
-  tier: RU
+  tier: PU
   types:
   - Fairy
   weightkg: 15.5
@@ -1698,10 +1631,9 @@ aron:
   evos:
   - Lairon
   heightm: 0.4
-  isNonstandard: Past
   name: Aron
   num: 304
-  tier: Illegal
+  tier: LC
   types:
   - Steel
   - Rock
@@ -1743,44 +1675,44 @@ articuno:
   color: Blue
   eggGroups:
   - Undiscovered
+  formeOrder:
+  - Articuno
+  - Articuno-Galar
   gender: N
   heightm: 1.7
-  isNonstandard: Past
   name: Articuno
   num: 144
-  tier: Illegal
+  otherFormes:
+  - Articuno-Galar
+  tier: PU
   types:
   - Ice
   - Flying
   weightkg: 55.4
-astrolotl:
+articunogalar:
   abilities:
-    '0': Regenerator
-    '1': Vital Spirit
-    H: Magician
+    '0': Competitive
+  baseSpecies: Articuno
   baseStats:
-    atk: 108
-    def: 74
-    hp: 108
-    spa: 92
-    spd: 64
-    spe: 114
-  color: Red
+    atk: 85
+    def: 85
+    hp: 90
+    spa: 125
+    spd: 100
+    spe: 95
+  color: Purple
   eggGroups:
-  - Dragon
-  - Fairy
-  evoLevel: 36
-  gen: 8
-  heightm: 1.9
-  isNonstandard: CAP
-  name: Astrolotl
-  num: -57
-  prevo: Solotl
-  tier: CAP
+  - Undiscovered
+  forme: Galar
+  gender: N
+  heightm: 1.7
+  name: Articuno-Galar
+  num: 144
+  tier: NU
   types:
-  - Fire
-  - Dragon
-  weightkg: 50
+  - Psychic
+  - Flying
+  weightkg: 50.9
 audino:
   abilities:
     '0': Healer
@@ -1800,12 +1732,11 @@ audino:
   - Audino
   - Audino-Mega
   heightm: 1.1
-  isNonstandard: Past
   name: Audino
   num: 531
   otherFormes:
   - Audino-Mega
-  tier: Illegal
+  tier: (PU)
   types:
   - Normal
   weightkg: 31
@@ -1853,42 +1784,14 @@ aurorus:
     F: 0.125
     M: 0.875
   heightm: 2.7
-  isNonstandard: Past
   name: Aurorus
   num: 699
   prevo: Amaura
-  tier: Illegal
+  tier: (PU)
   types:
   - Rock
   - Ice
   weightkg: 225
-aurumoth:
-  abilities:
-    '0': Weak Armor
-    '1': No Guard
-    H: Light Metal
-  baseStats:
-    atk: 120
-    def: 99
-    hp: 110
-    spa: 117
-    spd: 60
-    spe: 94
-  color: Purple
-  eggGroups:
-  - Bug
-  evoLevel: 50
-  gen: 5
-  heightm: 2.1
-  isNonstandard: CAP
-  name: Aurumoth
-  num: -27
-  prevo: Argalis
-  tier: CAP
-  types:
-  - Bug
-  - Psychic
-  weightkg: 193
 avalugg:
   abilities:
     '0': Own Tempo
@@ -1910,7 +1813,7 @@ avalugg:
   name: Avalugg
   num: 713
   prevo: Bergmite
-  tier: NU
+  tier: (PU)
   types:
   - Ice
   weightkg: 505
@@ -1954,10 +1857,9 @@ azelf:
   - Undiscovered
   gender: N
   heightm: 0.3
-  isNonstandard: Past
   name: Azelf
   num: 482
-  tier: Illegal
+  tier: UU
   types:
   - Psychic
   weightkg: 0.3
@@ -1982,7 +1884,7 @@ azumarill:
   name: Azumarill
   num: 184
   prevo: Marill
-  tier: OU
+  tier: UU
   types:
   - Water
   - Fairy
@@ -2033,10 +1935,9 @@ bagon:
   evos:
   - Shelgon
   heightm: 0.6
-  isNonstandard: Past
   name: Bagon
   num: 371
-  tier: Illegal
+  tier: LC
   types:
   - Dragon
   weightkg: 42.1
@@ -2138,7 +2039,7 @@ barbaracle:
   name: Barbaracle
   num: 689
   prevo: Binacle
-  tier: RUBL
+  tier: NUBL
   types:
   - Rock
   - Water
@@ -2187,7 +2088,7 @@ barraskewda:
   name: Barraskewda
   num: 847
   prevo: Arrokuda
-  tier: RU
+  tier: OU
   types:
   - Water
   weightkg: 30
@@ -2215,7 +2116,7 @@ basculin:
   num: 550
   otherFormes:
   - Basculin-Blue-Striped
-  tier: NU
+  tier: (PU)
   types:
   - Water
   weightkg: 18
@@ -2239,7 +2140,7 @@ basculinbluestriped:
   heightm: 1
   name: Basculin-Blue-Striped
   num: 550
-  tier: NU
+  tier: (PU)
   types:
   - Water
   weightkg: 18
@@ -2446,10 +2347,9 @@ beldum:
   - Metang
   gender: N
   heightm: 0.6
-  isNonstandard: Past
   name: Beldum
   num: 374
-  tier: Illegal
+  tier: LC
   types:
   - Steel
   - Psychic
@@ -2548,7 +2448,7 @@ bewear:
   name: Bewear
   num: 760
   prevo: Stufful
-  tier: RU
+  tier: NU
   types:
   - Normal
   - Fighting
@@ -2671,10 +2571,9 @@ blacephalon:
   - Undiscovered
   gender: N
   heightm: 1.8
-  isNonstandard: Past
   name: Blacephalon
   num: 806
-  tier: Illegal
+  tier: UUBL
   types:
   - Fire
   - Ghost
@@ -2708,7 +2607,7 @@ blastoise:
   otherFormes:
   - Blastoise-Mega
   prevo: Wartortle
-  tier: RU
+  tier: NU
   types:
   - Water
   weightkg: 85.5
@@ -2737,7 +2636,7 @@ blastoisegmax:
   isNonstandard: Gigantamax
   name: Blastoise-Gmax
   num: 9
-  tier: (Uber)
+  tier: AG
   types:
   - Water
   weightkg: 0
@@ -2791,13 +2690,12 @@ blaziken:
     F: 0.125
     M: 0.875
   heightm: 1.9
-  isNonstandard: Past
   name: Blaziken
   num: 257
   otherFormes:
   - Blaziken-Mega
   prevo: Combusken
-  tier: Illegal
+  tier: UUBL
   types:
   - Fire
   - Fighting
@@ -2949,7 +2847,7 @@ boltund:
   name: Boltund
   num: 836
   prevo: Yamper
-  tier: PU
+  tier: (PU)
   types:
   - Electric
   weightkg: 34
@@ -2996,7 +2894,7 @@ bouffalant:
   heightm: 1.6
   name: Bouffalant
   num: 626
-  tier: NU
+  tier: (PU)
   types:
   - Normal
   weightkg: 94.6
@@ -3054,34 +2952,6 @@ braixen:
   types:
   - Fire
   weightkg: 14.5
-brattler:
-  abilities:
-    '0': Harvest
-    '1': Infiltrator
-    H: Rattled
-  baseStats:
-    atk: 70
-    def: 40
-    hp: 80
-    spa: 20
-    spd: 90
-    spe: 30
-  color: Brown
-  eggGroups:
-  - Grass
-  - Dragon
-  evos:
-  - Malaconda
-  gen: 5
-  heightm: 1.8
-  isNonstandard: CAP
-  name: Brattler
-  num: -28
-  tier: CAP LC
-  types:
-  - Dark
-  - Grass
-  weightkg: 11.5
 braviary:
   abilities:
     '0': Keen Eye
@@ -3103,38 +2973,11 @@ braviary:
   name: Braviary
   num: 628
   prevo: Rufflet
-  tier: RU
+  tier: PU
   types:
   - Normal
   - Flying
   weightkg: 41
-breezi:
-  abilities:
-    '0': Unburden
-    '1': Own Tempo
-    H: Frisk
-  baseStats:
-    atk: 46
-    def: 69
-    hp: 50
-    spa: 60
-    spd: 50
-    spe: 75
-  color: Purple
-  eggGroups:
-  - Field
-  evos:
-  - Fidgit
-  gen: 4
-  heightm: 0.4
-  isNonstandard: CAP
-  name: Breezi
-  num: -7
-  tier: CAP LC
-  types:
-  - Poison
-  - Flying
-  weightkg: 0.6
 breloom:
   abilities:
     '0': Effect Spore
@@ -3212,7 +3055,7 @@ bronzong:
   name: Bronzong
   num: 437
   prevo: Bronzor
-  tier: RU
+  tier: NU
   types:
   - Steel
   - Psychic
@@ -3450,7 +3293,7 @@ butterfree:
   name: Butterfree
   num: 12
   prevo: Metapod
-  tier: PUBL
+  tier: (PU)
   types:
   - Bug
   - Flying
@@ -3476,7 +3319,7 @@ butterfreegmax:
   isNonstandard: Gigantamax
   name: Butterfree-Gmax
   num: 12
-  tier: (Uber)
+  tier: AG
   types:
   - Bug
   - Flying
@@ -3496,10 +3339,9 @@ buzzwole:
   - Undiscovered
   gender: N
   heightm: 2.4
-  isNonstandard: Past
   name: Buzzwole
   num: 794
-  tier: Illegal
+  tier: OU
   types:
   - Bug
   - Fighting
@@ -3555,36 +3397,85 @@ cacturne:
   - Grass
   - Dark
   weightkg: 77.4
-caimanoe:
+calyrex:
   abilities:
-    '0': Water Veil
-    '1': Heatproof
-    H: Light Metal
+    '0': Unnerve
+  baseStats:
+    atk: 80
+    def: 80
+    hp: 100
+    spa: 80
+    spd: 80
+    spe: 80
+  color: Green
+  eggGroups:
+  - Undiscovered
+  formeOrder:
+  - Calyrex
+  - Calyrex-Ice
+  - Calyrex-Shadow
+  gender: N
+  heightm: 1.1
+  name: Calyrex
+  num: 898
+  otherFormes:
+  - Calyrex-Ice
+  - Calyrex-Shadow
+  tier: (PU)
+  types:
+  - Psychic
+  - Grass
+  weightkg: 7.7
+calyrexice:
+  abilities:
+    '0': As One (Glastrier)
+  baseSpecies: Calyrex
+  baseStats:
+    atk: 165
+    def: 150
+    hp: 100
+    spa: 85
+    spd: 130
+    spe: 50
+  changesFrom: Calyrex
+  color: White
+  eggGroups:
+  - Undiscovered
+  forme: Ice
+  gender: N
+  heightm: 2.4
+  name: Calyrex-Ice
+  num: 898
+  tier: Uber
+  types:
+  - Psychic
+  - Ice
+  weightkg: 809.1
+calyrexshadow:
+  abilities:
+    '0': As One (Spectrier)
+  baseSpecies: Calyrex
   baseStats:
     atk: 85
-    def: 65
-    hp: 73
-    spa: 80
-    spd: 40
-    spe: 87
-  color: Gray
+    def: 80
+    hp: 100
+    spa: 165
+    spd: 100
+    spe: 150
+  changesFrom: Calyrex
+  color: Black
   eggGroups:
-  - Water 1
-  - Field
-  evoLevel: 21
-  evos:
-  - Naviathan
-  gen: 6
-  heightm: 1.4
-  isNonstandard: CAP
-  name: Caimanoe
-  num: -37
-  prevo: Floatoy
-  tier: CAP NFE
+  - Undiscovered
+  forme: Shadow
+  gender: N
+  heightm: 2.4
+  name: Calyrex-Shadow
+  num: 898
+  tier: Uber
   types:
-  - Water
-  - Steel
-  weightkg: 72.5
+  - Psychic
+  - Ghost
+  weightkg: 53.6
 camerupt:
   abilities:
     '0': Magma Armor
@@ -3658,43 +3549,13 @@ carbink:
   - Mineral
   gender: N
   heightm: 0.3
-  isNonstandard: Past
   name: Carbink
   num: 703
-  tier: Illegal
+  tier: (PU)
   types:
   - Rock
   - Fairy
   weightkg: 5.7
-caribolt:
-  abilities:
-    '0': Overgrow
-    H: Galvanize
-  baseStats:
-    atk: 106
-    def: 82
-    hp: 84
-    spa: 77
-    spd: 80
-    spe: 106
-  color: Green
-  eggGroups:
-  - Field
-  evoLevel: 34
-  gen: 7
-  genderRatio:
-    F: 0.125
-    M: 0.875
-  heightm: 2.5
-  isNonstandard: CAP
-  name: Caribolt
-  num: -47
-  prevo: Electrelk
-  tier: CAP
-  types:
-  - Grass
-  - Electric
-  weightkg: 140
 carkol:
   abilities:
     '0': Steam Engine
@@ -3764,11 +3625,10 @@ carracosta:
     F: 0.125
     M: 0.875
   heightm: 1.2
-  isNonstandard: Past
   name: Carracosta
   num: 565
   prevo: Tirtouga
-  tier: Illegal
+  tier: (PU)
   types:
   - Water
   - Rock
@@ -3951,60 +3811,6 @@ caterpie:
   types:
   - Bug
   weightkg: 2.9
-cawdet:
-  abilities:
-    '0': Keen Eye
-    '1': Volt Absorb
-    H: Big Pecks
-  baseStats:
-    atk: 72
-    def: 85
-    hp: 35
-    spa: 40
-    spd: 55
-    spe: 88
-  color: Gray
-  eggGroups:
-  - Flying
-  evos:
-  - Cawmodore
-  gen: 5
-  heightm: 0.76
-  isNonstandard: CAP
-  name: Cawdet
-  num: -30
-  tier: CAP LC
-  types:
-  - Steel
-  - Flying
-  weightkg: 25
-cawmodore:
-  abilities:
-    '0': Intimidate
-    '1': Volt Absorb
-    H: Big Pecks
-  baseStats:
-    atk: 92
-    def: 130
-    hp: 50
-    spa: 65
-    spd: 75
-    spe: 118
-  color: Black
-  eggGroups:
-  - Flying
-  evoLevel: 33
-  gen: 5
-  heightm: 1.7
-  isNonstandard: CAP
-  name: Cawmodore
-  num: -31
-  prevo: Cawdet
-  tier: CAP
-  types:
-  - Steel
-  - Flying
-  weightkg: 37
 celebi:
   abilities:
     '0': Natural Cure
@@ -4022,7 +3828,7 @@ celebi:
   heightm: 0.6
   name: Celebi
   num: 251
-  tier: UU
+  tier: NU
   types:
   - Psychic
   - Grass
@@ -4042,10 +3848,9 @@ celesteela:
   - Undiscovered
   gender: N
   heightm: 9.2
-  isNonstandard: Past
   name: Celesteela
   num: 797
-  tier: Illegal
+  tier: UU
   types:
   - Steel
   - Flying
@@ -4071,7 +3876,7 @@ centiskorch:
   name: Centiskorch
   num: 851
   prevo: Sizzlipede
-  tier: RU
+  tier: (PU)
   types:
   - Fire
   - Bug
@@ -4098,7 +3903,7 @@ centiskorchgmax:
   isNonstandard: Gigantamax
   name: Centiskorch-Gmax
   num: 851
-  tier: (Uber)
+  tier: AG
   types:
   - Fire
   - Bug
@@ -4124,7 +3929,7 @@ chandelure:
   name: Chandelure
   num: 609
   prevo: Lampent
-  tier: UU
+  tier: RU
   types:
   - Ghost
   - Fire
@@ -4155,7 +3960,7 @@ chansey:
   name: Chansey
   num: 113
   prevo: Happiny
-  tier: OU
+  tier: UU
   types:
   - Normal
   weightkg: 34.6
@@ -4190,7 +3995,7 @@ charizard:
   - Charizard-Mega-X
   - Charizard-Mega-Y
   prevo: Charmeleon
-  tier: RU
+  tier: PU
   types:
   - Fire
   - Flying
@@ -4220,7 +4025,7 @@ charizardgmax:
   isNonstandard: Gigantamax
   name: Charizard-Gmax
   num: 6
-  tier: (Uber)
+  tier: AG
   types:
   - Fire
   - Flying
@@ -4460,7 +4265,7 @@ cherubi:
   heightm: 0.4
   name: Cherubi
   num: 420
-  tier: LC Uber
+  tier: NFE
   types:
   - Grass
   weightkg: 3.3
@@ -4698,7 +4503,7 @@ cinccino:
   name: Cinccino
   num: 573
   prevo: Minccino
-  tier: RU
+  tier: (PU)
   types:
   - Normal
   weightkg: 7.5
@@ -4726,7 +4531,7 @@ cinderace:
   name: Cinderace
   num: 815
   prevo: Raboot
-  tier: Uber
+  tier: OU
   types:
   - Fire
   weightkg: 33
@@ -4755,7 +4560,7 @@ cinderacegmax:
   isNonstandard: Gigantamax
   name: Cinderace-Gmax
   num: 815
-  tier: Uber
+  tier: AG
   types:
   - Fire
   weightkg: 0
@@ -4826,7 +4631,7 @@ clawitzer:
   name: Clawitzer
   num: 693
   prevo: Clauncher
-  tier: RU
+  tier: (PU)
   types:
   - Water
   weightkg: 35.3
@@ -4849,7 +4654,7 @@ claydol:
   name: Claydol
   num: 344
   prevo: Baltoy
-  tier: RU
+  tier: PU
   types:
   - Ground
   - Psychic
@@ -4907,7 +4712,7 @@ clefairy:
   name: Clefairy
   num: 35
   prevo: Cleffa
-  tier: NU
+  tier: NFE
   types:
   - Fairy
   weightkg: 7.5
@@ -4984,7 +4789,7 @@ cloyster:
   name: Cloyster
   num: 91
   prevo: Shellder
-  tier: UU
+  tier: RU
   types:
   - Water
   - Ice
@@ -5010,7 +4815,7 @@ coalossal:
   name: Coalossal
   num: 839
   prevo: Carkol
-  tier: RU
+  tier: (PU)
   types:
   - Rock
   - Fire
@@ -5037,7 +4842,7 @@ coalossalgmax:
   isNonstandard: Gigantamax
   name: Coalossal-Gmax
   num: 839
-  tier: (Uber)
+  tier: AG
   types:
   - Rock
   - Fire
@@ -5059,7 +4864,7 @@ cobalion:
   heightm: 2.1
   name: Cobalion
   num: 638
-  tier: UU
+  tier: RU
   types:
   - Steel
   - Fighting
@@ -5083,36 +4888,10 @@ cofagrigus:
   name: Cofagrigus
   num: 563
   prevo: Yamask
-  tier: NU
+  tier: (PU)
   types:
   - Ghost
   weightkg: 76.5
-colossoil:
-  abilities:
-    '0': Rebound
-    '1': Guts
-    H: Unnerve
-  baseStats:
-    atk: 122
-    def: 72
-    hp: 133
-    spa: 71
-    spd: 72
-    spe: 95
-  color: Brown
-  eggGroups:
-  - Water 2
-  - Field
-  gen: 4
-  heightm: 2.6
-  isNonstandard: CAP
-  name: Colossoil
-  num: -16
-  tier: CAP
-  types:
-  - Dark
-  - Ground
-  weightkg: 683.6
 combee:
   abilities:
     '0': Honey Gather
@@ -5161,11 +4940,10 @@ combusken:
     F: 0.125
     M: 0.875
   heightm: 0.9
-  isNonstandard: Past
   name: Combusken
   num: 256
   prevo: Torchic
-  tier: Illegal
+  tier: NFE
   types:
   - Fire
   - Fighting
@@ -5191,7 +4969,7 @@ comfey:
   heightm: 0.1
   name: Comfey
   num: 764
-  tier: RU
+  tier: NU
   types:
   - Fairy
   weightkg: 0.3
@@ -5218,7 +4996,7 @@ conkeldurr:
   name: Conkeldurr
   num: 534
   prevo: Gurdurr
-  tier: UUBL
+  tier: UU
   types:
   - Fighting
   weightkg: 87
@@ -5243,7 +5021,7 @@ copperajah:
   name: Copperajah
   num: 879
   prevo: Cufant
-  tier: RU
+  tier: NU
   types:
   - Steel
   weightkg: 650
@@ -5269,42 +5047,10 @@ copperajahgmax:
   isNonstandard: Gigantamax
   name: Copperajah-Gmax
   num: 879
-  tier: (Uber)
+  tier: AG
   types:
   - Steel
   weightkg: 0
-coribalis:
-  abilities:
-    '0': Torrent
-    H: Poison Heal
-  baseStats:
-    atk: 69
-    def: 90
-    hp: 76
-    spa: 65
-    spd: 77
-    spe: 43
-  color: Blue
-  eggGroups:
-  - Water 1
-  - Fairy
-  evoLevel: 17
-  evos:
-  - Snaelstrom
-  gen: 7
-  genderRatio:
-    F: 0.125
-    M: 0.875
-  heightm: 1.4
-  isNonstandard: CAP
-  name: Coribalis
-  num: -52
-  prevo: Swirlpool
-  tier: CAP NFE
-  types:
-  - Water
-  - Bug
-  weightkg: 24.5
 corphish:
   abilities:
     '0': Hyper Cutter
@@ -5387,7 +5133,7 @@ corsolagalar:
   heightm: 0.6
   name: Corsola-Galar
   num: 222
-  tier: RU
+  tier: NFE
   types:
   - Ghost
   weightkg: 0.5
@@ -5439,7 +5185,7 @@ corviknightgmax:
   isNonstandard: Gigantamax
   name: Corviknight-Gmax
   num: 823
-  tier: (Uber)
+  tier: AG
   types:
   - Flying
   - Steel
@@ -5616,11 +5362,10 @@ cradily:
     F: 0.125
     M: 0.875
   heightm: 1.5
-  isNonstandard: Past
   name: Cradily
   num: 346
   prevo: Lileep
-  tier: Illegal
+  tier: (PU)
   types:
   - Rock
   - Grass
@@ -5649,7 +5394,7 @@ cramorant:
   otherFormes:
   - Cramorant-Gulping
   - Cramorant-Gorging
-  tier: NU
+  tier: (PU)
   types:
   - Flying
   - Water
@@ -5752,7 +5497,7 @@ crawdaunt:
   name: Crawdaunt
   num: 342
   prevo: Corphish
-  tier: OU
+  tier: UU
   types:
   - Water
   - Dark
@@ -5772,10 +5517,9 @@ cresselia:
   - Undiscovered
   gender: F
   heightm: 1.5
-  isNonstandard: Past
   name: Cresselia
   num: 488
-  tier: Illegal
+  tier: NU
   types:
   - Psychic
   weightkg: 85.6
@@ -5820,11 +5564,10 @@ crobat:
   - Flying
   evoType: levelFriendship
   heightm: 1.8
-  isNonstandard: Past
   name: Crobat
   num: 169
   prevo: Golbat
-  tier: Illegal
+  tier: RU
   types:
   - Poison
   - Flying
@@ -5859,70 +5602,6 @@ croconaw:
   types:
   - Water
   weightkg: 25
-crucibelle:
-  abilities:
-    '0': Regenerator
-    '1': Mold Breaker
-    H: Liquid Ooze
-  baseStats:
-    atk: 105
-    def: 65
-    hp: 106
-    spa: 75
-    spd: 85
-    spe: 104
-  color: Purple
-  eggGroups:
-  - Amorphous
-  - Mineral
-  formeOrder:
-  - Crucibelle
-  - Crucibelle-Mega
-  gen: 6
-  genderRatio:
-    F: 0.75
-    M: 0.25
-  heightm: 1.3
-  isNonstandard: CAP
-  name: Crucibelle
-  num: -39
-  otherFormes:
-  - Crucibelle-Mega
-  tier: CAP
-  types:
-  - Rock
-  - Poison
-  weightkg: 23.6
-crucibellemega:
-  abilities:
-    '0': Magic Guard
-  baseSpecies: Crucibelle
-  baseStats:
-    atk: 135
-    def: 75
-    hp: 106
-    spa: 91
-    spd: 125
-    spe: 108
-  color: Purple
-  eggGroups:
-  - Amorphous
-  - Mineral
-  forme: Mega
-  gen: 6
-  genderRatio:
-    F: 0.75
-    M: 0.25
-  heightm: 1.4
-  isNonstandard: CAP
-  name: Crucibelle-Mega
-  num: -39
-  requiredItem: Crucibellite
-  tier: CAP
-  types:
-  - Rock
-  - Poison
-  weightkg: 22.5
 crustle:
   abilities:
     '0': Sturdy
@@ -5944,7 +5623,7 @@ crustle:
   name: Crustle
   num: 558
   prevo: Dwebble
-  tier: PU
+  tier: (PU)
   types:
   - Bug
   - Rock
@@ -5964,10 +5643,9 @@ cryogonal:
   - Mineral
   gender: N
   heightm: 1.1
-  isNonstandard: Past
   name: Cryogonal
   num: 615
-  tier: Illegal
+  tier: (PU)
   types:
   - Ice
   weightkg: 148
@@ -6044,33 +5722,6 @@ cufant:
   types:
   - Steel
   weightkg: 100
-cupra:
-  abilities:
-    '0': Shield Dust
-    '1': Keen Eye
-    H: Magic Guard
-  baseStats:
-    atk: 60
-    def: 49
-    hp: 50
-    spa: 67
-    spd: 30
-    spe: 44
-  color: Brown
-  eggGroups:
-  - Bug
-  evos:
-  - Argalis
-  gen: 5
-  heightm: 0.5
-  isNonstandard: CAP
-  name: Cupra
-  num: -25
-  tier: CAP LC
-  types:
-  - Bug
-  - Psychic
-  weightkg: 4.8
 cursola:
   abilities:
     '0': Weak Armor
@@ -6094,7 +5745,7 @@ cursola:
   name: Cursola
   num: 864
   prevo: Corsola-Galar
-  tier: NU
+  tier: (PU)
   types:
   - Ghost
   weightkg: 0.4
@@ -6119,37 +5770,11 @@ cutiefly:
   heightm: 0.1
   name: Cutiefly
   num: 742
-  tier: LC Uber
+  tier: NFE
   types:
   - Bug
   - Fairy
   weightkg: 0.2
-cyclohm:
-  abilities:
-    '0': Shield Dust
-    '1': Static
-    H: Damp
-  baseStats:
-    atk: 60
-    def: 118
-    hp: 108
-    spa: 112
-    spd: 70
-    spe: 80
-  color: Yellow
-  eggGroups:
-  - Dragon
-  - Monster
-  gen: 4
-  heightm: 1.6
-  isNonstandard: CAP
-  name: Cyclohm
-  num: -15
-  tier: CAP
-  types:
-  - Electric
-  - Dragon
-  weightkg: 59
 cyndaquil:
   abilities:
     '0': Blaze
@@ -6228,7 +5853,7 @@ darmanitan:
   - Darmanitan-Galar
   - Darmanitan-Galar-Zen
   prevo: Darumaka
-  tier: UU
+  tier: RU
   types:
   - Fire
   weightkg: 92.9
@@ -6785,7 +6410,7 @@ dhelmise:
   heightm: 3.9
   name: Dhelmise
   num: 781
-  tier: RU
+  tier: NU
   types:
   - Ghost
   - Grass
@@ -6806,10 +6431,9 @@ dialga:
   - Undiscovered
   gender: N
   heightm: 5.4
-  isNonstandard: Past
   name: Dialga
   num: 483
-  tier: Illegal
+  tier: Uber
   types:
   - Steel
   - Dragon
@@ -6832,12 +6456,11 @@ diancie:
   - Diancie-Mega
   gender: N
   heightm: 0.7
-  isNonstandard: Past
   name: Diancie
   num: 719
   otherFormes:
   - Diancie-Mega
-  tier: Illegal
+  tier: NU
   types:
   - Rock
   - Fairy
@@ -6888,7 +6511,7 @@ diggersby:
   name: Diggersby
   num: 660
   prevo: Bunnelby
-  tier: UUBL
+  tier: RUBL
   types:
   - Normal
   - Ground
@@ -6967,7 +6590,7 @@ ditto:
   heightm: 0.3
   name: Ditto
   num: 132
-  tier: NU
+  tier: (PU)
   types:
   - Normal
   weightkg: 4
@@ -7094,7 +6717,7 @@ doublade:
   name: Doublade
   num: 680
   prevo: Honedge
-  tier: UU
+  tier: RU
   types:
   - Steel
   - Ghost
@@ -7122,7 +6745,6 @@ dracovish:
   types:
   - Water
   - Dragon
-  unreleasedHidden: true
   weightkg: 215
 dracozolt:
   abilities:
@@ -7147,7 +6769,6 @@ dracozolt:
   types:
   - Electric
   - Dragon
-  unreleasedHidden: true
   weightkg: 190
 dragalge:
   abilities:
@@ -7170,7 +6791,7 @@ dragalge:
   name: Dragalge
   num: 691
   prevo: Skrelp
-  tier: RU
+  tier: NU
   types:
   - Poison
   - Dragon
@@ -7220,11 +6841,10 @@ dragonair:
   evos:
   - Dragonite
   heightm: 4
-  isNonstandard: Past
   name: Dragonair
   num: 148
   prevo: Dratini
-  tier: Illegal
+  tier: NFE
   types:
   - Dragon
   weightkg: 16.5
@@ -7245,11 +6865,10 @@ dragonite:
   - Dragon
   evoLevel: 55
   heightm: 2.2
-  isNonstandard: Past
   name: Dragonite
   num: 149
   prevo: Dragonair
-  tier: Illegal
+  tier: OU
   types:
   - Dragon
   - Flying
@@ -7301,7 +6920,7 @@ drampa:
   heightm: 3
   name: Drampa
   num: 780
-  tier: RU
+  tier: (PU)
   types:
   - Normal
   - Dragon
@@ -7327,7 +6946,7 @@ drapion:
   name: Drapion
   num: 452
   prevo: Skorupi
-  tier: RU
+  tier: NU
   types:
   - Poison
   - Dark
@@ -7350,10 +6969,9 @@ dratini:
   evos:
   - Dragonair
   heightm: 1.8
-  isNonstandard: Past
   name: Dratini
   num: 147
-  tier: Illegal
+  tier: LC
   types:
   - Dragon
   weightkg: 3.3
@@ -7379,7 +6997,7 @@ drednaw:
   name: Drednaw
   num: 834
   prevo: Chewtle
-  tier: PU
+  tier: (PU)
   types:
   - Water
   - Rock
@@ -7407,7 +7025,7 @@ drednawgmax:
   isNonstandard: Gigantamax
   name: Drednaw-Gmax
   num: 834
-  tier: (Uber)
+  tier: AG
   types:
   - Water
   - Rock
@@ -7458,7 +7076,7 @@ drifblim:
   name: Drifblim
   num: 426
   prevo: Drifloon
-  tier: PU
+  tier: (PU)
   types:
   - Ghost
   - Flying
@@ -7483,7 +7101,7 @@ drifloon:
   heightm: 0.4
   name: Drifloon
   num: 425
-  tier: LC Uber
+  tier: NFE
   types:
   - Ghost
   - Flying
@@ -7585,7 +7203,7 @@ druddigon:
   heightm: 1.6
   name: Druddigon
   num: 621
-  tier: RU
+  tier: PU
   types:
   - Dragon
   weightkg: 139
@@ -7609,7 +7227,7 @@ dubwool:
   name: Dubwool
   num: 832
   prevo: Wooloo
-  tier: PU
+  tier: (PU)
   types:
   - Normal
   weightkg: 43
@@ -7665,7 +7283,7 @@ dugtrio:
   otherFormes:
   - Dugtrio-Alola
   prevo: Diglett
-  tier: PU
+  tier: (PU)
   types:
   - Ground
   weightkg: 33.3
@@ -7691,7 +7309,7 @@ dugtrioalola:
   name: Dugtrio-Alola
   num: 51
   prevo: Diglett-Alola
-  tier: PU
+  tier: (PU)
   types:
   - Ground
   - Steel
@@ -7764,7 +7382,7 @@ duraludon:
   heightm: 1.8
   name: Duraludon
   num: 884
-  tier: RU
+  tier: PUBL
   types:
   - Steel
   - Dragon
@@ -7792,7 +7410,7 @@ duraludongmax:
   isNonstandard: Gigantamax
   name: Duraludon-Gmax
   num: 884
-  tier: (Uber)
+  tier: AG
   types:
   - Steel
   - Dragon
@@ -7815,7 +7433,7 @@ durant:
   heightm: 0.3
   name: Durant
   num: 632
-  tier: UUBL
+  tier: NUBL
   types:
   - Bug
   - Steel
@@ -7865,7 +7483,7 @@ dusknoir:
   name: Dusknoir
   num: 477
   prevo: Dusclops
-  tier: PU
+  tier: (PU)
   types:
   - Ghost
   weightkg: 106.6
@@ -8057,7 +7675,7 @@ eeveegmax:
   isNonstandard: Gigantamax
   name: Eevee-Gmax
   num: 133
-  tier: (Uber)
+  tier: AG
   types:
   - Normal
   weightkg: 0
@@ -8185,7 +7803,7 @@ eldegoss:
   name: Eldegoss
   num: 830
   prevo: Gossifleur
-  tier: NU
+  tier: (PU)
   types:
   - Grass
   weightkg: 2.5
@@ -8210,11 +7828,10 @@ electabuzz:
     F: 0.25
     M: 0.75
   heightm: 1.1
-  isNonstandard: Past
   name: Electabuzz
   num: 125
   prevo: Elekid
-  tier: Illegal
+  tier: NFE
   types:
   - Electric
   weightkg: 30
@@ -8232,51 +7849,19 @@ electivire:
   color: Yellow
   eggGroups:
   - Human-Like
-  evoItem: Electrizer
+  evoItem: Electirizer
   evoType: trade
   genderRatio:
     F: 0.25
     M: 0.75
   heightm: 1.8
-  isNonstandard: Past
   name: Electivire
   num: 466
   prevo: Electabuzz
-  tier: Illegal
+  tier: (PU)
   types:
   - Electric
   weightkg: 138.6
-electrelk:
-  abilities:
-    '0': Overgrow
-    H: Galvanize
-  baseStats:
-    atk: 81
-    def: 67
-    hp: 59
-    spa: 57
-    spd: 55
-    spe: 101
-  color: Green
-  eggGroups:
-  - Field
-  evoLevel: 17
-  evos:
-  - Caribolt
-  gen: 7
-  genderRatio:
-    F: 0.125
-    M: 0.875
-  heightm: 1.4
-  isNonstandard: CAP
-  name: Electrelk
-  num: -46
-  prevo: Fawnifer
-  tier: CAP NFE
-  types:
-  - Grass
-  - Electric
-  weightkg: 41.5
 electrike:
   abilities:
     '0': Static
@@ -8348,10 +7933,9 @@ elekid:
     F: 0.25
     M: 0.75
   heightm: 0.6
-  isNonstandard: Past
   name: Elekid
   num: 239
-  tier: Illegal
+  tier: LC
   types:
   - Electric
   weightkg: 23.5
@@ -8379,34 +7963,6 @@ elgyem:
   types:
   - Psychic
   weightkg: 9
-embirch:
-  abilities:
-    '0': Reckless
-    '1': Leaf Guard
-    H: Chlorophyll
-  baseStats:
-    atk: 40
-    def: 55
-    hp: 60
-    spa: 65
-    spd: 40
-    spe: 60
-  color: Brown
-  eggGroups:
-  - Monster
-  - Dragon
-  evos:
-  - Flarelm
-  gen: 4
-  heightm: 0.6
-  isNonstandard: CAP
-  name: Embirch
-  num: -4
-  tier: CAP LC
-  types:
-  - Fire
-  - Grass
-  weightkg: 15
 emboar:
   abilities:
     '0': Blaze
@@ -8502,41 +8058,12 @@ entei:
   - Undiscovered
   gender: N
   heightm: 2.1
-  isNonstandard: Past
   name: Entei
   num: 244
-  tier: Illegal
+  tier: RU
   types:
   - Fire
   weightkg: 198
-equilibra:
-  abilities:
-    '0': Levitate
-    '1': Bulletproof
-    H: Justified
-  baseStats:
-    atk: 50
-    def: 96
-    hp: 102
-    spa: 133
-    spd: 118
-    spe: 60
-  color: Brown
-  eggGroups:
-  - Mineral
-  evoLevel: 32
-  gen: 7
-  gender: N
-  heightm: 0.8
-  isNonstandard: CAP
-  name: Equilibra
-  num: -55
-  prevo: Justyke
-  tier: CAP
-  types:
-  - Steel
-  - Ground
-  weightkg: 51.3
 escavalier:
   abilities:
     '0': Swarm
@@ -8558,7 +8085,7 @@ escavalier:
   name: Escavalier
   num: 589
   prevo: Karrablast
-  tier: RU
+  tier: NU
   types:
   - Bug
   - Steel
@@ -8586,7 +8113,7 @@ espeon:
   name: Espeon
   num: 196
   prevo: Eevee
-  tier: RU
+  tier: NU
   types:
   - Psychic
   weightkg: 26.5
@@ -8744,7 +8271,7 @@ exeggutor:
   otherFormes:
   - Exeggutor-Alola
   prevo: Exeggcute
-  tier: PUBL
+  tier: (PU)
   types:
   - Grass
   - Psychic
@@ -8771,7 +8298,7 @@ exeggutoralola:
   name: Exeggutor-Alola
   num: 103
   prevo: Exeggcute
-  tier: RU
+  tier: (PU)
   types:
   - Grass
   - Dragon
@@ -8796,7 +8323,7 @@ exploud:
   name: Exploud
   num: 295
   prevo: Loudred
-  tier: RU
+  tier: PUBL
   types:
   - Normal
   weightkg: 84
@@ -8819,7 +8346,7 @@ falinks:
   heightm: 3
   name: Falinks
   num: 870
-  tier: PU
+  tier: (PU)
   types:
   - Fighting
   weightkg: 62
@@ -8878,34 +8405,6 @@ farfetchdgalar:
   types:
   - Fighting
   weightkg: 15
-fawnifer:
-  abilities:
-    '0': Overgrow
-    H: Lightning Rod
-  baseStats:
-    atk: 61
-    def: 42
-    hp: 49
-    spa: 52
-    spd: 40
-    spe: 76
-  color: Green
-  eggGroups:
-  - Field
-  evos:
-  - Electrelk
-  gen: 7
-  genderRatio:
-    F: 0.125
-    M: 0.875
-  heightm: 0.7
-  isNonstandard: CAP
-  name: Fawnifer
-  num: -45
-  tier: CAP LC
-  types:
-  - Grass
-  weightkg: 6.9
 fearow:
   abilities:
     '0': Keen Eye
@@ -9030,7 +8529,7 @@ ferroseed:
   heightm: 0.6
   name: Ferroseed
   num: 597
-  tier: NU
+  tier: LC
   types:
   - Grass
   - Steel
@@ -9060,33 +8559,6 @@ ferrothorn:
   - Grass
   - Steel
   weightkg: 110
-fidgit:
-  abilities:
-    '0': Persistent
-    '1': Vital Spirit
-    H: Frisk
-  baseStats:
-    atk: 76
-    def: 109
-    hp: 95
-    spa: 90
-    spd: 80
-    spe: 105
-  color: Purple
-  eggGroups:
-  - Field
-  evoLevel: 33
-  gen: 4
-  heightm: 0.9
-  isNonstandard: CAP
-  name: Fidgit
-  num: -8
-  prevo: Breezi
-  tier: CAP
-  types:
-  - Poison
-  - Ground
-  weightkg: 53
 finneon:
   abilities:
     '0': Swift Swim
@@ -9199,7 +8671,7 @@ flapple:
   name: Flapple
   num: 841
   prevo: Applin
-  tier: PUBL
+  tier: (PU)
   types:
   - Grass
   - Dragon
@@ -9227,41 +8699,11 @@ flapplegmax:
   isNonstandard: Gigantamax
   name: Flapple-Gmax
   num: 841
-  tier: (Uber)
+  tier: AG
   types:
   - Grass
   - Dragon
   weightkg: 0
-flarelm:
-  abilities:
-    '0': Rock Head
-    '1': Battle Armor
-    H: White Smoke
-  baseStats:
-    atk: 50
-    def: 95
-    hp: 90
-    spa: 75
-    spd: 70
-    spe: 40
-  color: Brown
-  eggGroups:
-  - Monster
-  - Dragon
-  evoLevel: 24
-  evos:
-  - Pyroak
-  gen: 4
-  heightm: 1.4
-  isNonstandard: CAP
-  name: Flarelm
-  num: -5
-  prevo: Embirch
-  tier: CAP NFE
-  types:
-  - Fire
-  - Grass
-  weightkg: 73
 flareon:
   abilities:
     '0': Flash Fire
@@ -9285,7 +8727,7 @@ flareon:
   name: Flareon
   num: 136
   prevo: Eevee
-  tier: PU
+  tier: (PU)
   types:
   - Fire
   weightkg: 25
@@ -9339,33 +8781,6 @@ fletchling:
   - Normal
   - Flying
   weightkg: 1.7
-floatoy:
-  abilities:
-    '0': Water Veil
-    '1': Heatproof
-    H: Swift Swim
-  baseStats:
-    atk: 70
-    def: 40
-    hp: 48
-    spa: 70
-    spd: 30
-    spe: 77
-  color: White
-  eggGroups:
-  - Water 1
-  - Field
-  evos:
-  - Caimanoe
-  gen: 6
-  heightm: 0.8
-  isNonstandard: CAP
-  name: Floatoy
-  num: -36
-  tier: CAP LC
-  types:
-  - Water
-  weightkg: 1.9
 floatzel:
   abilities:
     '0': Swift Swim
@@ -9514,7 +8929,7 @@ flygon:
   name: Flygon
   num: 330
   prevo: Vibrava
-  tier: UU
+  tier: NU
   types:
   - Ground
   - Dragon
@@ -9721,7 +9136,7 @@ froslass:
   name: Froslass
   num: 478
   prevo: Snorunt
-  tier: NU
+  tier: (PU)
   types:
   - Ice
   - Ghost
@@ -9746,7 +9161,7 @@ frosmoth:
   name: Frosmoth
   num: 873
   prevo: Snom
-  tier: RU
+  tier: (PU)
   types:
   - Ice
   - Bug
@@ -9838,11 +9253,10 @@ gabite:
   evos:
   - Garchomp
   heightm: 1.4
-  isNonstandard: Past
   name: Gabite
   num: 444
   prevo: Gible
-  tier: Illegal
+  tier: NFE
   types:
   - Dragon
   - Ground
@@ -9874,7 +9288,7 @@ gallade:
   otherFormes:
   - Gallade-Mega
   prevo: Kirlia
-  tier: NUBL
+  tier: (PU)
   types:
   - Psychic
   - Fighting
@@ -9925,7 +9339,7 @@ galvantula:
   name: Galvantula
   num: 596
   prevo: Joltik
-  tier: RU
+  tier: PU
   types:
   - Bug
   - Electric
@@ -9951,7 +9365,7 @@ garbodor:
   name: Garbodor
   num: 569
   prevo: Trubbish
-  tier: NU
+  tier: (PU)
   types:
   - Poison
   weightkg: 107.3
@@ -9977,7 +9391,7 @@ garbodorgmax:
   isNonstandard: Gigantamax
   name: Garbodor-Gmax
   num: 569
-  tier: (Uber)
+  tier: AG
   types:
   - Poison
   weightkg: 0
@@ -10001,13 +9415,12 @@ garchomp:
   - Garchomp
   - Garchomp-Mega
   heightm: 1.9
-  isNonstandard: Past
   name: Garchomp
   num: 445
   otherFormes:
   - Garchomp-Mega
   prevo: Gabite
-  tier: Illegal
+  tier: OU
   types:
   - Dragon
   - Ground
@@ -10112,7 +9525,7 @@ gastly:
   heightm: 1.3
   name: Gastly
   num: 92
-  tier: LC Uber
+  tier: NFE
   types:
   - Ghost
   - Poison
@@ -10144,7 +9557,7 @@ gastrodon:
   name: Gastrodon
   num: 423
   prevo: Shellos
-  tier: RU
+  tier: NU
   types:
   - Water
   - Ground
@@ -10170,7 +9583,6 @@ genesect:
   - Genesect-Chill
   gender: N
   heightm: 1.5
-  isNonstandard: Past
   name: Genesect
   num: 649
   otherFormes:
@@ -10178,7 +9590,7 @@ genesect:
   - Genesect-Shock
   - Genesect-Burn
   - Genesect-Chill
-  tier: Illegal
+  tier: Uber
   types:
   - Bug
   - Steel
@@ -10201,10 +9613,10 @@ genesectburn:
   forme: Burn
   gender: N
   heightm: 1.5
-  isNonstandard: Past
   name: Genesect-Burn
   num: 649
   requiredItem: Burn Drive
+  tier: Uber
   types:
   - Bug
   - Steel
@@ -10227,10 +9639,10 @@ genesectchill:
   forme: Chill
   gender: N
   heightm: 1.5
-  isNonstandard: Past
   name: Genesect-Chill
   num: 649
   requiredItem: Chill Drive
+  tier: Uber
   types:
   - Bug
   - Steel
@@ -10253,10 +9665,10 @@ genesectdouse:
   forme: Douse
   gender: N
   heightm: 1.5
-  isNonstandard: Past
   name: Genesect-Douse
   num: 649
   requiredItem: Douse Drive
+  tier: Uber
   types:
   - Bug
   - Steel
@@ -10279,10 +9691,10 @@ genesectshock:
   forme: Shock
   gender: N
   heightm: 1.5
-  isNonstandard: Past
   name: Genesect-Shock
   num: 649
   requiredItem: Shock Drive
+  tier: Uber
   types:
   - Bug
   - Steel
@@ -10336,7 +9748,7 @@ gengargmax:
   isNonstandard: Gigantamax
   name: Gengar-Gmax
   num: 94
-  tier: (Uber)
+  tier: AG
   types:
   - Ghost
   - Poison
@@ -10443,10 +9855,9 @@ gible:
   evos:
   - Gabite
   heightm: 0.7
-  isNonstandard: Past
   name: Gible
   num: 443
-  tier: Illegal
+  tier: LC
   types:
   - Dragon
   - Ground
@@ -10471,7 +9882,7 @@ gigalith:
   name: Gigalith
   num: 526
   prevo: Boldore
-  tier: RU
+  tier: PU
   types:
   - Rock
   weightkg: 260
@@ -10519,12 +9930,11 @@ giratina:
   - Giratina-Origin
   gender: N
   heightm: 4.5
-  isNonstandard: Past
   name: Giratina
   num: 487
   otherFormes:
   - Giratina-Origin
-  tier: Illegal
+  tier: Uber
   types:
   - Ghost
   - Dragon
@@ -10547,11 +9957,10 @@ giratinaorigin:
   forme: Origin
   gender: N
   heightm: 6.9
-  isNonstandard: Past
   name: Giratina-Origin
   num: 487
   requiredItem: Griseous Orb
-  tier: Illegal
+  tier: Uber
   types:
   - Ghost
   - Dragon
@@ -10579,7 +9988,7 @@ glaceon:
   name: Glaceon
   num: 471
   prevo: Eevee
-  tier: PU
+  tier: (PU)
   types:
   - Ice
   weightkg: 25.9
@@ -10666,6 +10075,27 @@ glameow:
   types:
   - Normal
   weightkg: 3.9
+glastrier:
+  abilities:
+    '0': Chilling Neigh
+  baseStats:
+    atk: 145
+    def: 130
+    hp: 100
+    spa: 65
+    spd: 110
+    spe: 30
+  color: White
+  eggGroups:
+  - Undiscovered
+  gender: N
+  heightm: 2.2
+  name: Glastrier
+  num: 896
+  tier: RU
+  types:
+  - Ice
+  weightkg: 800
 gligar:
   abilities:
     '0': Hyper Cutter
@@ -10789,11 +10219,10 @@ golbat:
   evos:
   - Crobat
   heightm: 1.6
-  isNonstandard: Past
   name: Golbat
   num: 42
   prevo: Zubat
-  tier: Illegal
+  tier: NFE
   types:
   - Poison
   - Flying
@@ -10843,7 +10272,7 @@ golduck:
   name: Golduck
   num: 55
   prevo: Psyduck
-  tier: PU
+  tier: (PU)
   types:
   - Water
   weightkg: 76.6
@@ -10951,7 +10380,7 @@ golisopod:
   name: Golisopod
   num: 768
   prevo: Wimpod
-  tier: RU
+  tier: NU
   types:
   - Bug
   - Water
@@ -11002,7 +10431,7 @@ goodra:
   name: Goodra
   num: 706
   prevo: Sliggoo
-  tier: RU
+  tier: NU
   types:
   - Dragon
   weightkg: 150.5
@@ -11102,7 +10531,7 @@ gothita:
   heightm: 0.4
   name: Gothita
   num: 574
-  tier: LC Uber
+  tier: NFE
   types:
   - Psychic
   weightkg: 5.8
@@ -11192,7 +10621,7 @@ gourgeist:
   - Gourgeist-Large
   - Gourgeist-Super
   prevo: Pumpkaboo
-  tier: PU
+  tier: (PU)
   types:
   - Ghost
   - Grass
@@ -11223,7 +10652,6 @@ gourgeistlarge:
   types:
   - Ghost
   - Grass
-  unreleasedHidden: true
   weightkg: 14
 gourgeistsmall:
   abilities:
@@ -11247,11 +10675,10 @@ gourgeistsmall:
   name: Gourgeist-Small
   num: 711
   prevo: Pumpkaboo-Small
-  tier: NU
+  tier: (PU)
   types:
   - Ghost
   - Grass
-  unreleasedHidden: true
   weightkg: 9.5
 gourgeistsuper:
   abilities:
@@ -11275,7 +10702,7 @@ gourgeistsuper:
   name: Gourgeist-Super
   num: 711
   prevo: Pumpkaboo-Super
-  tier: PU
+  tier: (PU)
   types:
   - Ghost
   - Grass
@@ -11593,7 +11020,7 @@ grimmsnarlgmax:
   isNonstandard: Gigantamax
   name: Grimmsnarl-Gmax
   num: 861
-  tier: (Uber)
+  tier: AG
   types:
   - Dark
   - Fairy
@@ -11673,12 +11100,11 @@ groudon:
   - Groudon-Primal
   gender: N
   heightm: 3.5
-  isNonstandard: Past
   name: Groudon
   num: 383
   otherFormes:
   - Groudon-Primal
-  tier: Illegal
+  tier: Uber
   types:
   - Ground
   weightkg: 950
@@ -11703,6 +11129,7 @@ groudonprimal:
   name: Groudon-Primal
   num: 383
   requiredItem: Red Orb
+  tier: Illegal
   types:
   - Ground
   - Fire
@@ -11729,11 +11156,10 @@ grovyle:
     F: 0.125
     M: 0.875
   heightm: 0.9
-  isNonstandard: Past
   name: Grovyle
   num: 253
   prevo: Treecko
-  tier: Illegal
+  tier: NFE
   types:
   - Grass
   weightkg: 21.6
@@ -11914,7 +11340,7 @@ gurdurr:
   name: Gurdurr
   num: 533
   prevo: Timburr
-  tier: NU
+  tier: NFE
   types:
   - Fighting
   weightkg: 40
@@ -11933,10 +11359,9 @@ guzzlord:
   - Undiscovered
   gender: N
   heightm: 5.5
-  isNonstandard: Past
   name: Guzzlord
   num: 799
-  tier: Illegal
+  tier: PU
   types:
   - Dark
   - Dragon
@@ -11966,7 +11391,7 @@ gyarados:
   otherFormes:
   - Gyarados-Mega
   prevo: Magikarp
-  tier: UUBL
+  tier: UU
   types:
   - Water
   - Flying
@@ -12153,7 +11578,7 @@ hatterenegmax:
   isNonstandard: Gigantamax
   name: Hatterene-Gmax
   num: 858
-  tier: (Uber)
+  tier: AG
   types:
   - Psychic
   - Fairy
@@ -12181,7 +11606,7 @@ hattrem:
   name: Hattrem
   num: 857
   prevo: Hatenna
-  tier: PU
+  tier: NFE
   types:
   - Psychic
   weightkg: 4.8
@@ -12205,7 +11630,7 @@ haunter:
   name: Haunter
   num: 93
   prevo: Gastly
-  tier: NUBL
+  tier: NFE
   types:
   - Ghost
   - Poison
@@ -12255,7 +11680,7 @@ haxorus:
   name: Haxorus
   num: 612
   prevo: Fraxure
-  tier: UUBL
+  tier: RUBL
   types:
   - Dragon
   weightkg: 105.5
@@ -12277,7 +11702,7 @@ heatmor:
   heightm: 1.4
   name: Heatmor
   num: 631
-  tier: PU
+  tier: (PU)
   types:
   - Fire
   weightkg: 58
@@ -12296,10 +11721,9 @@ heatran:
   eggGroups:
   - Undiscovered
   heightm: 1.7
-  isNonstandard: Past
   name: Heatran
   num: 485
-  tier: Illegal
+  tier: OU
   types:
   - Fire
   - Steel
@@ -12326,7 +11750,7 @@ heliolisk:
   name: Heliolisk
   num: 695
   prevo: Helioptile
-  tier: RU
+  tier: PU
   types:
   - Electric
   - Normal
@@ -12380,7 +11804,7 @@ heracross:
   num: 214
   otherFormes:
   - Heracross-Mega
-  tier: UU
+  tier: RU
   types:
   - Bug
   - Fighting
@@ -12504,7 +11928,7 @@ hitmonchan:
   name: Hitmonchan
   num: 107
   prevo: Tyrogue
-  tier: PU
+  tier: (PU)
   types:
   - Fighting
   weightkg: 50.2
@@ -12530,7 +11954,7 @@ hitmonlee:
   name: Hitmonlee
   num: 106
   prevo: Tyrogue
-  tier: RU
+  tier: PU
   types:
   - Fighting
   weightkg: 49.8
@@ -12556,7 +11980,7 @@ hitmontop:
   name: Hitmontop
   num: 237
   prevo: Tyrogue
-  tier: NU
+  tier: PU
   types:
   - Fighting
   weightkg: 48
@@ -12626,10 +12050,9 @@ hooh:
   - Undiscovered
   gender: N
   heightm: 3.8
-  isNonstandard: Past
   name: Ho-Oh
   num: 250
-  tier: Illegal
+  tier: Uber
   types:
   - Fire
   - Flying
@@ -13024,7 +12447,7 @@ incineroar:
   name: Incineroar
   num: 727
   prevo: Torracat
-  tier: UU
+  tier: RU
   types:
   - Fire
   - Dark
@@ -13054,7 +12477,7 @@ indeedee:
   num: 876
   otherFormes:
   - Indeedee-F
-  tier: RUBL
+  tier: NUBL
   types:
   - Psychic
   - Normal
@@ -13080,7 +12503,7 @@ indeedeef:
   heightm: 0.9
   name: Indeedee-F
   num: 876
-  tier: RU
+  tier: PUBL
   types:
   - Psychic
   - Normal
@@ -13164,7 +12587,7 @@ inteleon:
   name: Inteleon
   num: 818
   prevo: Drizzile
-  tier: RU
+  tier: NU
   types:
   - Water
   weightkg: 45.2
@@ -13193,7 +12616,7 @@ inteleongmax:
   isNonstandard: Gigantamax
   name: Inteleon-Gmax
   num: 818
-  tier: (Uber)
+  tier: AG
   types:
   - Water
   weightkg: 0
@@ -13271,7 +12694,7 @@ jellicent:
   name: Jellicent
   num: 593
   prevo: Frillish
-  tier: RU
+  tier: (PU)
   types:
   - Water
   - Ghost
@@ -13351,7 +12774,7 @@ jolteon:
   name: Jolteon
   num: 135
   prevo: Eevee
-  tier: NU
+  tier: PU
   types:
   - Electric
   weightkg: 24.5
@@ -13380,33 +12803,6 @@ joltik:
   - Bug
   - Electric
   weightkg: 0.6
-jumbao:
-  abilities:
-    '0': Drought
-    '1': Trace
-    H: Overcoat
-  baseStats:
-    atk: 63
-    def: 97
-    hp: 92
-    spa: 124
-    spd: 104
-    spe: 96
-  color: Brown
-  eggGroups:
-  - Grass
-  evoType: levelExtra
-  gen: 7
-  heightm: 2.4
-  isNonstandard: CAP
-  name: Jumbao
-  num: -44
-  prevo: Mumbao
-  tier: CAP
-  types:
-  - Grass
-  - Fairy
-  weightkg: 600
 jumpluff:
   abilities:
     '0': Chlorophyll
@@ -13434,34 +12830,6 @@ jumpluff:
   - Grass
   - Flying
   weightkg: 3
-justyke:
-  abilities:
-    '0': Levitate
-    '1': Bulletproof
-    H: Justified
-  baseStats:
-    atk: 70
-    def: 56
-    hp: 72
-    spa: 83
-    spd: 68
-    spe: 30
-  color: Brown
-  eggGroups:
-  - Mineral
-  evos:
-  - Equilibra
-  gen: 7
-  gender: N
-  heightm: 0.4
-  isNonstandard: CAP
-  name: Justyke
-  num: -54
-  tier: CAP LC
-  types:
-  - Steel
-  - Ground
-  weightkg: 36.5
 jynx:
   abilities:
     '0': Oblivious
@@ -13480,11 +12848,10 @@ jynx:
   evoLevel: 30
   gender: F
   heightm: 1.4
-  isNonstandard: Past
   name: Jynx
   num: 124
   prevo: Smoochum
-  tier: Illegal
+  tier: (PU)
   types:
   - Ice
   - Psychic
@@ -13511,10 +12878,9 @@ kabuto:
     F: 0.125
     M: 0.875
   heightm: 0.5
-  isNonstandard: Past
   name: Kabuto
   num: 140
-  tier: Illegal
+  tier: LC
   types:
   - Rock
   - Water
@@ -13540,11 +12906,10 @@ kabutops:
     F: 0.125
     M: 0.875
   heightm: 1.3
-  isNonstandard: Past
   name: Kabutops
   num: 141
   prevo: Kabuto
-  tier: Illegal
+  tier: (PU)
   types:
   - Rock
   - Water
@@ -13574,7 +12939,7 @@ kadabra:
   name: Kadabra
   num: 64
   prevo: Abra
-  tier: PU
+  tier: NFE
   types:
   - Psychic
   weightkg: 56.5
@@ -13628,7 +12993,7 @@ kangaskhan:
   num: 115
   otherFormes:
   - Kangaskhan-Mega
-  tier: NU
+  tier: (PU)
   types:
   - Normal
   weightkg: 80
@@ -13696,10 +13061,9 @@ kartana:
   - Undiscovered
   gender: N
   heightm: 0.3
-  isNonstandard: Past
   name: Kartana
   num: 798
-  tier: Illegal
+  tier: OU
   types:
   - Grass
   - Steel
@@ -13779,34 +13143,6 @@ keldeoresolute:
   - Water
   - Fighting
   weightkg: 48.5
-kerfluffle:
-  abilities:
-    '0': Natural Cure
-    '1': Aroma Veil
-    H: Friend Guard
-  baseStats:
-    atk: 78
-    def: 86
-    hp: 84
-    spa: 115
-    spd: 88
-    spe: 119
-  color: Pink
-  eggGroups:
-  - Fairy
-  - Human-Like
-  evoType: levelExtra
-  gen: 6
-  heightm: 2.1
-  isNonstandard: CAP
-  name: Kerfluffle
-  num: -41
-  prevo: Pluffle
-  tier: CAP
-  types:
-  - Fairy
-  - Fighting
-  weightkg: 24.2
 kingdra:
   abilities:
     '0': Swift Swim
@@ -13829,7 +13165,7 @@ kingdra:
   name: Kingdra
   num: 230
   prevo: Seadra
-  tier: OU
+  tier: PUBL
   types:
   - Water
   - Dragon
@@ -13855,7 +13191,7 @@ kingler:
   name: Kingler
   num: 99
   prevo: Krabby
-  tier: NUBL
+  tier: (PU)
   types:
   - Water
   weightkg: 60
@@ -13881,7 +13217,7 @@ kinglergmax:
   isNonstandard: Gigantamax
   name: Kingler-Gmax
   num: 99
-  tier: (Uber)
+  tier: AG
   types:
   - Water
   weightkg: 0
@@ -13914,31 +13250,6 @@ kirlia:
   - Psychic
   - Fairy
   weightkg: 20.2
-kitsunoh:
-  abilities:
-    '0': Frisk
-    '1': Limber
-    H: Iron Fist
-  baseStats:
-    atk: 103
-    def: 85
-    hp: 80
-    spa: 55
-    spd: 80
-    spe: 110
-  color: Gray
-  eggGroups:
-  - Field
-  gen: 4
-  heightm: 1.1
-  isNonstandard: CAP
-  name: Kitsunoh
-  num: -14
-  tier: CAP
-  types:
-  - Ghost
-  - Steel
-  weightkg: 51
 klang:
   abilities:
     '0': Plus
@@ -14034,7 +13345,7 @@ klinklang:
   name: Klinklang
   num: 601
   prevo: Klang
-  tier: PU
+  tier: (PU)
   types:
   - Steel
   weightkg: 81
@@ -14109,7 +13420,7 @@ kommoo:
   otherFormes:
   - Kommo-o-Totem
   prevo: Hakamo-o
-  tier: OU
+  tier: UU
   types:
   - Dragon
   - Fighting
@@ -14210,32 +13521,6 @@ kricketune:
   types:
   - Bug
   weightkg: 25.5
-krilowatt:
-  abilities:
-    '0': Trace
-    '1': Magic Guard
-    H: Minus
-  baseStats:
-    atk: 84
-    def: 73
-    hp: 151
-    spa: 83
-    spd: 74
-    spe: 105
-  color: Red
-  eggGroups:
-  - Water 1
-  - Fairy
-  gen: 4
-  heightm: 0.7
-  isNonstandard: CAP
-  name: Krilowatt
-  num: -17
-  tier: CAP
-  types:
-  - Electric
-  - Water
-  weightkg: 10.6
 krokorok:
   abilities:
     '0': Intimidate
@@ -14332,12 +13617,11 @@ kyogre:
   - Kyogre-Primal
   gender: N
   heightm: 4.5
-  isNonstandard: Past
   name: Kyogre
   num: 382
   otherFormes:
   - Kyogre-Primal
-  tier: Illegal
+  tier: Uber
   types:
   - Water
   weightkg: 352
@@ -14362,6 +13646,7 @@ kyogreprimal:
   name: Kyogre-Primal
   num: 382
   requiredItem: Blue Orb
+  tier: Illegal
   types:
   - Water
   weightkg: 430
@@ -14463,11 +13748,10 @@ lairon:
   evos:
   - Aggron
   heightm: 0.9
-  isNonstandard: Past
   name: Lairon
   num: 305
   prevo: Aron
-  tier: Illegal
+  tier: NFE
   types:
   - Steel
   - Rock
@@ -14519,12 +13803,11 @@ landorus:
   - Landorus-Therian
   gender: M
   heightm: 1.5
-  isNonstandard: Past
   name: Landorus
   num: 645
   otherFormes:
   - Landorus-Therian
-  tier: Illegal
+  tier: Uber
   types:
   - Ground
   - Flying
@@ -14547,10 +13830,9 @@ landorustherian:
   forme: Therian
   gender: M
   heightm: 1.3
-  isNonstandard: Past
   name: Landorus-Therian
   num: 645
-  tier: Illegal
+  tier: OU
   types:
   - Ground
   - Flying
@@ -14575,7 +13857,7 @@ lanturn:
   name: Lanturn
   num: 171
   prevo: Chinchou
-  tier: NU
+  tier: PU
   types:
   - Water
   - Electric
@@ -14600,7 +13882,7 @@ lapras:
   heightm: 2.5
   name: Lapras
   num: 131
-  tier: PU
+  tier: (PU)
   types:
   - Water
   - Ice
@@ -14628,7 +13910,7 @@ laprasgmax:
   isNonstandard: Gigantamax
   name: Lapras-Gmax
   num: 131
-  tier: (Uber)
+  tier: AG
   types:
   - Water
   - Ice
@@ -14699,12 +13981,11 @@ latias:
   - Latias-Mega
   gender: F
   heightm: 1.4
-  isNonstandard: Past
   name: Latias
   num: 380
   otherFormes:
   - Latias-Mega
-  tier: Illegal
+  tier: UU
   types:
   - Dragon
   - Psychic
@@ -14753,12 +14034,11 @@ latios:
   - Latios-Mega
   gender: M
   heightm: 2
-  isNonstandard: Past
   name: Latios
   num: 381
   otherFormes:
   - Latios-Mega
-  tier: Illegal
+  tier: OU
   types:
   - Dragon
   - Psychic
@@ -14915,7 +14195,7 @@ lickilicky:
   name: Lickilicky
   num: 463
   prevo: Lickitung
-  tier: PU
+  tier: (PU)
   types:
   - Normal
   weightkg: 140
@@ -14963,7 +14243,7 @@ liepard:
   name: Liepard
   num: 510
   prevo: Purrloin
-  tier: NU
+  tier: (PU)
   types:
   - Dark
   weightkg: 37.5
@@ -14987,10 +14267,9 @@ lileep:
     F: 0.125
     M: 0.875
   heightm: 1
-  isNonstandard: Past
   name: Lileep
   num: 345
-  tier: Illegal
+  tier: LC
   types:
   - Rock
   - Grass
@@ -15017,7 +14296,7 @@ lilligant:
   name: Lilligant
   num: 549
   prevo: Petilil
-  tier: PU
+  tier: (PU)
   types:
   - Grass
   weightkg: 16.3
@@ -15070,7 +14349,7 @@ linoone:
   otherFormes:
   - Linoone-Galar
   prevo: Zigzagoon
-  tier: RUBL
+  tier: NUBL
   types:
   - Normal
   weightkg: 32.5
@@ -15349,7 +14628,7 @@ lucario:
   otherFormes:
   - Lucario-Mega
   prevo: Riolu
-  tier: RUBL
+  tier: NUBL
   types:
   - Fighting
   - Steel
@@ -15426,10 +14705,9 @@ lugia:
   - Undiscovered
   gender: N
   heightm: 5.2
-  isNonstandard: Past
   name: Lugia
   num: 249
-  tier: Illegal
+  tier: Uber
   types:
   - Psychic
   - Flying
@@ -15529,7 +14807,7 @@ lurantis:
   otherFormes:
   - Lurantis-Totem
   prevo: Fomantis
-  tier: NU
+  tier: (PU)
   types:
   - Grass
   weightkg: 18.5
@@ -15627,7 +14905,7 @@ luxray:
   name: Luxray
   num: 405
   prevo: Luxio
-  tier: NU
+  tier: (PU)
   types:
   - Electric
   weightkg: 42
@@ -15660,7 +14938,7 @@ lycanroc:
   - Lycanroc-Midnight
   - Lycanroc-Dusk
   prevo: Rockruff
-  tier: RU
+  tier: (PU)
   types:
   - Rock
   weightkg: 25
@@ -15712,7 +14990,7 @@ lycanrocmidnight:
   name: Lycanroc-Midnight
   num: 745
   prevo: Rockruff
-  tier: PU
+  tier: (PU)
   types:
   - Rock
   weightkg: 25
@@ -15740,7 +15018,7 @@ machamp:
   name: Machamp
   num: 68
   prevo: Machoke
-  tier: RUBL
+  tier: PUBL
   types:
   - Fighting
   weightkg: 130
@@ -15769,7 +15047,7 @@ machampgmax:
   isNonstandard: Gigantamax
   name: Machamp-Gmax
   num: 68
-  tier: (Uber)
+  tier: AG
   types:
   - Fighting
   weightkg: 0
@@ -15850,10 +15128,9 @@ magby:
     F: 0.25
     M: 0.75
   heightm: 0.7
-  isNonstandard: Past
   name: Magby
   num: 240
-  tier: Illegal
+  tier: LC
   types:
   - Fire
   weightkg: 21.4
@@ -15905,7 +15182,7 @@ magearna:
   num: 801
   otherFormes:
   - Magearna-Original
-  tier: Uber
+  tier: OU
   types:
   - Steel
   - Fairy
@@ -15929,7 +15206,7 @@ magearnaoriginal:
   heightm: 1
   name: Magearna-Original
   num: 801
-  tier: Uber
+  tier: OU
   types:
   - Steel
   - Fairy
@@ -15979,11 +15256,10 @@ magmar:
     F: 0.25
     M: 0.75
   heightm: 1.3
-  isNonstandard: Past
   name: Magmar
   num: 126
   prevo: Magby
-  tier: Illegal
+  tier: NFE
   types:
   - Fire
   weightkg: 44.5
@@ -16007,11 +15283,10 @@ magmortar:
     F: 0.25
     M: 0.75
   heightm: 1.6
-  isNonstandard: Past
   name: Magmortar
   num: 467
   prevo: Magmar
-  tier: Illegal
+  tier: (PU)
   types:
   - Fire
   weightkg: 68
@@ -16064,7 +15339,7 @@ magneton:
   name: Magneton
   num: 82
   prevo: Magnemite
-  tier: NU
+  tier: NFE
   types:
   - Electric
   - Steel
@@ -16091,7 +15366,7 @@ magnezone:
   name: Magnezone
   num: 462
   prevo: Magneton
-  tier: OU
+  tier: RU
   types:
   - Electric
   - Steel
@@ -16124,34 +15399,6 @@ makuhita:
   types:
   - Fighting
   weightkg: 86.4
-malaconda:
-  abilities:
-    '0': Harvest
-    '1': Infiltrator
-    H: Drought
-  baseStats:
-    atk: 100
-    def: 60
-    hp: 115
-    spa: 40
-    spd: 130
-    spe: 55
-  color: Brown
-  eggGroups:
-  - Grass
-  - Dragon
-  evoLevel: 33
-  gen: 5
-  heightm: 5.5
-  isNonstandard: CAP
-  name: Malaconda
-  num: -29
-  prevo: Brattler
-  tier: CAP
-  types:
-  - Dark
-  - Grass
-  weightkg: 108.8
 malamar:
   abilities:
     '0': Contrary
@@ -16174,7 +15421,7 @@ malamar:
   name: Malamar
   num: 687
   prevo: Inkay
-  tier: NU
+  tier: (PU)
   types:
   - Dark
   - Psychic
@@ -16279,7 +15526,7 @@ manectric:
   otherFormes:
   - Manectric-Mega
   prevo: Electrike
-  tier: PU
+  tier: (PU)
   types:
   - Electric
   weightkg: 40.2
@@ -16354,7 +15601,7 @@ mantine:
   name: Mantine
   num: 226
   prevo: Mantyke
-  tier: RU
+  tier: NU
   types:
   - Water
   - Flying
@@ -16427,7 +15674,7 @@ mareanie:
   heightm: 0.4
   name: Mareanie
   num: 747
-  tier: PU
+  tier: LC
   types:
   - Poison
   - Water
@@ -16513,7 +15760,7 @@ marowak:
   - Marowak-Alola
   - Marowak-Alola-Totem
   prevo: Cubone
-  tier: PU
+  tier: (PU)
   types:
   - Ground
   weightkg: 45
@@ -16539,7 +15786,7 @@ marowakalola:
   name: Marowak-Alola
   num: 105
   prevo: Cubone
-  tier: OU
+  tier: RU
   types:
   - Fire
   - Ghost
@@ -16612,11 +15859,10 @@ marshtomp:
     F: 0.125
     M: 0.875
   heightm: 0.7
-  isNonstandard: Past
   name: Marshtomp
   num: 259
   prevo: Mudkip
-  tier: Illegal
+  tier: NFE
   types:
   - Water
   - Ground
@@ -16671,7 +15917,7 @@ mawile:
   num: 303
   otherFormes:
   - Mawile-Mega
-  tier: PU
+  tier: (PU)
   types:
   - Steel
   - Fairy
@@ -16828,7 +16074,7 @@ melmetal:
   heightm: 2.5
   name: Melmetal
   num: 809
-  tier: Uber
+  tier: OU
   types:
   - Steel
   weightkg: 800
@@ -16850,10 +16096,10 @@ melmetalgmax:
   forme: Gmax
   gender: N
   heightm: 25
-  isNonstandard: Unobtainable
+  isNonstandard: Gigantamax
   name: Melmetal-Gmax
   num: 809
-  tier: Unreleased
+  tier: AG
   types:
   - Steel
   weightkg: 0
@@ -16960,7 +16206,7 @@ meowstic:
   otherFormes:
   - Meowstic-F
   prevo: Espurr
-  tier: PU
+  tier: (PU)
   types:
   - Psychic
   weightkg: 8.5
@@ -16987,7 +16233,7 @@ meowsticf:
   name: Meowstic-F
   num: 678
   prevo: Espurr
-  tier: PU
+  tier: (PU)
   types:
   - Psychic
   weightkg: 8.5
@@ -17097,7 +16343,7 @@ meowthgmax:
   isNonstandard: Gigantamax
   name: Meowth-Gmax
   num: 52
-  tier: (Uber)
+  tier: AG
   types:
   - Normal
   weightkg: 0
@@ -17116,10 +16362,9 @@ mesprit:
   - Undiscovered
   gender: N
   heightm: 0.3
-  isNonstandard: Past
   name: Mesprit
   num: 481
-  tier: Illegal
+  tier: PU
   types:
   - Psychic
   weightkg: 0.3
@@ -17143,13 +16388,12 @@ metagross:
   - Metagross-Mega
   gender: N
   heightm: 1.6
-  isNonstandard: Past
   name: Metagross
   num: 376
   otherFormes:
   - Metagross-Mega
   prevo: Metang
-  tier: Illegal
+  tier: RU
   types:
   - Steel
   - Psychic
@@ -17199,11 +16443,10 @@ metang:
   - Metagross
   gender: N
   heightm: 1.2
-  isNonstandard: Past
   name: Metang
   num: 375
   prevo: Beldum
-  tier: Illegal
+  tier: NFE
   types:
   - Steel
   - Psychic
@@ -17249,7 +16492,7 @@ mew:
   heightm: 0.4
   name: Mew
   num: 151
-  tier: OU
+  tier: UU
   types:
   - Psychic
   weightkg: 4
@@ -17379,7 +16622,7 @@ mienshao:
   name: Mienshao
   num: 620
   prevo: Mienfoo
-  tier: UU
+  tier: NU
   types:
   - Fighting
   weightkg: 35.5
@@ -17478,7 +16721,7 @@ miltank:
   heightm: 1.2
   name: Miltank
   num: 241
-  tier: NU
+  tier: (PU)
   types:
   - Normal
   weightkg: 75.5
@@ -17535,7 +16778,7 @@ mimikyu:
   - Mimikyu-Busted
   - Mimikyu-Totem
   - Mimikyu-Busted-Totem
-  tier: UU
+  tier: RU
   types:
   - Ghost
   - Fairy
@@ -17784,53 +17027,6 @@ mismagius:
   types:
   - Ghost
   weightkg: 4.4
-missingno:
-  abilities:
-    '0': ''
-  baseStats:
-    atk: 136
-    def: 0
-    hp: 33
-    spa: 6
-    spd: 6
-    spe: 29
-  color: Gray
-  eggGroups:
-  - Undiscovered
-  heightm: 3
-  isNonstandard: Custom
-  name: MissingNo.
-  num: 0
-  tier: Illegal
-  types:
-  - Bird
-  - Normal
-  weightkg: 1590.8
-mollux:
-  abilities:
-    '0': Dry Skin
-    H: Illuminate
-  baseStats:
-    atk: 45
-    def: 83
-    hp: 95
-    spa: 131
-    spd: 105
-    spe: 76
-  color: Pink
-  eggGroups:
-  - Fairy
-  - Field
-  gen: 5
-  heightm: 1.2
-  isNonstandard: CAP
-  name: Mollux
-  num: -24
-  tier: CAP
-  types:
-  - Fire
-  - Poison
-  weightkg: 41
 moltres:
   abilities:
     '0': Pressure
@@ -17845,16 +17041,44 @@ moltres:
   color: Yellow
   eggGroups:
   - Undiscovered
+  formeOrder:
+  - Moltres
+  - Moltres-Galar
   gender: N
   heightm: 2
-  isNonstandard: Past
   name: Moltres
   num: 146
-  tier: Illegal
+  otherFormes:
+  - Moltres-Galar
+  tier: OU
   types:
   - Fire
   - Flying
   weightkg: 60
+moltresgalar:
+  abilities:
+    '0': Berserk
+  baseSpecies: Moltres
+  baseStats:
+    atk: 85
+    def: 90
+    hp: 90
+    spa: 100
+    spd: 125
+    spe: 90
+  color: Red
+  eggGroups:
+  - Undiscovered
+  forme: Galar
+  gender: N
+  heightm: 2
+  name: Moltres-Galar
+  num: 146
+  tier: UU
+  types:
+  - Dark
+  - Flying
+  weightkg: 66
 monferno:
   abilities:
     '0': Blaze
@@ -17962,7 +17186,7 @@ morpeko:
   num: 877
   otherFormes:
   - Morpeko-Hangry
-  tier: PU
+  tier: (PU)
   types:
   - Electric
   - Dark
@@ -18101,7 +17325,7 @@ mrrime:
   name: Mr. Rime
   num: 866
   prevo: Mr. Mime-Galar
-  tier: PU
+  tier: (PU)
   types:
   - Ice
   - Psychic
@@ -18151,10 +17375,9 @@ mudkip:
     F: 0.125
     M: 0.875
   heightm: 0.4
-  isNonstandard: Past
   name: Mudkip
   num: 258
-  tier: Illegal
+  tier: LC
   types:
   - Water
   weightkg: 7.6
@@ -18178,7 +17401,7 @@ mudsdale:
   name: Mudsdale
   num: 750
   prevo: Mudbray
-  tier: RU
+  tier: NU
   types:
   - Ground
   weightkg: 920
@@ -18240,33 +17463,6 @@ mukalola:
   - Poison
   - Dark
   weightkg: 52
-mumbao:
-  abilities:
-    '0': Solar Power
-    '1': Trace
-    H: Overcoat
-  baseStats:
-    atk: 30
-    def: 64
-    hp: 55
-    spa: 87
-    spd: 73
-    spe: 66
-  color: Brown
-  eggGroups:
-  - Grass
-  evos:
-  - Jumbao
-  gen: 7
-  heightm: 1
-  isNonstandard: CAP
-  name: Mumbao
-  num: -43
-  tier: CAP LC
-  types:
-  - Grass
-  - Fairy
-  weightkg: 250
 munchlax:
   abilities:
     '0': Pickup
@@ -18387,11 +17583,10 @@ naganadel:
   evoType: levelMove
   gender: N
   heightm: 3.6
-  isNonstandard: Past
   name: Naganadel
   num: 804
   prevo: Poipole
-  tier: Illegal
+  tier: Uber
   types:
   - Poison
   - Dragon
@@ -18421,34 +17616,6 @@ natu:
   - Psychic
   - Flying
   weightkg: 2
-naviathan:
-  abilities:
-    '0': Guts
-    '1': Heatproof
-    H: Light Metal
-  baseStats:
-    atk: 110
-    def: 90
-    hp: 103
-    spa: 95
-    spd: 65
-    spe: 97
-  color: Gray
-  eggGroups:
-  - Water 1
-  - Field
-  evoLevel: 40
-  gen: 6
-  heightm: 3
-  isNonstandard: CAP
-  name: Naviathan
-  num: -38
-  prevo: Caimanoe
-  tier: CAP
-  types:
-  - Water
-  - Steel
-  weightkg: 510
 necrozma:
   abilities:
     '0': Prism Armor
@@ -18475,7 +17642,7 @@ necrozma:
   - Necrozma-Dusk-Mane
   - Necrozma-Dawn-Wings
   - Necrozma-Ultra
-  tier: UU
+  tier: RU
   types:
   - Psychic
   weightkg: 230
@@ -18543,7 +17710,7 @@ necrozmaultra:
   battleOnly:
   - Necrozma-Dawn-Wings
   - Necrozma-Dusk-Mane
-  color: Blue
+  color: Yellow
   eggGroups:
   - Undiscovered
   forme: Ultra
@@ -18558,62 +17725,6 @@ necrozmaultra:
   - Psychic
   - Dragon
   weightkg: 230
-necturine:
-  abilities:
-    '0': Anticipation
-    H: Telepathy
-  baseStats:
-    atk: 55
-    def: 60
-    hp: 49
-    spa: 50
-    spd: 75
-    spe: 51
-  color: White
-  eggGroups:
-  - Grass
-  - Field
-  evos:
-  - Necturna
-  gen: 5
-  gender: F
-  heightm: 0.3
-  isNonstandard: CAP
-  name: Necturine
-  num: -22
-  tier: CAP LC
-  types:
-  - Grass
-  - Ghost
-  weightkg: 1.8
-necturna:
-  abilities:
-    '0': Forewarn
-    H: Telepathy
-  baseStats:
-    atk: 120
-    def: 100
-    hp: 64
-    spa: 85
-    spd: 120
-    spe: 58
-  color: Black
-  eggGroups:
-  - Grass
-  - Field
-  evoLevel: 31
-  gen: 5
-  gender: F
-  heightm: 1.65
-  isNonstandard: CAP
-  name: Necturna
-  num: -23
-  prevo: Necturine
-  tier: CAP
-  types:
-  - Grass
-  - Ghost
-  weightkg: 49.6
 nickit:
   abilities:
     '0': Run Away
@@ -18658,11 +17769,10 @@ nidoking:
   evoType: useItem
   gender: M
   heightm: 1.4
-  isNonstandard: Past
   name: Nidoking
   num: 34
   prevo: Nidorino
-  tier: Illegal
+  tier: OU
   types:
   - Poison
   - Ground
@@ -18686,11 +17796,10 @@ nidoqueen:
   evoType: useItem
   gender: F
   heightm: 1.3
-  isNonstandard: Past
   name: Nidoqueen
   num: 31
   prevo: Nidorina
-  tier: Illegal
+  tier: UU
   types:
   - Poison
   - Ground
@@ -18715,10 +17824,9 @@ nidoranf:
   - Nidorina
   gender: F
   heightm: 0.4
-  isNonstandard: Past
   name: Nidoran-F
   num: 29
-  tier: Illegal
+  tier: LC
   types:
   - Poison
   weightkg: 7
@@ -18742,10 +17850,9 @@ nidoranm:
   - Nidorino
   gender: M
   heightm: 0.5
-  isNonstandard: Past
   name: Nidoran-M
   num: 32
-  tier: Illegal
+  tier: LC
   types:
   - Poison
   weightkg: 9
@@ -18769,11 +17876,10 @@ nidorina:
   - Nidoqueen
   gender: F
   heightm: 0.8
-  isNonstandard: Past
   name: Nidorina
   num: 30
   prevo: Nidoran-F
-  tier: Illegal
+  tier: NFE
   types:
   - Poison
   weightkg: 20
@@ -18798,11 +17904,10 @@ nidorino:
   - Nidoking
   gender: M
   heightm: 0.9
-  isNonstandard: Past
   name: Nidorino
   num: 33
   prevo: Nidoran-M
-  tier: Illegal
+  tier: NFE
   types:
   - Poison
   weightkg: 19.5
@@ -18821,10 +17926,9 @@ nihilego:
   - Undiscovered
   gender: N
   heightm: 1.2
-  isNonstandard: Past
   name: Nihilego
   num: 793
-  tier: Illegal
+  tier: UU
   types:
   - Rock
   - Poison
@@ -18882,7 +17986,7 @@ ninetales:
   otherFormes:
   - Ninetales-Alola
   prevo: Vulpix
-  tier: RU
+  tier: (PU)
   types:
   - Fire
   weightkg: 19.9
@@ -18911,7 +18015,7 @@ ninetalesalola:
   name: Ninetales-Alola
   num: 38
   prevo: Vulpix-Alola
-  tier: UUBL
+  tier: UU
   types:
   - Ice
   - Fairy
@@ -18960,7 +18064,7 @@ noctowl:
   name: Noctowl
   num: 164
   prevo: Hoothoot
-  tier: PUBL
+  tier: (PU)
   types:
   - Normal
   - Flying
@@ -19012,7 +18116,7 @@ noivern:
   name: Noivern
   num: 715
   prevo: Noibat
-  tier: UU
+  tier: RU
   types:
   - Flying
   - Dragon
@@ -19117,7 +18221,7 @@ obstagoon:
   name: Obstagoon
   num: 862
   prevo: Linoone-Galar
-  tier: UU
+  tier: RU
   types:
   - Dark
   - Normal
@@ -19193,10 +18297,9 @@ omanyte:
     F: 0.125
     M: 0.875
   heightm: 0.4
-  isNonstandard: Past
   name: Omanyte
   num: 138
-  tier: Illegal
+  tier: LC
   types:
   - Rock
   - Water
@@ -19222,11 +18325,10 @@ omastar:
     F: 0.125
     M: 0.875
   heightm: 1
-  isNonstandard: Past
   name: Omastar
   num: 139
   prevo: Omanyte
-  tier: Illegal
+  tier: (PU)
   types:
   - Rock
   - Water
@@ -19300,7 +18402,7 @@ orbeetle:
   name: Orbeetle
   num: 826
   prevo: Dottler
-  tier: PUBL
+  tier: (PU)
   types:
   - Bug
   - Psychic
@@ -19327,7 +18429,7 @@ orbeetlegmax:
   isNonstandard: Gigantamax
   name: Orbeetle-Gmax
   num: 826
-  tier: (Uber)
+  tier: AG
   types:
   - Bug
   - Psychic
@@ -19502,30 +18604,6 @@ pachirisu:
   types:
   - Electric
   weightkg: 3.9
-pajantom:
-  abilities:
-    '0': Comatose
-  baseStats:
-    atk: 133
-    def: 71
-    hp: 84
-    spa: 51
-    spd: 111
-    spe: 101
-  color: Purple
-  eggGroups:
-  - Dragon
-  - Monster
-  gen: 7
-  heightm: 1.1
-  isNonstandard: CAP
-  name: Pajantom
-  num: -42
-  tier: CAP
-  types:
-  - Dragon
-  - Ghost
-  weightkg: 3.1
 palkia:
   abilities:
     '0': Pressure
@@ -19542,10 +18620,9 @@ palkia:
   - Undiscovered
   gender: N
   heightm: 4.2
-  isNonstandard: Past
   name: Palkia
   num: 484
-  tier: Illegal
+  tier: Uber
   types:
   - Water
   - Dragon
@@ -19569,7 +18646,7 @@ palossand:
   name: Palossand
   num: 770
   prevo: Sandygast
-  tier: UU
+  tier: (PU)
   types:
   - Ghost
   - Ground
@@ -19648,7 +18725,7 @@ pangoro:
   name: Pangoro
   num: 675
   prevo: Pancham
-  tier: RUBL
+  tier: NU
   types:
   - Fighting
   - Dark
@@ -19805,7 +18882,7 @@ passimian:
   heightm: 2
   name: Passimian
   num: 766
-  tier: RU
+  tier: PU
   types:
   - Fighting
   weightkg: 82.8
@@ -19854,7 +18931,7 @@ pawniard:
   heightm: 0.5
   name: Pawniard
   num: 624
-  tier: PU
+  tier: LC
   types:
   - Dark
   - Steel
@@ -19905,7 +18982,7 @@ perrserker:
   name: Perrserker
   num: 863
   prevo: Meowth-Galar
-  tier: PUBL
+  tier: (PU)
   types:
   - Steel
   weightkg: 28
@@ -19960,7 +19037,7 @@ persianalola:
   name: Persian-Alola
   num: 53
   prevo: Meowth-Alola
-  tier: NU
+  tier: (PU)
   types:
   - Dark
   weightkg: 33
@@ -20054,10 +19131,9 @@ pheromosa:
   - Undiscovered
   gender: N
   heightm: 1.8
-  isNonstandard: Past
   name: Pheromosa
   num: 795
-  tier: Illegal
+  tier: Uber
   types:
   - Bug
   - Fighting
@@ -20461,7 +19537,7 @@ pikachugmax:
   isNonstandard: Gigantamax
   name: Pikachu-Gmax
   num: 25
-  tier: (Uber)
+  tier: AG
   types:
   - Electric
   weightkg: 0
@@ -20762,10 +19838,9 @@ pikachuworld:
   gen: 8
   gender: M
   heightm: 0.4
-  isNonstandard: Unobtainable
   name: Pikachu-World
   num: 25
-  tier: Unreleased
+  tier: (PU)
   types:
   - Electric
   weightkg: 6
@@ -20817,7 +19892,7 @@ piloswine:
   name: Piloswine
   num: 221
   prevo: Swinub
-  tier: NU
+  tier: NFE
   types:
   - Ice
   - Ground
@@ -20840,7 +19915,7 @@ pincurchin:
   heightm: 0.3
   name: Pincurchin
   num: 871
-  tier: RU
+  tier: PU
   types:
   - Electric
   weightkg: 1
@@ -20891,7 +19966,7 @@ pinsir:
   num: 127
   otherFormes:
   - Pinsir-Mega
-  tier: PU
+  tier: (PU)
   types:
   - Bug
   weightkg: 55
@@ -20948,61 +20023,6 @@ piplup:
   types:
   - Water
   weightkg: 5.2
-plasmanta:
-  abilities:
-    '0': Storm Drain
-    '1': Vital Spirit
-    H: Telepathy
-  baseStats:
-    atk: 57
-    def: 119
-    hp: 60
-    spa: 131
-    spd: 98
-    spe: 100
-  color: Purple
-  eggGroups:
-  - Water 1
-  - Water 2
-  evoLevel: 29
-  gen: 6
-  heightm: 7
-  isNonstandard: CAP
-  name: Plasmanta
-  num: -35
-  prevo: Snugglow
-  tier: CAP
-  types:
-  - Electric
-  - Poison
-  weightkg: 460
-pluffle:
-  abilities:
-    '0': Natural Cure
-    '1': Aroma Veil
-    H: Friend Guard
-  baseStats:
-    atk: 38
-    def: 51
-    hp: 74
-    spa: 65
-    spd: 78
-    spe: 49
-  color: Pink
-  eggGroups:
-  - Fairy
-  - Human-Like
-  evos:
-  - Kerfluffle
-  gen: 6
-  heightm: 0.8
-  isNonstandard: CAP
-  name: Pluffle
-  num: -40
-  tier: CAP LC
-  types:
-  - Fairy
-  weightkg: 1.8
 plusle:
   abilities:
     '0': Plus
@@ -21042,445 +20062,12 @@ poipole:
   - Naganadel
   gender: N
   heightm: 0.6
-  isNonstandard: Past
   name: Poipole
   num: 803
-  tier: Illegal
+  tier: NFE
   types:
   - Poison
   weightkg: 1.8
-pokestarblackbelt:
-  abilities:
-    '0': Huge Power
-  baseStats:
-    atk: 100
-    def: 100
-    hp: 100
-    spa: 100
-    spd: 100
-    spe: 100
-  color: White
-  cosmeticFormes:
-  - Pokestar Black Belt-Prop
-  eggGroups:
-  - Undiscovered
-  gen: 5
-  gender: M
-  heightm: 1.5
-  isNonstandard: Custom
-  name: Pokestar Black Belt
-  num: -5014
-  tier: Illegal
-  types:
-  - Fighting
-  weightkg: 61
-pokestarblackdoor:
-  abilities:
-    '0': Early Bird
-  baseStats:
-    atk: 100
-    def: 100
-    hp: 100
-    spa: 100
-    spd: 100
-    spe: 100
-  color: White
-  cosmeticFormes:
-  - Pokestar Black Door-Prop
-  eggGroups:
-  - Undiscovered
-  gen: 5
-  gender: F
-  heightm: 1.5
-  isNonstandard: Custom
-  name: Pokestar Black Door
-  num: -5012
-  tier: Illegal
-  types:
-  - Grass
-  weightkg: 61
-pokestarbrycenman:
-  abilities:
-    '0': Levitate
-  baseStats:
-    atk: 100
-    def: 100
-    hp: 100
-    spa: 100
-    spd: 100
-    spe: 100
-  color: White
-  cosmeticFormes:
-  - Pokestar Brycen-Man-Prop
-  eggGroups:
-  - Undiscovered
-  gen: 5
-  gender: M
-  heightm: 1.5
-  isNonstandard: Custom
-  name: Pokestar Brycen-Man
-  num: -5002
-  tier: Illegal
-  types:
-  - Dark
-  - Psychic
-  weightkg: 61
-pokestarf00:
-  abilities:
-    '0': Volt Absorb
-  baseStats:
-    atk: 100
-    def: 100
-    hp: 100
-    spa: 100
-    spd: 100
-    spe: 100
-  color: White
-  cosmeticFormes:
-  - Pokestar F-00-Prop
-  eggGroups:
-  - Undiscovered
-  gen: 5
-  heightm: 1.5
-  isNonstandard: Custom
-  name: Pokestar F-00
-  num: -5009
-  tier: Illegal
-  types:
-  - Steel
-  - Normal
-  weightkg: 61
-pokestarf002:
-  abilities:
-    '0': Reckless
-  baseStats:
-    atk: 100
-    def: 100
-    hp: 100
-    spa: 100
-    spd: 100
-    spe: 100
-  color: White
-  cosmeticFormes:
-  - Pokestar F-002-Prop
-  eggGroups:
-  - Undiscovered
-  gen: 5
-  heightm: 1.5
-  isNonstandard: Custom
-  name: Pokestar F-002
-  num: -5010
-  tier: Illegal
-  types:
-  - Steel
-  - Normal
-  weightkg: 61
-pokestargiant:
-  abilities:
-    '0': Huge Power
-  baseStats:
-    atk: 100
-    def: 100
-    hp: 100
-    spa: 100
-    spd: 100
-    spe: 100
-  color: White
-  cosmeticFormes:
-  - Pokestar Giant-2
-  - Pokestar Giant-PropO1
-  - Pokestar Giant-PropO2
-  eggGroups:
-  - Undiscovered
-  gen: 5
-  gender: F
-  heightm: 1.5
-  isNonstandard: Custom
-  name: Pokestar Giant
-  num: -5006
-  tier: Illegal
-  types:
-  - Normal
-  weightkg: 61
-pokestarhumanoid:
-  abilities:
-    '0': Insomnia
-  baseStats:
-    atk: 100
-    def: 100
-    hp: 100
-    spa: 100
-    spd: 100
-    spe: 100
-  color: White
-  cosmeticFormes:
-  - Pokestar Humanoid-Prop
-  eggGroups:
-  - Undiscovered
-  gen: 5
-  heightm: 1.5
-  isNonstandard: Custom
-  name: Pokestar Humanoid
-  num: -5007
-  tier: Illegal
-  types:
-  - Normal
-  weightkg: 61
-pokestarmonster:
-  abilities:
-    '0': Pressure
-  baseStats:
-    atk: 100
-    def: 100
-    hp: 100
-    spa: 100
-    spd: 100
-    spe: 100
-  color: White
-  cosmeticFormes:
-  - Pokestar Monster-Prop
-  eggGroups:
-  - Undiscovered
-  gen: 5
-  heightm: 1.5
-  isNonstandard: Custom
-  name: Pokestar Monster
-  num: -5008
-  tier: Illegal
-  types:
-  - Dark
-  weightkg: 61
-pokestarmt:
-  abilities:
-    '0': Analytic
-  baseStats:
-    atk: 100
-    def: 100
-    hp: 100
-    spa: 100
-    spd: 100
-    spe: 100
-  color: White
-  cosmeticFormes:
-  - Pokestar MT-Prop
-  eggGroups:
-  - Undiscovered
-  gen: 5
-  gender: N
-  heightm: 1.5
-  isNonstandard: Custom
-  name: Pokestar MT
-  num: -5003
-  tier: Illegal
-  types:
-  - Steel
-  weightkg: 61
-pokestarmt2:
-  abilities:
-    '0': Flash Fire
-  baseStats:
-    atk: 100
-    def: 100
-    hp: 100
-    spa: 100
-    spd: 100
-    spe: 100
-  color: White
-  cosmeticFormes:
-  - Pokestar MT2-Prop
-  eggGroups:
-  - Undiscovered
-  gen: 5
-  gender: N
-  heightm: 1.5
-  isNonstandard: Custom
-  name: Pokestar MT2
-  num: -5004
-  tier: Illegal
-  types:
-  - Steel
-  - Electric
-  weightkg: 61
-pokestarsmeargle:
-  abilities:
-    '0': Own Tempo
-    '1': Technician
-    H: Moody
-  baseStats:
-    atk: 20
-    def: 35
-    hp: 55
-    spa: 20
-    spd: 45
-    spe: 75
-  color: White
-  eggGroups:
-  - Field
-  gen: 5
-  heightm: 1.5
-  isNonstandard: Custom
-  name: Pokestar Smeargle
-  num: -5000
-  tier: Illegal
-  types:
-  - Normal
-  weightkg: 61
-pokestarspirit:
-  abilities:
-    '0': Wonder Guard
-  baseStats:
-    atk: 100
-    def: 100
-    hp: 100
-    spa: 100
-    spd: 100
-    spe: 100
-  color: White
-  cosmeticFormes:
-  - Pokestar Spirit-Prop
-  eggGroups:
-  - Undiscovered
-  gen: 5
-  heightm: 1.5
-  isNonstandard: Custom
-  name: Pokestar Spirit
-  num: -5011
-  tier: Illegal
-  types:
-  - Dark
-  - Ghost
-  weightkg: 61
-pokestartransport:
-  abilities:
-    '0': Motor Drive
-  baseStats:
-    atk: 100
-    def: 100
-    hp: 100
-    spa: 100
-    spd: 100
-    spe: 100
-  color: White
-  cosmeticFormes:
-  - Pokestar Transport-Prop
-  eggGroups:
-  - Undiscovered
-  gen: 5
-  gender: N
-  heightm: 1.5
-  isNonstandard: Custom
-  name: Pokestar Transport
-  num: -5005
-  tier: Illegal
-  types:
-  - Steel
-  weightkg: 61
-pokestarufo:
-  abilities:
-    '0': Levitate
-  baseStats:
-    atk: 100
-    def: 100
-    hp: 100
-    spa: 100
-    spd: 100
-    spe: 100
-  color: White
-  cosmeticFormes:
-  - Pokestar UFO-PropU1
-  eggGroups:
-  - Undiscovered
-  gen: 5
-  gender: N
-  heightm: 1.5
-  isNonstandard: Custom
-  name: Pokestar UFO
-  num: -5001
-  otherFormes:
-  - Pokestar UFO-2
-  - Pokestar UFO-PropU2
-  tier: Illegal
-  types:
-  - Flying
-  - Electric
-  weightkg: 61
-pokestarufo2:
-  abilities:
-    '0': Levitate
-  baseSpecies: Pokestar UFO
-  baseStats:
-    atk: 100
-    def: 100
-    hp: 100
-    spa: 100
-    spd: 100
-    spe: 100
-  color: White
-  eggGroups:
-  - Undiscovered
-  forme: '2'
-  gen: 5
-  gender: N
-  heightm: 1.5
-  isNonstandard: Custom
-  name: Pokestar UFO-2
-  num: -5001
-  tier: Illegal
-  types:
-  - Psychic
-  - Electric
-  weightkg: 61
-pokestarufopropu2:
-  abilities:
-    '0': Levitate
-  baseSpecies: Pokestar UFO
-  baseStats:
-    atk: 100
-    def: 100
-    hp: 100
-    spa: 100
-    spd: 100
-    spe: 100
-  color: White
-  eggGroups:
-  - Undiscovered
-  forme: PropU2
-  gen: 5
-  gender: N
-  heightm: 1.5
-  isNonstandard: Custom
-  name: Pokestar UFO-PropU2
-  num: -5001
-  tier: Illegal
-  types:
-  - Psychic
-  - Electric
-  weightkg: 61
-pokestarwhitedoor:
-  abilities:
-    '0': Blaze
-  baseStats:
-    atk: 100
-    def: 100
-    hp: 100
-    spa: 100
-    spd: 100
-    spe: 100
-  color: White
-  cosmeticFormes:
-  - Pokestar White Door-Prop
-  eggGroups:
-  - Undiscovered
-  gen: 5
-  gender: M
-  heightm: 1.5
-  isNonstandard: Custom
-  name: Pokestar White Door
-  num: -5013
-  tier: Illegal
-  types:
-  - Fire
-  weightkg: 61
 politoed:
   abilities:
     '0': Water Absorb
@@ -21502,7 +20089,7 @@ politoed:
   name: Politoed
   num: 186
   prevo: Poliwhirl
-  tier: NU
+  tier: (PU)
   types:
   - Water
   weightkg: 33.9
@@ -21578,7 +20165,7 @@ poliwrath:
   name: Poliwrath
   num: 62
   prevo: Poliwhirl
-  tier: RU
+  tier: (PU)
   types:
   - Water
   - Fighting
@@ -21611,7 +20198,7 @@ polteageist:
   otherFormes:
   - Polteageist-Antique
   prevo: Sinistea
-  tier: UU
+  tier: NUBL
   types:
   - Ghost
   weightkg: 0.4
@@ -21638,10 +20225,8 @@ polteageistantique:
   name: Polteageist-Antique
   num: 855
   prevo: Sinistea-Antique
-  tier: UU
   types:
   - Ghost
-  unreleasedHidden: true
   weightkg: 0.4
 ponyta:
   abilities:
@@ -21818,14 +20403,14 @@ porygonz:
   color: Red
   eggGroups:
   - Mineral
-  evoItem: Dubious Disk
+  evoItem: Dubious Disc
   evoType: trade
   gender: N
   heightm: 0.9
   name: Porygon-Z
   num: 474
   prevo: Porygon2
-  tier: UU
+  tier: NUBL
   types:
   - Normal
   weightkg: 34
@@ -21852,7 +20437,7 @@ primarina:
   name: Primarina
   num: 730
   prevo: Brionne
-  tier: UUBL
+  tier: UU
   types:
   - Water
   - Fairy
@@ -21912,33 +20497,6 @@ prinplup:
   types:
   - Water
   weightkg: 23
-privatyke:
-  abilities:
-    '0': Unaware
-    H: Technician
-  baseStats:
-    atk: 75
-    def: 65
-    hp: 65
-    spa: 40
-    spd: 60
-    spe: 45
-  color: Green
-  eggGroups:
-  - Water 1
-  - Water 3
-  evos:
-  - Arghonaut
-  gen: 4
-  heightm: 1
-  isNonstandard: CAP
-  name: Privatyke
-  num: -12
-  tier: CAP LC
-  types:
-  - Water
-  - Fighting
-  weightkg: 35
 probopass:
   abilities:
     '0': Sturdy
@@ -22052,7 +20610,6 @@ pumpkaboolarge:
   types:
   - Ghost
   - Grass
-  unreleasedHidden: true
   weightkg: 7.5
 pumpkaboosmall:
   abilities:
@@ -22080,7 +20637,6 @@ pumpkaboosmall:
   types:
   - Ghost
   - Grass
-  unreleasedHidden: true
   weightkg: 3.5
 pumpkaboosuper:
   abilities:
@@ -22186,34 +20742,6 @@ purugly:
   types:
   - Normal
   weightkg: 43.8
-pyroak:
-  abilities:
-    '0': Rock Head
-    '1': Battle Armor
-    H: White Smoke
-  baseStats:
-    atk: 70
-    def: 105
-    hp: 120
-    spa: 95
-    spd: 90
-    spe: 60
-  color: Brown
-  eggGroups:
-  - Monster
-  - Dragon
-  evoLevel: 38
-  gen: 4
-  heightm: 2.1
-  isNonstandard: CAP
-  name: Pyroak
-  num: -6
-  prevo: Flarelm
-  tier: CAP
-  types:
-  - Fire
-  - Grass
-  weightkg: 168
 pyroar:
   abilities:
     '0': Rivalry
@@ -22285,7 +20813,7 @@ quagsire:
   name: Quagsire
   num: 195
   prevo: Wooper
-  tier: NU
+  tier: UU
   types:
   - Water
   - Ground
@@ -22366,7 +20894,7 @@ qwilfish:
   heightm: 0.5
   name: Qwilfish
   num: 211
-  tier: NU
+  tier: (PU)
   types:
   - Water
   - Poison
@@ -22396,7 +20924,7 @@ raboot:
   name: Raboot
   num: 814
   prevo: Scorbunny
-  tier: PU
+  tier: NFE
   types:
   - Fire
   weightkg: 9
@@ -22452,7 +20980,7 @@ raichualola:
   name: Raichu-Alola
   num: 26
   prevo: Pikachu
-  tier: RUBL
+  tier: PUBL
   types:
   - Electric
   - Psychic
@@ -22473,10 +21001,9 @@ raikou:
   - Undiscovered
   gender: N
   heightm: 1.9
-  isNonstandard: Past
   name: Raikou
   num: 243
-  tier: Illegal
+  tier: RU
   types:
   - Electric
   weightkg: 178
@@ -22558,7 +21085,7 @@ rapidash:
   otherFormes:
   - Rapidash-Galar
   prevo: Ponyta
-  tier: NU
+  tier: (PU)
   types:
   - Fire
   weightkg: 95
@@ -22584,7 +21111,7 @@ rapidashgalar:
   name: Rapidash-Galar
   num: 78
   prevo: Ponyta-Galar
-  tier: PU
+  tier: (PU)
   types:
   - Psychic
   - Fairy
@@ -22749,12 +21276,11 @@ rayquaza:
   - Rayquaza-Mega
   gender: N
   heightm: 7
-  isNonstandard: Past
   name: Rayquaza
   num: 384
   otherFormes:
   - Rayquaza-Mega
-  tier: Illegal
+  tier: Uber
   types:
   - Dragon
   - Flying
@@ -22785,33 +21311,6 @@ rayquazamega:
   - Dragon
   - Flying
   weightkg: 392
-rebble:
-  abilities:
-    '0': Levitate
-    '1': Solid Rock
-    H: Sniper
-  baseStats:
-    atk: 25
-    def: 65
-    hp: 45
-    spa: 75
-    spd: 55
-    spe: 80
-  color: Gray
-  eggGroups:
-  - Undiscovered
-  evos:
-  - Tactite
-  gen: 4
-  gender: N
-  heightm: 0.3
-  isNonstandard: CAP
-  name: Rebble
-  num: -9
-  tier: CAP LC
-  types:
-  - Rock
-  weightkg: 7
 regice:
   abilities:
     '0': Clear Body
@@ -22828,13 +21327,54 @@ regice:
   - Undiscovered
   gender: N
   heightm: 1.8
-  isNonstandard: Past
   name: Regice
   num: 378
-  tier: Illegal
+  tier: (PU)
   types:
   - Ice
   weightkg: 175
+regidrago:
+  abilities:
+    '0': Dragon's Maw
+  baseStats:
+    atk: 100
+    def: 50
+    hp: 200
+    spa: 100
+    spd: 50
+    spe: 80
+  color: Green
+  eggGroups:
+  - Undiscovered
+  gender: N
+  heightm: 2.1
+  name: Regidrago
+  num: 895
+  tier: RU
+  types:
+  - Dragon
+  weightkg: 200
+regieleki:
+  abilities:
+    '0': Transistor
+  baseStats:
+    atk: 100
+    def: 50
+    hp: 80
+    spa: 100
+    spd: 50
+    spe: 200
+  color: Yellow
+  eggGroups:
+  - Undiscovered
+  gender: N
+  heightm: 1.2
+  name: Regieleki
+  num: 894
+  tier: OU
+  types:
+  - Electric
+  weightkg: 145
 regigigas:
   abilities:
     '0': Slow Start
@@ -22850,10 +21390,9 @@ regigigas:
   - Undiscovered
   gender: N
   heightm: 3.7
-  isNonstandard: Past
   name: Regigigas
   num: 486
-  tier: Illegal
+  tier: (PU)
   types:
   - Normal
   weightkg: 420
@@ -22873,10 +21412,9 @@ regirock:
   - Undiscovered
   gender: N
   heightm: 1.7
-  isNonstandard: Past
   name: Regirock
   num: 377
-  tier: Illegal
+  tier: PU
   types:
   - Rock
   weightkg: 230
@@ -22896,10 +21434,9 @@ registeel:
   - Undiscovered
   gender: N
   heightm: 1.9
-  isNonstandard: Past
   name: Registeel
   num: 379
-  tier: Illegal
+  tier: RU
   types:
   - Steel
   weightkg: 205
@@ -22923,10 +21460,9 @@ relicanth:
     F: 0.125
     M: 0.875
   heightm: 1
-  isNonstandard: Past
   name: Relicanth
   num: 369
-  tier: Illegal
+  tier: (PU)
   types:
   - Water
   - Rock
@@ -22998,36 +21534,10 @@ reuniclus:
   name: Reuniclus
   num: 579
   prevo: Duosion
-  tier: RUBL
+  tier: RU
   types:
   - Psychic
   weightkg: 20.1
-revenankh:
-  abilities:
-    '0': Shed Skin
-    '1': Air Lock
-    H: Triage
-  baseStats:
-    atk: 105
-    def: 90
-    hp: 90
-    spa: 65
-    spd: 110
-    spe: 65
-  color: White
-  eggGroups:
-  - Amorphous
-  - Human-Like
-  gen: 4
-  heightm: 1.8
-  isNonstandard: CAP
-  name: Revenankh
-  num: -3
-  tier: CAP
-  types:
-  - Ghost
-  - Fighting
-  weightkg: 44
 rhydon:
   abilities:
     '0': Lightning Rod
@@ -23051,7 +21561,7 @@ rhydon:
   name: Rhydon
   num: 112
   prevo: Rhyhorn
-  tier: RU
+  tier: NFE
   types:
   - Ground
   - Rock
@@ -23135,7 +21645,7 @@ ribombee:
   otherFormes:
   - Ribombee-Totem
   prevo: Cutiefly
-  tier: RU
+  tier: PU
   types:
   - Bug
   - Fairy
@@ -23218,7 +21728,7 @@ rillaboomgmax:
   isNonstandard: Gigantamax
   name: Rillaboom-Gmax
   num: 812
-  tier: (Uber)
+  tier: AG
   types:
   - Grass
   weightkg: 0
@@ -23378,7 +21888,7 @@ roselia:
   name: Roselia
   num: 315
   prevo: Budew
-  tier: PU
+  tier: NFE
   types:
   - Grass
   - Poison
@@ -23405,7 +21915,7 @@ roserade:
   name: Roserade
   num: 407
   prevo: Roselia
-  tier: UU
+  tier: PUBL
   types:
   - Grass
   - Poison
@@ -23440,7 +21950,7 @@ rotom:
   - Rotom-Frost
   - Rotom-Fan
   - Rotom-Mow
-  tier: NU
+  tier: (PU)
   types:
   - Electric
   - Ghost
@@ -23465,7 +21975,7 @@ rotomfan:
   heightm: 0.3
   name: Rotom-Fan
   num: 479
-  tier: NU
+  tier: (PU)
   types:
   - Electric
   - Flying
@@ -23490,7 +22000,7 @@ rotomfrost:
   heightm: 0.3
   name: Rotom-Frost
   num: 479
-  tier: NU
+  tier: (PU)
   types:
   - Electric
   - Ice
@@ -23515,7 +22025,7 @@ rotomheat:
   heightm: 0.3
   name: Rotom-Heat
   num: 479
-  tier: OU
+  tier: UU
   types:
   - Electric
   - Fire
@@ -23540,7 +22050,7 @@ rotommow:
   heightm: 0.3
   name: Rotom-Mow
   num: 479
-  tier: RU
+  tier: NU
   types:
   - Electric
   - Grass
@@ -23618,7 +22128,7 @@ rufflet:
   heightm: 0.5
   name: Rufflet
   num: 627
-  tier: LC Uber
+  tier: NFE
   types:
   - Normal
   - Flying
@@ -23643,7 +22153,7 @@ runerigus:
   name: Runerigus
   num: 867
   prevo: Yamask-Galar
-  tier: RU
+  tier: (PU)
   types:
   - Ground
   - Ghost
@@ -23671,7 +22181,7 @@ sableye:
   num: 302
   otherFormes:
   - Sableye-Mega
-  tier: RU
+  tier: (PU)
   types:
   - Dark
   - Ghost
@@ -23720,13 +22230,12 @@ salamence:
   - Salamence
   - Salamence-Mega
   heightm: 1.5
-  isNonstandard: Past
   name: Salamence
   num: 373
   otherFormes:
   - Salamence-Mega
   prevo: Shelgon
-  tier: Illegal
+  tier: UU
   types:
   - Dragon
   - Flying
@@ -23810,7 +22319,7 @@ salazzle:
   otherFormes:
   - Salazzle-Totem
   prevo: Salandit
-  tier: RU
+  tier: NU
   types:
   - Poison
   - Fire
@@ -23890,7 +22399,7 @@ sandaconda:
   name: Sandaconda
   num: 844
   prevo: Silicobra
-  tier: NU
+  tier: PU
   types:
   - Ground
   weightkg: 65.5
@@ -23917,7 +22426,7 @@ sandacondagmax:
   isNonstandard: Gigantamax
   name: Sandaconda-Gmax
   num: 844
-  tier: (Uber)
+  tier: AG
   types:
   - Ground
   weightkg: 0
@@ -24024,7 +22533,7 @@ sandslash:
   otherFormes:
   - Sandslash-Alola
   prevo: Sandshrew
-  tier: PU
+  tier: (PU)
   types:
   - Ground
   weightkg: 29.5
@@ -24050,7 +22559,7 @@ sandslashalola:
   name: Sandslash-Alola
   num: 28
   prevo: Sandshrew-Alola
-  tier: RU
+  tier: PU
   types:
   - Ice
   - Steel
@@ -24098,7 +22607,7 @@ sawk:
   heightm: 1.4
   name: Sawk
   num: 539
-  tier: NU
+  tier: (PU)
   types:
   - Fighting
   weightkg: 51
@@ -24186,13 +22695,12 @@ sceptile:
     F: 0.125
     M: 0.875
   heightm: 1.7
-  isNonstandard: Past
   name: Sceptile
   num: 254
   otherFormes:
   - Sceptile-Mega
   prevo: Grovyle
-  tier: Illegal
+  tier: PUBL
   types:
   - Grass
   weightkg: 52.2
@@ -24251,7 +22759,7 @@ scizor:
   otherFormes:
   - Scizor-Mega
   prevo: Scyther
-  tier: OU
+  tier: UU
   types:
   - Bug
   - Steel
@@ -24301,7 +22809,7 @@ scolipede:
   name: Scolipede
   num: 545
   prevo: Whirlipede
-  tier: UUBL
+  tier: RUBL
   types:
   - Bug
   - Poison
@@ -24354,7 +22862,7 @@ scrafty:
   name: Scrafty
   num: 560
   prevo: Scraggy
-  tier: RU
+  tier: (PU)
   types:
   - Dark
   - Fighting
@@ -24385,34 +22893,6 @@ scraggy:
   - Dark
   - Fighting
   weightkg: 11.8
-scratchet:
-  abilities:
-    '0': Scrappy
-    '1': Prankster
-    H: Vital Spirit
-  baseStats:
-    atk: 85
-    def: 80
-    hp: 55
-    spa: 20
-    spd: 70
-    spe: 40
-  color: Brown
-  eggGroups:
-  - Field
-  - Flying
-  evos:
-  - Tomohawk
-  gen: 5
-  heightm: 0.5
-  isNonstandard: CAP
-  name: Scratchet
-  num: -20
-  tier: CAP LC
-  types:
-  - Normal
-  - Fighting
-  weightkg: 20
 scyther:
   abilities:
     '0': Swarm
@@ -24433,7 +22913,7 @@ scyther:
   heightm: 1.5
   name: Scyther
   num: 123
-  tier: UU
+  tier: PU
   types:
   - Bug
   - Flying
@@ -24509,11 +22989,10 @@ sealeo:
   evos:
   - Walrein
   heightm: 1.1
-  isNonstandard: Past
   name: Sealeo
   num: 364
   prevo: Spheal
-  tier: Illegal
+  tier: NFE
   types:
   - Ice
   - Water
@@ -24750,7 +23229,7 @@ sharpedo:
   otherFormes:
   - Sharpedo-Mega
   prevo: Carvanha
-  tier: RUBL
+  tier: NUBL
   types:
   - Water
   - Dark
@@ -24877,11 +23356,10 @@ shelgon:
   evos:
   - Salamence
   heightm: 1.1
-  isNonstandard: Past
   name: Shelgon
   num: 372
   prevo: Bagon
-  tier: Illegal
+  tier: NFE
   types:
   - Dragon
   weightkg: 110.5
@@ -25014,7 +23492,7 @@ shiftry:
   name: Shiftry
   num: 275
   prevo: Nuzleaf
-  tier: RUBL
+  tier: (PU)
   types:
   - Grass
   - Dark
@@ -25112,7 +23590,7 @@ shuckle:
   heightm: 0.6
   name: Shuckle
   num: 213
-  tier: PU
+  tier: (PU)
   types:
   - Bug
   - Rock
@@ -25160,7 +23638,7 @@ sigilyph:
   heightm: 1.4
   name: Sigilyph
   num: 561
-  tier: RU
+  tier: NUBL
   types:
   - Psychic
   - Flying
@@ -25270,8 +23748,8 @@ silvally:
   - Silvally-Rock
   - Silvally-Steel
   - Silvally-Water
-  prevo: 'Type: Null'
-  tier: PUBL
+  prevo: 'Type:  Null'
+  tier: (PU)
   types:
   - Normal
   weightkg: 100.5
@@ -25296,7 +23774,7 @@ silvallybug:
   name: Silvally-Bug
   num: 773
   requiredItem: Bug Memory
-  tier: PUBL
+  tier: (PU)
   types:
   - Bug
   weightkg: 100.5
@@ -25321,7 +23799,7 @@ silvallydark:
   name: Silvally-Dark
   num: 773
   requiredItem: Dark Memory
-  tier: NU
+  tier: (PU)
   types:
   - Dark
   weightkg: 100.5
@@ -25346,7 +23824,7 @@ silvallydragon:
   name: Silvally-Dragon
   num: 773
   requiredItem: Dragon Memory
-  tier: NU
+  tier: (PU)
   types:
   - Dragon
   weightkg: 100.5
@@ -25371,7 +23849,7 @@ silvallyelectric:
   name: Silvally-Electric
   num: 773
   requiredItem: Electric Memory
-  tier: PUBL
+  tier: (PU)
   types:
   - Electric
   weightkg: 100.5
@@ -25396,7 +23874,7 @@ silvallyfairy:
   name: Silvally-Fairy
   num: 773
   requiredItem: Fairy Memory
-  tier: RU
+  tier: PU
   types:
   - Fairy
   weightkg: 100.5
@@ -25421,7 +23899,7 @@ silvallyfighting:
   name: Silvally-Fighting
   num: 773
   requiredItem: Fighting Memory
-  tier: PUBL
+  tier: (PU)
   types:
   - Fighting
   weightkg: 100.5
@@ -25446,7 +23924,7 @@ silvallyfire:
   name: Silvally-Fire
   num: 773
   requiredItem: Fire Memory
-  tier: PUBL
+  tier: (PU)
   types:
   - Fire
   weightkg: 100.5
@@ -25471,7 +23949,7 @@ silvallyflying:
   name: Silvally-Flying
   num: 773
   requiredItem: Flying Memory
-  tier: PUBL
+  tier: (PU)
   types:
   - Flying
   weightkg: 100.5
@@ -25496,7 +23974,7 @@ silvallyghost:
   name: Silvally-Ghost
   num: 773
   requiredItem: Ghost Memory
-  tier: NU
+  tier: (PU)
   types:
   - Ghost
   weightkg: 100.5
@@ -25521,7 +23999,7 @@ silvallygrass:
   name: Silvally-Grass
   num: 773
   requiredItem: Grass Memory
-  tier: PUBL
+  tier: (PU)
   types:
   - Grass
   weightkg: 100.5
@@ -25546,7 +24024,7 @@ silvallyground:
   name: Silvally-Ground
   num: 773
   requiredItem: Ground Memory
-  tier: PUBL
+  tier: (PU)
   types:
   - Ground
   weightkg: 100.5
@@ -25596,7 +24074,7 @@ silvallypoison:
   name: Silvally-Poison
   num: 773
   requiredItem: Poison Memory
-  tier: PUBL
+  tier: (PU)
   types:
   - Poison
   weightkg: 100.5
@@ -25621,7 +24099,7 @@ silvallypsychic:
   name: Silvally-Psychic
   num: 773
   requiredItem: Psychic Memory
-  tier: PUBL
+  tier: (PU)
   types:
   - Psychic
   weightkg: 100.5
@@ -25646,7 +24124,7 @@ silvallyrock:
   name: Silvally-Rock
   num: 773
   requiredItem: Rock Memory
-  tier: PU
+  tier: (PU)
   types:
   - Rock
   weightkg: 100.5
@@ -25671,7 +24149,7 @@ silvallysteel:
   name: Silvally-Steel
   num: 773
   requiredItem: Steel Memory
-  tier: RU
+  tier: PU
   types:
   - Steel
   weightkg: 100.5
@@ -25696,7 +24174,7 @@ silvallywater:
   name: Silvally-Water
   num: 773
   requiredItem: Water Memory
-  tier: NU
+  tier: (PU)
   types:
   - Water
   weightkg: 100.5
@@ -25837,10 +24315,8 @@ sinisteaantique:
   heightm: 0.1
   name: Sinistea-Antique
   num: 854
-  tier: LC
   types:
   - Ghost
-  unreleasedHidden: true
   weightkg: 0.2
 sirfetchd:
   abilities:
@@ -25863,7 +24339,7 @@ sirfetchd:
   name: Sirfetch'd
   num: 865
   prevo: Farfetch'd-Galar
-  tier: RUBL
+  tier: PUBL
   types:
   - Fighting
   weightkg: 117
@@ -26069,7 +24545,7 @@ skuntank:
   name: Skuntank
   num: 435
   prevo: Stunky
-  tier: NU
+  tier: (PU)
   types:
   - Poison
   - Dark
@@ -26275,13 +24751,47 @@ slowking:
   - Water 1
   evoItem: King's Rock
   evoType: trade
+  formeOrder:
+  - Slowking
+  - Slowking-Galar
   heightm: 2
   name: Slowking
   num: 199
+  otherFormes:
+  - Slowking-Galar
   prevo: Slowpoke
   tier: UU
   types:
   - Water
+  - Psychic
+  weightkg: 79.5
+slowkinggalar:
+  abilities:
+    '0': Curious Medicine
+    '1': Own Tempo
+    H: Regenerator
+  baseSpecies: Slowking
+  baseStats:
+    atk: 65
+    def: 80
+    hp: 95
+    spa: 110
+    spd: 110
+    spe: 30
+  color: Pink
+  eggGroups:
+  - Monster
+  - Water 1
+  evoItem: Galarica Wreath
+  evoType: useItem
+  forme: Galar
+  heightm: 1.8
+  name: Slowking-Galar
+  num: 199
+  prevo: Slowpoke-Galar
+  tier: OU
+  types:
+  - Poison
   - Psychic
   weightkg: 79.5
 slowpoke:
@@ -26335,6 +24845,7 @@ slowpokegalar:
   - Water 1
   evos:
   - Slowbro-Galar
+  - Slowking-Galar
   forme: Galar
   heightm: 1.2
   name: Slowpoke-Galar
@@ -26388,7 +24899,7 @@ slurpuff:
   name: Slurpuff
   num: 685
   prevo: Swirlix
-  tier: RUBL
+  tier: NUBL
   types:
   - Fairy
   weightkg: 5
@@ -26415,97 +24926,6 @@ smeargle:
   types:
   - Normal
   weightkg: 58
-smogecko:
-  abilities:
-    '0': Blaze
-    H: Technician
-  baseStats:
-    atk: 66
-    def: 43
-    hp: 48
-    spa: 58
-    spd: 48
-    spe: 56
-  color: Red
-  eggGroups:
-  - Field
-  - Monster
-  evos:
-  - Smoguana
-  gen: 7
-  genderRatio:
-    F: 0.125
-    M: 0.875
-  heightm: 0.5
-  isNonstandard: CAP
-  name: Smogecko
-  num: -48
-  tier: CAP LC
-  types:
-  - Fire
-  weightkg: 8.5
-smoguana:
-  abilities:
-    '0': Blaze
-    H: Technician
-  baseStats:
-    atk: 86
-    def: 53
-    hp: 68
-    spa: 68
-    spd: 68
-    spe: 76
-  color: Red
-  eggGroups:
-  - Field
-  - Monster
-  evoLevel: 15
-  evos:
-  - Smokomodo
-  gen: 7
-  genderRatio:
-    F: 0.125
-    M: 0.875
-  heightm: 1.5
-  isNonstandard: CAP
-  name: Smoguana
-  num: -49
-  prevo: Smogecko
-  tier: CAP NFE
-  types:
-  - Fire
-  - Ground
-  weightkg: 22.2
-smokomodo:
-  abilities:
-    '0': Blaze
-    H: Technician
-  baseStats:
-    atk: 116
-    def: 67
-    hp: 88
-    spa: 88
-    spd: 78
-    spe: 97
-  color: Red
-  eggGroups:
-  - Field
-  - Monster
-  evoLevel: 36
-  gen: 7
-  genderRatio:
-    F: 0.125
-    M: 0.875
-  heightm: 2.2
-  isNonstandard: CAP
-  name: Smokomodo
-  num: -50
-  prevo: Smoguana
-  tier: CAP
-  types:
-  - Fire
-  - Ground
-  weightkg: 205
 smoochum:
   abilities:
     '0': Oblivious
@@ -26526,44 +24946,13 @@ smoochum:
   - Jynx
   gender: F
   heightm: 0.4
-  isNonstandard: Past
   name: Smoochum
   num: 238
-  tier: Illegal
+  tier: LC
   types:
   - Ice
   - Psychic
   weightkg: 6
-snaelstrom:
-  abilities:
-    '0': Torrent
-    H: Poison Heal
-  baseStats:
-    atk: 94
-    def: 110
-    hp: 91
-    spa: 80
-    spd: 97
-    spe: 63
-  color: Blue
-  eggGroups:
-  - Water 1
-  - Fairy
-  evoLevel: 34
-  gen: 7
-  genderRatio:
-    F: 0.125
-    M: 0.875
-  heightm: 2
-  isNonstandard: CAP
-  name: Snaelstrom
-  num: -53
-  prevo: Coribalis
-  tier: CAP
-  types:
-  - Water
-  - Bug
-  weightkg: 120
 sneasel:
   abilities:
     '0': Inner Focus
@@ -26584,7 +24973,7 @@ sneasel:
   heightm: 0.9
   name: Sneasel
   num: 215
-  tier: NUBL
+  tier: NFE
   types:
   - Dark
   - Ice
@@ -26695,7 +25084,7 @@ snorlaxgmax:
   isNonstandard: Gigantamax
   name: Snorlax-Gmax
   num: 143
-  tier: (Uber)
+  tier: AG
   types:
   - Normal
   weightkg: 0
@@ -26779,34 +25168,6 @@ snubbull:
   types:
   - Fairy
   weightkg: 7.8
-snugglow:
-  abilities:
-    '0': Storm Drain
-    '1': Vital Spirit
-    H: Telepathy
-  baseStats:
-    atk: 37
-    def: 79
-    hp: 40
-    spa: 91
-    spd: 68
-    spe: 70
-  color: Purple
-  eggGroups:
-  - Water 1
-  - Water 2
-  evos:
-  - Plasmanta
-  gen: 6
-  heightm: 1.2
-  isNonstandard: CAP
-  name: Snugglow
-  num: -34
-  tier: CAP LC
-  types:
-  - Electric
-  - Poison
-  weightkg: 6
 sobble:
   abilities:
     '0': Torrent
@@ -26882,34 +25243,6 @@ solosis:
   types:
   - Psychic
   weightkg: 1
-solotl:
-  abilities:
-    '0': Regenerator
-    '1': Vital Spirit
-    H: Magician
-  baseStats:
-    atk: 48
-    def: 34
-    hp: 68
-    spa: 72
-    spd: 24
-    spe: 84
-  color: Red
-  eggGroups:
-  - Dragon
-  - Fairy
-  evos:
-  - Astrolotl
-  gen: 8
-  heightm: 0.6
-  isNonstandard: CAP
-  name: Solotl
-  num: -56
-  tier: CAP LC
-  types:
-  - Fire
-  - Dragon
-  weightkg: 11.8
 solrock:
   abilities:
     '0': Levitate
@@ -26957,6 +25290,27 @@ spearow:
   - Normal
   - Flying
   weightkg: 2
+spectrier:
+  abilities:
+    '0': Grim Neigh
+  baseStats:
+    atk: 65
+    def: 60
+    hp: 100
+    spa: 145
+    spd: 80
+    spe: 130
+  color: Black
+  eggGroups:
+  - Undiscovered
+  gender: N
+  heightm: 2
+  name: Spectrier
+  num: 897
+  tier: OU
+  types:
+  - Ghost
+  weightkg: 44.5
 spewpa:
   abilities:
     '0': Shed Skin
@@ -27002,10 +25356,9 @@ spheal:
   evos:
   - Sealeo
   heightm: 0.8
-  isNonstandard: Past
   name: Spheal
   num: 363
-  tier: Illegal
+  tier: LC
   types:
   - Ice
   - Water
@@ -27075,10 +25428,9 @@ spiritomb:
   eggGroups:
   - Amorphous
   heightm: 1
-  isNonstandard: Past
   name: Spiritomb
   num: 442
-  tier: Illegal
+  tier: (PU)
   types:
   - Ghost
   - Dark
@@ -27173,10 +25525,9 @@ stakataka:
   - Undiscovered
   gender: N
   heightm: 5.5
-  isNonstandard: Past
   name: Stakataka
   num: 805
-  tier: Illegal
+  tier: RU
   types:
   - Rock
   - Steel
@@ -27303,7 +25654,7 @@ starmie:
   name: Starmie
   num: 121
   prevo: Staryu
-  tier: UU
+  tier: NU
   types:
   - Water
   - Psychic
@@ -27460,33 +25811,6 @@ stoutland:
   types:
   - Normal
   weightkg: 61
-stratagem:
-  abilities:
-    '0': Levitate
-    '1': Technician
-    H: Sniper
-  baseStats:
-    atk: 60
-    def: 65
-    hp: 90
-    spa: 120
-    spd: 70
-    spe: 130
-  color: Gray
-  eggGroups:
-  - Undiscovered
-  evoType: trade
-  gen: 4
-  gender: N
-  heightm: 0.9
-  isNonstandard: CAP
-  name: Stratagem
-  num: -11
-  prevo: Tactite
-  tier: CAP
-  types:
-  - Rock
-  weightkg: 45
 stufful:
   abilities:
     '0': Fluffy
@@ -27536,7 +25860,7 @@ stunfisk:
   num: 618
   otherFormes:
   - Stunfisk-Galar
-  tier: PU
+  tier: (PU)
   types:
   - Ground
   - Electric
@@ -27560,7 +25884,7 @@ stunfiskgalar:
   heightm: 0.7
   name: Stunfisk-Galar
   num: 618
-  tier: NU
+  tier: (PU)
   types:
   - Ground
   - Steel
@@ -27632,10 +25956,9 @@ suicune:
   - Undiscovered
   gender: N
   heightm: 2
-  isNonstandard: Past
   name: Suicune
   num: 245
-  tier: Illegal
+  tier: RU
   types:
   - Water
   weightkg: 187
@@ -27734,10 +26057,9 @@ swablu:
   evos:
   - Altaria
   heightm: 0.4
-  isNonstandard: Past
   name: Swablu
   num: 333
-  tier: Illegal
+  tier: LC
   types:
   - Normal
   - Flying
@@ -27818,13 +26140,12 @@ swampert:
     F: 0.125
     M: 0.875
   heightm: 1.5
-  isNonstandard: Past
   name: Swampert
   num: 260
   otherFormes:
   - Swampert-Mega
   prevo: Marshtomp
-  tier: Illegal
+  tier: OU
   types:
   - Water
   - Ground
@@ -27954,39 +26275,10 @@ swirlix:
   heightm: 0.4
   name: Swirlix
   num: 684
-  tier: LC Uber
+  tier: NFE
   types:
   - Fairy
   weightkg: 3.5
-swirlpool:
-  abilities:
-    '0': Torrent
-    H: Poison Heal
-  baseStats:
-    atk: 49
-    def: 70
-    hp: 61
-    spa: 50
-    spd: 62
-    spe: 28
-  color: Blue
-  eggGroups:
-  - Water 1
-  - Fairy
-  evos:
-  - Coribalis
-  gen: 7
-  genderRatio:
-    F: 0.125
-    M: 0.875
-  heightm: 0.5
-  isNonstandard: CAP
-  name: Swirlpool
-  num: -51
-  tier: CAP LC
-  types:
-  - Water
-  weightkg: 7
 swoobat:
   abilities:
     '0': Unaware
@@ -28013,60 +26305,6 @@ swoobat:
   - Psychic
   - Flying
   weightkg: 10.5
-syclant:
-  abilities:
-    '0': Compound Eyes
-    '1': Mountaineer
-    H: Ice Body
-  baseStats:
-    atk: 116
-    def: 70
-    hp: 70
-    spa: 114
-    spd: 64
-    spe: 121
-  color: Blue
-  eggGroups:
-  - Bug
-  evoLevel: 30
-  gen: 4
-  heightm: 1.7
-  isNonstandard: CAP
-  name: Syclant
-  num: -2
-  prevo: Syclar
-  tier: CAP
-  types:
-  - Ice
-  - Bug
-  weightkg: 52
-syclar:
-  abilities:
-    '0': Compound Eyes
-    '1': Snow Cloak
-    H: Ice Body
-  baseStats:
-    atk: 76
-    def: 45
-    hp: 40
-    spa: 74
-    spd: 39
-    spe: 91
-  color: Blue
-  eggGroups:
-  - Bug
-  evos:
-  - Syclant
-  gen: 4
-  heightm: 0.2
-  isNonstandard: CAP
-  name: Syclar
-  num: -1
-  tier: CAP LC
-  types:
-  - Ice
-  - Bug
-  weightkg: 4
 sylveon:
   abilities:
     '0': Cute Charm
@@ -28090,39 +26328,10 @@ sylveon:
   name: Sylveon
   num: 700
   prevo: Eevee
-  tier: UU
+  tier: NU
   types:
   - Fairy
   weightkg: 23.5
-tactite:
-  abilities:
-    '0': Levitate
-    '1': Technician
-    H: Sniper
-  baseStats:
-    atk: 40
-    def: 65
-    hp: 70
-    spa: 100
-    spd: 65
-    spe: 95
-  color: Gray
-  eggGroups:
-  - Undiscovered
-  evoLevel: 28
-  evos:
-  - Stratagem
-  gen: 4
-  gender: N
-  heightm: 0.6
-  isNonstandard: CAP
-  name: Tactite
-  num: -10
-  prevo: Rebble
-  tier: CAP NFE
-  types:
-  - Rock
-  weightkg: 16
 taillow:
   abilities:
     '0': Guts
@@ -28167,7 +26376,7 @@ talonflame:
   name: Talonflame
   num: 663
   prevo: Fletchinder
-  tier: UU
+  tier: PU
   types:
   - Fire
   - Flying
@@ -28192,7 +26401,7 @@ tangela:
   heightm: 1
   name: Tangela
   num: 114
-  tier: PU
+  tier: NFE
   types:
   - Grass
   weightkg: 35
@@ -28217,7 +26426,7 @@ tangrowth:
   name: Tangrowth
   num: 465
   prevo: Tangela
-  tier: OU
+  tier: UU
   types:
   - Grass
   weightkg: 128.6
@@ -28237,10 +26446,9 @@ tapubulu:
   - Undiscovered
   gender: N
   heightm: 1.9
-  isNonstandard: Past
   name: Tapu Bulu
   num: 787
-  tier: Illegal
+  tier: UU
   types:
   - Grass
   - Fairy
@@ -28261,10 +26469,9 @@ tapufini:
   - Undiscovered
   gender: N
   heightm: 1.3
-  isNonstandard: Past
   name: Tapu Fini
   num: 788
-  tier: Illegal
+  tier: OU
   types:
   - Water
   - Fairy
@@ -28285,10 +26492,9 @@ tapukoko:
   - Undiscovered
   gender: N
   heightm: 1.8
-  isNonstandard: Past
   name: Tapu Koko
   num: 785
-  tier: Illegal
+  tier: OU
   types:
   - Electric
   - Fairy
@@ -28309,10 +26515,9 @@ tapulele:
   - Undiscovered
   gender: N
   heightm: 1.2
-  isNonstandard: Past
   name: Tapu Lele
   num: 786
-  tier: Illegal
+  tier: OU
   types:
   - Psychic
   - Fairy
@@ -28336,7 +26541,7 @@ tauros:
   heightm: 1.4
   name: Tauros
   num: 128
-  tier: RU
+  tier: PUBL
   types:
   - Normal
   weightkg: 88.4
@@ -28484,7 +26689,7 @@ thievul:
   name: Thievul
   num: 828
   prevo: Nickit
-  tier: PUBL
+  tier: (PU)
   types:
   - Dark
   weightkg: 19.9
@@ -28507,7 +26712,7 @@ throh:
   heightm: 1.3
   name: Throh
   num: 538
-  tier: PU
+  tier: (PU)
   types:
   - Fighting
   weightkg: 55.5
@@ -28531,12 +26736,11 @@ thundurus:
   - Thundurus-Therian
   gender: M
   heightm: 1.5
-  isNonstandard: Past
   name: Thundurus
   num: 642
   otherFormes:
   - Thundurus-Therian
-  tier: Illegal
+  tier: RU
   types:
   - Electric
   - Flying
@@ -28559,10 +26763,9 @@ thundurustherian:
   forme: Therian
   gender: M
   heightm: 3
-  isNonstandard: Past
   name: Thundurus-Therian
   num: 642
-  tier: Illegal
+  tier: UU
   types:
   - Electric
   - Flying
@@ -28592,7 +26795,7 @@ thwackey:
   name: Thwackey
   num: 811
   prevo: Grookey
-  tier: NU
+  tier: NFE
   types:
   - Grass
   weightkg: 14
@@ -28645,10 +26848,9 @@ tirtouga:
     F: 0.125
     M: 0.875
   heightm: 0.7
-  isNonstandard: Past
   name: Tirtouga
   num: 564
-  tier: Illegal
+  tier: LC
   types:
   - Water
   - Rock
@@ -28677,7 +26879,7 @@ togedemaru:
   num: 777
   otherFormes:
   - Togedemaru-Totem
-  tier: NU
+  tier: PU
   types:
   - Electric
   - Steel
@@ -28732,7 +26934,7 @@ togekiss:
   name: Togekiss
   num: 468
   prevo: Togetic
-  tier: OU
+  tier: RU
   types:
   - Fairy
   - Flying
@@ -28796,34 +26998,6 @@ togetic:
   - Fairy
   - Flying
   weightkg: 3.2
-tomohawk:
-  abilities:
-    '0': Intimidate
-    '1': Prankster
-    H: Justified
-  baseStats:
-    atk: 60
-    def: 90
-    hp: 105
-    spa: 115
-    spd: 80
-    spe: 85
-  color: Red
-  eggGroups:
-  - Field
-  - Flying
-  evoLevel: 23
-  gen: 5
-  heightm: 1.27
-  isNonstandard: CAP
-  name: Tomohawk
-  num: -21
-  prevo: Scratchet
-  tier: CAP
-  types:
-  - Flying
-  - Fighting
-  weightkg: 37.2
 torchic:
   abilities:
     '0': Blaze
@@ -28844,10 +27018,9 @@ torchic:
     F: 0.125
     M: 0.875
   heightm: 0.4
-  isNonstandard: Past
   name: Torchic
   num: 255
-  tier: Illegal
+  tier: LC
   types:
   - Fire
   weightkg: 2.5
@@ -28869,7 +27042,7 @@ torkoal:
   heightm: 0.5
   name: Torkoal
   num: 324
-  tier: OU
+  tier: NU
   types:
   - Fire
   weightkg: 80.4
@@ -28893,12 +27066,11 @@ tornadus:
   - Tornadus-Therian
   gender: M
   heightm: 1.5
-  isNonstandard: Past
   name: Tornadus
   num: 641
   otherFormes:
   - Tornadus-Therian
-  tier: Illegal
+  tier: NUBL
   types:
   - Flying
   weightkg: 63
@@ -28920,10 +27092,9 @@ tornadustherian:
   forme: Therian
   gender: M
   heightm: 1.4
-  isNonstandard: Past
   name: Tornadus-Therian
   num: 641
-  tier: Illegal
+  tier: OU
   types:
   - Flying
   weightkg: 63
@@ -29110,7 +27281,7 @@ toxicroak:
   name: Toxicroak
   num: 454
   prevo: Croagunk
-  tier: NU
+  tier: (PU)
   types:
   - Poison
   - Fighting
@@ -29142,7 +27313,7 @@ toxtricity:
   otherFormes:
   - Toxtricity-Low-Key
   prevo: Toxel
-  tier: UU
+  tier: NUBL
   types:
   - Electric
   - Poison
@@ -29169,7 +27340,7 @@ toxtricitygmax:
   isNonstandard: Gigantamax
   name: Toxtricity-Gmax
   num: 849
-  tier: (Uber)
+  tier: AG
   types:
   - Electric
   - Poison
@@ -29197,7 +27368,7 @@ toxtricitylowkey:
   name: Toxtricity-Low-Key
   num: 849
   prevo: Toxel
-  tier: UU
+  tier: NUBL
   types:
   - Electric
   - Poison
@@ -29225,7 +27396,7 @@ toxtricitylowkeygmax:
   isNonstandard: Gigantamax
   name: Toxtricity-Low-Key-Gmax
   num: 849
-  tier: (Uber)
+  tier: AG
   types:
   - Electric
   - Poison
@@ -29303,10 +27474,9 @@ treecko:
     F: 0.125
     M: 0.875
   heightm: 0.5
-  isNonstandard: Past
   name: Treecko
   num: 252
-  tier: Illegal
+  tier: LC
   types:
   - Grass
   weightkg: 5
@@ -29435,7 +27605,7 @@ tsareena:
   name: Tsareena
   num: 763
   prevo: Steenee
-  tier: UU
+  tier: PU
   types:
   - Grass
   weightkg: 21.4
@@ -29456,7 +27626,7 @@ turtonator:
   heightm: 2
   name: Turtonator
   num: 776
-  tier: NUBL
+  tier: (PU)
   types:
   - Fire
   - Dragon
@@ -29553,9 +27723,9 @@ typenull:
   - Silvally
   gender: N
   heightm: 1.9
-  name: 'Type: Null'
+  name: 'Type:  Null'
   num: 772
-  tier: PU
+  tier: NFE
   types:
   - Normal
   weightkg: 120.5
@@ -29610,7 +27780,7 @@ tyranitar:
   otherFormes:
   - Tyranitar-Mega
   prevo: Pupitar
-  tier: UU
+  tier: OU
   types:
   - Rock
   - Dark
@@ -29660,11 +27830,10 @@ tyrantrum:
     F: 0.125
     M: 0.875
   heightm: 2.5
-  isNonstandard: Past
   name: Tyrantrum
   num: 697
   prevo: Tyrunt
-  tier: Illegal
+  tier: NU
   types:
   - Rock
   - Dragon
@@ -29718,10 +27887,9 @@ tyrunt:
     F: 0.125
     M: 0.875
   heightm: 0.8
-  isNonstandard: Past
   name: Tyrunt
   num: 696
-  tier: Illegal
+  tier: LC
   types:
   - Rock
   - Dragon
@@ -29773,7 +27941,7 @@ unfezant:
   name: Unfezant
   num: 521
   prevo: Tranquill
-  tier: PU
+  tier: (PU)
   types:
   - Normal
   - Flying
@@ -29912,7 +28080,7 @@ urshifu:
   otherFormes:
   - Urshifu-Rapid-Strike
   prevo: Kubfu
-  tier: OU
+  tier: Uber
   types:
   - Fighting
   - Dark
@@ -29940,7 +28108,7 @@ urshifugmax:
   isNonstandard: Gigantamax
   name: Urshifu-Gmax
   num: 892
-  tier: (Uber)
+  tier: AG
   types:
   - Fighting
   - Dark
@@ -29999,7 +28167,7 @@ urshifurapidstrikegmax:
   isNonstandard: Gigantamax
   name: Urshifu-Rapid-Strike-Gmax
   num: 892
-  tier: (Uber)
+  tier: AG
   types:
   - Fighting
   - Water
@@ -30019,10 +28187,9 @@ uxie:
   - Undiscovered
   gender: N
   heightm: 0.3
-  isNonstandard: Past
   name: Uxie
   num: 480
-  tier: Illegal
+  tier: (PU)
   types:
   - Psychic
   weightkg: 0.3
@@ -30096,7 +28263,7 @@ vanilluxe:
   name: Vanilluxe
   num: 584
   prevo: Vanillish
-  tier: RU
+  tier: (PU)
   types:
   - Ice
   weightkg: 57.5
@@ -30123,7 +28290,7 @@ vaporeon:
   name: Vaporeon
   num: 134
   prevo: Eevee
-  tier: RU
+  tier: PU
   types:
   - Water
   weightkg: 29
@@ -30233,7 +28400,7 @@ venusaur:
   otherFormes:
   - Venusaur-Mega
   prevo: Ivysaur
-  tier: OU
+  tier: RUBL
   types:
   - Grass
   - Poison
@@ -30263,7 +28430,7 @@ venusaurgmax:
   isNonstandard: Gigantamax
   name: Venusaur-Gmax
   num: 3
-  tier: (Uber)
+  tier: AG
   types:
   - Grass
   - Poison
@@ -30363,10 +28530,9 @@ victini:
   - Undiscovered
   gender: N
   heightm: 0.4
-  isNonstandard: Past
   name: Victini
   num: 494
-  tier: Illegal
+  tier: UU
   types:
   - Psychic
   - Fire
@@ -30446,7 +28612,7 @@ vikavolt:
   otherFormes:
   - Vikavolt-Totem
   prevo: Charjabug
-  tier: RU
+  tier: (PU)
   types:
   - Bug
   - Electric
@@ -30495,7 +28661,7 @@ vileplume:
   name: Vileplume
   num: 45
   prevo: Gloom
-  tier: RU
+  tier: NU
   types:
   - Grass
   - Poison
@@ -30517,7 +28683,7 @@ virizion:
   heightm: 2
   name: Virizion
   num: 640
-  tier: RU
+  tier: PU
   types:
   - Grass
   - Fighting
@@ -30679,10 +28845,9 @@ volcanion:
   - Undiscovered
   gender: N
   heightm: 1.7
-  isNonstandard: Past
   name: Volcanion
   num: 721
-  tier: Illegal
+  tier: RU
   types:
   - Fire
   - Water
@@ -30711,62 +28876,6 @@ volcarona:
   - Bug
   - Fire
   weightkg: 46
-volkraken:
-  abilities:
-    '0': Analytic
-    '1': Infiltrator
-    H: Pressure
-  baseStats:
-    atk: 45
-    def: 80
-    hp: 100
-    spa: 135
-    spd: 100
-    spe: 95
-  color: Red
-  eggGroups:
-  - Water 1
-  - Water 2
-  evoLevel: 34
-  gen: 6
-  heightm: 1.3
-  isNonstandard: CAP
-  name: Volkraken
-  num: -33
-  prevo: Volkritter
-  tier: CAP
-  types:
-  - Water
-  - Fire
-  weightkg: 44.5
-volkritter:
-  abilities:
-    '0': Anticipation
-    '1': Infiltrator
-    H: Unnerve
-  baseStats:
-    atk: 30
-    def: 50
-    hp: 60
-    spa: 80
-    spd: 60
-    spe: 70
-  color: Red
-  eggGroups:
-  - Water 1
-  - Water 2
-  evos:
-  - Volkraken
-  gen: 6
-  heightm: 0.3
-  isNonstandard: CAP
-  name: Volkritter
-  num: -32
-  tier: CAP LC
-  types:
-  - Water
-  - Fire
-  weightkg: 15
 voltorb:
   abilities:
     '0': Soundproof
@@ -30793,62 +28902,6 @@ voltorb:
   types:
   - Electric
   weightkg: 10.4
-voodoll:
-  abilities:
-    '0': Volt Absorb
-    '1': Lightning Rod
-    H: Cursed Body
-  baseStats:
-    atk: 40
-    def: 55
-    hp: 55
-    spa: 75
-    spd: 50
-    spe: 70
-  color: Brown
-  eggGroups:
-  - Human-Like
-  - Field
-  evos:
-  - Voodoom
-  gen: 4
-  heightm: 1
-  isNonstandard: CAP
-  name: Voodoll
-  num: -18
-  tier: CAP LC
-  types:
-  - Normal
-  - Dark
-  weightkg: 25
-voodoom:
-  abilities:
-    '0': Volt Absorb
-    '1': Lightning Rod
-    H: Cursed Body
-  baseStats:
-    atk: 85
-    def: 80
-    hp: 90
-    spa: 105
-    spd: 80
-    spe: 110
-  color: Brown
-  eggGroups:
-  - Human-Like
-  - Field
-  evoLevel: 32
-  gen: 4
-  heightm: 2
-  isNonstandard: CAP
-  name: Voodoom
-  num: -19
-  prevo: Voodoll
-  tier: CAP
-  types:
-  - Fighting
-  - Dark
-  weightkg: 75.5
 vullaby:
   abilities:
     '0': Big Pecks
@@ -30930,7 +28983,7 @@ vulpixalola:
   heightm: 0.6
   name: Vulpix-Alola
   num: 37
-  tier: LC Uber
+  tier: NFE
   types:
   - Ice
   weightkg: 9.9
@@ -31002,11 +29055,10 @@ walrein:
   - Field
   evoLevel: 44
   heightm: 1.4
-  isNonstandard: Past
   name: Walrein
   num: 365
   prevo: Sealeo
-  tier: Illegal
+  tier: (PU)
   types:
   - Ice
   - Water
@@ -31167,7 +29219,7 @@ weezing:
   otherFormes:
   - Weezing-Galar
   prevo: Koffing
-  tier: NU
+  tier: PU
   types:
   - Poison
   weightkg: 9.5
@@ -31193,7 +29245,7 @@ weezinggalar:
   name: Weezing-Galar
   num: 110
   prevo: Koffing
-  tier: UU
+  tier: RU
   types:
   - Poison
   - Fairy
@@ -31220,7 +29272,7 @@ whimsicott:
   name: Whimsicott
   num: 547
   prevo: Cottonee
-  tier: RU
+  tier: PU
   types:
   - Grass
   - Fairy
@@ -31325,7 +29377,7 @@ wigglytuff:
   name: Wigglytuff
   num: 40
   prevo: Jigglypuff
-  tier: PU
+  tier: (PU)
   types:
   - Normal
   - Fairy
@@ -31402,7 +29454,7 @@ wishiwashi:
   num: 746
   otherFormes:
   - Wishiwashi-School
-  tier: NU
+  tier: (PU)
   types:
   - Water
   weightkg: 0.3
@@ -31688,7 +29740,7 @@ xatu:
   name: Xatu
   num: 178
   prevo: Natu
-  tier: RU
+  tier: PU
   types:
   - Psychic
   - Flying
@@ -31712,12 +29764,11 @@ xerneas:
   - Xerneas
   gender: N
   heightm: 3
-  isNonstandard: Past
   name: Xerneas
   num: 716
   otherFormes:
   - Xerneas-Neutral
-  tier: Illegal
+  tier: Uber
   types:
   - Fairy
   weightkg: 215
@@ -31760,10 +29811,9 @@ xurkitree:
   - Undiscovered
   gender: N
   heightm: 3.8
-  isNonstandard: Past
   name: Xurkitree
   num: 796
-  tier: Illegal
+  tier: RU
   types:
   - Electric
   weightkg: 100
@@ -31937,10 +29987,9 @@ yveltal:
   - Undiscovered
   gender: N
   heightm: 5.8
-  isNonstandard: Past
   name: Yveltal
   num: 717
-  tier: Illegal
+  tier: Uber
   types:
   - Dark
   - Flying
@@ -31994,7 +30043,7 @@ zaciancrowned:
   name: Zacian-Crowned
   num: 888
   requiredItem: Rusted Sword
-  tier: Uber
+  tier: AG
   types:
   - Fairy
   - Steel
@@ -32089,16 +30138,44 @@ zapdos:
   color: Yellow
   eggGroups:
   - Undiscovered
+  formeOrder:
+  - Zapdos
+  - Zapdos-Galar
   gender: N
   heightm: 1.6
-  isNonstandard: Past
   name: Zapdos
   num: 145
-  tier: Illegal
+  otherFormes:
+  - Zapdos-Galar
+  tier: OU
   types:
   - Electric
   - Flying
   weightkg: 52.6
+zapdosgalar:
+  abilities:
+    '0': Defiant
+  baseSpecies: Zapdos
+  baseStats:
+    atk: 125
+    def: 90
+    hp: 90
+    spa: 85
+    spd: 90
+    spe: 100
+  color: Yellow
+  eggGroups:
+  - Undiscovered
+  forme: Galar
+  gender: N
+  heightm: 1.6
+  name: Zapdos-Galar
+  num: 145
+  tier: OU
+  types:
+  - Fighting
+  - Flying
+  weightkg: 58.2
 zarude:
   abilities:
     '0': Leaf Guard
@@ -32109,7 +30186,7 @@ zarude:
     spa: 70
     spd: 95
     spe: 105
-  color: Green
+  color: Black
   eggGroups:
   - Undiscovered
   formeOrder:
@@ -32121,7 +30198,7 @@ zarude:
   num: 893
   otherFormes:
   - Zarude-Dada
-  tier: OU
+  tier: RU
   types:
   - Dark
   - Grass
@@ -32137,16 +30214,14 @@ zarudedada:
     spa: 70
     spd: 95
     spe: 105
-  color: Green
+  color: Black
   eggGroups:
   - Undiscovered
   forme: Dada
   gender: N
   heightm: 1.8
-  isNonstandard: Unobtainable
   name: Zarude-Dada
   num: 893
-  tier: Unreleased
   types:
   - Dark
   - Grass
@@ -32215,7 +30290,7 @@ zeraora:
   heightm: 1.5
   name: Zeraora
   num: 807
-  tier: OU
+  tier: UU
   types:
   - Electric
   weightkg: 44.5
@@ -32296,7 +30371,7 @@ zoroark:
   name: Zoroark
   num: 571
   prevo: Zorua
-  tier: RUBL
+  tier: NU
   types:
   - Dark
   weightkg: 81.1
@@ -32342,10 +30417,9 @@ zubat:
   evos:
   - Golbat
   heightm: 0.8
-  isNonstandard: Past
   name: Zubat
   num: 41
-  tier: Illegal
+  tier: LC
   types:
   - Poison
   - Flying
@@ -32398,13 +30472,12 @@ zygarde:
   - Zygarde-Complete
   gender: N
   heightm: 5
-  isNonstandard: Past
   name: Zygarde
   num: 718
   otherFormes:
   - Zygarde-10%
   - Zygarde-Complete
-  tier: Illegal
+  tier: Uber
   types:
   - Dragon
   - Ground
@@ -32422,17 +30495,16 @@ zygarde10:
     spd: 85
     spe: 115
   changesFrom: Zygarde
-  color: Green
+  color: Black
   eggGroups:
   - Undiscovered
   forme: 10%
   gen: 7
   gender: N
   heightm: 1.2
-  isNonstandard: Past
   name: Zygarde-10%
   num: 718
-  tier: Illegal
+  tier: RU
   types:
   - Dragon
   - Ground
@@ -32451,18 +30523,17 @@ zygardecomplete:
   battleOnly:
   - Zygarde
   - Zygarde-10%
-  color: Green
+  color: Black
   eggGroups:
   - Undiscovered
   forme: Complete
   gen: 7
   gender: N
   heightm: 4.5
-  isNonstandard: Past
   name: Zygarde-Complete
   num: 718
   requiredAbility: Power Construct
-  tier: Illegal
+  tier: Uber
   types:
   - Dragon
   - Ground

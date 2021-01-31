@@ -6,7 +6,7 @@ from pprint import pprint
 source_dir = 'modified'
 destination_dir = 'gen8'
 
-def transform_entry(pokedex_entry, id, base_game_list, transfer_only_list, isle_of_armor_list):
+def transform_entry(pokedex_entry, id, base_game_list, transfer_only_list, isle_of_armor_list, crown_tundra_list):
     abilities = pokedex_entry['abilities']
     ability_list = []
     if '0' in abilities:
@@ -37,7 +37,8 @@ def transform_entry(pokedex_entry, id, base_game_list, transfer_only_list, isle_
     pokedex_entry['base_game'] = (id in base_game_list)
     pokedex_entry['transfer_only'] = (id in transfer_only_list)
     pokedex_entry['isle_of_armor'] = (id in isle_of_armor_list)
-    pokedex_entry['past_only'] = (id not in base_game_list and id not in transfer_only_list and id not in isle_of_armor_list)
+    pokedex_entry['crown_tundra'] = (id in crown_tundra_list)
+    pokedex_entry['past_only'] = (id not in base_game_list and id not in transfer_only_list and id not in isle_of_armor_list and id not in crown_tundra_list)
     return pokedex_entry
 
 def transform_learnset(learnset):
@@ -119,16 +120,19 @@ def filter_pokedex():
     print('Filtering Pokedex...')
     gen8dex = dict()
 
-    with open(f'{source_dir}/base_game.txt', 'r') as input:
+    with open(f'{source_dir}/base_game.yaml', 'r') as input:
         base_game_list = yaml.load(input.read(), Loader=yaml.SafeLoader)
 
-    with open(f'{source_dir}/transfer_only.txt', 'r') as input:
+    with open(f'{source_dir}/transfer_only.yaml', 'r') as input:
         transfer_only_list = yaml.load(input.read(), Loader=yaml.SafeLoader)
 
-    with open(f'{source_dir}/isle_of_armor.txt', 'r') as input:
+    with open(f'{source_dir}/isle_of_armor.yaml', 'r') as input:
         isle_of_armor_list = yaml.load(input.read(), Loader=yaml.SafeLoader)
 
-    with open(f'{source_dir}/pokedex.txt', 'r') as input:
+    with open(f'{source_dir}/crown_tundra.yaml', 'r') as input:
+        crown_tundra_list = yaml.load(input.read(), Loader=yaml.SafeLoader)
+
+    with open(f'{source_dir}/pokedex.yaml', 'r') as input:
         pokedex = yaml.load(input.read(), Loader=yaml.SafeLoader)
 
         ignore_list = ['basculinbluestriped','keldeoresolute','polteageistantique','sinisteaantique', 'floetteeternal',
@@ -196,13 +200,13 @@ def filter_pokedex():
                 isGen8 = False
 
             if isGen8:
-                gen8dex[pokemon] = transform_entry(pokedex[pokemon], pokemon, base_game_list, transfer_only_list, isle_of_armor_list)
+                gen8dex[pokemon] = transform_entry(pokedex[pokemon], pokemon, base_game_list, transfer_only_list, isle_of_armor_list, crown_tundra_list)
                 #print(pokemon)
 
         #for id in outputList:
         #    print(id)
 
-        with open(f'{destination_dir}/gen8_pokedex.txt', 'wt') as output:
+        with open(f'{destination_dir}/gen8_pokedex.yaml', 'wt') as output:
             yaml.dump(gen8dex, stream=output)
 
     return gen8dex
@@ -211,14 +215,14 @@ def filter_learnsets(gen8dex):
     print('Filtering Learnsets...')
     gen8learnsets = dict()
 
-    with open(f'{source_dir}/learnsets.txt', 'r') as input:
+    with open(f'{source_dir}/learnsets.yaml', 'r') as input:
         learnsets = yaml.load(input.read(), Loader=yaml.SafeLoader)
 
         for pokemon in learnsets:
             if pokemon in gen8dex:
                 gen8learnsets[pokemon] = transform_learnset(learnsets[pokemon])
         
-        with open(f'{destination_dir}/gen8_learnsets.txt', 'wt') as output:
+        with open(f'{destination_dir}/gen8_learnsets.yaml', 'wt') as output:
             yaml.dump(gen8learnsets, stream=output)
     
     return gen8learnsets
@@ -227,7 +231,7 @@ def filter_moves():
     print('Filtering Moves...')
     gen8moves = dict()
 
-    with open(f'{source_dir}/moves.txt', 'r') as input:
+    with open(f'{source_dir}/moves.yaml', 'r') as input:
         moves = yaml.load(input.read(), Loader=yaml.SafeLoader)
 
         for move in moves:
@@ -243,7 +247,7 @@ def filter_moves():
             if isGen8:
                 gen8moves[move] = transform_move(moves[move], isPast)
         
-        with open(f'{destination_dir}/gen8_moves.txt', 'wt') as output:
+        with open(f'{destination_dir}/gen8_moves.yaml', 'wt') as output:
             yaml.dump(gen8moves, stream=output)
     
     return gen8moves
@@ -252,7 +256,7 @@ def filter_abilities():
     print('Filtering Abilities...')
     gen8abilities = dict()
 
-    with open(f'{source_dir}/abilities.txt', 'r') as input:
+    with open(f'{source_dir}/abilities.yaml', 'r') as input:
         abilities = yaml.load(input.read(), Loader=yaml.SafeLoader)
 
         for ability in abilities:
@@ -268,7 +272,7 @@ def filter_abilities():
             if isGen8:
                 gen8abilities[ability] = transform_ability(abilities[ability], isPast)
         
-        with open(f'{destination_dir}/gen8_abilities.txt', 'wt') as output:
+        with open(f'{destination_dir}/gen8_abilities.yaml', 'wt') as output:
             yaml.dump(gen8abilities, stream=output)
     
     return gen8abilities

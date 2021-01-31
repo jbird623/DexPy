@@ -60,6 +60,7 @@ class PokeDex:
         types = dex_entry['types']
         stats = dex_entry['baseStats']
         abilities = dex_entry['abilities']
+        ability_list = dex_entry['ability_list']
         raw_egg_groups = dex_entry['eggGroups']
         egg_groups = []
         for group in raw_egg_groups:
@@ -73,7 +74,7 @@ class PokeDex:
         types_string = '/'.join(types)
         print(f'Type: {types_string}', file=print_to)
         if verbose:
-            self.do_types_damage_function(types, print_to, pokedex_format=True)
+            self.do_types_damage_function(types, print_to, True, ability_list)
             print('', file=print_to)
 
         abilities_list = []
@@ -111,6 +112,8 @@ class PokeDex:
             print(f'  Sp. Atk: {stats["spa"]:3d} {self.get_stat_pipes(stats["spa"])}', file=print_to)
             print(f'  Sp. Def: {stats["spd"]:3d} {self.get_stat_pipes(stats["spd"])}', file=print_to)
             print(f'    Speed: {stats["spe"]:3d} {self.get_stat_pipes(stats["spe"])}', file=print_to)
+            print(f'--- Total: {stats["bst"]:3d} ------------------------', file=print_to)
+            print(f'  Average: {int(stats["bst"]/6):3d} {self.get_stat_pipes(int(stats["bst"]/6))}', file=print_to)
             print('', file=print_to)
             print(f'Stat Ranges (Level 100):', file=print_to)
             print(f'   Nature     HP       Atk      Def      SpA      SpD      Spe', file=print_to)
@@ -119,7 +122,7 @@ class PokeDex:
             print(f'Beneficial:{self.format_stat_ranges(stats["hp"], stats["atk"], stats["def"], stats["spa"], stats["spd"], stats["spe"], 1)}', file=print_to)
             print('', file=print_to)
         else:
-            print(f'HP: {stats["hp"]} | Atk: {stats["atk"]} | Def: {stats["def"]} | SpA: {stats["spa"]} | SpD: {stats["spd"]} | Spe: {stats["spe"]}', file=print_to)
+            print(f'HP: {stats["hp"]} | Atk: {stats["atk"]} | Def: {stats["def"]} | SpA: {stats["spa"]} | SpD: {stats["spd"]} | Spe: {stats["spe"]} | BST: {stats["bst"]}', file=print_to)
 
         if verbose:
             print('Egg Groups:', file=print_to)
@@ -233,40 +236,52 @@ class PokeDex:
                 print(f'    {line}', file=print_to)
 
     def get_stat_pipes(self, stat):
-        return '|' * int(stat / 10)
+        return '|' * max(int(stat / 10), 1)
 
-    def do_pokemon_damage_function(self, pokemon, print_to):
+    def do_pokemon_damage_function(self, pokemon, print_to, abilities=None):
         dex_entry = self.pokemongo.get_pokedex_entry(pokemon)
         if dex_entry is None:
             print(f'Error: Unable to retrieve pokedex listing for "{pokemon}", bzzzzrt!', file=print_to)
             return
         types = dex_entry['types']
         species = dex_entry['species']
-        abilities = dex_entry['ability_list']
-        lv = False
-        wg = False
-        if len(abilities) == 1:
-            if abilities[0] == 'levitate':
-                lv = True
-            if abilities[0] == 'wonderguard':
-                wg = True
+        override_ability = False
+        ability_list = []
+        if abilities is None:
+            abilities = dex_entry['ability_list']
+        else:
+            override_ability = True
+            ability_list = dex_entry['ability_list']
         type_str = '[Undefined]'
         if len(types) == 1:
             type_str = types[0]
         if len(types) == 2:
             type_str = f'{types[0]}/{types[1]}'
         print(f'{species} is {type_str} type.', file=print_to)
-        if lv:
-            print(f'It always has the Levitate ability.', file=print_to)
-        if wg:
-            print(f'It always has the Wonder Guard ability.', file=print_to)
-        self.do_types_damage_function(types, print_to, levitate=lv, wonderguard=wg)
+        self.do_types_damage_function(types, print_to, False, abilities)
+        defensive_abilities = PokemonHelper().get_defensive_ability_dict()
+        type_effectiveness_abilities = PokemonHelper().get_type_effectiveness_ability_dict()
+        verb_str = 'might have'
+        if len(abilities) == 1:
+            verb_str = 'always has'
+        defensive_ability = False
+        for ability in abilities:
+            if ability in defensive_abilities:
+                if not defensive_ability:
+                    print('', file=print_to)
+                    defensive_ability = True
+                if not override_ability:
+                    print(f'* It {verb_str} the {defensive_abilities[ability]} ability.', file=print_to)
+                elif ability in type_effectiveness_abilities:
+                    print(f'* Calculated with the {type_effectiveness_abilities[ability]} ability.', file=print_to)
+                    if ability not in ability_list:
+                        print(f'* This pokemon cannot naturally have this ability.', file=print_to)
 
-    def do_type_damage_function(self, elemental_type, print_to):
-        self.do_types_damage_function([elemental_type], print_to)
+    def do_type_damage_function(self, elemental_type, print_to, abilities=None):
+        self.do_types_damage_function([elemental_type], print_to, False, abilities)
 
-    def do_types_damage_function(self, types, print_to, pokedex_format=False, levitate=False, wonderguard=False):
-        self.print_types_damage(PokemonHelper().get_damage_modifiers(types, levitate, wonderguard), print_to, pokedex_format)
+    def do_types_damage_function(self, types, print_to, pokedex_format=False, abilities=None):
+        self.print_types_damage(PokemonHelper().get_damage_modifiers(types, abilities), print_to, pokedex_format)
 
     def do_coverage_calculator_function(self, check_types, filters, print_to):
         pHelp = PokemonHelper()
@@ -283,14 +298,7 @@ class PokeDex:
         for entry in pokedex_entries:
             types = entry['types']
             abilities = entry['ability_list']
-            wonderguard = False
-            levitate = False
-            if len(abilities) == 1:
-                if abilities[0] == 'levitate':
-                    levitate = True
-                if abilities[0] == 'wonderguard':
-                    wonderguard = True
-            damage_dict = pHelp.get_damage_modifiers(types, levitate, wonderguard)
+            damage_dict = pHelp.get_damage_modifiers(types, abilities)
             super_effective_hit = False
             for t in check_types:
                 if damage_dict[t] > 1:
@@ -358,7 +366,7 @@ class PokeDex:
         immune = []
 
         for t in damage_dict:
-            if damage_dict[t] == 4:
+            if damage_dict[t] >= 4:
                 double_weak.append(t)
             elif damage_dict[t] == 2:
                 weak.append(t)
@@ -366,7 +374,7 @@ class PokeDex:
                 neutral.append(t)
             elif damage_dict[t] == 0.5:
                 resist.append(t)
-            elif damage_dict[t] == 0.25:
+            elif damage_dict[t] <= 0.25 and damage_dict[t] > 0:
                 double_resist.append(t)
             elif damage_dict[t] == 0:
                 immune.append(t)
@@ -376,7 +384,7 @@ class PokeDex:
         heading_prefix = '  ' if pokedex_format else '\n'
         listing_prefix = '    ' if pokedex_format else '  '
         if len(double_weak) > 0:
-            print(f'{heading_prefix}4x Weakness to:', file=print_to)
+            print(f'{heading_prefix}Great Weakness to:', file=print_to)
             list_str = ', '.join(double_weak)
             print(f'{listing_prefix}{list_str}', file=print_to)
         if len(weak) > 0:
@@ -392,7 +400,7 @@ class PokeDex:
             list_str = ', '.join(resist)
             print(f'{listing_prefix}{list_str}', file=print_to)
         if len(double_resist) > 0:
-            print(f'{heading_prefix}4x Resists:', file=print_to)
+            print(f'{heading_prefix}Greatly Resists:', file=print_to)
             list_str = ', '.join(double_resist)
             print(f'{listing_prefix}{list_str}', file=print_to)
         if len(immune) > 0:

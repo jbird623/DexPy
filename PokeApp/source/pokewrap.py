@@ -36,6 +36,30 @@ class PokeMongo8:
             return {'$where': f'this.baseStats.{filter_key} {comparator} this.baseStats.{filter_value}'} 
         return None
 
+    def get_pokedex_orderby(self, filter_value, negate):
+        if filter_value == 'hp' or filter_value == 'atk' or filter_value == 'def' or filter_value == 'spa' or filter_value == 'spd' or filter_value == 'spe' or filter_value == 'bst':
+            return [(f'baseStats.{filter_value}', 1 if negate else -1)]
+        if filter_value == 'num':
+            negate = not negate
+        if filter_value == 'weight' or filter_value == 'w':
+            filter_value = 'weightkg'
+        if filter_value == 'height' or filter_value == 'h':
+            filter_value = 'heightm'
+        return [(f'{filter_value}', 1 if negate else -1)]
+
+    def get_movedex_orderby(self, filter_value, negate):
+        if filter_value == 'num' or filter_value == 'name':
+            negate = not negate
+        if filter_value == 'acc' or filter_value == 'a':
+            filter_value = 'accuracy'
+        if filter_value == 'pow':
+            filter_value = 'basePower'
+        if filter_value == 'cat' or filter_value == 'c':
+            filter_value = 'category'
+        if filter_value == 'prio' or filter_value == 'p':
+            filter_value = 'priority'
+        return [(f'{filter_value}', 1 if negate else -1)]
+
     def get_simple_object_from_filter_value(self, filter_value, negate=False):
         if ',' in filter_value:
             filters = []
@@ -131,6 +155,7 @@ class PokeMongo8:
 
     def convert_pokedex_mongo_filters(self, filters, exclude=[]):
         and_list = []
+        orderby = None
         for f in filters:
             negate = False
             ft = f[:]
@@ -167,6 +192,8 @@ class PokeMongo8:
             if ft == 'bst':
                 bst = self.get_object_from_filter_value('bst', filters[f], negate)
                 and_list.append(bst)
+            if ft == 'o':
+                orderby = self.get_pokedex_orderby(filters[f], negate)
             if ft == 'evo':
                 evo = self.string_bool(filters[f])
                 new_key = 'evos'
@@ -223,6 +250,12 @@ class PokeMongo8:
                 if negate:
                     ioa = not ioa
                 new_filter = ioa
+            if ft == 'ct':
+                ct = self.string_bool(filters[f])
+                new_key = 'crown_tundra'
+                if negate:
+                    ct = not ct
+                new_filter = ct
             if ft == 'past':
                 past = self.string_bool(filters[f])
                 new_key = 'past_only'
@@ -231,10 +264,13 @@ class PokeMongo8:
                 new_filter = past
             if new_key is not None:
                 and_list.append({new_key:new_filter})
+        query = {}
         if len(and_list) > 0:
-            return {'$and':and_list}
+            query = {'$and':and_list}
+        if orderby is not None:
+            return {'$query':query,'$orderby':orderby}
         else:
-            return {}
+            return query
 
     def convert_learnset_mongo_filters(self, filters, exclude=[]):
         and_list = []
@@ -307,6 +343,7 @@ class PokeMongo8:
 
     def convert_moves_mongo_filters(self, filters, exclude=[]):
         and_list = []
+        orderby = None
         for f in filters:
             negate = False
             ft = f[:]
@@ -396,12 +433,17 @@ class PokeMongo8:
                     past = not past
                 new_key = 'past_only'
                 new_filter = past
+            if ft == 'o':
+                orderby = self.get_movedex_orderby(filters[f], negate)
             if new_key is not None:
                 and_list.append({new_key:new_filter})
+        query = {}
         if len(and_list) > 0:
-            return {'$and':and_list}
+            query = {'$and':and_list}
+        if orderby is not None:
+            return {'$query':query,'$orderby':orderby}
         else:
-            return {}
+            return query
 
     def get_pokedex_post_filters(self, filters):
         return {}
@@ -516,9 +558,13 @@ class PokeMongo8:
 
     def get_move_entries_with_filters(self, filters={}, exclude=[]):
         collection = []
+        orderby = []
 
         mongo_filters = self.convert_moves_mongo_filters(filters, exclude)
-        entries = self.moves.find(mongo_filters)
+        if '$orderby' in mongo_filters and '$query' in mongo_filters:
+            orderby = mongo_filters['$orderby']
+            mongo_filters = mongo_filters['$query']
+        entries = self.moves.find(mongo_filters, sort=orderby)
             
         for entry in entries:
             collection.append(entry)
@@ -532,9 +578,14 @@ class PokeMongo8:
             methods.append(move['method'])
 
         collection = []
+        orderby = []
 
-        mongo_filters = {'$and':[{'_id':{'$in':ids}}, self.convert_moves_mongo_filters(filters, exclude)]}
-        entries = self.moves.find(mongo_filters)
+        raw_mongo_filters = self.convert_moves_mongo_filters(filters, exclude)
+        if '$orderby' in raw_mongo_filters and '$query' in raw_mongo_filters:
+            orderby = raw_mongo_filters['$orderby']
+            raw_mongo_filters = raw_mongo_filters['$query']
+        mongo_filters = {'$and':[{'_id':{'$in':ids}}, raw_mongo_filters]}
+        entries = self.moves.find(mongo_filters, sort=orderby)
 
         entries = list(entries)
             
@@ -552,9 +603,14 @@ class PokeMongo8:
 
     def get_move_entries(self, ids, filters={}, exclude=[]):
         collection = []
+        orderby = []
 
-        mongo_filters = {'$and':[{'_id':{'$in':ids}}, self.convert_moves_mongo_filters(filters, exclude)]}
-        entries = self.moves.find(mongo_filters)
+        raw_mongo_filters = self.convert_moves_mongo_filters(filters, exclude)
+        if '$orderby' in raw_mongo_filters and '$query' in raw_mongo_filters:
+            orderby = raw_mongo_filters['$orderby']
+            raw_mongo_filters = raw_mongo_filters['$query']
+        mongo_filters = {'$and':[{'_id':{'$in':ids}}, raw_mongo_filters]}
+        entries = self.moves.find(mongo_filters, sort=orderby)
             
         for entry in entries:
             collection.append(entry)
@@ -596,10 +652,14 @@ class PokeMongo8:
 
     def get_learnset_entries_with_filters(self, full_entry=False, get_name=True, get_past=True, filters={}, exclude=[]):
         group = []
+        orderby = {}
 
         projection = None if full_entry else {'_id':1, 'species':1, 'past_only':1} if get_past else {'_id':1, 'species':1}
         mongo_filters = self.convert_pokedex_mongo_filters(filters, exclude)
-        dex_entries = self.pokedex.find(mongo_filters, projection)
+        if '$orderby' in mongo_filters and '$query' in mongo_filters:
+            orderby = mongo_filters['$orderby']
+            mongo_filters = mongo_filters['$query']
+        dex_entries = self.pokedex.find(mongo_filters, projection, sort=orderby)
 
         #TODO: ADD POST FILTERS
 
@@ -616,6 +676,7 @@ class PokeMongo8:
 
     def get_pokedex_entries_with_filters(self, full_entry=False, get_name=True, filters={}, exclude=[], projection=None):
         group = []
+        orderby = {}
 
         if projection is None:
             projection = None if full_entry else {'_id':1, 'species':1}
@@ -627,7 +688,10 @@ class PokeMongo8:
             ids.append(entry['_id'])
 
         mongo_filters = self.convert_pokedex_mongo_filters(filters, exclude)
-        dex_entries = self.pokedex.find({'$and':[{'_id':{'$in':ids}},mongo_filters]}, projection)
+        if '$orderby' in mongo_filters and '$query' in mongo_filters:
+            orderby = mongo_filters['$orderby']
+            mongo_filters = mongo_filters['$query']
+        dex_entries = self.pokedex.find({'$and':[{'_id':{'$in':ids}},mongo_filters]}, projection, sort=orderby)
 
         #TODO: ADD POST FILTERS
             
