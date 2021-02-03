@@ -539,8 +539,12 @@ class MoveDex:
                 for parent in possible_parents:
                     self.print_parent_option(parent, 0, dex_name_map, print_to)
 
-    def do_moves_query_function(self, filters, print_to):
+    def do_moves_query_function(self, filters, print_to, count=False):
         entries = self.pokemongo.get_move_entries_with_filters(filters)
+
+        if count:
+            print(f'Bzzzzrt! The number of entries that match that query are: {len(entries)}', file=print_to)
+            return
 
         if len(entries) == 0:
             print('There are no moves that match your query, bzzzzrt.', file=print_to)

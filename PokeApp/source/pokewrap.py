@@ -219,6 +219,16 @@ class PokeMongo8:
                     and_list.append({'eggGroups':{'$nin':eg}})
                 else:
                     and_list.append({'$or':[{'eggGroups':{'$eq':eg}},{'eggGroups':{'$eq':eg[::-1]}}]})
+            if ft == 'c':
+                colors = filters[f].lower().replace(' ','').split(',')
+                caps_colors = []
+                for c in colors:
+                    caps_colors.append(c.capitalize())
+                new_key = 'color'
+                if negate:
+                    new_filter = {'$nin':caps_colors}
+                else:
+                    new_filter = {'$in':caps_colors}
             if ft == 't':
                 types = filters[f].lower().replace(' ','').split(',')
                 caps_types = []
@@ -244,6 +254,12 @@ class PokeMongo8:
                 if negate:
                     tr = not tr
                 new_filter = tr
+            if ft == 'base':
+                base = self.string_bool(filters[f])
+                new_key = 'base_game'
+                if negate:
+                    base = not base
+                new_filter = base
             if ft == 'ioa':
                 ioa = self.string_bool(filters[f])
                 new_key = 'isle_of_armor'
@@ -391,7 +407,7 @@ class PokeMongo8:
                     new_filter = {'$nin':moves}
                 else:
                     new_filter = {'$in':moves}
-            if ft == 'sec':
+            if ft == 'sec' or ft == 'secondary':
                 sec = self.string_bool(filters[f])
                 if negate:
                     sec = not sec
@@ -405,24 +421,36 @@ class PokeMongo8:
                     bite = not bite
                 new_key = 'flags.bite'
                 new_filter = {'$exists':bite}
-            if ft == 'con':
+            if ft == 'con' or ft == 'contact':
                 con = self.string_bool(filters[f])
                 if negate:
                     con = not con
                 new_key = 'flags.contact'
                 new_filter = {'$exists':con}
-            if ft == 'snd':
+            if ft == 'snd' or ft == 'sound':
                 snd = self.string_bool(filters[f])
                 if negate:
                     snd = not snd
                 new_key = 'flags.sound'
                 new_filter = {'$exists':snd}
-            if ft == 'pnch':
+            if ft == 'pnch' or ft == 'punch':
                 pnch = self.string_bool(filters[f])
                 if negate:
                     pnch = not pnch
                 new_key = 'flags.punch'
                 new_filter = {'$exists':pnch}
+            if ft == 'pls' or ft == 'pulse':
+                pls = self.string_bool(filters[f])
+                if negate:
+                    pls = not pls
+                new_key = 'flags.pulse'
+                new_filter = {'$exists':pls}
+            if ft == 'rec' or ft == 'recoil':
+                rec = self.string_bool(filters[f])
+                if negate:
+                    rec = not rec
+                new_key = 'recoil'
+                new_filter = {'$exists':rec}
             if ft == 'p':
                 p = self.get_simple_object_from_filter_value(filters[f], negate)
                 new_key = 'priority'

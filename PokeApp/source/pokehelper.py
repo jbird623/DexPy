@@ -1,3 +1,5 @@
+import random
+
 class PokemonHelper:
     def __init__(self):
         pass
@@ -273,3 +275,125 @@ class PokemonHelper:
             'fairyaura': 'Fairy Aura',
             'liquidvoice': 'Liquid Voice'
         }
+    
+    def get_stat_evaluation(self, stats):
+        tags = []
+        good_modifiers = [
+            'Extremely',
+            'Extraordinarily',
+            'Excessively',
+            'Incredibly',
+            'Absurdly',
+            'Remarkably',
+            'Decidedly',
+            'Considerably',
+            'Noticeably',
+            'Strikingly',
+            'Startlingly',
+            'Abnormally',
+            'Amazingly',
+            'Ludicrously',
+            'Preposterously'
+        ]
+        bad_modifiers = [
+            'Extraordinarily',
+            'Excessively',
+            'Absurdly',
+            'Remarkably',
+            'Strikingly',
+            'Startlingly',
+            'Laughably',
+            'Comically',
+            'Insanely',
+            'Foolishly',
+            'Ludicrously',
+            'Preposterously',
+            'Pathetically',
+            'Miserably',
+            'Lamentably',
+            'Pitifully',
+            'Woefully'
+        ]
+        random.shuffle(good_modifiers)
+        random.shuffle(bad_modifiers)
+        HP = int(stats['hp'])
+        Atk = int(stats['atk'])
+        Def = int(stats['def'])
+        SpA = int(stats['spa'])
+        SpD = int(stats['spd'])
+        Spe = int(stats['spe'])
+        BST = int(stats['bst'])
+        Physical = int((Atk + Def) / 2)
+        Special = int((SpA + SpD) / 2)
+        Offensive = int((Atk + SpA) / 2)
+        Defensive = int((Def + SpD) / 2)
+        Average = int((HP + Atk + Def + SpA + SpD + Spe) / 6)
+        maxOffense = max(Atk, SpA)
+        maxDefense = max(Def, SpD)
+        if abs(HP - Average) > 0.15 * Average and HP > Average:
+            if HP >= 120:
+                tags.append(good_modifiers.pop())
+            tags.append('Bulky')
+        if abs(Spe - Average) > 0.15 * Average and Spe > Average:
+            if 'Bulky' in tags:
+                tags.append('and')
+            if Spe >= 120:
+                tags.append(good_modifiers.pop())
+            tags.append('Speedy')
+        if abs(Spe - Average) > 0.15 * Average and Spe < Average:
+            if 'Bulky' in tags or 'Speedy' in tags:
+                tags.append('but')
+            if Spe <= 30:
+                tags.append(bad_modifiers.pop())
+            tags.append('Slow')
+        if abs(HP - Average) > 0.15 * Average and HP < Average:
+            if 'Slow' in tags:
+                tags[-1] = 'Slow,'
+            elif 'Speedy' in tags:
+                tags.append('but')
+            if HP <= 30:
+                tags.append(bad_modifiers.pop())
+            tags.append('Low-Stamina')
+        if BST >= 450:
+            if abs(Physical - Special) > 0.1 * ((Physical + Special) / 2):
+                if Physical > Special:
+                    tags.append('Physical')
+                if Special > Physical:
+                    tags.append('Special')
+            else:
+                tags.append('Mixed')
+            if abs(Offensive - Defensive) > 0.15 * ((Offensive + Defensive) / 2):
+                if Offensive > Defensive:
+                    tags.append('Sweeper')
+                if Defensive > Offensive:
+                    tags.append('Wall')
+            elif abs(maxOffense - maxDefense) > 0.15 * ((maxOffense + maxDefense) / 2):
+                if maxOffense > maxDefense:
+                    tags.append('Sweeper')
+                if maxDefense > maxOffense:
+                    tags.append('Wall')
+            else:
+                tags.append('Generalist')
+            if 'Sweeper' in tags and 'Wall' in tags:
+                tags.remove('Sweeper')
+                tags.remove('Wall')
+                tags.append('Generalist')
+        elif BST >=300:
+            tags.append('Mid-Game \'Mon')
+        else:
+            tags.append('Small Fry')
+        assessment = ' '.join(tags)
+        if len(tags) == 1:
+            if max(HP, Atk, Def, SpA, SpD, Spe) - Average <= 0.15 * Average:
+                assessment = f'{bad_modifiers.pop()} Average {tags[0]}'
+        if len(tags) == 2 and 'Mixed' in tags and 'Generalist' in tags and BST <= 500:
+            assessment = f'{bad_modifiers.pop()} Average'
+        if maxOffense >= 120:
+            assessment = f'{assessment}; {good_modifiers.pop()} Powerful'
+        if maxDefense >= 120:
+            assessment = f'{assessment}; {good_modifiers.pop()} Tanky'
+        if maxOffense <= 30:
+            assessment = f'{assessment}; {bad_modifiers.pop()} Feeble'
+        if maxDefense <= 30:
+            assessment = f'{assessment}; {bad_modifiers.pop()} Paper-Like in Constitution'
+        return assessment

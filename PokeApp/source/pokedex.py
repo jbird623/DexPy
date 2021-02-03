@@ -69,7 +69,7 @@ class PokeDex:
         if dex_entry['past_only']:
             print('\n[NOTE: This Pokemon is not transferrable to Gen 8 games, bzzzzrt!]\n', file=print_to)
 
-        print(f'Pokedex entry for {species}:\n', file=print_to)
+        print(f'{"Full" if verbose else "Abbreviated"} Pokedex entry for {species}:\n', file=print_to)
 
         types_string = '/'.join(types)
         print(f'Type: {types_string}', file=print_to)
@@ -125,6 +125,21 @@ class PokeDex:
             print(f'HP: {stats["hp"]} | Atk: {stats["atk"]} | Def: {stats["def"]} | SpA: {stats["spa"]} | SpD: {stats["spd"]} | Spe: {stats["spe"]} | BST: {stats["bst"]}', file=print_to)
 
         if verbose:
+            print('Other Stats:', file=print_to)
+            print(f'  Height: {dex_entry["heightm"]}m', file=print_to)
+            print(f'  Weight: {dex_entry["weightkg"]}kg', file=print_to)
+            print(f'  Color: {dex_entry["color"]}', file=print_to)
+            availability = 'not transferrable'
+            if dex_entry['base_game']:
+                availability = 'obtainable in base game'
+            elif dex_entry['transfer_only']:
+                availability = 'only obtainable via transfer'
+            elif dex_entry['isle_of_armor']:
+                availability = 'added in Isle of Armor DLC'
+            elif dex_entry['crown_tundra']:
+                availability = 'added in Crown Tundra DLC'
+            print(f'  Availability: {availability}', file=print_to)
+            print('', file=print_to)
             print('Egg Groups:', file=print_to)
             for group in egg_groups:
                 print(f'  {group}', file=print_to)
@@ -234,6 +249,8 @@ class PokeDex:
                 lines.append(line)
             for line in lines:
                 print(f'    {line}', file=print_to)
+        else:
+            print(f'Quick Assessment: {PokemonHelper().get_stat_evaluation(stats)}', file=print_to)
 
     def get_stat_pipes(self, stat):
         return '|' * max(int(stat / 10), 1)
@@ -434,8 +451,12 @@ class PokeDex:
         for elem in two_group_list:
             print(f'  - {elem["pokemon"]:25s} [{elem["alt_group"].capitalize()}]', file=print_to)
 
-    def do_pokedex_query_function(self, filters, print_to):
+    def do_pokedex_query_function(self, filters, print_to, count=False):
         dex_entries = self.pokemongo.get_pokedex_entries_with_filters(full_entry=True, filters=filters)
+
+        if count:
+            print(f'Bzzzzrt! The number of entries that match that query are: {len(dex_entries)}', file=print_to)
+            return
 
         if len(dex_entries) == 0:
             print('There are no pokemon that match your query, bzzzzrt.', file=print_to)

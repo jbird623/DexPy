@@ -205,6 +205,8 @@ async def help(ctx):
     print('  Querying:', file=output)
     print('  - !(queryPokedex|qp) <filter>                   Accepts pokemon query filters.', file=output)
     print('  - !(queryMoves|qm) <filter>                     Accepts move query filters.', file=output)
+    print('    Options:', file=output)
+    print('      -c, --count                                 Show the total number of entries that fit this query instead of a list.', file=output)
     print('', file=output)
     print('', file=output)
     print('Available Query Filters:', file=output)
@@ -216,6 +218,10 @@ async def help(ctx):
     print('  - mm:<moves>                    Filter by pokemon that can learn all of the specified moves via TM/TR.', file=output)
     print('                                  Accepts a single move or a comma-separated list.', file=output)
     print('  - mb:<moves>                    Filter by pokemon that can learn all of the specified moves via breeding.', file=output)
+    print('                                  Accepts a single move or a comma-separated list.', file=output)
+    print('  - mt:<moves>                    Filter by pokemon that can learn all of the specified moves via tutor.', file=output)
+    print('                                  Accepts a single move or a comma-separated list.', file=output)
+    print('  - mtr:<moves>                   Filter by pokemon that can only know all of the specified moves via transfer.', file=output)
     print('                                  Accepts a single move or a comma-separated list.', file=output)
     print('  - a:<abilities>                 Filter by pokemon that can have any of the abilities specified.', file=output)
     print('                                  Accepts a single ability or a comma-separated list.', file=output)
@@ -230,6 +236,7 @@ async def help(ctx):
     print('  - ega:<eggGroup>                Filter by pokemon in exactly the specified egg groups.', file=output)
     print('                                  Accepts a single egg group or a comma-separated list.', file=output)
     print('  - tr:<bool>                     Filter by pokemon that are only obtainable via transfer.', file=output)
+    print('  - base:<bool>                   Filter by pokemon that are only obtainable in the base game.', file=output)
     print('  - ioa:<bool>                    Filter by pokemon that are only obtainable on the Isle of Armor.', file=output)
     print('  - ct:<bool>                     Filter by pokemon that are only obtainable in the Crown Tundra.', file=output)
     print('  - past:<bool>                   Filter by pokemon that are only available prior to Gen 8.', file=output)
@@ -585,7 +592,9 @@ async def queryPokedex(ctx, *raw_args):
         await output.send(ctx)
         return
     
-    PokeDex().do_pokedex_query_function(args['fil'], output)
+    count = get_option(args['opt'], 'count')
+
+    PokeDex().do_pokedex_query_function(args['fil'], output, count)
 
     await output.send(ctx)
 
@@ -601,7 +610,9 @@ async def queryMoves(ctx, *raw_args):
         await output.send(ctx)
         return
     
-    MoveDex().do_moves_query_function(args['fil'], output)
+    count = get_option(args['opt'], 'count')
+
+    MoveDex().do_moves_query_function(args['fil'], output, count)
 
     await output.send(ctx)
 
