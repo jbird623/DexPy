@@ -1,6 +1,7 @@
 import pymongo
 
 from pymongo import MongoClient
+from .pokehelper import PokemonHelper
 from pprint import pprint
 
 class PokeMongo8:
@@ -36,9 +37,31 @@ class PokeMongo8:
             return {'$where': f'this.baseStats.{filter_key} {comparator} this.baseStats.{filter_value}'} 
         return None
 
+    def get_pokedex_order_filters(self):
+        types = PokemonHelper().get_types()
+        lowercase_types = []
+        for t in types:
+            lowercase_types.append(t.lower())
+        lowercase_types.extend([
+            'hp', 'atk', 'def', 'spa', 'spd', 'spe', 'bst',
+            'num',
+            'weight', 'w', 'weightkg',
+            'height', 'h', 'heightm'
+        ])
+        return lowercase_types
+
     def get_pokedex_orderby(self, filter_value, negate):
+        filter_value = filter_value.lower()
+        if filter_value not in self.get_pokedex_order_filters():
+            return None
         if filter_value == 'hp' or filter_value == 'atk' or filter_value == 'def' or filter_value == 'spa' or filter_value == 'spd' or filter_value == 'spe' or filter_value == 'bst':
             return [(f'baseStats.{filter_value}', 1 if negate else -1)]
+        types = PokemonHelper().get_types()
+        lowercase_types = []
+        for t in types:
+            lowercase_types.append(t.lower())
+        if filter_value in lowercase_types:
+            return [(f'coverage.{filter_value.capitalize()}', 1 if negate else -1)]
         if filter_value == 'num':
             negate = not negate
         if filter_value == 'weight' or filter_value == 'w':
@@ -47,18 +70,56 @@ class PokeMongo8:
             filter_value = 'heightm'
         return [(f'{filter_value}', 1 if negate else -1)]
 
+    def update_pokedex_projection_from_filters(self, projection, filters):
+        if 'o' not in filters or projection is None:
+            return projection
+        orderby = self.get_pokedex_orderby(filters['o'], False)
+        if orderby is not None:
+            projection[orderby[0][0]] = 1
+        return projection
+    
+    def get_pokedex_orderby_key(self, filters):
+        if 'o' not in filters:
+            return None
+        orderby = self.get_pokedex_orderby(filters['o'], False)
+        if orderby is not None:
+            return orderby[0][0]
+        return None
+
+    def get_move_order_filters(self):
+        return [
+            'num', 'name',
+            'accuracy', 'acc', 'a',
+            'basePower', 'power', 'pow',
+            'category', 'cat', 'c',
+            'priority', 'prio', 'p'
+        ]
+
     def get_movedex_orderby(self, filter_value, negate):
+        filter_value = filter_value.lower()
+        if filter_value not in self.get_move_order_filters():
+            return None
         if filter_value == 'num' or filter_value == 'name':
             negate = not negate
         if filter_value == 'acc' or filter_value == 'a':
             filter_value = 'accuracy'
-        if filter_value == 'pow':
+        if filter_value == 'pow' or filter_value == 'power':
             filter_value = 'basePower'
         if filter_value == 'cat' or filter_value == 'c':
             filter_value = 'category'
+        if filter_value == 'category':
+            negate = not negate
         if filter_value == 'prio' or filter_value == 'p':
             filter_value = 'priority'
         return [(f'{filter_value}', 1 if negate else -1)]
+
+    def get_movedex_orderby_key(self, filters):
+        if 'o' not in filters:
+            return None
+        orderby = self.get_movedex_orderby(filters['o'], False)
+        if orderby is not None:
+            return orderby[0][0]
+        return None
 
     def get_simple_object_from_filter_value(self, filter_value, negate=False):
         if ',' in filter_value:
@@ -344,6 +405,13 @@ class PokeMongo8:
                     for id in mv_ids:
                         elem_match_list.append({'$elemMatch':{'move':id}})
                     and_list.append({'transfer':{'$all':elem_match_list}})
+            if ft == 'mc' and 'mc' not in exclude:
+                types = filters[f].lower().replace(' ','').split(',')
+                caps_types = []
+                for t in types:
+                    caps_types.append(t.capitalize())
+                for t in caps_types:
+                    and_list.append({f'coverage.{t}':{'$exists':not negate}})
             if ft == 'past':
                 past = self.string_bool(filters[f])
                 new_key = 'past_only'
@@ -352,10 +420,10 @@ class PokeMongo8:
                 new_filter = past
             if new_key is not None:
                 and_list.append({new_key:new_filter})
+        query = {}
         if len(and_list) > 0:
-            return {'$and':and_list}
-        else:
-            return {}
+            query = {'$and':and_list}
+        return query
 
     def convert_moves_mongo_filters(self, filters, exclude=[]):
         and_list = []
@@ -451,7 +519,7 @@ class PokeMongo8:
                     rec = not rec
                 new_key = 'recoil'
                 new_filter = {'$exists':rec}
-            if ft == 'p':
+            if ft == 'p' or ft == 'prio' or ft == 'priority':
                 p = self.get_simple_object_from_filter_value(filters[f], negate)
                 new_key = 'priority'
                 new_filter = p
@@ -654,6 +722,13 @@ class PokeMongo8:
             collection.append(entry)
         return collection
 
+    def get_all_abilities(self):
+        collection = []
+        entries = self.abilities.find()
+        for entry in entries:
+            collection.append(entry)
+        return collection
+
     def update_egg_moves(self, id, egg_moves):
         learnset = self.learnsets.find_one({'_id':id})
         if learnset is None:
@@ -678,6 +753,23 @@ class PokeMongo8:
         learnset['past_only'] = dex_entry['past_only']
         self.learnsets.update_one({'_id':id}, {'$set': learnset})
 
+    def update_learnset_coverage(self, id, coverage, learnset=None):
+        if learnset is None:
+            learnset = self.get_learnset(id)
+        if learnset is None:
+            print(f'Unable to find learnset for {id}')
+            return
+        learnset['coverage'] = coverage
+        self.learnsets.update_one({'_id':id}, {'$set': learnset})
+
+    def update_pokedex_entry_coverage(self, id, coverage):
+        dex_entry = self.get_pokedex_entry(id)
+        if dex_entry is None:
+            print(f'Unable to find dex entry for {id}')
+            return
+        dex_entry['coverage'] = coverage
+        self.pokedex.update_one({'_id':id}, {'$set': dex_entry})
+
     def get_learnset_entries_with_filters(self, full_entry=False, get_name=True, get_past=True, filters={}, exclude=[]):
         group = []
         orderby = {}
@@ -687,6 +779,7 @@ class PokeMongo8:
         if '$orderby' in mongo_filters and '$query' in mongo_filters:
             orderby = mongo_filters['$orderby']
             mongo_filters = mongo_filters['$query']
+            projection = self.update_pokedex_projection_from_filters(projection, filters)
         dex_entries = self.pokedex.find(mongo_filters, projection, sort=orderby)
 
         #TODO: ADD POST FILTERS
@@ -719,6 +812,7 @@ class PokeMongo8:
         if '$orderby' in mongo_filters and '$query' in mongo_filters:
             orderby = mongo_filters['$orderby']
             mongo_filters = mongo_filters['$query']
+            projection = self.update_pokedex_projection_from_filters(projection, filters)
         dex_entries = self.pokedex.find({'$and':[{'_id':{'$in':ids}},mongo_filters]}, projection, sort=orderby)
 
         #TODO: ADD POST FILTERS

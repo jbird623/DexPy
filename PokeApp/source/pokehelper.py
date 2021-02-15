@@ -26,6 +26,20 @@ class PokemonHelper:
             'Fairy'
         ]
 
+    def get_colors(self):
+        return [
+            'Red',
+            'Brown',
+            'Yellow',
+            'Green',
+            'Blue',
+            'Purple',
+            'Pink',
+            'White',
+            'Gray',
+            'Black'
+        ]
+
     def get_weaknesses(self, t):
         if t == 'Normal':
             return ['Fighting']
@@ -397,3 +411,41 @@ class PokemonHelper:
         if maxDefense <= 30:
             assessment = f'{assessment}; {bad_modifiers.pop()} Paper-Like in Constitution'
         return assessment
+
+    def get_random_response(self, context_value, additional_responses=None):
+        responses = [
+            f'Hmmm... Bzzzzrt. How about {context_value}?',
+            f'Have you considered {context_value}, perhaps? Seems pretty interesting to me, bzzzzrt!',
+            f'I\'ve got one for you, bzzzzrt: {context_value}!',
+            f'Considering all of those options, bzzzzrt... Oh, I know! What about {context_value}?',
+            f'Selecting one randomly from the list, bzzzzrt... I choose {context_value}!',
+            f'Oh, here\'s a good one, I think: {context_value}, bzzzzrt!',
+            f'Maybe {context_value}? What do you think, bzzzzrt?',
+            f'I spun the wheel, and it landed on {context_value}, bzzzzrt!',
+            f'I think {context_value} could be an interesting choice, bzzzzrt!'
+        ]
+        if additional_responses is not None:
+            responses.extend(additional_responses)
+        random_choice = random.choice(responses)
+        return random_choice
+
+    def do_random_type_function(self, print_to):
+        print(f'Allow me to select a random type for you, bzzzzrt...', file=print_to)
+        random_type = random.choice(self.get_types())
+        random_response = self.get_random_response(random_type, additional_responses=[
+            f'I\'ve always thought that {random_type}-type pokemon were cool, bzzzrt!',
+            f'I\'ve always thought that the {random_type} type had some interesting moves, bzzzrt!'
+        ])
+        if random_type.lower() == 'ghost' or random_type.lower() == 'electric':
+            random_response = f'Oh, how about {random_type}? (I promise this was chosen randomly and is not biased, bzzzzrt!)'
+        print(random_response, file=print_to)
+
+    def do_random_color_function(self, print_to):
+        print(f'Allow me to select a random color for you, bzzzzrt...', file=print_to)
+        random_color = random.choice(self.get_colors())
+        random_response = self.get_random_response(random_color, additional_responses=[
+            f'I\'ve always been fond of the color {random_color}! How about that one, bzzzzrt?'
+        ])
+        if random_color.lower() == 'red':
+            random_response = f'Oh, what about {random_color}? That one is my favorite!'
+        print(random_response, file=print_to)

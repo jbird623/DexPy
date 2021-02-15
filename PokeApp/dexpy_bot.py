@@ -1,6 +1,7 @@
 #invite link: https://discordapp.com/oauth2/authorize?client_id=675234599504445441&scope=bot&permissions=3072
 
 from discord.ext import commands
+from discord.embeds import Embed
 from source.abilitydex import AbilityDex
 from source.movedex import MoveDex
 from source.pokedex import PokeDex
@@ -23,17 +24,25 @@ class MessageHelper:
     def write(self, str):
         self.message += str
 
-    async def send(self, ctx):
+    async def send(self, ctx, bookend=None, embed=None):
+        if bookend is None:
+            bookend = '```'
         message_lines = self.message.split('\n')
         message = ''
         while len(message_lines) > 0:
-            new_message = message + f'\n{message_lines[0]}'
+            if message == '':
+                new_message = message_lines[0]
+            else:
+                new_message = message + f'\n{message_lines[0]}'
             if len(new_message) >= 1990:
-                await ctx.send(f'```{message}```')
+                await ctx.send(f'{bookend}{message}{bookend}')
                 message = ''
-            message = message + f'\n{message_lines[0]}'
+            if message == '':
+                message = message_lines[0]
+            else:
+                message = message + f'\n{message_lines[0]}'
             message_lines.pop(0)
-        await ctx.send(f'```{message}```')
+        await ctx.send(f'{bookend}{message}{bookend}', embed=embed)
 
 def is_int(n):
     if not is_not_bool(n):
@@ -153,12 +162,13 @@ async def on_ready():
 #    print("Message received, bzzzzzzrt! Here's the message:\n", message.content)
 
 @bot.command(aliases=['h'])
-async def help(ctx):
+async def help(ctx, *raw_args):
     message = ctx.message.content
     print(f'\nHELP command triggered, bzzzzrt! Message details:\n{ctx.message.author} @ ({ctx.message.created_at}): {message}\n')
 
     output = MessageHelper()
     
+    '''
     print('Available DexPy Commands:', file=output)
     print('', file=output)
     print('  Basic Commands:', file=output)
@@ -196,17 +206,18 @@ async def help(ctx):
     print('                                                  Accepts pokemon query filters (excluding "eg").', file=output)
     print('  - !(eggMove|em) (POKEMON) [MOVE]                Show potential breeding chains for breeding MOVE onto POKEMON.', file=output)
     print('                                                  If MOVE is not supplied, lists the available egg moves for POKEMON.', file=output)
-    print('  - !(breedingbox|bb) (-r|--register)=POKEMON     Register POKEMON to your breeding box.', file=output)
-    print('                                                  This signifies to other users that you have this \'mon with HA.', file=output)
-    print('  - !(breedingbox|bb) (-u|--unregister)=POKEMON   Unregister POKEMON from your breeding box.', file=output)
-    print('  - !(breedingbox|bb) (-q|--query)=POKEMON        Check to see who has POKEMON with a hidden ability.', file=output)
-    print('                                                  Returns users who have registered a pokemon in the same evolutionary line.', file=output)
+    #print('  - !(breedingbox|bb) (-r|--register)=POKEMON     Register POKEMON to your breeding box.', file=output)
+    #print('                                                  This signifies to other users that you have this \'mon with HA.', file=output)
+    #print('  - !(breedingbox|bb) (-u|--unregister)=POKEMON   Unregister POKEMON from your breeding box.', file=output)
+    #print('  - !(breedingbox|bb) (-q|--query)=POKEMON        Check to see who has POKEMON with a hidden ability.', file=output)
+    #print('                                                  Returns users who have registered a pokemon in the same evolutionary line.', file=output)
     print('', file=output)
     print('  Querying:', file=output)
     print('  - !(queryPokedex|qp) <filter>                   Accepts pokemon query filters.', file=output)
     print('  - !(queryMoves|qm) <filter>                     Accepts move query filters.', file=output)
     print('    Options:', file=output)
     print('      -c, --count                                 Show the total number of entries that fit this query instead of a list.', file=output)
+    print('      -f, --force-list                            Force the entire list to be printed even if it\'s more than 50 entries.', file=output)
     print('', file=output)
     print('', file=output)
     print('Available Query Filters:', file=output)
@@ -279,8 +290,20 @@ async def help(ctx):
     print('    - o:pp                        Sort by power points. Defaults to descending.', file=output)
     print('    - o:num                       Sort by movedex number. Defaults to ascending.', file=output)
     print('', file=output)
+    '''
 
-    await output.send(ctx.author)
+    embed = Embed()
+    embed.description = "User Docs can be found [here](https://docs.google.com/document/d/1dOJt6_xodsqWOFJPI2AY91mNmnrjLDyy7cRLki7G8qo/edit?usp=sharing)!"
+
+    args = parse_arguments(raw_args)
+    if args is None:
+        print('Error parsing command, bzzzzrt!', file=output)
+        await output.send(ctx)
+        return
+    
+    force_channel = get_option(args['opt'], 'force-channel')
+
+    await output.send(ctx if force_channel else ctx.author, '', embed)
 
 @bot.command(aliases=['ms'])
 async def moveset(ctx, *raw_args):
@@ -508,6 +531,11 @@ async def breedingbox(ctx, *raw_args):
     print(f'\nBREEDINGBOX command triggered, bzzzzrt! Message details:\n{ctx.message.author} @ ({ctx.message.created_at}): {message}\n')
     output = MessageHelper()
 
+    # CURRENTLY BREEDING BOX NEEDS GUILD SUPPORT, SO IT'S BEING SHUT OFF FOR NOW
+    print('Bzzzzrt! This command is currently being refactored! Sorry for the inconvenience!')
+    await output.send(ctx)
+    return
+
     args = parse_arguments(raw_args)
     if args is None:
         print('Error parsing command, bzzzzrt! Type "!help" for usage details.', file=output)
@@ -593,8 +621,9 @@ async def queryPokedex(ctx, *raw_args):
         return
     
     count = get_option(args['opt'], 'count')
+    force_list = get_option(args['opt'], 'force-list')
 
-    PokeDex().do_pokedex_query_function(args['fil'], output, count)
+    PokeDex().do_pokedex_query_function(args['fil'], output, count, force_list)
 
     await output.send(ctx)
 
@@ -611,8 +640,89 @@ async def queryMoves(ctx, *raw_args):
         return
     
     count = get_option(args['opt'], 'count')
+    force_list = get_option(args['opt'], 'force-list')
 
-    MoveDex().do_moves_query_function(args['fil'], output, count)
+    MoveDex().do_moves_query_function(args['fil'], output, count, force_list)
+
+    await output.send(ctx)
+
+@bot.command(aliases=['rp'])
+async def randomPokemon(ctx, *raw_args):
+    message = ctx.message.content
+    print(f'\nRANDOMPOKEMON command triggered, bzzzzrt! Message details:\n{ctx.message.author} @ ({ctx.message.created_at}): {message}\n')
+    output = MessageHelper()
+
+    args = parse_arguments(raw_args)
+    if args is None:
+        print('Error parsing command, bzzzzrt! Type "!help" for usage details.', file=output)
+        await output.send(ctx)
+        return
+
+    PokeDex().do_random_pokemon_function(args['fil'], output)
+
+    await output.send(ctx)
+
+@bot.command(aliases=['rm'])
+async def randomMove(ctx, *raw_args):
+    message = ctx.message.content
+    print(f'\nRANDOMMOVE command triggered, bzzzzrt! Message details:\n{ctx.message.author} @ ({ctx.message.created_at}): {message}\n')
+    output = MessageHelper()
+
+    args = parse_arguments(raw_args)
+    if args is None:
+        print('Error parsing command, bzzzzrt! Type "!help" for usage details.', file=output)
+        await output.send(ctx)
+        return
+
+    MoveDex().do_random_move_function(args['fil'], output)
+
+    await output.send(ctx)
+
+@bot.command(aliases=['ra'])
+async def randomAbility(ctx, *raw_args):
+    message = ctx.message.content
+    print(f'\nRANDOMABILITY command triggered, bzzzzrt! Message details:\n{ctx.message.author} @ ({ctx.message.created_at}): {message}\n')
+    output = MessageHelper()
+
+    args = parse_arguments(raw_args)
+    if args is None:
+        print('Error parsing command, bzzzzrt! Type "!help" for usage details.', file=output)
+        await output.send(ctx)
+        return
+
+    AbilityDex().do_random_ability_function(output)
+
+    await output.send(ctx)
+
+@bot.command(aliases=['rt'])
+async def randomType(ctx, *raw_args):
+    message = ctx.message.content
+    print(f'\nRANDOMTYPE command triggered, bzzzzrt! Message details:\n{ctx.message.author} @ ({ctx.message.created_at}): {message}\n')
+    output = MessageHelper()
+
+    args = parse_arguments(raw_args)
+    if args is None:
+        print('Error parsing command, bzzzzrt! Type "!help" for usage details.', file=output)
+        await output.send(ctx)
+        return
+
+    PokemonHelper().do_random_type_function(output)
+
+    await output.send(ctx)
+
+@bot.command(aliases=['rc'])
+async def randomColor(ctx, *raw_args):
+    message = ctx.message.content
+    print(f'\nRANDOMCOLOR command triggered, bzzzzrt! Message details:\n{ctx.message.author} @ ({ctx.message.created_at}): {message}\n')
+    output = MessageHelper()
+
+    args = parse_arguments(raw_args)
+    if args is None:
+        print('Error parsing command, bzzzzrt! Type "!help" for usage details.', file=output)
+        await output.send(ctx)
+        return
+
+    PokemonHelper().do_random_color_function(output)
 
     await output.send(ctx)
 

@@ -1,4 +1,5 @@
 import math
+import random
 
 from .pokewrap import PokeMongo8
 from .pokehelper import PokemonHelper
@@ -20,7 +21,7 @@ class PokeDex:
             if 'H' in dex_entry['abilities']:
                 print(f'The hidden ability for {species} is ' + dex_entry['abilities']['H'] + '.', file=print_to)
             else:
-                print(f'No hidden ability found for {species}.', file=print_to)
+                print(f'{species} does not have a hidden ability.', file=print_to)
         else:
             print(f'Error: Unable to retrieve abilities for {species}, bzzzzrt!', file=print_to)
 
@@ -67,9 +68,9 @@ class PokeDex:
             egg_groups.append(group.capitalize())
 
         if dex_entry['past_only']:
-            print('\n[NOTE: This Pokemon is not transferrable to Gen 8 games, bzzzzrt!]\n', file=print_to)
+            print('[NOTE: Bzzzzrt! This Pokemon is not transferrable to Gen 8 games!]\n', file=print_to)
 
-        print(f'{"Full" if verbose else "Abbreviated"} Pokedex entry for {species}:\n', file=print_to)
+        print(f'{"Full" if verbose else "Abbreviated"} Pokedex entry for {species}, bzzzzrt:\n', file=print_to)
 
         types_string = '/'.join(types)
         print(f'Type: {types_string}', file=print_to)
@@ -298,7 +299,7 @@ class PokeDex:
         self.do_types_damage_function([elemental_type], print_to, False, abilities)
 
     def do_types_damage_function(self, types, print_to, pokedex_format=False, abilities=None):
-        self.print_types_damage(PokemonHelper().get_damage_modifiers(types, abilities), print_to, pokedex_format)
+        self.print_types_damage(PokemonHelper().get_damage_modifiers(types, abilities), print_to, pokedex_format, abilities)
 
     def do_coverage_calculator_function(self, check_types, filters, print_to):
         pHelp = PokemonHelper()
@@ -374,7 +375,10 @@ class PokeDex:
                 print(f'  - {resistant_sorted[i]["species"]}', file=print_to)
         
 
-    def print_types_damage(self, damage_dict, print_to, pokedex_format=False):
+    def print_types_damage(self, damage_dict, print_to, pokedex_format=False, abilities=None):
+        if abilities is None or len(abilities) > 1:
+            abilities = []
+        
         double_weak = []
         weak = []
         neutral = []
@@ -424,6 +428,11 @@ class PokeDex:
             print(f'{heading_prefix}Immunity to:', file=print_to)
             list_str = ', '.join(immune)
             print(f'{listing_prefix}{list_str}', file=print_to)
+
+        if len(abilities) == 1:
+            type_effectiveness_abilities = PokemonHelper().get_type_effectiveness_ability_dict()
+            if abilities[0] in type_effectiveness_abilities:
+                print(f'\n* Calculated with the {type_effectiveness_abilities[abilities[0]]} ability.', file=print_to)
     
     def do_egg_group_function(self, group, filters, print_to):
         egg_group_entries = self.pokemongo.get_minimum_egg_group(group, filters)
@@ -451,25 +460,82 @@ class PokeDex:
         for elem in two_group_list:
             print(f'  - {elem["pokemon"]:25s} [{elem["alt_group"].capitalize()}]', file=print_to)
 
-    def do_pokedex_query_function(self, filters, print_to, count=False):
+    def do_pokedex_query_function(self, filters, print_to, count=False, force_list=False):
         dex_entries = self.pokemongo.get_pokedex_entries_with_filters(full_entry=True, filters=filters)
 
         if count:
             print(f'Bzzzzrt! The number of entries that match that query are: {len(dex_entries)}', file=print_to)
             return
 
+        if len(dex_entries) > 50 and not force_list:
+            print(f'Bzzzzrt! A lot of pokemon matched your query! {len(dex_entries)} entries, to be exact.', file=print_to)
+            print(f'I didn\'t print the list, because it would be very large, but you can use the -f option to print it anyway if you want.', file=print_to)
+            print(f'Or maybe you want to filter it further first? It\'s up to you, bzzzzrt!', file=print_to)
+            return
+
         if len(dex_entries) == 0:
             print('There are no pokemon that match your query, bzzzzrt.', file=print_to)
             return
 
-        print('Here are the pokemon that match your query, bzzzzrt:', file=print_to)
+        print(f'There are {len(dex_entries)} pokemon that match your query, bzzzzrt:', file=print_to)
+        orderby_key = self.pokemongo.get_pokedex_orderby_key(filters)
         past_pokemon = False
         for entry in dex_entries:
             species = entry['species']
             if entry['past_only']:
                 species = f'*{species}'
                 past_pokemon = True
+            if orderby_key is not None:
+                orderby_value = entry
+                orderby_keys = orderby_key.split('.')
+                for key in orderby_keys:
+                    try:
+                        orderby_value = orderby_value[key]
+                    except:
+                        orderby_value = 'N/A'
+                species = f'{species:21s} ({orderby_value})'
             print(f'  - {species}', file=print_to)
 
         if past_pokemon:
             print('\n* Pokemon not available in Gen 8 games.', file=print_to)
+    
+    def do_random_pokemon_function(self, filters, print_to):
+        dex_entries = self.pokemongo.get_pokedex_entries_with_filters(full_entry=True, filters=filters)
+
+        if len(dex_entries) == 0:
+            print('There are no pokemon that match those filters, bzzzzrt!', file=print_to)
+            return
+
+        random_entry = dex_entries[0]
+
+        if len(dex_entries) == 1:
+            print(f'Oh, it looks like only one pokemon matches those filters, bzzzzrt! This is an easy one.', file=print_to)
+            species = f'{random_entry["species"]}'
+            if 'rotom' in species.lower():
+                if species.lower() == 'rotom':
+                    print(f'It\'s gotta be {species}, bzzzzrt! Oh hey, that\'s me! Thank you so much, bzzzzt!', file=print_to)
+                else:
+                    print(f'It\'s gotta be {species}, bzzzzrt! Oh, they\'re a good friend of mine, bzzzzt!', file=print_to)
+            else:
+                print(f'It\'s gotta be {species}, bzzzzrt!', file=print_to)
+        else:
+            if filters is not None and filters != {}:
+                print(f'There are {len(dex_entries)} pokemon that match those filters, bzzzzrt! Let me see...', file=print_to)
+            else:
+                print(f'Bzzzzrt, allow me to choose a random pokemon out of all possible entries! Let me see...', file=print_to)
+            random_entry = random.choice(dex_entries)
+            if random_entry is None:
+                print(f'Bzzzzt, oh? Something appears to have gone wrong with my randomizer functions, my apologies!', file=print_to)
+                return
+            species = f'{random_entry["species"]}'
+            random_response = PokemonHelper().get_random_response(species, additional_responses=[
+                f'I\'ve been thinking about {species} lately, bzzzzrt! How about that one?',
+                f'What about {species}, bzzzzrt? I was looking at its dex entry the other day!',
+                f'I think {species} is a pretty interesting pokemon, bzzzzrt! I like all pokemon, though.',
+                f'Perhaps {species} is a good pokemon for whatever you\'re looking for, bzzzzrt?'
+            ])
+            if 'rotom' in species.lower():
+                random_response = f'Oh, what about {species}? (I promise this was selected randomly and is not at all biased, bzzzzrt!)'
+            print(random_response, file=print_to)
+        print('Let me get you the dex entry...\n', file=print_to)
+        self.print_pokedex_data(random_entry, False, print_to)

@@ -3,6 +3,7 @@ from .pokehelper import PokemonHelper
 from pprint import pprint
 
 import statistics
+import random
 
 class MoveDex:
     def __init__(self):
@@ -263,9 +264,18 @@ class MoveDex:
                 type_moves.append(type_move)
         return self.format_moves(type_moves, dex_entry, atk_override, spa_override, def_override, accuracy_check, ability, ignore_stats)
 
-    def format_moves(self, moves, dex_entry, atk_override=None, spa_override=None, def_override=None, accuracy_check=False, ability=None, ignore_stats=False):
+    def format_moves(self, moves, dex_entry, atk_override=None, spa_override=None, def_override=None, accuracy_check=False, ability=None, ignore_stats=False, orderby_key=None):
         formatted_moves = []
         for move in moves:
+            orderby_value = None
+            if orderby_key is not None:
+                orderby_value = move
+                orderby_keys = orderby_key.split('.')
+                for key in orderby_keys:
+                    try:
+                        orderby_value = orderby_value[key]
+                    except:
+                        orderby_value = 'N/A'
             method =''
             if 'method' in move:
                 method = move['method']
@@ -390,7 +400,8 @@ class MoveDex:
                                     'cat':move_type,
                                     'atk':attack_mod,
                                     'mpow':modified_power,
-                                    'method':method})
+                                    'method':method,
+                                    'o':orderby_value})
         return formatted_moves
 
     def acc_sort(self, move):
@@ -405,7 +416,10 @@ class MoveDex:
             self.print_move(move, ignore_stats, print_to)
 
     def print_move(self, move, ignore_stats, print_to):
-        print(f'    - {move["name"]:20s}  {move["type"]:>8s} - {move["cat"]:12s} pow: {move["pow"]:>7s}  acc: {move["acc"]:>3s}'
+        orderby = f' ({move["o"]}) ' if move['o'] is not None else ''
+        if orderby != '':
+            orderby = f'{orderby:7s}'
+        print(f'    - {move["name"]:20s} {orderby} {move["type"]:>8s} - {move["cat"]:12s} pow: {move["pow"]:>7s}  acc: {move["acc"]:>3s}'
             + ('' if ignore_stats else f'    (mod: {move["mpow"]:5d}  stat: {move["atk"]:3d})')
             + ('' if move['method'] == '' else f'   [{move["method"]}]'), file=print_to)
 
@@ -539,21 +553,28 @@ class MoveDex:
                 for parent in possible_parents:
                     self.print_parent_option(parent, 0, dex_name_map, print_to)
 
-    def do_moves_query_function(self, filters, print_to, count=False):
+    def do_moves_query_function(self, filters, print_to, count=False, force_list=False):
         entries = self.pokemongo.get_move_entries_with_filters(filters)
 
         if count:
             print(f'Bzzzzrt! The number of entries that match that query are: {len(entries)}', file=print_to)
             return
 
+        if len(entries) > 50 and not force_list:
+            print(f'Bzzzzrt! A lot of moves matched your query! {len(entries)} entries, to be exact.', file=print_to)
+            print(f'I didn\'t print the list, because it would be very large, but you can use the -f option to print it anyway if you want.', file=print_to)
+            print(f'Or maybe you want to filter it further first? It\'s up to you, bzzzzrt!', file=print_to)
+            return
+
         if len(entries) == 0:
             print('There are no moves that match your query, bzzzzrt.', file=print_to)
             return
 
-        formatted_moves = self.format_moves(entries, None, ignore_stats=True)
+        orderby = self.pokemongo.get_movedex_orderby_key(filters)
+        formatted_moves = self.format_moves(entries, None, ignore_stats=True, orderby_key=orderby)
 
         past_moves = False
-        print('Here are the moves that match your query, bzzzzrt:', file=print_to)
+        print(f'There are {len(entries)} moves that match your query, bzzzzrt:', file=print_to)
         for move in formatted_moves:
             if move['name'][0] == '*':
                 past_moves = True
@@ -561,3 +582,36 @@ class MoveDex:
 
         if past_moves:
             print('\n* Move not available in Gen 8 games.', file=print_to)
+
+    def do_random_move_function(self, filters, print_to):
+        entries = self.pokemongo.get_move_entries_with_filters(filters)
+
+        if len(entries) == 0:
+            print('There are no moves that match those filters, bzzzzrt!', file=print_to)
+            return
+
+        random_entry = entries[0]
+
+        if len(entries) == 1:
+            print(f'Oh, it looks like only one move matches those filters, bzzzzrt! This is an easy one.', file=print_to)
+            name = f'{random_entry["name"]}'
+            print(f'It\'s gotta be {name}, bzzzzrt!', file=print_to)
+        else:
+            if filters is not None and filters != {}:
+                print(f'There are {len(entries)} moves that match those filters, bzzzzrt! Let me see...', file=print_to)
+            else:
+                print(f'Bzzzzrt, allow me to choose a random move out of all possible entries! Let me see...', file=print_to)
+            random_entry = random.choice(entries)
+            if random_entry is None:
+                print(f'Bzzzzt, oh? Something appears to have gone wrong with my randomizer functions, my apologies!', file=print_to)
+                return
+            name = f'{random_entry["name"]}'
+            random_response = PokemonHelper().get_random_response(name, additional_responses=[
+                f'I\'ve been thinking about the move {name} lately, bzzzzrt! How about that one?',
+                f'What about {name}, bzzzzrt? I was looking at its entry the other day!',
+                f'I think {name} is a pretty interesting move, bzzzzrt! I think they\'re all interesting, though.',
+                f'Perhaps {name} is a good move for whatever you\'re looking for, bzzzzrt?'
+            ])
+            print(random_response, file=print_to)
+        print('Let me get you the entry for this move...\n', file=print_to)
+        self.do_move_search_function(random_entry['_id'], False, filters, print_to)
