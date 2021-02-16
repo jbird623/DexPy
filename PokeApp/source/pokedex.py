@@ -6,8 +6,9 @@ from .pokehelper import PokemonHelper
 from pprint import pprint
 
 class PokeDex:
-    def __init__(self):
-        self.pokemongo = PokeMongo8()
+    def __init__(self, pokemongo):
+        self.pokemongo = pokemongo
+        self.pokehelper = PokemonHelper()
 
     def do_hidden_ability_function(self, pokemon, print_to):
         dex_entry = self.pokemongo.get_pokedex_entry(pokemon)
@@ -54,6 +55,46 @@ class PokeDex:
         stat_ranges += f' {self.get_stat_range(SpD, nature)} '
         stat_ranges += f' {self.get_stat_range(Spe, nature)} '
         return stat_ranges
+
+    def get_best_nature(self, stats):
+        Atk = int(stats['atk'])
+        Def = int(stats['def'])
+        SpA = int(stats['spa'])
+        SpD = int(stats['spd'])
+        Spe = int(stats['spe'])
+        min_stat = min(Atk, SpA, Spe)
+        max_stat = max(Atk, Def, SpA, SpD, Spe)
+
+        min_stats = []
+        if min_stat == Atk:
+            min_stats.append('atk')
+        if min_stat == SpA:
+            min_stats.append('spa')
+        if min_stat == Spe:
+            min_stats.append('spe')
+
+        max_stats = []
+        if max_stat == Atk:
+            max_stats.append('atk')
+        if max_stat == Def:
+            max_stats.append('def')
+        if max_stat == SpA:
+            max_stats.append('spa')
+        if max_stat == SpD:
+            max_stats.append('spd')
+        if max_stat == Spe:
+            max_stats.append('spe')
+
+        if len(max_stats) == 5:
+            return random.choice(self.pokehelper.get_neutral_natures())
+        
+        natures = []
+        for up in max_stats:
+            for down in min_stats:
+                if up == down:
+                    continue
+                natures.append(self.pokehelper.get_nature_name(up, down))
+        return ', '.join(natures)
 
     def print_pokedex_data(self, dex_entry, verbose, print_to):
         p_id = dex_entry['_id']
@@ -121,6 +162,9 @@ class PokeDex:
             print(f' Hindering:{self.format_stat_ranges(stats["hp"], stats["atk"], stats["def"], stats["spa"], stats["spd"], stats["spe"], -1)}', file=print_to)
             print(f'   Neutral:{self.format_stat_ranges(stats["hp"], stats["atk"], stats["def"], stats["spa"], stats["spd"], stats["spe"], 0)}', file=print_to)
             print(f'Beneficial:{self.format_stat_ranges(stats["hp"], stats["atk"], stats["def"], stats["spa"], stats["spd"], stats["spe"], 1)}', file=print_to)
+            print('-'*65, file=print_to)
+            best_nature = self.get_best_nature(stats)
+            print(f'Suggested Nature{"s" if "," in best_nature else ""}: {best_nature}', file=print_to)
             print('', file=print_to)
         else:
             print(f'HP: {stats["hp"]} | Atk: {stats["atk"]} | Def: {stats["def"]} | SpA: {stats["spa"]} | SpD: {stats["spd"]} | Spe: {stats["spe"]} | BST: {stats["bst"]}', file=print_to)
@@ -251,7 +295,7 @@ class PokeDex:
             for line in lines:
                 print(f'    {line}', file=print_to)
         else:
-            print(f'Quick Assessment: {PokemonHelper().get_stat_evaluation(stats)}', file=print_to)
+            print(f'Quick Assessment: {self.pokehelper.get_stat_evaluation(stats)}', file=print_to)
 
     def get_stat_pipes(self, stat):
         return '|' * max(int(stat / 10), 1)
@@ -277,8 +321,8 @@ class PokeDex:
             type_str = f'{types[0]}/{types[1]}'
         print(f'{species} is {type_str} type.', file=print_to)
         self.do_types_damage_function(types, print_to, False, abilities)
-        defensive_abilities = PokemonHelper().get_defensive_ability_dict()
-        type_effectiveness_abilities = PokemonHelper().get_type_effectiveness_ability_dict()
+        defensive_abilities = self.pokehelper.get_defensive_ability_dict()
+        type_effectiveness_abilities = self.pokehelper.get_type_effectiveness_ability_dict()
         verb_str = 'might have'
         if len(abilities) == 1:
             verb_str = 'always has'
@@ -299,16 +343,15 @@ class PokeDex:
         self.do_types_damage_function([elemental_type], print_to, False, abilities)
 
     def do_types_damage_function(self, types, print_to, pokedex_format=False, abilities=None):
-        self.print_types_damage(PokemonHelper().get_damage_modifiers(types, abilities), print_to, pokedex_format, abilities)
+        self.print_types_damage(self.pokehelper.get_damage_modifiers(types, abilities), print_to, pokedex_format, abilities)
 
     def do_coverage_calculator_function(self, check_types, filters, print_to):
-        pHelp = PokemonHelper()
-        all_types = pHelp.get_types()
+        all_types = self.pokehelper.get_types()
         for t in check_types:
             if t not in all_types:
                 print(f'Error: Invalid type "{t}", bzzzzrt!', file=print_to)
                 return
-        pokedex_entries = PokeMongo8().get_all_pokemon_type_info(filters)
+        pokedex_entries = self.pokemongo.get_all_pokemon_type_info(filters)
         super_effective = []
         effective = []
         resistant = []
@@ -316,7 +359,7 @@ class PokeDex:
         for entry in pokedex_entries:
             types = entry['types']
             abilities = entry['ability_list']
-            damage_dict = pHelp.get_damage_modifiers(types, abilities)
+            damage_dict = self.pokehelper.get_damage_modifiers(types, abilities)
             super_effective_hit = False
             for t in check_types:
                 if damage_dict[t] > 1:
@@ -430,7 +473,7 @@ class PokeDex:
             print(f'{listing_prefix}{list_str}', file=print_to)
 
         if len(abilities) == 1:
-            type_effectiveness_abilities = PokemonHelper().get_type_effectiveness_ability_dict()
+            type_effectiveness_abilities = self.pokehelper.get_type_effectiveness_ability_dict()
             if abilities[0] in type_effectiveness_abilities:
                 print(f'\n* Calculated with the {type_effectiveness_abilities[abilities[0]]} ability.', file=print_to)
     
@@ -528,7 +571,7 @@ class PokeDex:
                 print(f'Bzzzzt, oh? Something appears to have gone wrong with my randomizer functions, my apologies!', file=print_to)
                 return
             species = f'{random_entry["species"]}'
-            random_response = PokemonHelper().get_random_response(species, additional_responses=[
+            random_response = self.pokehelper.get_random_response(species, additional_responses=[
                 f'I\'ve been thinking about {species} lately, bzzzzrt! How about that one?',
                 f'What about {species}, bzzzzrt? I was looking at its dex entry the other day!',
                 f'I think {species} is a pretty interesting pokemon, bzzzzrt! I like all pokemon, though.',
@@ -539,3 +582,50 @@ class PokeDex:
             print(random_response, file=print_to)
         print('Let me get you the dex entry...\n', file=print_to)
         self.print_pokedex_data(random_entry, False, print_to)
+
+    def do_get_shiny_image_function(self, pokemon, print_to):
+        dex_entry = self.pokemongo.get_pokedex_entry(pokemon)
+
+        if dex_entry is None:
+            print(f'Error: Unable to retrieve pokedex listing for "{pokemon}", bzzzzrt!', file=print_to)
+            return
+
+        num = dex_entry['num']
+        species = dex_entry['species']
+        modifier = ''
+        version = 'SWSH'
+
+        break_early = [
+            'toxtricity',
+            'urshifu'
+        ]
+        replacements = {
+            'fan':'s',
+            'sandy':'c',
+            'trash':'s'    # Serebii done goofed
+        }
+
+        if 'baseSpecies' in dex_entry:
+            species_tokens = species.lower().split('-')
+            if len(species_tokens) <= 1:
+                print(f'Error: Something went wrong trying to retrieve the info on this pokemon\'s form, bzzzzrt!', file=print_to)
+                return
+            modifier = '-'
+            for i in range(len(species_tokens)-1):
+                token = species_tokens[i+1][0]
+                if species_tokens[i+1] in replacements:
+                    token = replacements[species_tokens[i+1]]
+                modifier = f'{modifier}{token}'
+                if species_tokens[0] in break_early:
+                    break
+
+        if dex_entry['past_only']:
+            version = 'SM'
+
+        shiny_link = f'https://www.serebii.net/Shiny/{version}/{num:03d}{modifier}.png'
+
+        print(f'Retrieving shiny image for {species}, bzzzzrt!', file=print_to)
+        if version == 'SM':
+            print(f'\n* This pokemon is not available in Gen 8 games', file=print_to)
+
+        return (species, shiny_link)

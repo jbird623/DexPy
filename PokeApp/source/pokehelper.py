@@ -40,6 +40,132 @@ class PokemonHelper:
             'Black'
         ]
 
+    def get_stats(self):
+        return {
+            'hp':'HP',
+            'atk':'Attack',
+            'def':'Defense',
+            'spa':'Sp. Atk',
+            'spd':'Sp. Def',
+            'spe':'Speed',
+            'bst':'Base Stat Total'
+        }
+
+    def get_boost_stats(self):
+        return {
+            'atk':'Attack',
+            'def':'Defense',
+            'spa':'Sp. Atk',
+            'spd':'Sp. Def',
+            'spe':'Speed',
+            'eva':'Evasion',
+            'acc':'Accuracy'
+        }
+
+    def get_nature_stats(self):
+        return {
+            'atk':'Attack',
+            'def':'Defense',
+            'spa':'Sp. Atk',
+            'spd':'Sp. Def',
+            'spe':'Speed'
+        }
+
+    def get_nature_name(self, up, down):
+        if up == 'atk':
+            if down == 'atk':
+                return 'Hardy'
+            elif down == 'def':
+                return 'Lonely'
+            elif down == 'spa':
+                return 'Adamant'
+            elif down == 'spd':
+                return 'Naughty'
+            elif down == 'spe':
+                return 'Brave'
+        elif up == 'def':
+            if down == 'atk':
+                return 'Bold'
+            elif down == 'def':
+                return 'Docile'
+            elif down == 'spa':
+                return 'Impish'
+            elif down == 'spd':
+                return 'Lax'
+            elif down == 'spe':
+                return 'Relaxed'
+        elif up == 'spa':
+            if down == 'atk':
+                return 'Modest'
+            elif down == 'def':
+                return 'Mild'
+            elif down == 'spa':
+                return 'Bashful'
+            elif down == 'spd':
+                return 'Rash'
+            elif down == 'spe':
+                return 'Quiet'
+        elif up == 'spd':
+            if down == 'atk':
+                return 'Calm'
+            elif down == 'def':
+                return 'Gentle'
+            elif down == 'spa':
+                return 'Careful'
+            elif down == 'spd':
+                return 'Quirky'
+            elif down == 'spe':
+                return 'Sassy'
+        elif up == 'spe':
+            if down == 'atk':
+                return 'Timid'
+            elif down == 'def':
+                return 'Hasty'
+            elif down == 'spa':
+                return 'Jolly'
+            elif down == 'spd':
+                return 'Naive'
+            elif down == 'spe':
+                return 'Serious'
+
+    def get_neutral_natures(self):
+        return [
+            'Hardy',
+            'Docile',
+            'Bashful',
+            'Quirky',
+            'Serious'
+        ]
+
+    def get_nature_stats_map(self):
+        return {
+            'Hardy': {'up':'atk', 'down':'atk'},
+            'Lonely': {'up':'atk', 'down':'def'},
+            'Adamant': {'up':'atk', 'down':'spa'},
+            'Naughty': {'up':'atk', 'down':'spd'},
+            'Brave': {'up':'atk', 'down':'spe'},
+            'Bold': {'up':'def', 'down':'atk'},
+            'Docile': {'up':'def', 'down':'def'},
+            'Impish': {'up':'def', 'down':'spa'},
+            'Lax': {'up':'def', 'down':'spd'},
+            'Relaxed': {'up':'def', 'down':'spe'},
+            'Modest': {'up':'spa', 'down':'atk'},
+            'Mild': {'up':'spa', 'down':'def'},
+            'Bashful': {'up':'spa', 'down':'spa'},
+            'Rash': {'up':'spa', 'down':'spd'},
+            'Quiet': {'up':'spa', 'down':'spe'},
+            'Calm': {'up':'spd', 'down':'atk'},
+            'Gentle': {'up':'spd', 'down':'def'},
+            'Careful': {'up':'spd', 'down':'spa'},
+            'Quirky': {'up':'spd', 'down':'spd'},
+            'Sassy': {'up':'spd', 'down':'spe'},
+            'Timid': {'up':'spe', 'down':'atk'},
+            'Hasty': {'up':'spe', 'down':'def'},
+            'Jolly': {'up':'spe', 'down':'spa'},
+            'Naive': {'up':'spe', 'down':'spd'},
+            'Serious': {'up':'spe', 'down':'spe'}
+        }
+
     def get_weaknesses(self, t):
         if t == 'Normal':
             return ['Fighting']
@@ -449,3 +575,46 @@ class PokemonHelper:
         if random_color.lower() == 'red':
             random_response = f'Oh, what about {random_color}? That one is my favorite!'
         print(random_response, file=print_to)
+
+    def do_get_nature_stats_function(self, nature, print_to):
+        nature = nature.lower().capitalize()
+        nature_dict = self.get_nature_stats_map()
+        stats_dict = self.get_nature_stats()
+
+        if nature not in nature_dict:
+            print(f'Error: Unrecognized nature "{nature}", bzzzzrt!', file=print_to)
+            return
+        else:
+            nature_obj = nature_dict[nature]
+            up = stats_dict[nature_obj['up']]
+            down = stats_dict[nature_obj['down']]
+            if nature in self.get_neutral_natures():
+                print(f'A pokemon with the {nature} nature will have its {up} both increased and decreased, resulting in a net zero change, bzzzzrt!', file=print_to)
+            else:
+                print(f'A pokemon with the {nature} nature will have its {up} increased and its {down} decreased, bzzzzrt!', file=print_to)
+
+    def do_get_nature_name_function(self, up, down, print_to):
+        up = up.lower()
+        down = down.lower()
+        nature_dict = self.get_nature_stats_map()
+        stats_dict = self.get_nature_stats()
+
+        if up == 'hp' or down == 'hp':
+            print(f'There are no natures that affect the HP stat, bzzzzrt!')
+            return
+
+        if up == 'bst' or down == 'bst':
+            print(f'Natures do not affect the Base Stat Total of a pokemon, bzzzzrt!')
+            return
+
+        if up not in stats_dict:
+            print(f'Error: Unkown stat "{up}", bzzzzrt! Please use one of the following: atk, def, spa, spd, spe', file=print_to)
+            return
+        elif down not in stats_dict:
+            print(f'Error: Unkown stat "{down}", bzzzzrt! Please use one of the following: atk, def, spa, spd, spe', file=print_to)
+            return
+        else:
+            nature = self.get_nature_name(up, down)
+            up_stat = stats_dict[up]
+            down_stat = stats_dict[down]
+            print(f'If you want your pokemon to have an increased {up_stat} and decreased {down_stat}, it should have the {nature} nature, bzzzzrt!', file=print_to)

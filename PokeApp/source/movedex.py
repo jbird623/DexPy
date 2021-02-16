@@ -6,8 +6,8 @@ import statistics
 import random
 
 class MoveDex:
-    def __init__(self):
-        self.pokemongo = PokeMongo8()
+    def __init__(self, pokemongo):
+        self.pokemongo = pokemongo
 
     def do_move_search_function(self, move, show_list, filters, print_to, full_desc=False):
         m_entry = self.pokemongo.get_move_entry(move)
@@ -324,6 +324,10 @@ class MoveDex:
                     move['basePower'] = int(move['basePower']) * 2
                 if move['type'] == 'Dark' and ability == 'darkaura':
                     move['basePower'] = int(int(move['basePower']) * 1.33)
+                if move['type'] == 'Dragon' and ability == 'dragonsmaw':
+                    move['basePower'] = int(int(move['basePower']) * 1.5)
+                if move['type'] == 'Electric' and ability == 'transistor':
+                    move['basePower'] = int(int(move['basePower']) * 1.5)
                 if move['type'] == 'Fairy' and ability == 'fairyaura':
                     move['basePower'] = int(int(move['basePower']) * 1.33)
                 if ability == 'technician' and int(move['basePower']) <= 60:

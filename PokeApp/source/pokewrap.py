@@ -5,8 +5,12 @@ from .pokehelper import PokemonHelper
 from pprint import pprint
 
 class PokeMongo8:
-    def __init__(self):
-        self.client = MongoClient('localhost', 27017)
+    def __init__(self, beta=False):
+        if beta:
+            self.client = MongoClient('localhost', 27018)
+        else:
+            self.client = MongoClient('localhost', 27017)
+        self.pokehelper = PokemonHelper()
         self.db = self.client['gen8']
         self.pokedex = self.db.pokedex
         self.learnsets = self.db.learnsets
@@ -33,17 +37,27 @@ class PokeMongo8:
         return None
 
     def get_stat_or_none(self, filter_key, filter_value, comparator):
-        if filter_value == 'hp' or filter_value == 'atk' or filter_value == 'def' or filter_value == 'spa' or filter_value == 'spd' or filter_value == 'spe' or filter_value == 'bst':
+        if filter_value in self.pokehelper.get_stats():
             return {'$where': f'this.baseStats.{filter_key} {comparator} this.baseStats.{filter_value}'} 
         return None
 
+    def get_boost_stat_bool_or_none(self, boost_list, filter_value, negate):
+        if filter_value in self.pokehelper.get_boost_stats():
+            return {f'{boost_list}.{filter_value}':{'$exists':not negate}}
+        bool_value = self.string_bool(filter_value)
+        if bool_value is not None:
+            if negate:
+                bool_value = not bool_value
+            return {f'{boost_list}':{'$exists':bool_value}}
+        return None
+
     def get_pokedex_order_filters(self):
-        types = PokemonHelper().get_types()
+        types = self.pokehelper.get_types()
         lowercase_types = []
         for t in types:
             lowercase_types.append(t.lower())
+        lowercase_types.extend(self.pokehelper.get_stats())
         lowercase_types.extend([
-            'hp', 'atk', 'def', 'spa', 'spd', 'spe', 'bst',
             'num',
             'weight', 'w', 'weightkg',
             'height', 'h', 'heightm'
@@ -54,9 +68,9 @@ class PokeMongo8:
         filter_value = filter_value.lower()
         if filter_value not in self.get_pokedex_order_filters():
             return None
-        if filter_value == 'hp' or filter_value == 'atk' or filter_value == 'def' or filter_value == 'spa' or filter_value == 'spd' or filter_value == 'spe' or filter_value == 'bst':
+        if filter_value in self.pokehelper.get_stats():
             return [(f'baseStats.{filter_value}', 1 if negate else -1)]
-        types = PokemonHelper().get_types()
+        types = self.pokehelper.get_types()
         lowercase_types = []
         for t in types:
             lowercase_types.append(t.lower())
@@ -309,6 +323,13 @@ class PokeMongo8:
                     and_list.append({'types':{'$nin':caps_types}})
                 else:
                     and_list.append({'$or':[{'types':{'$eq':caps_types}},{'types':{'$eq':caps_types[::-1]}}]})
+            if ft == 'p':
+                pokemon = filters[f].lower().replace(' ','').split(',')
+                new_key = '_id'
+                if negate:
+                    new_filter = {'$nin':pokemon}
+                else:
+                    new_filter = {'$in':pokemon}
             if ft == 'tr':
                 tr = self.string_bool(filters[f])
                 new_key = 'transfer_only'
@@ -410,6 +431,18 @@ class PokeMongo8:
                 caps_types = []
                 for t in types:
                     caps_types.append(t.capitalize())
+                or_list = []
+                for t in caps_types:
+                    or_list.append({f'coverage.{t}':{'$exists':not negate}})
+                if negate:
+                    and_list.append({'$and':or_list})
+                else:
+                    and_list.append({'$or':or_list})
+            if ft == 'mca' and 'mca' not in exclude:
+                types = filters[f].lower().replace(' ','').split(',')
+                caps_types = []
+                for t in types:
+                    caps_types.append(t.capitalize())
                 for t in caps_types:
                     and_list.append({f'coverage.{t}':{'$exists':not negate}})
             if ft == 'past':
@@ -468,6 +501,10 @@ class PokeMongo8:
                     new_filter = {'$nin':caps_types}
                 else:
                     new_filter = {'$in':caps_types}
+            if ft == 'pp':
+                pp = self.get_simple_object_from_filter_value(filters[f], negate)
+                new_key = 'pp'
+                new_filter = pp
             if ft == 'm':
                 moves = filters[f].lower().replace(' ','').split(',')
                 new_key = '_id'
@@ -475,54 +512,154 @@ class PokeMongo8:
                     new_filter = {'$nin':moves}
                 else:
                     new_filter = {'$in':moves}
-            if ft == 'sec' or ft == 'secondary':
+            if ft == 's' or ft == 'sec' or ft == 'secondary':
                 sec = self.string_bool(filters[f])
                 if negate:
                     sec = not sec
                 if sec:
-                    and_list.append({'$and':[{'secondary':{'$exists':True}}, {'secondary':{'$not':{'$eq':None}}}]})
+                    and_list.append({'$or':[{'$and':[{'secondary':{'$exists':True}}, {'secondary':{'$not':{'$eq':None}}}]}, {'secondaries':{'$exists':True}}]})
                 else:
-                    and_list.append({'$or':[{'secondary':{'$exists':False}}, {'secondary':None}]})
-            if ft == 'bite':
-                bite = self.string_bool(filters[f])
-                if negate:
-                    bite = not bite
-                new_key = 'flags.bite'
-                new_filter = {'$exists':bite}
-            if ft == 'con' or ft == 'contact':
-                con = self.string_bool(filters[f])
-                if negate:
-                    con = not con
-                new_key = 'flags.contact'
-                new_filter = {'$exists':con}
-            if ft == 'snd' or ft == 'sound':
-                snd = self.string_bool(filters[f])
-                if negate:
-                    snd = not snd
-                new_key = 'flags.sound'
-                new_filter = {'$exists':snd}
-            if ft == 'pnch' or ft == 'punch':
-                pnch = self.string_bool(filters[f])
-                if negate:
-                    pnch = not pnch
-                new_key = 'flags.punch'
-                new_filter = {'$exists':pnch}
-            if ft == 'pls' or ft == 'pulse':
-                pls = self.string_bool(filters[f])
-                if negate:
-                    pls = not pls
-                new_key = 'flags.pulse'
-                new_filter = {'$exists':pls}
-            if ft == 'rec' or ft == 'recoil':
+                    and_list.append({'$and':[{'$or':[{'secondary':{'$exists':False}}, {'secondary':None}]}, {'secondaries':{'$exists':False}}]})
+            if ft == 'r' or ft == 'rec' or ft == 'recoil':
                 rec = self.string_bool(filters[f])
                 if negate:
                     rec = not rec
                 new_key = 'recoil'
                 new_filter = {'$exists':rec}
+            if ft == 'ko' or ft == 'ohko':
+                ko = self.string_bool(filters[f])
+                if negate:
+                    ko = not ko
+                new_key = 'ohko'
+                new_filter = {'$exists':ko}
+            if ft == 'dr' or ft == 'drain':
+                dr = self.string_bool(filters[f])
+                if negate:
+                    dr = not dr
+                new_key = 'drain'
+                new_filter = {'$exists':dr}
+            if ft == 'mh' or ft == 'multi' or ft == 'multihit':
+                mh = self.string_bool(filters[f])
+                if negate:
+                    mh = not mh
+                new_key = 'multihit'
+                new_filter = {'$exists':mh}
+            if ft == 'pr' or ft == 'prot' or ft == 'protect':
+                pr = self.string_bool(filters[f])
+                if negate:
+                    pr = not pr
+                new_key = 'stallingMove'
+                new_filter = {'$exists':pr}
+            if ft == 'sw' or ft == 'switch':
+                sw = self.string_bool(filters[f])
+                if negate:
+                    sw = not sw
+                new_key = 'selfSwitch'
+                new_filter = {'$exists':sw}
+            if ft == 'fsw' or ft == 'fswitch' or ft == 'forceswitch':
+                fsw = self.string_bool(filters[f])
+                if negate:
+                    fsw = not fsw
+                new_key = 'forceSwitch'
+                new_filter = {'$exists':fsw}
+            if ft == 'st' or ft == 'stat' or ft == 'status':
+                st = self.string_bool(filters[f])
+                if negate:
+                    st = not st
+                if st:
+                    and_list.append({'$or':[{'status':{'$exists':True}}, {'secondary.status':{'$exists':True}}, {'secondaries.status':{'$exists':True}}]})
+                else:
+                    and_list.append({'$and':[{'status':{'$exists':False}}, {'secondary.status':{'$exists':False}}, {'secondaries.status':{'$exists':False}}]})
+            if ft == 'te' or ft == 'ter' or ft == 'terrain':
+                te = self.string_bool(filters[f])
+                if negate:
+                    te = not te
+                new_key = 'terrain'
+                new_filter = {'$exists':te}
+            if ft == 'w' or ft == 'weather':
+                w = self.string_bool(filters[f])
+                if negate:
+                    w = not w
+                new_key = 'weather'
+                new_filter = {'$exists':w}
+            if ft == 'rm' or ft == 'room':
+                rm = self.string_bool(filters[f])
+                if negate:
+                    rm = not rm
+                new_key = 'pseudoWeather'
+                new_filter = {'$exists':rm}
+            if ft == 'sd' or ft == 'selfdes' or ft == 'selfdestruct':
+                sd = self.string_bool(filters[f])
+                if negate:
+                    sd = not sd
+                new_key = 'selfdestruct'
+                new_filter = {'$exists':sd}
+            if ft == 'cr' or ft == 'crit':
+                cr = self.string_bool(filters[f])
+                if negate:
+                    cr = not cr
+                if cr:
+                    and_list.append({'$or':[{'critRatio':{'$exists':True}}, {'willCrit':{'$exists':True}}]})
+                else:
+                    and_list.append({'$and':[{'critRatio':{'$exists':False}}, {'willCrit':{'$exists':False}}]})
+            if ft == 'f' or ft == 'flag' or ft == 'flags':
+                flags = filters[f].lower().replace(' ','').split(',')
+                for flag in flags:
+                    and_list.append({f'flags.{flag}':{'$exists':not negate}})
             if ft == 'p' or ft == 'prio' or ft == 'priority':
                 p = self.get_simple_object_from_filter_value(filters[f], negate)
                 new_key = 'priority'
                 new_filter = p
+            if ft == 'bs' or ft == 'boostself':
+                bs = filters[f].lower().replace(' ','').split(',')
+                for boost in bs:
+                    boost_filter = self.get_boost_stat_bool_or_none('boost_self', boost, negate)
+                    if boost_filter is not None:
+                        and_list.append(boost_filter)
+            if ft == 'ls' or ft == 'lowerself':
+                ls = filters[f].lower().replace(' ','').split(',')
+                for boost in ls:
+                    boost_filter = self.get_boost_stat_bool_or_none('lower_self', boost, negate)
+                    if boost_filter is not None:
+                        and_list.append(boost_filter)
+            if ft == 'bt' or ft == 'boosttarget':
+                bt = filters[f].lower().replace(' ','').split(',')
+                for boost in bt:
+                    boost_filter = self.get_boost_stat_bool_or_none('boost_target', boost, negate)
+                    if boost_filter is not None:
+                        and_list.append(boost_filter)
+            if ft == 'lt' or ft == 'lowertarget':
+                lt = filters[f].lower().replace(' ','').split(',')
+                for boost in lt:
+                    boost_filter = self.get_boost_stat_bool_or_none('lower_target', boost, negate)
+                    if boost_filter is not None:
+                        and_list.append(boost_filter)
+            if ft == 'b' or ft == 'boost':
+                b = filters[f].lower().replace(' ','').split(',')
+                for boost in b:
+                    self_filter = self.get_boost_stat_bool_or_none('boost_self', boost, negate)
+                    target_filter = self.get_boost_stat_bool_or_none('boost_target', boost, negate)
+                    filter_bool = self.string_bool(filters[f].lower())
+                    if self_filter is not None and target_filter is not None:
+                        if filter_bool is not None and filter_bool == negate:
+                            and_list.append({'$and':[self_filter, target_filter]})
+                        elif negate and filter_bool is None:
+                            and_list.append({'$and':[self_filter, target_filter]})
+                        else:
+                            and_list.append({'$or':[self_filter, target_filter]})
+            if ft == 'l' or ft == 'lower':
+                l = filters[f].lower().replace(' ','').split(',')
+                for boost in l:
+                    self_filter = self.get_boost_stat_bool_or_none('lower_self', boost, negate)
+                    target_filter = self.get_boost_stat_bool_or_none('lower_target', boost, negate)
+                    filter_bool = self.string_bool(filters[f].lower())
+                    if self_filter is not None and target_filter is not None:
+                        if filter_bool is not None and filter_bool == negate:
+                            and_list.append({'$and':[self_filter, target_filter]})
+                        elif negate and filter_bool is None:
+                            and_list.append({'$and':[self_filter, target_filter]})
+                        else:
+                            and_list.append({'$or':[self_filter, target_filter]})
             if ft == 'past':
                 past = self.string_bool(filters[f])
                 if negate:

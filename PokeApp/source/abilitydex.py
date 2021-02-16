@@ -5,8 +5,8 @@ from pprint import pprint
 import random
 
 class AbilityDex:
-    def __init__(self):
-        self.pokemongo = PokeMongo8()
+    def __init__(self, pokemongo):
+        self.pokemongo = pokemongo
 
     def do_ability_search_function(self, ability, show_list, filters, print_to):
         ab = self.pokemongo.get_ability(ability)

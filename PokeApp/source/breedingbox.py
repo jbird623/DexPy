@@ -1,8 +1,8 @@
 from .pokewrap import PokeMongo8
 
 class BreedingBox:
-    def __init__(self):
-        self.pokemongo = PokeMongo8()
+    def __init__(self, pokemongo):
+        self.pokemongo = pokemongo
 
     def register_ha_mon(self, user, username, pokemon, print_to):
         bb_entry = self.pokemongo.get_or_register_bb(user, username)

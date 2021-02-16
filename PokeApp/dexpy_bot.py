@@ -1,4 +1,5 @@
 #invite link: https://discordapp.com/oauth2/authorize?client_id=675234599504445441&scope=bot&permissions=3072
+#beta invite link: https://discordapp.com/oauth2/authorize?client_id=811346201072762960&scope=bot&permissions=3072
 
 from discord.ext import commands
 from discord.embeds import Embed
@@ -30,17 +31,11 @@ class MessageHelper:
         message_lines = self.message.split('\n')
         message = ''
         while len(message_lines) > 0:
-            if message == '':
-                new_message = message_lines[0]
-            else:
-                new_message = message + f'\n{message_lines[0]}'
+            new_message = message + f'\n{message_lines[0]}'
             if len(new_message) >= 1990:
                 await ctx.send(f'{bookend}{message}{bookend}')
                 message = ''
-            if message == '':
-                message = message_lines[0]
-            else:
-                message = message + f'\n{message_lines[0]}'
+            message = message + f'\n{message_lines[0]}'
             message_lines.pop(0)
         await ctx.send(f'{bookend}{message}{bookend}', embed=embed)
 
@@ -98,7 +93,7 @@ def parse_arguments(arguments, positional_args=[], optional_pos_args=[], params=
         
         elif is_filter_shaped(arg):
             s_filter = split_filter(arg)
-            fil = PokeMongo8().add_filter(fil, {s_filter[0]: s_filter[1]})
+            fil = bot.pokemongo.add_filter(fil, {s_filter[0]: s_filter[1]})
 
         elif len(optional_pos_args) > 0:
             pos[optional_pos_args[0]] = arg
@@ -155,7 +150,10 @@ def get_option_string_value(options, full_opt, short_opt=None, default=None):
 
 @bot.event
 async def on_ready():
-    print("\nDexPy ready to receive commands, bzzzzrt!\n")
+    if bot.beta:
+        print("\nDexPy running in developer mode, bzzzzrt!\n")
+    else:
+        print("\nDexPy ready to receive commands, bzzzzrt!\n")
 
 #@bot.event
 #async def on_message(message):
@@ -337,7 +335,7 @@ async def moveset(ctx, *raw_args):
     if not show_stab and not show_coverage:
         ignore_stats = True
 
-    MoveDex().do_moves_function(pokemon, args['fil'], show_stab, max_stab, ignore_stats, show_coverage, max_coverage,
+    MoveDex(bot.pokemongo).do_moves_function(pokemon, args['fil'], show_stab, max_stab, ignore_stats, show_coverage, max_coverage,
                                 show_transfers, show_past, atk_override, spa_override, def_override, accuracy_check, ability, output)
 
     await output.send(ctx)
@@ -363,7 +361,7 @@ async def eggMove(ctx, *raw_args):
     else:
         move = None
 
-    MoveDex().do_egg_moves_function(pokemon, move, output)
+    MoveDex(bot.pokemongo).do_egg_moves_function(pokemon, move, output)
 
     await output.send(ctx)
 
@@ -385,7 +383,7 @@ async def pokedex(ctx, *raw_args):
     
     verbose = get_option(args['opt'], 'verbose')
     
-    PokeDex().do_pokedex_function(pokemon, verbose, output)
+    PokeDex(bot.pokemongo).do_pokedex_function(pokemon, verbose, output)
 
     await output.send(ctx)
 
@@ -405,7 +403,7 @@ async def hiddenAbility(ctx, *raw_args):
 
     pokemon = args['pos']['pokemon'].lower().replace(' ','')
 
-    PokeDex().do_hidden_ability_function(pokemon, output)
+    PokeDex(bot.pokemongo).do_hidden_ability_function(pokemon, output)
 
     await output.send(ctx)
 
@@ -427,7 +425,7 @@ async def ability(ctx, *raw_args):
 
     show_list = get_option(args['opt'], 'pokemon')
 
-    AbilityDex().do_ability_search_function(ability, show_list, args['fil'], output)
+    AbilityDex(bot.pokemongo).do_ability_search_function(ability, show_list, args['fil'], output)
 
     await output.send(ctx)
 
@@ -449,7 +447,7 @@ async def move(ctx, *raw_args):
 
     show_list = get_option(args['opt'], 'pokemon')
 
-    MoveDex().do_move_search_function(move, show_list, args['fil'], output)
+    MoveDex(bot.pokemongo).do_move_search_function(move, show_list, args['fil'], output)
 
     await output.send(ctx)
 
@@ -487,12 +485,12 @@ async def damage(ctx, *raw_args):
         abilities = [ability]
     
     if pokemon:
-        PokeDex().do_pokemon_damage_function(pokemon, output, abilities)
+        PokeDex(bot.pokemongo).do_pokemon_damage_function(pokemon, output, abilities)
     else:
         if type2:
-            PokeDex().do_types_damage_function([type1, type2], output, False, abilities)
+            PokeDex(bot.pokemongo).do_types_damage_function([type1, type2], output, False, abilities)
         else:
-            PokeDex().do_type_damage_function(type1, output, abilities)
+            PokeDex(bot.pokemongo).do_type_damage_function(type1, output, abilities)
 
     await output.send(ctx)
 
@@ -521,7 +519,7 @@ async def coverage(ctx, *raw_args):
     for param in args['par']:
         types.append(param.lower().replace(' ','').capitalize())
 
-    PokeDex().do_coverage_calculator_function(types, args['fil'], output)
+    PokeDex(bot.pokemongo).do_coverage_calculator_function(types, args['fil'], output)
 
     await output.send(ctx)
 
@@ -554,7 +552,7 @@ async def breedingbox(ctx, *raw_args):
             return
         pokemon_list = pokemon.split(',')
         for p in pokemon_list:
-            BreedingBox().register_ha_mon(user, username, p, output)
+            BreedingBox(bot.pokemongo).register_ha_mon(user, username, p, output)
         await output.send(ctx)
         return
     
@@ -567,7 +565,7 @@ async def breedingbox(ctx, *raw_args):
             return
         pokemon_list = pokemon.split(',')
         for p in pokemon_list:
-            BreedingBox().unregister_ha_mon(user, username, p, output)
+            BreedingBox(bot.pokemongo).unregister_ha_mon(user, username, p, output)
         await output.send(ctx)
         return
     
@@ -580,7 +578,7 @@ async def breedingbox(ctx, *raw_args):
             return
         pokemon_list = pokemon.split(',')
         for p in pokemon_list:
-            BreedingBox().query_ha_mon(user, p, output)
+            BreedingBox(bot.pokemongo).query_ha_mon(user, p, output)
         await output.send(ctx)
         return
 
@@ -604,7 +602,7 @@ async def eggGroup(ctx, *raw_args):
 
     group = args['pos']['group'].lower().replace(' ','')
     
-    PokeDex().do_egg_group_function(group, args['fil'], output)
+    PokeDex(bot.pokemongo).do_egg_group_function(group, args['fil'], output)
 
     await output.send(ctx)
 
@@ -623,7 +621,7 @@ async def queryPokedex(ctx, *raw_args):
     count = get_option(args['opt'], 'count')
     force_list = get_option(args['opt'], 'force-list')
 
-    PokeDex().do_pokedex_query_function(args['fil'], output, count, force_list)
+    PokeDex(bot.pokemongo).do_pokedex_query_function(args['fil'], output, count, force_list)
 
     await output.send(ctx)
 
@@ -642,7 +640,7 @@ async def queryMoves(ctx, *raw_args):
     count = get_option(args['opt'], 'count')
     force_list = get_option(args['opt'], 'force-list')
 
-    MoveDex().do_moves_query_function(args['fil'], output, count, force_list)
+    MoveDex(bot.pokemongo).do_moves_query_function(args['fil'], output, count, force_list)
 
     await output.send(ctx)
 
@@ -658,7 +656,7 @@ async def randomPokemon(ctx, *raw_args):
         await output.send(ctx)
         return
 
-    PokeDex().do_random_pokemon_function(args['fil'], output)
+    PokeDex(bot.pokemongo).do_random_pokemon_function(args['fil'], output)
 
     await output.send(ctx)
 
@@ -674,7 +672,7 @@ async def randomMove(ctx, *raw_args):
         await output.send(ctx)
         return
 
-    MoveDex().do_random_move_function(args['fil'], output)
+    MoveDex(bot.pokemongo).do_random_move_function(args['fil'], output)
 
     await output.send(ctx)
 
@@ -690,7 +688,7 @@ async def randomAbility(ctx, *raw_args):
         await output.send(ctx)
         return
 
-    AbilityDex().do_random_ability_function(output)
+    AbilityDex(bot.pokemongo).do_random_ability_function(output)
 
     await output.send(ctx)
 
@@ -726,4 +724,90 @@ async def randomColor(ctx, *raw_args):
 
     await output.send(ctx)
 
-bot.run('Njc1MjM0NTk5NTA0NDQ1NDQx.Xj0LQw.4aoRdNE6P2VgV17YRDkwcOcsMEo')
+@bot.command(aliases=['n'])
+async def nature(ctx, *raw_args):
+    message = ctx.message.content
+    print(f'\nNATURE command triggered, bzzzzrt! Message details:\n{ctx.message.author} @ ({ctx.message.created_at}): {message}\n')
+    output = MessageHelper()
+
+    pos_args = ['token']
+    opt_pos_args = ['down']
+
+    args = parse_arguments(raw_args, pos_args, opt_pos_args)
+    if args is None:
+        print('Error parsing command, bzzzzrt! Type "!help" for usage details.', file=output)
+        await output.send(ctx)
+        return
+
+    if 'down' in args['pos']:
+        PokemonHelper().do_get_nature_name_function(args['pos']['token'], args['pos']['down'], output)
+    else:
+        PokemonHelper().do_get_nature_stats_function(args['pos']['token'], output)
+
+    await output.send(ctx)
+
+@bot.command(aliases=['s'])
+async def shiny(ctx, *raw_args):
+    message = ctx.message.content
+    print(f'\nSHINY command triggered, bzzzzrt! Message details:\n{ctx.message.author} @ ({ctx.message.created_at}): {message}\n')
+    output = MessageHelper()
+
+    pos_args = ['pokemon']
+
+    args = parse_arguments(raw_args, pos_args)
+    if args is None:
+        print('Error parsing command, bzzzzrt! Type "!help" for usage details.', file=output)
+        await output.send(ctx)
+        return
+
+    pokemon = args['pos']['pokemon'].lower().replace(' ','')
+
+    shiny_info = PokeDex(bot.pokemongo).do_get_shiny_image_function(pokemon, output)
+    species = 'Missingno'
+    shiny_link = 'https://www.serebii.net/pokearth/sprites/rb/000.png'
+    if shiny_info is not None:
+        species = shiny_info[0]
+        shiny_link = shiny_info[1]
+
+    embed = Embed()
+    embed.description = f'Image for {species} sourced from [Serebii.net](https://www.serebii.net/)!'
+    embed.set_image(url=shiny_link)
+
+    await output.send(ctx, embed=embed)
+
+@bot.command()
+async def test(ctx, *raw_args):
+    return
+    message = ctx.message.content
+    print(f'\nTEST command triggered, bzzzzrt! Message details:\n{ctx.message.author} @ ({ctx.message.created_at}): {message}\n')
+    output = MessageHelper()
+
+    args = parse_arguments(raw_args)
+    if args is None:
+        print('Error parsing command, bzzzzrt! Type "!help" for usage details.', file=output)
+        await output.send(ctx)
+        return
+
+    all_moves = bot.pokemongo.get_move_entries_with_filters()
+    all_list = []
+    search = 'boost_target'
+    for move in all_moves:
+        if search in move:
+            if move[search] not in all_list:
+                all_list.append(move[search])
+    for item in all_list:
+        print(item, file=output)
+
+    await output.send(ctx)
+
+def main():
+    if len(sys.argv) > 1 and sys.argv[1] == '--beta':
+        bot.beta = True
+        bot.pokemongo = PokeMongo8(beta=True)
+        bot.run('ODExMzQ2MjAxMDcyNzYyOTYw.YCw3CA.aMEwKzL0iAKnV9gs577-0EaJGVg')
+    else:
+        bot.beta = False
+        bot.pokemongo = PokeMongo8()
+        bot.run('Njc1MjM0NTk5NTA0NDQ1NDQx.Xj0LQw.4aoRdNE6P2VgV17YRDkwcOcsMEo')
+
+main()
