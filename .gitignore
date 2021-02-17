@@ -1,2 +1,2 @@
 PokeApp/db/
-*.pyc
+__pycache__/
