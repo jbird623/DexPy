@@ -1,5 +1,6 @@
 import math
 import random
+import re
 
 from .pokewrap import PokeMongo8
 from .pokehelper import PokemonHelper
@@ -123,7 +124,7 @@ class PokeDex:
         ability_ids = []
         for key in abilities:
             ability_string = abilities[key]
-            ability_ids.append(abilities[key].lower().replace(' ',''))
+            ability_ids.append(re.sub(r'\W+', '', abilities[key].lower()))
             if key == 'H':
                 ability_string += ' (hidden)'
             abilities_list.append(ability_string)

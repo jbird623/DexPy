@@ -1,4 +1,5 @@
 import pymongo
+import re
 
 from pymongo import MongoClient
 from .pokehelper import PokemonHelper
@@ -240,32 +241,32 @@ class PokeMongo8:
                 negate = True
                 ft = f[1:]
             if (ft == 'a' and 'a' not in exclude) or ft == 'a-force':
-                ab_ids = filters[f].lower().replace(' ','').split(',')
+                ab_ids = re.sub(r'[^a-zA-Z0-9\,]', '', filters[f].lower()).split(',')
                 new_key = 'ability_list'
                 if negate:
                     new_filter = {'$nin':ab_ids}
                 else:
                     new_filter = {'$in':ab_ids}
             if ft == 'hp':
-                hp = self.get_object_from_filter_value('hp', filters[f], negate)
+                hp = self.get_object_from_filter_value('hp', filters[f].lower(), negate)
                 and_list.append(hp)
             if ft == 'atk':
-                atk = self.get_object_from_filter_value('atk', filters[f], negate)
+                atk = self.get_object_from_filter_value('atk', filters[f].lower(), negate)
                 and_list.append(atk)
             if ft == 'def':
-                Def = self.get_object_from_filter_value('def', filters[f], negate)
+                Def = self.get_object_from_filter_value('def', filters[f].lower(), negate)
                 and_list.append(Def)
             if ft == 'spa':
-                spa = self.get_object_from_filter_value('spa', filters[f], negate)
+                spa = self.get_object_from_filter_value('spa', filters[f].lower(), negate)
                 and_list.append(spa)
             if ft == 'spd':
-                spd = self.get_object_from_filter_value('spd', filters[f], negate)
+                spd = self.get_object_from_filter_value('spd', filters[f].lower(), negate)
                 and_list.append(spd)
             if ft == 'spe':
-                spe = self.get_object_from_filter_value('spe', filters[f], negate)
+                spe = self.get_object_from_filter_value('spe', filters[f].lower(), negate)
                 and_list.append(spe)
             if ft == 'bst':
-                bst = self.get_object_from_filter_value('bst', filters[f], negate)
+                bst = self.get_object_from_filter_value('bst', filters[f].lower(), negate)
                 and_list.append(bst)
             if ft == 'o':
                 orderby = self.get_pokedex_orderby(filters[f], negate)
@@ -282,20 +283,20 @@ class PokeMongo8:
                     prevo = not prevo
                 new_filter = {'$exists':prevo}
             if (ft == 'eg' and 'eg' not in exclude) or ft == 'eg-force':
-                eg = filters[f].lower().replace(' ','').split(',')
+                eg = re.sub(r'[^a-zA-Z0-9\,]', '', filters[f].lower()).split(',')
                 new_key = 'eggGroups'
                 if negate:
                     new_filter = {'$nin':eg}
                 else:
                     new_filter = {'$in':eg}
             if ft == 'ega':
-                eg = filters[f].lower().replace(' ','').split(',')
+                eg = re.sub(r'[^a-zA-Z0-9\,]', '', filters[f].lower()).split(',')
                 if negate:
                     and_list.append({'eggGroups':{'$nin':eg}})
                 else:
                     and_list.append({'$or':[{'eggGroups':{'$eq':eg}},{'eggGroups':{'$eq':eg[::-1]}}]})
             if ft == 'c':
-                colors = filters[f].lower().replace(' ','').split(',')
+                colors = re.sub(r'[^a-zA-Z0-9\,]', '', filters[f].lower()).split(',')
                 caps_colors = []
                 for c in colors:
                     caps_colors.append(c.capitalize())
@@ -305,7 +306,7 @@ class PokeMongo8:
                 else:
                     new_filter = {'$in':caps_colors}
             if ft == 't':
-                types = filters[f].lower().replace(' ','').split(',')
+                types = re.sub(r'[^a-zA-Z0-9\,]', '', filters[f].lower()).split(',')
                 caps_types = []
                 for t in types:
                     caps_types.append(t.capitalize())
@@ -315,7 +316,7 @@ class PokeMongo8:
                 else:
                     new_filter = {'$in':caps_types}
             if ft == 'ta':
-                types = filters[f].lower().replace(' ','').split(',')
+                types = re.sub(r'[^a-zA-Z0-9\,]', '', filters[f].lower()).split(',')
                 caps_types = []
                 for t in types:
                     caps_types.append(t.capitalize())
@@ -324,7 +325,7 @@ class PokeMongo8:
                 else:
                     and_list.append({'$or':[{'types':{'$eq':caps_types}},{'types':{'$eq':caps_types[::-1]}}]})
             if ft == 'p':
-                pokemon = filters[f].lower().replace(' ','').split(',')
+                pokemon = re.sub(r'[^a-zA-Z0-9\,]', '', filters[f].lower()).split(',')
                 new_key = '_id'
                 if negate:
                     new_filter = {'$nin':pokemon}
@@ -381,42 +382,42 @@ class PokeMongo8:
                 negate = True
                 ft = f[1:]
             if ft == 'm' and 'm' not in exclude:
-                mv_ids = filters[f].lower().replace(' ','').split(',')
+                mv_ids = re.sub(r'[^a-zA-Z0-9\,]', '', filters[f].lower()).split(',')
                 new_key = 'allmoves'
                 if negate:
                     new_filter = {'$nin':mv_ids}
                 else:
                     new_filter = {'$all':mv_ids}
             if ft == 'ml' and 'ml' not in exclude:
-                mv_ids = filters[f].lower().replace(' ','').split(',')
+                mv_ids = re.sub(r'[^a-zA-Z0-9\,]', '', filters[f].lower()).split(',')
                 new_key = 'levelup'
                 if negate:
                     new_filter = {'$nin':mv_ids}
                 else:
                     new_filter = {'$all':mv_ids}
             if ft == 'mm' and 'mm' not in exclude:
-                mv_ids = filters[f].lower().replace(' ','').split(',')
+                mv_ids = re.sub(r'[^a-zA-Z0-9\,]', '', filters[f].lower()).split(',')
                 new_key = 'machine'
                 if negate:
                     new_filter = {'$nin':mv_ids}
                 else:
                     new_filter = {'$all':mv_ids}
             if ft == 'mb' and 'mb' not in exclude:
-                mv_ids = filters[f].lower().replace(' ','').split(',')
+                mv_ids = re.sub(r'[^a-zA-Z0-9\,]', '', filters[f].lower()).split(',')
                 new_key = 'breeding'
                 if negate:
                     new_filter = {'$nin':mv_ids}
                 else:
                     new_filter = {'$all':mv_ids}
             if ft == 'mt' and 'mt' not in exclude:
-                mv_ids = filters[f].lower().replace(' ','').split(',')
+                mv_ids = re.sub(r'[^a-zA-Z0-9\,]', '', filters[f].lower()).split(',')
                 new_key = 'tutor'
                 if negate:
                     new_filter = {'$nin':mv_ids}
                 else:
                     new_filter = {'$all':mv_ids}
             if ft == 'mtr' and 'mtr' not in exclude:
-                mv_ids = filters[f].lower().replace(' ','').split(',')
+                mv_ids = re.sub(r'[^a-zA-Z0-9\,]', '', filters[f].lower()).split(',')
                 elem_match_list = []
                 if negate:
                     for id in mv_ids:
@@ -427,7 +428,7 @@ class PokeMongo8:
                         elem_match_list.append({'$elemMatch':{'move':id}})
                     and_list.append({'transfer':{'$all':elem_match_list}})
             if ft == 'mc' and 'mc' not in exclude:
-                types = filters[f].lower().replace(' ','').split(',')
+                types = re.sub(r'[^a-zA-Z0-9\,]', '', filters[f].lower()).split(',')
                 caps_types = []
                 for t in types:
                     caps_types.append(t.capitalize())
@@ -439,7 +440,7 @@ class PokeMongo8:
                 else:
                     and_list.append({'$or':or_list})
             if ft == 'mca' and 'mca' not in exclude:
-                types = filters[f].lower().replace(' ','').split(',')
+                types = re.sub(r'[^a-zA-Z0-9\,]', '', filters[f].lower()).split(',')
                 caps_types = []
                 for t in types:
                     caps_types.append(t.capitalize())
@@ -482,7 +483,7 @@ class PokeMongo8:
                 new_key = 'accuracy'
                 new_filter = acc
             if ft == 'c':
-                cats = filters[f].lower().replace(' ','').split(',')
+                cats = re.sub(r'[^a-zA-Z0-9\,]', '', filters[f].lower()).split(',')
                 caps_cats = []
                 for c in cats:
                     caps_cats.append(c.capitalize())
@@ -492,7 +493,7 @@ class PokeMongo8:
                 else:
                     new_filter = {'$in':caps_cats}
             if ft == 't':
-                types = filters[f].lower().replace(' ','').split(',')
+                types = re.sub(r'[^a-zA-Z0-9\,]', '', filters[f].lower()).split(',')
                 caps_types = []
                 for t in types:
                     caps_types.append(t.capitalize())
@@ -506,7 +507,7 @@ class PokeMongo8:
                 new_key = 'pp'
                 new_filter = pp
             if ft == 'm':
-                moves = filters[f].lower().replace(' ','').split(',')
+                moves = re.sub(r'[^a-zA-Z0-9\,]', '', filters[f].lower()).split(',')
                 new_key = '_id'
                 if negate:
                     new_filter = {'$nin':moves}
@@ -603,7 +604,7 @@ class PokeMongo8:
                 else:
                     and_list.append({'$and':[{'critRatio':{'$exists':False}}, {'willCrit':{'$exists':False}}]})
             if ft == 'f' or ft == 'flag' or ft == 'flags':
-                flags = filters[f].lower().replace(' ','').split(',')
+                flags = re.sub(r'[^a-zA-Z0-9\,]', '', filters[f].lower()).split(',')
                 for flag in flags:
                     and_list.append({f'flags.{flag}':{'$exists':not negate}})
             if ft == 'p' or ft == 'prio' or ft == 'priority':
@@ -611,31 +612,31 @@ class PokeMongo8:
                 new_key = 'priority'
                 new_filter = p
             if ft == 'bs' or ft == 'boostself':
-                bs = filters[f].lower().replace(' ','').split(',')
+                bs = re.sub(r'[^a-zA-Z0-9\,]', '', filters[f].lower()).split(',')
                 for boost in bs:
                     boost_filter = self.get_boost_stat_bool_or_none('boost_self', boost, negate)
                     if boost_filter is not None:
                         and_list.append(boost_filter)
             if ft == 'ls' or ft == 'lowerself':
-                ls = filters[f].lower().replace(' ','').split(',')
+                ls = re.sub(r'[^a-zA-Z0-9\,]', '', filters[f].lower()).split(',')
                 for boost in ls:
                     boost_filter = self.get_boost_stat_bool_or_none('lower_self', boost, negate)
                     if boost_filter is not None:
                         and_list.append(boost_filter)
             if ft == 'bt' or ft == 'boosttarget':
-                bt = filters[f].lower().replace(' ','').split(',')
+                bt = re.sub(r'[^a-zA-Z0-9\,]', '', filters[f].lower()).split(',')
                 for boost in bt:
                     boost_filter = self.get_boost_stat_bool_or_none('boost_target', boost, negate)
                     if boost_filter is not None:
                         and_list.append(boost_filter)
             if ft == 'lt' or ft == 'lowertarget':
-                lt = filters[f].lower().replace(' ','').split(',')
+                lt = re.sub(r'[^a-zA-Z0-9\,]', '', filters[f].lower()).split(',')
                 for boost in lt:
                     boost_filter = self.get_boost_stat_bool_or_none('lower_target', boost, negate)
                     if boost_filter is not None:
                         and_list.append(boost_filter)
             if ft == 'b' or ft == 'boost':
-                b = filters[f].lower().replace(' ','').split(',')
+                b = re.sub(r'[^a-zA-Z0-9\,]', '', filters[f].lower()).split(',')
                 for boost in b:
                     self_filter = self.get_boost_stat_bool_or_none('boost_self', boost, negate)
                     target_filter = self.get_boost_stat_bool_or_none('boost_target', boost, negate)
@@ -648,7 +649,7 @@ class PokeMongo8:
                         else:
                             and_list.append({'$or':[self_filter, target_filter]})
             if ft == 'l' or ft == 'lower':
-                l = filters[f].lower().replace(' ','').split(',')
+                l = re.sub(r'[^a-zA-Z0-9\,]', '', filters[f].lower()).split(',')
                 for boost in l:
                     self_filter = self.get_boost_stat_bool_or_none('lower_self', boost, negate)
                     target_filter = self.get_boost_stat_bool_or_none('lower_target', boost, negate)

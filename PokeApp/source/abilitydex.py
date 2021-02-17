@@ -3,6 +3,7 @@ from .pokehelper import PokemonHelper
 from pprint import pprint
 
 import random
+import re
 
 class AbilityDex:
     def __init__(self, pokemongo):
@@ -34,7 +35,7 @@ class AbilityDex:
         nonhidden_list = []
         past_pokemon = False
         for entry in entries:
-            if 'H' in entry['abilities'] and entry['abilities']['H'].lower().replace(' ','') == ability:
+            if 'H' in entry['abilities'] and re.sub(r'\W+', '', entry['abilities']['H'].lower()) == ability:
                 species = entry['species']
                 if entry['past_only']:
                     species = f'*{species}'
