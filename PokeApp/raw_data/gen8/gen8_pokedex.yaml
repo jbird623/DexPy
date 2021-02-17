@@ -3344,7 +3344,7 @@ calyrexice:
   abilities:
     '0': As One (Glastrier)
   ability_list:
-  - asone(glastrier)
+  - asoneglastrier
   baseSpecies: Calyrex
   baseStats:
     atk: 165
@@ -3377,7 +3377,7 @@ calyrexshadow:
   abilities:
     '0': As One (Spectrier)
   ability_list:
-  - asone(spectrier)
+  - asonespectrier
   baseSpecies: Calyrex
   baseStats:
     atk: 85
@@ -16862,7 +16862,7 @@ magearna:
   abilities:
     '0': Soul-Heart
   ability_list:
-  - soul-heart
+  - soulheart
   baseStats:
     atk: 95
     bst: 600
@@ -16897,7 +16897,7 @@ magearnaoriginal:
   abilities:
     '0': Soul-Heart
   ability_list:
-  - soul-heart
+  - soulheart
   baseSpecies: Magearna
   baseStats:
     atk: 95
@@ -23656,7 +23656,7 @@ regidrago:
   abilities:
     '0': Dragon's Maw
   ability_list:
-  - dragon'smaw
+  - dragonsmaw
   baseStats:
     atk: 100
     bst: 580

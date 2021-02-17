@@ -4,6 +4,7 @@ from pprint import pprint
 
 import statistics
 import random
+import re
 
 class MoveDex:
     def __init__(self, pokemongo):
@@ -428,8 +429,8 @@ class MoveDex:
             + ('' if move['method'] == '' else f'   [{move["method"]}]'), file=print_to)
 
     def find_egg_move_chain(self, pokemon, dex_entry, move, move_name, checked_mons, dex_name_map, print_to):
-        pokemon = pokemon.lower().replace(' ','')
-        move = move.lower().replace(' ','')
+        pokemon = re.sub(r'\W+', '', pokemon.lower())
+        move = re.sub(r'\W+', '', move.lower())
 
         if dex_entry is None:
             dex_entry = self.pokemongo.get_pokedex_entry(pokemon)

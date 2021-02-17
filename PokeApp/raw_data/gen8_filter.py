@@ -10,11 +10,11 @@ def transform_entry(pokedex_entry, id, base_game_list, transfer_only_list, isle_
     abilities = pokedex_entry['abilities']
     ability_list = []
     if '0' in abilities:
-        ability_list.append(abilities['0'].lower().replace(' ',''))
+        ability_list.append(re.sub(r'\W+', '', abilities['0'].lower()))
     if '1' in abilities:
-        ability_list.append(abilities['1'].lower().replace(' ',''))
+        ability_list.append(re.sub(r'\W+', '', abilities['1'].lower()))
     if 'H' in abilities:
-        ability_list.append(abilities['H'].lower().replace(' ',''))
+        ability_list.append(re.sub(r'\W+', '', abilities['H'].lower()))
     pokedex_entry['ability_list'] = ability_list
     egg_groups = pokedex_entry['eggGroups']
     egg_group_list = []
