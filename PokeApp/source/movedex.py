@@ -200,7 +200,7 @@ class MoveDex:
                 self.print_move(move, ignore_stats, print_to)
 
         if past_moves:
-            print('\n* Move not available in Gen 8 games.', file=output)
+            print('\n* Move not available in Gen 8 games.', file=print_to)
 
     def show_stab_moves(self, max_stab, ignore_stats, dex_entry, all_moves, atk_override, spa_override, def_override, accuracy_check, ability, print_to):
         print(f'\nTop moves with STAB for {dex_entry["species"]}:', file=print_to)
