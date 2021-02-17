@@ -687,24 +687,28 @@ class PokeMongo8:
             pokemon_id = self.pokedex.insert_one(pokedex_entry).inserted_id
         except:
             pass
+        return pokemon_id
 
     def insert_learnset(self, learnset):
         try:
             learnset_id = self.learnsets.insert_one(learnset).inserted_id
         except:
             pass
+        return learnset_id
 
     def insert_move(self, move):
         try:
             move_id = self.moves.insert_one(move).inserted_id
         except:
             pass
+        return move_id
 
     def insert_ability(self, ability):
         try:
             ability_id = self.abilities.insert_one(ability).inserted_id
         except:
             pass
+        return ability_id
 
     def get_or_register_bb(self, user, username):
         bb_entry = self.breedingboxes.find_one({'_id':user})
@@ -714,7 +718,7 @@ class PokeMongo8:
             bb_entry['username'] = username
             bb_entry['ha_list'] = []
             try:
-                id = self.breedingboxes.insert_one(bb_entry).inserted_id
+                self.breedingboxes.insert_one(bb_entry).inserted_id
             except:
                 print(f'Hit exception trying to register breeding box for user {user}')
                 return None
