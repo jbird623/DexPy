@@ -596,7 +596,6 @@ class PokemonHelper:
     def do_get_nature_name_function(self, up, down, print_to):
         up = up.lower()
         down = down.lower()
-        nature_dict = self.get_nature_stats_map()
         stats_dict = self.get_nature_stats()
 
         if up == 'hp' or down == 'hp':
