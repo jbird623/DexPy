@@ -13,11 +13,13 @@ class PokeMongo8:
             self.client = MongoClient('localhost', 27017)
         self.pokehelper = PokemonHelper()
         self.db = self.client['gen8']
+        self.ctx = self.client['user-ctx']
         self.pokedex = self.db.pokedex
         self.learnsets = self.db.learnsets
         self.moves = self.db.moves
         self.abilities = self.db.abilities
         self.breedingboxes = self.db.breedingboxes
+        self.user_options = self.ctx.options
 
     def add_filter(self, filters, new_filter):
         mod_filters = dict()
@@ -29,6 +31,55 @@ class PokeMongo8:
             else:
                 mod_filters[new_filter_key] = new_filter[new_filter_key]
         return mod_filters
+
+    def add_filters(self, filters, new_filters):
+        for f in new_filters:
+            filters = self.add_filter(filters, {f:new_filters[f]})
+        return filters
+
+    def update_user_pokemon_filters(self, user_id, filters):
+        self.update_user_filters(user_id, filters, 'filters_pokemon')
+
+    def update_user_move_filters(self, user_id, filters):
+        self.update_user_filters(user_id, filters, 'filters_moves')
+
+    def update_user_filters(self, user_id, filters, filters_key):
+        user_options = self.get_user_options(user_id)
+        if user_options is None:
+            user_options = {'_id':user_id}
+        user_options[filters_key] = filters
+        try:
+            self.ctx.options.update_one({'_id':user_id}, {'$set': user_options}, upsert=True)
+            return True
+        except:
+            print(f'Hit exception trying to update filter options for user {user_id}')
+            return False
+
+    def get_user_options(self, user_id):
+        user_options = self.ctx.options.find_one({'_id':user_id})
+        return user_options
+
+    def get_user_filters(self, user_id, filters_key):
+        user_options = self.get_user_options(user_id)
+        if user_options is not None and filters_key in user_options:
+            return user_options[filters_key]
+        return []
+
+    def add_user_pokemon_filters(self, filters, user_id):
+        user_filters = self.get_user_filters(user_id, 'filters_pokemon')
+        return (self.add_filters(user_filters, filters), user_filters)
+
+    def add_user_move_filters(self, filters, user_id):
+        user_filters = self.get_user_filters(user_id, 'filters_moves')
+        return (self.add_filters(user_filters, filters), user_filters)
+
+    def print_filters(self, filters, print_to):
+        if len(filters) == 0:
+            return
+        filter_list = []
+        for f in filters:
+            filter_list.append(f'{f}:{filters[f]}')
+        print(f'* Using additional query filters - {" ".join(filter_list)}\n', file=print_to)
 
     def string_bool(self, s):
         if s == 'true' or s == 'True':
