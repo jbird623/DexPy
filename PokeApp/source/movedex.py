@@ -69,6 +69,12 @@ class MoveDex:
         print('', file=print_to)
 
         past_pokemon = False
+        if len(levelup_list) == 0 and len(machine_list) == 0 and len(breeding_list) == 0 and len(tutor_list) == 0:
+            if len(filters) == 0:
+                print(f'No pokemon can learn {move_name} in Gen 8 games, bzzzzrt!', file=print_to)
+            else:
+                print(f'No pokemon that fit the specified filters can learn {move_name} in Gen 8 games, bzzzzrt!', file=print_to)
+            return
         if len(levelup_list) > 0:
             print(f'Pokemon that learn {move_name} by level up:', file=print_to)
             for pokemon in levelup_list:

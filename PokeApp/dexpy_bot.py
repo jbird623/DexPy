@@ -437,7 +437,8 @@ async def ability(ctx, *raw_args):
 
     filters = pokemongo.add_user_pokemon_filters(args['fil'], ctx.author.id)
 
-    pokemongo.print_filters(filters[1], output)
+    if show_list:
+        pokemongo.print_filters(filters[1], output)
     AbilityDex(pokemongo).do_ability_search_function(ability, show_list, filters[0], output)
 
     await output.send(ctx)
@@ -462,7 +463,8 @@ async def move(ctx, *raw_args):
 
     filters = pokemongo.add_user_pokemon_filters(args['fil'], ctx.author.id)
 
-    pokemongo.print_filters(filters[1], output)
+    if show_list:
+        pokemongo.print_filters(filters[1], output)
     MoveDex(pokemongo).do_move_search_function(move, show_list, filters[0], output)
 
     await output.send(ctx)

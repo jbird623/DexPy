@@ -47,6 +47,9 @@ class AbilityDex:
                     species = f'*{species}'
                     past_pokemon = True
                 nonhidden_list.append(species)
+        if len(filters) > 0 and len(hidden_list) == 0 and len(nonhidden_list) == 0:
+            print(f'No pokemon that fit the specified filters can have {ab_name} as an ability, bzzzzrt!', file=print_to)
+            return
         print(f'All pokemon with {ab_name} as a normal ability:', file=print_to)
         for p_name in nonhidden_list:
             print(f'  - {p_name}', file=print_to)
