@@ -63,7 +63,7 @@ class PokeMongo8:
         user_options = self.get_user_options(user_id)
         if user_options is not None and filters_key in user_options:
             return user_options[filters_key]
-        return []
+        return {}
 
     def add_user_pokemon_filters(self, filters, user_id):
         user_filters = self.get_user_filters(user_id, 'filters_pokemon')
