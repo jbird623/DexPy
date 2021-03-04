@@ -350,7 +350,7 @@ async def moveset(ctx, *raw_args):
 
     await output.send(ctx)
 
-@bot.command(aliases=['em'])
+@bot.command(aliases=['em','eggmove'])
 async def eggMove(ctx, *raw_args):
     message = ctx.message.content
     print(f'\nEGGMOVE command triggered, bzzzzrt! Message details:\n{ctx.message.author} @ ({ctx.message.created_at}): {message}\n')
@@ -397,7 +397,7 @@ async def pokedex(ctx, *raw_args):
 
     await output.send(ctx)
 
-@bot.command(aliases=['ha'])
+@bot.command(aliases=['ha','hiddenability'])
 async def hiddenAbility(ctx, *raw_args):
     message = ctx.message.content
     print(f'\nHIDDENABILITY command triggered, bzzzzrt! Message details:\n{ctx.message.author} @ ({ctx.message.created_at}): {message}\n')
@@ -607,7 +607,7 @@ async def breedingbox(ctx, *raw_args):
 
     await output.send(ctx)
 
-@bot.command(aliases=['eg'])
+@bot.command(aliases=['eg','egggroup'])
 async def eggGroup(ctx, *raw_args):
     message = ctx.message.content
     print(f'\nEGGGROUP command triggered, bzzzzrt! Message details:\n{ctx.message.author} @ ({ctx.message.created_at}): {message}\n')
@@ -630,7 +630,7 @@ async def eggGroup(ctx, *raw_args):
 
     await output.send(ctx)
 
-@bot.command(aliases=['qp'])
+@bot.command(aliases=['qp','querypokedex'])
 async def queryPokedex(ctx, *raw_args):
     message = ctx.message.content
     print(f'\nQUERYPOKEDEX command triggered, bzzzzrt! Message details:\n{ctx.message.author} @ ({ctx.message.created_at}): {message}\n')
@@ -652,7 +652,7 @@ async def queryPokedex(ctx, *raw_args):
 
     await output.send(ctx)
 
-@bot.command(aliases=['qm'])
+@bot.command(aliases=['qm','querymoves'])
 async def queryMoves(ctx, *raw_args):
     message = ctx.message.content
     print(f'\nQUERYMOVES command triggered, bzzzzrt! Message details:\n{ctx.message.author} @ ({ctx.message.created_at}): {message}\n')
@@ -674,7 +674,7 @@ async def queryMoves(ctx, *raw_args):
 
     await output.send(ctx)
 
-@bot.command(aliases=['rp'])
+@bot.command(aliases=['rp','randompokemon'])
 async def randomPokemon(ctx, *raw_args):
     message = ctx.message.content
     print(f'\nRANDOMPOKEMON command triggered, bzzzzrt! Message details:\n{ctx.message.author} @ ({ctx.message.created_at}): {message}\n')
@@ -693,7 +693,7 @@ async def randomPokemon(ctx, *raw_args):
 
     await output.send(ctx)
 
-@bot.command(aliases=['rm'])
+@bot.command(aliases=['rm','randommove'])
 async def randomMove(ctx, *raw_args):
     message = ctx.message.content
     print(f'\nRANDOMMOVE command triggered, bzzzzrt! Message details:\n{ctx.message.author} @ ({ctx.message.created_at}): {message}\n')
@@ -712,7 +712,7 @@ async def randomMove(ctx, *raw_args):
 
     await output.send(ctx)
 
-@bot.command(aliases=['ra'])
+@bot.command(aliases=['ra','randomability'])
 async def randomAbility(ctx, *raw_args):
     message = ctx.message.content
     print(f'\nRANDOMABILITY command triggered, bzzzzrt! Message details:\n{ctx.message.author} @ ({ctx.message.created_at}): {message}\n')
@@ -728,7 +728,7 @@ async def randomAbility(ctx, *raw_args):
 
     await output.send(ctx)
 
-@bot.command(aliases=['rt'])
+@bot.command(aliases=['rt','randomtype'])
 async def randomType(ctx, *raw_args):
     message = ctx.message.content
     print(f'\nRANDOMTYPE command triggered, bzzzzrt! Message details:\n{ctx.message.author} @ ({ctx.message.created_at}): {message}\n')
@@ -744,7 +744,7 @@ async def randomType(ctx, *raw_args):
 
     await output.send(ctx)
 
-@bot.command(aliases=['rc'])
+@bot.command(aliases=['rc','randomcolor'])
 async def randomColor(ctx, *raw_args):
     message = ctx.message.content
     print(f'\nRANDOMCOLOR command triggered, bzzzzrt! Message details:\n{ctx.message.author} @ ({ctx.message.created_at}): {message}\n')
@@ -811,7 +811,7 @@ async def shiny(ctx, *raw_args):
 
     await output.send(ctx, embed=embed)
 
-@bot.command(aliases=['fp'])
+@bot.command(aliases=['fp','pokemonfilters','filterpokemon'])
 async def pokemonFilters(ctx, *raw_args):
     message = ctx.message.content
     print(f'\nPOKEMONFILTERS command triggered, bzzzzrt! Message details:\n{ctx.message.author} @ ({ctx.message.created_at}): {message}\n')
@@ -834,7 +834,7 @@ async def pokemonFilters(ctx, *raw_args):
 
     await output.send(ctx)
 
-@bot.command(aliases=['fm'])
+@bot.command(aliases=['fm','movefilters','filtermoves'])
 async def moveFilters(ctx, *raw_args):
     message = ctx.message.content
     print(f'\nMOVEFILTERS command triggered, bzzzzrt! Message details:\n{ctx.message.author} @ ({ctx.message.created_at}): {message}\n')
