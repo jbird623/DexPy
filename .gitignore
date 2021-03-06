@@ -1,3 +1,4 @@
 PokeApp/db/
 __pycache__/
 *.py[cod]
+PokeApp/.secret/

@@ -12,6 +12,7 @@ from source.pokewrap import PokeMongo8
 from pprint import pprint
 
 import sys
+import yaml
 
 prefix = '!'
 bot = commands.Bot(command_prefix=prefix)
@@ -874,7 +875,10 @@ async def test(ctx, *raw_args):
 
     await output.send(ctx)
 
-if beta:
-    bot.run('ODExMzQ2MjAxMDcyNzYyOTYw.YCw3CA.aMEwKzL0iAKnV9gs577-0EaJGVg')
-else:
-    bot.run('Njc1MjM0NTk5NTA0NDQ1NDQx.Xj0LQw.4aoRdNE6P2VgV17YRDkwcOcsMEo')
+with open('.secret/tokens.yaml') as input:
+    tokens = yaml.load(input.read(), Loader=yaml.SafeLoader)
+
+    if beta:
+        bot.run(tokens['beta'])
+    else:
+        bot.run(tokens['release'])
