@@ -61,10 +61,10 @@ class MoveDex:
         if 'name' in m_entry:
             move_name = m_entry['name']
 
-        levelup_list = self.pokemongo.get_pokemon_with_move_levelup(move, filters=filters)
-        machine_list = self.pokemongo.get_pokemon_with_move_machine(move, filters=filters)
-        breeding_list = self.pokemongo.get_pokemon_with_move_breeding(move, filters=filters)
-        tutor_list = self.pokemongo.get_pokemon_with_move_tutor(move, filters=filters)
+        levelup_list = self.pokemongo.get_pokemon_with_move_levelup(move, print_to, filters=filters)
+        machine_list = self.pokemongo.get_pokemon_with_move_machine(move, print_to, filters=filters)
+        breeding_list = self.pokemongo.get_pokemon_with_move_breeding(move, print_to, filters=filters)
+        tutor_list = self.pokemongo.get_pokemon_with_move_tutor(move, print_to, filters=filters)
 
         print('', file=print_to)
 
@@ -130,13 +130,13 @@ class MoveDex:
         if not show_past:
             filters['past'] = 'false'
 
-        breeding_entries = self.pokemongo.get_move_entries(learnset['breeding'], filters)
-        machine_entries = self.pokemongo.get_move_entries(learnset['machine'], filters)
-        levelup_entries = self.pokemongo.get_move_entries(learnset['levelup'], filters)
-        tutor_entries = self.pokemongo.get_move_entries(learnset['tutor'], filters)
+        breeding_entries = self.pokemongo.get_move_entries(print_to, learnset['breeding'], filters)
+        machine_entries = self.pokemongo.get_move_entries(print_to, learnset['machine'], filters)
+        levelup_entries = self.pokemongo.get_move_entries(print_to, learnset['levelup'], filters)
+        tutor_entries = self.pokemongo.get_move_entries(print_to, learnset['tutor'], filters)
         transfer_entries = []
         if show_transfers:
-            transfer_entries = self.pokemongo.get_transfer_move_entries(learnset['transfer'], filters)
+            transfer_entries = self.pokemongo.get_transfer_move_entries(print_to, learnset['transfer'], filters)
 
         all_moves = dict()
         for move in levelup_entries:
@@ -438,7 +438,7 @@ class MoveDex:
         orderby = f' ({move["o"]}) ' if move['o'] is not None else ''
         if orderby != '':
             orderby = f'{orderby:7s}'
-        print(f'    - {move["name"]:20s} {orderby} {move["type"]:>8s} - {move["cat"]:12s} pow: {move["pow"]:>7s}  acc: {move["acc"]:>3s}'
+        print(f'    - {move["name"]:28s} {orderby} {move["type"]:>8s} - {move["cat"]:12s} pow: {move["pow"]:>7s}  acc: {move["acc"]:>3s}'
             + ('' if ignore_stats else f'    (mod: {move["mpow"]:5d}  stat: {move["atk"]:3d})')
             + ('' if move['method'] == '' else f'   [{move["method"]}]'), file=print_to)
 
@@ -470,7 +470,7 @@ class MoveDex:
                 print(f'Error: {species} does not have {move_name} as an egg move, bzzzzrt!', file=print_to)
             if len(learnset['breeding']) > 0:
                 print(f'Available egg moves for {species}:', file=print_to)
-                all_moves = self.pokemongo.get_move_entries(learnset['breeding'])
+                all_moves = self.pokemongo.get_move_entries(print_to, learnset['breeding'])
                 for egg_move in all_moves:
                     print(f'  - {egg_move["name"]}', file=print_to)
             else:
@@ -480,7 +480,7 @@ class MoveDex:
         egg_groups = dex_entry['eggGroups']
         potential_parents = []
         for egg_group in egg_groups:
-            potential_parents = list(set().union(potential_parents, self.pokemongo.get_egg_group(egg_group, get_name=False)))
+            potential_parents = list(set().union(potential_parents, self.pokemongo.get_egg_group(egg_group, print_to, get_name=False)))
 
         parent_entries = self.pokemongo.get_pokedex_entries(potential_parents)
         for entry in parent_entries:
@@ -573,10 +573,10 @@ class MoveDex:
                     self.print_parent_option(parent, 0, dex_name_map, print_to)
 
     def do_moves_query_function(self, filters, print_to, count=False, force_list=False):
-        entries = self.pokemongo.get_move_entries_with_filters(filters)
+        entries = self.pokemongo.get_move_entries_with_filters(print_to, filters)
 
         if count:
-            print(f'Bzzzzrt! The number of entries that match that query are: {len(entries)}', file=print_to)
+            print(f'Bzzzzrt! The number of entries that match that query is: {len(entries)}', file=print_to)
             return
 
         if len(entries) > 50 and not force_list:
@@ -593,7 +593,10 @@ class MoveDex:
         formatted_moves = self.format_moves(entries, None, ignore_stats=True, orderby_key=orderby)
 
         past_moves = False
-        print(f'There are {len(entries)} moves that match your query, bzzzzrt:', file=print_to)
+        format_str = f'There are {len(entries)} moves that match'
+        if len(entries) == 1:
+            format_str = f'There is 1 move that matches'
+        print(f'{format_str} your query, bzzzzrt:', file=print_to)
         for move in formatted_moves:
             if move['name'][0] == '*':
                 past_moves = True
@@ -603,7 +606,7 @@ class MoveDex:
             print('\n* Move not available in Gen 8 games.', file=print_to)
 
     def do_random_move_function(self, filters, print_to):
-        entries = self.pokemongo.get_move_entries_with_filters(filters)
+        entries = self.pokemongo.get_move_entries_with_filters(print_to, filters)
 
         if len(entries) == 0:
             print('There are no moves that match those filters, bzzzzrt!', file=print_to)

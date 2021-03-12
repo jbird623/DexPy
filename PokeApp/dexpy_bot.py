@@ -9,6 +9,7 @@ from source.pokedex import PokeDex
 from source.pokehelper import PokemonHelper
 from source.breedingbox import BreedingBox
 from source.pokewrap import PokeMongo8
+from source.validation import Validators
 from pprint import pprint
 
 import sys
@@ -76,20 +77,34 @@ def split_filter(s):
                 return [s[:i], s[i:]]
     return s
 
-def parse_arguments(arguments, positional_args=[], optional_pos_args=[], params=False):
+def parse_arguments(arguments, positional_args=[], optional_pos_args=[], options=[], params_type=None, filter_type=None):
     arguments = list(arguments)
 
     pos = dict()
     opt = dict()
     fil = dict()
     par = []
+    err = []
 
     for arg in arguments:
         if len(positional_args) > 0:
-            pos[positional_args[0]] = arg
-            positional_args.pop(0)
+            validation_result = pokemongo.validation.validate_value(arg, positional_args[0][1])
+            if validation_result[0]:
+                pos[positional_args[0][0]] = arg
+                positional_args.pop(0)
+            else:
+                err.append(pokemongo.validation.format_error_message(validation_result[1], positional_args[0][1]))
+                positional_args.pop(0)
 
         elif arg[0] == '-':
+            # TODO: Add option type validation here!
+            valid_option = False
+            for option in options:
+                if option == arg or option == arg.split('=')[0]:
+                    valid_option = True
+                    break
+            if not valid_option:
+                err.append(f'Invalid option \'{arg}\'')
             if '=' in arg:
                 split_opt = arg.split('=')
                 if len(split_opt) < 2:
@@ -101,19 +116,43 @@ def parse_arguments(arguments, positional_args=[], optional_pos_args=[], params=
         
         elif is_filter_shaped(arg):
             s_filter = split_filter(arg)
-            fil = pokemongo.add_filter(fil, {s_filter[0]: s_filter[1]})
+            if filter_type is not None:
+                validation_result = pokemongo.validation.validate_filter(s_filter[0].replace('~',''), s_filter[1], filter_type)
+                if validation_result is None:
+                    filter_str = 'move'
+                    if filter_type == 'pkmn':
+                        filter_str = 'pokemon'
+                    err.append(f'\'{s_filter[0].replace("~","")}\' is not a valid {filter_str.capitalize()} filter!')
+                elif validation_result[0]:
+                    fil = pokemongo.add_filter(fil, {s_filter[0]: s_filter[1]})
+                else:
+                    err.append(pokemongo.validation.format_filter_error_message(s_filter[0].replace('~',''), validation_result[1]))
+            else:
+                err.append('This command does not accept query filters!')
 
         elif len(optional_pos_args) > 0:
-            pos[optional_pos_args[0]] = arg
-            optional_pos_args.pop(0)
+            validation_result = pokemongo.validation.validate_value(arg, optional_pos_args[0][1])
+            if validation_result[0]:
+                pos[optional_pos_args[0][0]] = arg
+                optional_pos_args.pop(0)
+            else:
+                err.append(pokemongo.validation.format_error_message(validation_result[1], optional_pos_args[0][1]))
+                optional_pos_args.pop(0)
 
-        elif params:
+        elif params_type is not None:
+            # TODO: Add params type validation here!
             par.append(arg)
 
-    if len(positional_args) > 0:
-        return None
+        else:
+            err.append('Extraneous arguments were supplied!')
+            return {'err':err}
 
-    return {'pos':pos, 'opt':opt, 'fil':fil, 'par':par}
+    if len(positional_args) > 0:
+        # TODO: Suggest using help command here!
+        err.append('Not all required arguments were supplied!')
+        return {'err':err}
+
+    return {'pos':pos, 'opt':opt, 'fil':fil, 'par':par, 'err':err}
 
 def get_option(options, full_opt, short_opt=None):
     if short_opt is None:
@@ -173,137 +212,16 @@ async def help(ctx, *raw_args):
     print(f'\nHELP command triggered, bzzzzrt! Message details:\n{ctx.message.author} @ ({ctx.message.created_at}): {message}\n')
 
     output = MessageHelper()
-    
-    '''
-    print('Available DexPy Commands:', file=output)
-    print('', file=output)
-    print('  Basic Commands:', file=output)
-    print('  - !(help|h)                                     Shows a list of commands.', file=output)
-    print('  - !(pokedex|p) (POKEMON) [-v|--verbose]         Show the raw pokedex entry for POKEMON.', file=output)
-    print('                                                  If -v is used, shows additional information.', file=output)
-    print('  - !(hiddenAbility|ha) (POKEMON)                 Show the hidden ability for POKEMON.', file=output)
-    print('  - !(ability|a) (ABILITY) [-p <filter>]          Show the information about ABILITY.', file=output)
-    print('                                                  Also lists all pokemon that can have ABILITY if -p is used.', file=output)
-    print('                                                  If -p is used, accepts pokemon query filters (excluding "a").', file=output)
-    print('  - !(move|m) (MOVE) [-p <filter>]                Show the information about MOVE.', file=output)
-    print('                                                  Also lists all pokemon that can learn MOVE if -p is used.', file=output)
-    print('                                                  If -p is used, accepts pokemon query filters.', file=output)
-    print('  - !(damage|d) (POKEMON)                         Get the weaknesses/resistances for POKEMON.', file=output)
-    print('  - !(damage|d) (TYPE1) [TYPE2]                   Get the weaknesses/resistances of the given type(s).', file=output)
-    print('                                                  Add -a=ABILITY to use that ability for calculations.', file=output)
-    print('', file=output)
-    print('  Movesets:', file=output)
-    print('  - !(moveset|ms) (POKEMON) <filter>              Show the moves that POKEMON can learn.', file=output)
-    print('                                                  Accepts move query filters.', file=output)
-    print('    Options:', file=output)
-    print('     -s=X, --stab=X                               Show the top X STAB moves for POKEMON (default 5).', file=output)
-    print('     -c=X, --coverage=X                           Show the top X coverage moves for POKEMON (default 3).', file=output)
-    print('     -i, --ignore-stats                           Ignore stats when calculating top moves.', file=output)
-    print('     -t, --transfer                               Include transfer-only moves.', file=output)
-    print('     -p, --past                                   Include moves that are only available in past games.', file=output)
-    print('     -atk=X                                       Override Attack stat for move power calculations.', file=output)
-    print('     -spa=X                                       Override Sp. Attack stat for move power calculations.', file=output)
-    print('     -def=X                                       Override Defense stat for move power calculations.', file=output)
-    print('     -acc, --accuracy                             Include accuracy in move power calculations.', file=output)
-    print('     -a=ABILITY                                   Calculate move power as though the pokemon had ABILITY.', file=output)
-    print('', file=output)
-    print('  Breeding:', file=output)
-    print('  - !(eggGroup|eg) (EGG_GROUP) <filter>           Lists all evolutionary lines in EGG_GROUP.', file=output)
-    print('                                                  Accepts pokemon query filters (excluding "eg").', file=output)
-    print('  - !(eggMove|em) (POKEMON) [MOVE]                Show potential breeding chains for breeding MOVE onto POKEMON.', file=output)
-    print('                                                  If MOVE is not supplied, lists the available egg moves for POKEMON.', file=output)
-    #print('  - !(breedingbox|bb) (-r|--register)=POKEMON     Register POKEMON to your breeding box.', file=output)
-    #print('                                                  This signifies to other users that you have this \'mon with HA.', file=output)
-    #print('  - !(breedingbox|bb) (-u|--unregister)=POKEMON   Unregister POKEMON from your breeding box.', file=output)
-    #print('  - !(breedingbox|bb) (-q|--query)=POKEMON        Check to see who has POKEMON with a hidden ability.', file=output)
-    #print('                                                  Returns users who have registered a pokemon in the same evolutionary line.', file=output)
-    print('', file=output)
-    print('  Querying:', file=output)
-    print('  - !(queryPokedex|qp) <filter>                   Accepts pokemon query filters.', file=output)
-    print('  - !(queryMoves|qm) <filter>                     Accepts move query filters.', file=output)
-    print('    Options:', file=output)
-    print('      -c, --count                                 Show the total number of entries that fit this query instead of a list.', file=output)
-    print('      -f, --force-list                            Force the entire list to be printed even if it\'s more than 50 entries.', file=output)
-    print('', file=output)
-    print('', file=output)
-    print('Available Query Filters:', file=output)
-    print('  Pokemon Filters:', file=output)
-    print('  - m:<moves>                     Filter by pokemon that can learn all of the specified moves.', file=output)
-    print('                                  Accepts a single move or a comma-separated list.', file=output)
-    print('  - ml:<moves>                    Filter by pokemon that can learn all of the specified moves via level up.', file=output)
-    print('                                  Accepts a single move or a comma-separated list.', file=output)
-    print('  - mm:<moves>                    Filter by pokemon that can learn all of the specified moves via TM/TR.', file=output)
-    print('                                  Accepts a single move or a comma-separated list.', file=output)
-    print('  - mb:<moves>                    Filter by pokemon that can learn all of the specified moves via breeding.', file=output)
-    print('                                  Accepts a single move or a comma-separated list.', file=output)
-    print('  - mt:<moves>                    Filter by pokemon that can learn all of the specified moves via tutor.', file=output)
-    print('                                  Accepts a single move or a comma-separated list.', file=output)
-    print('  - mtr:<moves>                   Filter by pokemon that can only know all of the specified moves via transfer.', file=output)
-    print('                                  Accepts a single move or a comma-separated list.', file=output)
-    print('  - a:<abilities>                 Filter by pokemon that can have any of the abilities specified.', file=output)
-    print('                                  Accepts a single ability or a comma-separated list.', file=output)
-    print('  - t:<types>                     Filter by pokemon that have any of the types specified.', file=output)
-    print('                                  Accepts a single type or a comma-separated list.', file=output)
-    print('  - ta:<types>                    Filter by pokemon that have exactly the types specified.', file=output)
-    print('                                  Accepts a single type or a comma-separated list.', file=output)
-    print('  - evo:<bool>                    Filter by pokemon that can evolve (true) or can\'t evolve (false).', file=output)
-    print('  - prevo:<bool>                  Filter by pokemon that have a pre-evolution (true) or do not (false).', file=output)
-    print('  - eg:<eggGroup>                 Filter by pokemon in any of the specified egg groups.', file=output)
-    print('                                  Accepts a single egg group or a comma-separated list.', file=output)
-    print('  - ega:<eggGroup>                Filter by pokemon in exactly the specified egg groups.', file=output)
-    print('                                  Accepts a single egg group or a comma-separated list.', file=output)
-    print('  - tr:<bool>                     Filter by pokemon that are only obtainable via transfer.', file=output)
-    print('  - base:<bool>                   Filter by pokemon that are only obtainable in the base game.', file=output)
-    print('  - ioa:<bool>                    Filter by pokemon that are only obtainable on the Isle of Armor.', file=output)
-    print('  - ct:<bool>                     Filter by pokemon that are only obtainable in the Crown Tundra.', file=output)
-    print('  - past:<bool>                   Filter by pokemon that are only available prior to Gen 8.', file=output)
-    print('    Stat Filters:                 All the following filters can also be compared via >, <, >=, or <=.', file=output)
-    print('                                  The stats can be compared to int values and/or each other.', file=output)
-    print('    - hp:<value>                  Filter by HP stat.', file=output)
-    print('    - atk:<value>                 Filter by Attack stat.', file=output)
-    print('    - def:<value>                 Filter by Defense stat.', file=output)
-    print('    - spa:<value>                 Filter by Sp. Attack stat.', file=output)
-    print('    - spd:<value>                 Filter by Sp. Defense stat.', file=output)
-    print('    - spe:<value>                 Filter by Speed stat.', file=output)
-    print('    - bst:<value>                 Filter by base stat total.', file=output)
-    print('    Sorting:                      Sort query results by various stats. Negate to reverse order.', file=output)
-    print('    - o:<stat>                    Sort by stat. Defaults to descending.', file=output)
-    print('                                  Accepts any of the following values:', file=output)
-    print('                                  hp, atk, def, spa, spd, spe, bst', file=output)
-    print('    - o:num                       Sort by pokedex number. Defaults to ascending.', file=output)
-    print('    - o:w, o:weight               Sort by weight. Defaults to descending.', file=output)
-    print('    - o:h, o:height               Sort by height. Defaults to descending.', file=output)
-    print('', file=output)
-    print('  Move Filters:', file=output)
-    print('  - pow:<value>                   Filter by base power. Can use >, <, >=, or <=.', file=output)
-    print('  - acc:<value>                   Filter by accuracy. Can use >, <, >=, or <=.', file=output)
-    print('  - c:<category>                  Filter by status, special, or physical.', file=output)
-    print('                                  Accepts a single category or a comma-separated list.', file=output)
-    print('  - t:<types>                     Filter by moves that are any of the specified types.', file=output)
-    print('                                  Accepts a single type or a comma-separated list.', file=output)
-    print('  - m:<moves>                     Filter by move names. Accepts a single move or a comma-separated list.', file=output)
-    print('  - sec:<bool>                    Filter by moves that have (true) or don\'t have (false) secondary effects.', file=output)
-    print('  - bite:<bool>                   Filter by moves that are/aren\'t affected by Strong Jaw.', file=output)
-    print('  - con:<bool>                    Filter by moves that do/don\'t make contact.', file=output)
-    print('  - snd:<bool>                    Filter by moves that are/aren\'t sound-based.', file=output)
-    print('  - pnch:<bool>                   Filter by moves that are/aren\'t punch moves.', file=output)
-    print('  - p:<value>                     Filter by move priority. Can use >, <, >=, or <=.', file=output)
-    print('    Sorting:                      Sort query results by various stats. Negate to reverse order.', file=output)
-    print('    - o:pow                       Sort by base power. Defaults to descending.', file=output)
-    print('    - o:acc                       Sort by accuracy. Defaults to descending.', file=output)
-    print('    - o:c, o:cat                  Sort by category. Defaults to descending.', file=output)
-    print('    - o:p, o:prio                 Sort by priority. Defaults to descending.', file=output)
-    print('    - o:pp                        Sort by power points. Defaults to descending.', file=output)
-    print('    - o:num                       Sort by movedex number. Defaults to ascending.', file=output)
-    print('', file=output)
-    '''
 
     embed = Embed()
     embed.description = "User Docs can be found [here](https://docs.google.com/document/d/1dOJt6_xodsqWOFJPI2AY91mNmnrjLDyy7cRLki7G8qo/edit?usp=sharing)!"
 
-    args = parse_arguments(raw_args)
-    if args is None:
-        print('Error parsing command, bzzzzrt!', file=output)
+    opt = ['--force-channel','-f']
+
+    args = parse_arguments(raw_args, options=opt)
+    if 'err' in args and len(args['err']) > 0:
+        for error in args['err']:
+            print(f'Error: {error}', file=output)
         await output.send(ctx)
         return
     
@@ -317,11 +235,24 @@ async def moveset(ctx, *raw_args):
     print(f'\nMOVESET command triggered, bzzzzrt! Message details:\n{ctx.message.author} @ ({ctx.message.created_at}): {message}\n')
     output = MessageHelper()
 
-    pos_args = ['pokemon']
+    pos_args = [('pokemon','pokemon')]
+    opt = [
+        '--stab','-s',
+        '--coverage','-c',
+        '--ignore-stats','-i',
+        '--transfer','-t',
+        '--past','-p',
+        '--atk','-atk',
+        '--spa','-spa',
+        '--def','-def',
+        '--accuracy','-acc',
+        '--ability','-a'
+    ]
 
-    args = parse_arguments(raw_args, pos_args)
-    if args is None:
-        print('Error parsing command, bzzzzrt! Type "!help" for usage details.', file=output)
+    args = parse_arguments(raw_args, pos_args, options=opt, filter_type='move')
+    if 'err' in args and len(args['err']) > 0:
+        for error in args['err']:
+            print(f'Error: {error}', file=output)
         await output.send(ctx)
         return
 
@@ -357,12 +288,13 @@ async def eggMove(ctx, *raw_args):
     print(f'\nEGGMOVE command triggered, bzzzzrt! Message details:\n{ctx.message.author} @ ({ctx.message.created_at}): {message}\n')
     output = MessageHelper()
 
-    pos_args = ['pokemon']
-    opt_pos_args = ['move']
+    pos_args = [('pokemon','pokemon')]
+    opt_pos_args = [('move','move')]
 
     args = parse_arguments(raw_args, pos_args, opt_pos_args)
-    if args is None:
-        print('Error parsing command, bzzzzrt! Type "!help" for usage details.', file=output)
+    if 'err' in args and len(args['err']) > 0:
+        for error in args['err']:
+            print(f'Error: {error}', file=output)
         await output.send(ctx)
         return
 
@@ -382,11 +314,13 @@ async def pokedex(ctx, *raw_args):
     print(f'\nPOKEDEX command triggered, bzzzzrt! Message details:\n{ctx.message.author} @ ({ctx.message.created_at}): {message}\n')
     output = MessageHelper()
 
-    pos_args = ['pokemon']
+    pos_args = [('pokemon','pokemon')]
+    opt = ['--verbose','-v']
 
-    args = parse_arguments(raw_args, pos_args)
-    if args is None:
-        print('Error parsing command, bzzzzrt! Type "!help" for usage details.', file=output)
+    args = parse_arguments(raw_args, pos_args, options=opt)
+    if 'err' in args and len(args['err']) > 0:
+        for error in args['err']:
+            print(f'Error: {error}', file=output)
         await output.send(ctx)
         return
 
@@ -404,11 +338,12 @@ async def hiddenAbility(ctx, *raw_args):
     print(f'\nHIDDENABILITY command triggered, bzzzzrt! Message details:\n{ctx.message.author} @ ({ctx.message.created_at}): {message}\n')
     output = MessageHelper()
 
-    pos_args = ['pokemon']
+    pos_args = [('pokemon','pokemon')]
 
     args = parse_arguments(raw_args, pos_args)
-    if args is None:
-        print('Error parsing command, bzzzzrt! Type "!help" for usage details.', file=output)
+    if 'err' in args and len(args['err']) > 0:
+        for error in args['err']:
+            print(f'Error: {error}', file=output)
         await output.send(ctx)
         return
 
@@ -424,11 +359,13 @@ async def ability(ctx, *raw_args):
     print(f'\nABILITY command triggered, bzzzzrt! Message details:\n{ctx.message.author} @ ({ctx.message.created_at}): {message}\n')
     output = MessageHelper()
 
-    pos_args = ['ability']
+    pos_args = [('ability','ability')]
+    opt = ['--pokemon','-p']
 
-    args = parse_arguments(raw_args, pos_args)
-    if args is None:
-        print('Error parsing command, bzzzzrt! Type "!help" for usage details.', file=output)
+    args = parse_arguments(raw_args, pos_args, options=opt, filter_type='pkmn')
+    if 'err' in args and len(args['err']) > 0:
+        for error in args['err']:
+            print(f'Error: {error}', file=output)
         await output.send(ctx)
         return
 
@@ -450,11 +387,13 @@ async def move(ctx, *raw_args):
     print(f'\nMOVE command triggered, bzzzzrt! Message details:\n{ctx.message.author} @ ({ctx.message.created_at}): {message}\n')
     output = MessageHelper()
 
-    pos_args = ['move']
+    pos_args = [('move','move')]
+    opt = ['--pokemon','-p']
 
-    args = parse_arguments(raw_args, pos_args)
-    if args is None:
-        print('Error parsing command, bzzzzrt! Type "!help" for usage details.', file=output)
+    args = parse_arguments(raw_args, pos_args, options=opt, filter_type='pkmn')
+    if 'err' in args and len(args['err']) > 0:
+        for error in args['err']:
+            print(f'Error: {error}', file=output)
         await output.send(ctx)
         return
 
@@ -476,12 +415,14 @@ async def damage(ctx, *raw_args):
     print(f'\nDAMAGE command triggered, bzzzzrt! Message details:\n{ctx.message.author} @ ({ctx.message.created_at}): {message}\n')
     output = MessageHelper()
 
-    pos_args = ['token']
-    opt_pos_args = ['type2']
+    pos_args = [('token', ['pokemon','type'])]
+    opt_pos_args = [('type2','type')]
+    opt = ['--ability','-a']
 
-    args = parse_arguments(raw_args, pos_args, opt_pos_args)
-    if args is None:
-        print('Error parsing command, bzzzzrt! Type "!help" for usage details.', file=output)
+    args = parse_arguments(raw_args, pos_args, opt_pos_args, options=opt)
+    if 'err' in args and len(args['err']) > 0:
+        for error in args['err']:
+            print(f'Error: {error}', file=output)
         await output.send(ctx)
         return
 
@@ -519,11 +460,12 @@ async def coverage(ctx, *raw_args):
     print(f'\nCOVERAGE command triggered, bzzzzrt! Message details:\n{ctx.message.author} @ ({ctx.message.created_at}): {message}\n')
     output = MessageHelper()
 
-    pos_args = ['type1']
+    pos_args = [('type1','list-type')]
 
-    args = parse_arguments(raw_args, pos_args, params=True)
-    if args is None:
-        print('Error parsing command, bzzzzrt! Type "!help" for usage details.', file=output)
+    args = parse_arguments(raw_args, pos_args, params_type='type', filter_type='pkmn')
+    if 'err' in args and len(args['err']) > 0:
+        for error in args['err']:
+            print(f'Error: {error}', file=output)
         await output.send(ctx)
         return
 
@@ -557,8 +499,9 @@ async def breedingbox(ctx, *raw_args):
     return
 
     args = parse_arguments(raw_args)
-    if args is None:
-        print('Error parsing command, bzzzzrt! Type "!help" for usage details.', file=output)
+    if 'err' in args and len(args['err']) > 0:
+        for error in args['err']:
+            print(f'Error: {error}', file=output)
         await output.send(ctx)
         return
 
@@ -614,11 +557,12 @@ async def eggGroup(ctx, *raw_args):
     print(f'\nEGGGROUP command triggered, bzzzzrt! Message details:\n{ctx.message.author} @ ({ctx.message.created_at}): {message}\n')
     output = MessageHelper()
 
-    pos_args = ['group']
+    pos_args = [('group','egg-group')]
 
-    args = parse_arguments(raw_args, pos_args)
-    if args is None:
-        print('Error parsing command, bzzzzrt! Type "!help" for usage details.', file=output)
+    args = parse_arguments(raw_args, pos_args, filter_type='pkmn')
+    if 'err' in args and len(args['err']) > 0:
+        for error in args['err']:
+            print(f'Error: {error}', file=output)
         await output.send(ctx)
         return
 
@@ -637,9 +581,12 @@ async def queryPokedex(ctx, *raw_args):
     print(f'\nQUERYPOKEDEX command triggered, bzzzzrt! Message details:\n{ctx.message.author} @ ({ctx.message.created_at}): {message}\n')
     output = MessageHelper()
 
-    args = parse_arguments(raw_args)
-    if args is None:
-        print('Error parsing command, bzzzzrt! Type "!help" for usage details.', file=output)
+    opt = ['--count','-c','--force-list','-f']
+
+    args = parse_arguments(raw_args, options=opt, filter_type='pkmn')
+    if 'err' in args and len(args['err']) > 0:
+        for error in args['err']:
+            print(f'Error: {error}', file=output)
         await output.send(ctx)
         return
     
@@ -659,9 +606,12 @@ async def queryMoves(ctx, *raw_args):
     print(f'\nQUERYMOVES command triggered, bzzzzrt! Message details:\n{ctx.message.author} @ ({ctx.message.created_at}): {message}\n')
     output = MessageHelper()
 
-    args = parse_arguments(raw_args)
-    if args is None:
-        print('Error parsing command, bzzzzrt! Type "!help" for usage details.', file=output)
+    opt = ['--count','-c','--force-list','-f']
+
+    args = parse_arguments(raw_args, options=opt, filter_type='move')
+    if 'err' in args and len(args['err']) > 0:
+        for error in args['err']:
+            print(f'Error: {error}', file=output)
         await output.send(ctx)
         return
     
@@ -681,9 +631,10 @@ async def randomPokemon(ctx, *raw_args):
     print(f'\nRANDOMPOKEMON command triggered, bzzzzrt! Message details:\n{ctx.message.author} @ ({ctx.message.created_at}): {message}\n')
     output = MessageHelper()
 
-    args = parse_arguments(raw_args)
-    if args is None:
-        print('Error parsing command, bzzzzrt! Type "!help" for usage details.', file=output)
+    args = parse_arguments(raw_args, filter_type='pkmn')
+    if 'err' in args and len(args['err']) > 0:
+        for error in args['err']:
+            print(f'Error: {error}', file=output)
         await output.send(ctx)
         return
 
@@ -700,9 +651,10 @@ async def randomMove(ctx, *raw_args):
     print(f'\nRANDOMMOVE command triggered, bzzzzrt! Message details:\n{ctx.message.author} @ ({ctx.message.created_at}): {message}\n')
     output = MessageHelper()
 
-    args = parse_arguments(raw_args)
-    if args is None:
-        print('Error parsing command, bzzzzrt! Type "!help" for usage details.', file=output)
+    args = parse_arguments(raw_args, filter_type='move')
+    if 'err' in args and len(args['err']) > 0:
+        for error in args['err']:
+            print(f'Error: {error}', file=output)
         await output.send(ctx)
         return
 
@@ -720,8 +672,9 @@ async def randomAbility(ctx, *raw_args):
     output = MessageHelper()
 
     args = parse_arguments(raw_args)
-    if args is None:
-        print('Error parsing command, bzzzzrt! Type "!help" for usage details.', file=output)
+    if 'err' in args and len(args['err']) > 0:
+        for error in args['err']:
+            print(f'Error: {error}', file=output)
         await output.send(ctx)
         return
 
@@ -736,8 +689,9 @@ async def randomType(ctx, *raw_args):
     output = MessageHelper()
 
     args = parse_arguments(raw_args)
-    if args is None:
-        print('Error parsing command, bzzzzrt! Type "!help" for usage details.', file=output)
+    if 'err' in args and len(args['err']) > 0:
+        for error in args['err']:
+            print(f'Error: {error}', file=output)
         await output.send(ctx)
         return
 
@@ -752,8 +706,9 @@ async def randomColor(ctx, *raw_args):
     output = MessageHelper()
 
     args = parse_arguments(raw_args)
-    if args is None:
-        print('Error parsing command, bzzzzrt! Type "!help" for usage details.', file=output)
+    if 'err' in args and len(args['err']) > 0:
+        for error in args['err']:
+            print(f'Error: {error}', file=output)
         await output.send(ctx)
         return
 
@@ -767,12 +722,13 @@ async def nature(ctx, *raw_args):
     print(f'\nNATURE command triggered, bzzzzrt! Message details:\n{ctx.message.author} @ ({ctx.message.created_at}): {message}\n')
     output = MessageHelper()
 
-    pos_args = ['token']
-    opt_pos_args = ['down']
+    pos_args = [('token',['nature','stat-n'])]
+    opt_pos_args = [('down','stat-n')]
 
     args = parse_arguments(raw_args, pos_args, opt_pos_args)
-    if args is None:
-        print('Error parsing command, bzzzzrt! Type "!help" for usage details.', file=output)
+    if 'err' in args and len(args['err']) > 0:
+        for error in args['err']:
+            print(f'Error: {error}', file=output)
         await output.send(ctx)
         return
 
@@ -789,11 +745,12 @@ async def shiny(ctx, *raw_args):
     print(f'\nSHINY command triggered, bzzzzrt! Message details:\n{ctx.message.author} @ ({ctx.message.created_at}): {message}\n')
     output = MessageHelper()
 
-    pos_args = ['pokemon']
+    pos_args = [('pokemon','pokemon')]
 
     args = parse_arguments(raw_args, pos_args)
-    if args is None:
-        print('Error parsing command, bzzzzrt! Type "!help" for usage details.', file=output)
+    if 'err' in args and len(args['err']) > 0:
+        for error in args['err']:
+            print(f'Error: {error}', file=output)
         await output.send(ctx)
         return
 
@@ -818,9 +775,10 @@ async def pokemonFilters(ctx, *raw_args):
     print(f'\nPOKEMONFILTERS command triggered, bzzzzrt! Message details:\n{ctx.message.author} @ ({ctx.message.created_at}): {message}\n')
     output = MessageHelper()
 
-    args = parse_arguments(raw_args)
-    if args is None:
-        print('Error parsing command, bzzzzrt! Type "!help" for usage details.', file=output)
+    args = parse_arguments(raw_args, filter_type='pkmn')
+    if 'err' in args and len(args['err']) > 0:
+        for error in args['err']:
+            print(f'Error: {error}', file=output)
         await output.send(ctx)
         return
     
@@ -841,9 +799,10 @@ async def moveFilters(ctx, *raw_args):
     print(f'\nMOVEFILTERS command triggered, bzzzzrt! Message details:\n{ctx.message.author} @ ({ctx.message.created_at}): {message}\n')
     output = MessageHelper()
 
-    args = parse_arguments(raw_args)
-    if args is None:
-        print('Error parsing command, bzzzzrt! Type "!help" for usage details.', file=output)
+    args = parse_arguments(raw_args, filter_type='move')
+    if 'err' in args and len(args['err']) > 0:
+        for error in args['err']:
+            print(f'Error: {error}', file=output)
         await output.send(ctx)
         return
     
@@ -866,8 +825,9 @@ async def test(ctx, *raw_args):
     output = MessageHelper()
 
     args = parse_arguments(raw_args)
-    if args is None:
-        print('Error parsing command, bzzzzrt! Type "!help" for usage details.', file=output)
+    if 'err' in args and len(args['err']) > 0:
+        for error in args['err']:
+            print(f'Error: {error}', file=output)
         await output.send(ctx)
         return
 
