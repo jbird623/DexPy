@@ -3,6 +3,7 @@ import re
 
 from pymongo import MongoClient
 from .pokehelper import PokemonHelper
+from .validation import Validators
 from pprint import pprint
 
 class PokeMongo8:
@@ -20,6 +21,7 @@ class PokeMongo8:
         self.abilities = self.db.abilities
         self.breedingboxes = self.db.breedingboxes
         self.user_options = self.ctx.options
+        self.validation = Validators(self)
 
     def add_filter(self, filters, new_filter):
         mod_filters = dict()
@@ -918,6 +920,13 @@ class PokeMongo8:
     def get_all_abilities(self):
         collection = []
         entries = self.abilities.find()
+        for entry in entries:
+            collection.append(entry)
+        return collection
+
+    def get_all_moves(self):
+        collection = []
+        entries = self.moves.find()
         for entry in entries:
             collection.append(entry)
         return collection

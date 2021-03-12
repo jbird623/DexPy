@@ -40,6 +40,42 @@ class PokemonHelper:
             'Black'
         ]
 
+    def get_egg_groups(self):
+        return [
+            'bug',
+            'flying',
+            'grass',
+            'water1',
+            'water2',
+            'water3',
+            'field',
+            'fairy',
+            'mineral',
+            'human-like',
+            'amorphous',
+            'monster',
+            'ditto',
+            'undiscovered'          
+        ]
+
+    def get_move_flags(self):
+        return [
+            'heal',
+            'protect',
+            'contact',
+            'bullet',
+            'reflectable',
+            'pulse',
+            'bite',
+            'recharge',
+            'sound',
+            'charge',
+            'gravity',
+            'punch',
+            'defrost',
+            'powder'
+        ]
+
     def get_stats(self):
         return {
             'hp':'HP',
