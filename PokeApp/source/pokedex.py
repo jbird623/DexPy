@@ -352,7 +352,7 @@ class PokeDex:
             if t not in all_types:
                 print(f'Error: Invalid type "{t}", bzzzzrt!', file=print_to)
                 return
-        pokedex_entries = self.pokemongo.get_all_pokemon_type_info(filters)
+        pokedex_entries = self.pokemongo.get_all_pokemon_type_info(print_to, filters)
         super_effective = []
         effective = []
         resistant = []
@@ -479,7 +479,7 @@ class PokeDex:
                 print(f'\n* Calculated with the {type_effectiveness_abilities[abilities[0]]} ability.', file=print_to)
     
     def do_egg_group_function(self, group, filters, print_to):
-        egg_group_entries = self.pokemongo.get_minimum_egg_group(group, filters)
+        egg_group_entries = self.pokemongo.get_minimum_egg_group(group, print_to, filters)
 
         one_group_list = []
         two_group_list = []
@@ -505,10 +505,10 @@ class PokeDex:
             print(f'  - {elem["pokemon"]:25s} [{elem["alt_group"].capitalize()}]', file=print_to)
 
     def do_pokedex_query_function(self, filters, print_to, count=False, force_list=False):
-        dex_entries = self.pokemongo.get_pokedex_entries_with_filters(full_entry=True, filters=filters)
+        dex_entries = self.pokemongo.get_pokedex_entries_with_filters(print_to, full_entry=True, filters=filters)
 
         if count:
-            print(f'Bzzzzrt! The number of entries that match that query are: {len(dex_entries)}', file=print_to)
+            print(f'Bzzzzrt! The number of entries that match that query is: {len(dex_entries)}', file=print_to)
             return
 
         if len(dex_entries) > 50 and not force_list:
@@ -521,7 +521,10 @@ class PokeDex:
             print('There are no pokemon that match your query, bzzzzrt.', file=print_to)
             return
 
-        print(f'There are {len(dex_entries)} pokemon that match your query, bzzzzrt:', file=print_to)
+        format_str = f'There are {len(dex_entries)} pokemon that match'
+        if len(dex_entries) == 1:
+            format_str = f'There is 1 pokemon that matches'
+        print(f'{format_str} your query, bzzzzrt:', file=print_to)
         orderby_key = self.pokemongo.get_pokedex_orderby_key(filters)
         past_pokemon = False
         for entry in dex_entries:
@@ -544,7 +547,7 @@ class PokeDex:
             print('\n* Pokemon not available in Gen 8 games.', file=print_to)
     
     def do_random_pokemon_function(self, filters, print_to):
-        dex_entries = self.pokemongo.get_pokedex_entries_with_filters(full_entry=True, filters=filters)
+        dex_entries = self.pokemongo.get_pokedex_entries_with_filters(print_to, full_entry=True, filters=filters)
 
         if len(dex_entries) == 0:
             print('There are no pokemon that match those filters, bzzzzrt!', file=print_to)

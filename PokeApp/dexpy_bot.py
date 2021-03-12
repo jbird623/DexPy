@@ -77,7 +77,7 @@ def split_filter(s):
                 return [s[:i], s[i:]]
     return s
 
-def parse_arguments(arguments, positional_args=[], optional_pos_args=[], options=[], params_type=None):
+def parse_arguments(arguments, positional_args=[], optional_pos_args=[], options=[], params_type=None, filter_type=None):
     arguments = list(arguments)
 
     pos = dict()
@@ -116,8 +116,19 @@ def parse_arguments(arguments, positional_args=[], optional_pos_args=[], options
         
         elif is_filter_shaped(arg):
             s_filter = split_filter(arg)
-            # TODO: Add filter type validation here!
-            fil = pokemongo.add_filter(fil, {s_filter[0]: s_filter[1]})
+            if filter_type is not None:
+                validation_result = pokemongo.validation.validate_filter(s_filter[0].replace('~',''), s_filter[1], filter_type)
+                if validation_result is None:
+                    filter_str = 'move'
+                    if filter_type == 'pkmn':
+                        filter_str = 'pokemon'
+                    err.append(f'\'{s_filter[0].replace("~","")}\' is not a valid {filter_str.capitalize()} filter!')
+                elif validation_result[0]:
+                    fil = pokemongo.add_filter(fil, {s_filter[0]: s_filter[1]})
+                else:
+                    err.append(pokemongo.validation.format_filter_error_message(s_filter[0].replace('~',''), validation_result[1]))
+            else:
+                err.append('This command does not accept query filters!')
 
         elif len(optional_pos_args) > 0:
             validation_result = pokemongo.validation.validate_value(arg, optional_pos_args[0][1])
@@ -238,7 +249,7 @@ async def moveset(ctx, *raw_args):
         '--ability','-a'
     ]
 
-    args = parse_arguments(raw_args, pos_args, options=opt)
+    args = parse_arguments(raw_args, pos_args, options=opt, filter_type='move')
     if 'err' in args and len(args['err']) > 0:
         for error in args['err']:
             print(f'Error: {error}', file=output)
@@ -351,7 +362,7 @@ async def ability(ctx, *raw_args):
     pos_args = [('ability','ability')]
     opt = ['--pokemon','-p']
 
-    args = parse_arguments(raw_args, pos_args, options=opt)
+    args = parse_arguments(raw_args, pos_args, options=opt, filter_type='pkmn')
     if 'err' in args and len(args['err']) > 0:
         for error in args['err']:
             print(f'Error: {error}', file=output)
@@ -379,7 +390,7 @@ async def move(ctx, *raw_args):
     pos_args = [('move','move')]
     opt = ['--pokemon','-p']
 
-    args = parse_arguments(raw_args, pos_args, options=opt)
+    args = parse_arguments(raw_args, pos_args, options=opt, filter_type='pkmn')
     if 'err' in args and len(args['err']) > 0:
         for error in args['err']:
             print(f'Error: {error}', file=output)
@@ -451,7 +462,7 @@ async def coverage(ctx, *raw_args):
 
     pos_args = [('type1','list-type')]
 
-    args = parse_arguments(raw_args, pos_args, params_type='type')
+    args = parse_arguments(raw_args, pos_args, params_type='type', filter_type='pkmn')
     if 'err' in args and len(args['err']) > 0:
         for error in args['err']:
             print(f'Error: {error}', file=output)
@@ -548,7 +559,7 @@ async def eggGroup(ctx, *raw_args):
 
     pos_args = [('group','egg-group')]
 
-    args = parse_arguments(raw_args, pos_args)
+    args = parse_arguments(raw_args, pos_args, filter_type='pkmn')
     if 'err' in args and len(args['err']) > 0:
         for error in args['err']:
             print(f'Error: {error}', file=output)
@@ -572,7 +583,7 @@ async def queryPokedex(ctx, *raw_args):
 
     opt = ['--count','-c','--force-list','-f']
 
-    args = parse_arguments(raw_args, options=opt)
+    args = parse_arguments(raw_args, options=opt, filter_type='pkmn')
     if 'err' in args and len(args['err']) > 0:
         for error in args['err']:
             print(f'Error: {error}', file=output)
@@ -597,7 +608,7 @@ async def queryMoves(ctx, *raw_args):
 
     opt = ['--count','-c','--force-list','-f']
 
-    args = parse_arguments(raw_args, options=opt)
+    args = parse_arguments(raw_args, options=opt, filter_type='move')
     if 'err' in args and len(args['err']) > 0:
         for error in args['err']:
             print(f'Error: {error}', file=output)
@@ -620,7 +631,7 @@ async def randomPokemon(ctx, *raw_args):
     print(f'\nRANDOMPOKEMON command triggered, bzzzzrt! Message details:\n{ctx.message.author} @ ({ctx.message.created_at}): {message}\n')
     output = MessageHelper()
 
-    args = parse_arguments(raw_args)
+    args = parse_arguments(raw_args, filter_type='pkmn')
     if 'err' in args and len(args['err']) > 0:
         for error in args['err']:
             print(f'Error: {error}', file=output)
@@ -640,7 +651,7 @@ async def randomMove(ctx, *raw_args):
     print(f'\nRANDOMMOVE command triggered, bzzzzrt! Message details:\n{ctx.message.author} @ ({ctx.message.created_at}): {message}\n')
     output = MessageHelper()
 
-    args = parse_arguments(raw_args)
+    args = parse_arguments(raw_args, filter_type='move')
     if 'err' in args and len(args['err']) > 0:
         for error in args['err']:
             print(f'Error: {error}', file=output)
@@ -764,7 +775,7 @@ async def pokemonFilters(ctx, *raw_args):
     print(f'\nPOKEMONFILTERS command triggered, bzzzzrt! Message details:\n{ctx.message.author} @ ({ctx.message.created_at}): {message}\n')
     output = MessageHelper()
 
-    args = parse_arguments(raw_args)
+    args = parse_arguments(raw_args, filter_type='pkmn')
     if 'err' in args and len(args['err']) > 0:
         for error in args['err']:
             print(f'Error: {error}', file=output)
@@ -788,7 +799,7 @@ async def moveFilters(ctx, *raw_args):
     print(f'\nMOVEFILTERS command triggered, bzzzzrt! Message details:\n{ctx.message.author} @ ({ctx.message.created_at}): {message}\n')
     output = MessageHelper()
 
-    args = parse_arguments(raw_args)
+    args = parse_arguments(raw_args, filter_type='move')
     if 'err' in args and len(args['err']) > 0:
         for error in args['err']:
             print(f'Error: {error}', file=output)

@@ -128,6 +128,10 @@ class Validators:
                 if not self.validate_value(token, list_type)[0]:
                     return (False, token)
             return (True, value)
+        if 'comp-' in value_type:
+            comp_value = re.sub('[<>=]', '', value)
+            comp_type = value_type[5:]
+            return self.validate_value(comp_value, comp_type)
         elif value_type == 'pokemon':
             return (value in self.valid_pokemon, value)
         elif value_type == 'move':
@@ -158,6 +162,17 @@ class Validators:
             return (value in self.valid_move_flags, value)
         elif value_type == 'color':
             return (value in self.valid_colors, value)
+        elif value_type == 'boolean':
+            value_is_bool = value.lower() == 'true' or value.lower() == 'false'
+            return (value_is_bool, value)
+        elif value_type == 'int':
+            return (value.isnumeric(), value)
+        elif value_type == 'sort-pkmn':
+            valid_sort_value = value in ['num','weight','w','height','h']
+            return (valid_sort_value, value)
+        elif value_type == 'sort-move':
+            valid_sort_value = value in ['num','power','pow','accuracy','acc','a','category','cat','c','priority','prio','p']
+            return (valid_sort_value, value)
         else:
             print(f'ERROR: Unknown value type \'{value_type}\'')
             return (False, value)
@@ -167,6 +182,8 @@ class Validators:
             return None
         if 'list-' in value_type:
             return self.get_caps_value_type(value_type[5:])
+        if 'comp-' in value_type:
+            return f'{self.get_caps_value_type(value_type[5:])} Comparator'
         caps_value_type = value_type.capitalize()
         if value_type == 'egg-group':
             caps_value_type = 'Egg Group'
@@ -182,6 +199,8 @@ class Validators:
             caps_value_type = 'Stat that can be boosted'
         if value_type == 'stat-n':
             caps_value_type = 'Stat that can be affected by natures'
+        if 'sort' in value_type:
+            caps_value_type = 'Sorting Key'
         return caps_value_type
 
     def format_error_message(self, value, value_type):
@@ -192,3 +211,164 @@ class Validators:
                 cv_types.append(self.get_caps_value_type(v_type))
             caps_value_type = ' or '.join(cv_types)
         return f'\'{value}\' is not a valid {caps_value_type}!'
+
+    def format_filter_error_message(self, filter_key, message):
+        return f'Invalid value for the \'{filter_key}\' filter; {message}'
+
+    def validate_filter(self, filter_key, filter_value, filter_type):
+        filter_value_type = None
+        if filter_type == 'pkmn' and filter_key == 'a':
+            filter_value_type = 'list-ability'
+        elif filter_type == 'pkmn' and filter_key == 'evo':
+            filter_value_type = 'boolean'
+        elif filter_type == 'pkmn' and filter_key == 'prevo':
+            filter_value_type = 'boolean'
+        elif filter_type == 'pkmn' and filter_key == 'eg':
+            filter_value_type = 'list-egg-group'
+        elif filter_type == 'pkmn' and filter_key == 'ega':
+            filter_value_type = 'list-egg-group'
+        elif filter_type == 'pkmn' and filter_key == 'c':
+            filter_value_type = 'list-color'
+        elif filter_type == 'pkmn' and filter_key == 't':
+            filter_value_type = 'list-type'
+        elif filter_type == 'pkmn' and filter_key == 'ta':
+            filter_value_type = 'list-type'
+        elif filter_type == 'pkmn' and filter_key == 'p':
+            filter_value_type = 'list-pokemon'
+        elif filter_type == 'pkmn' and filter_key == 'base':
+            filter_value_type = 'boolean'
+        elif filter_type == 'pkmn' and filter_key == 'tr':
+            filter_value_type = 'boolean'
+        elif filter_type == 'pkmn' and filter_key == 'ioa':
+            filter_value_type = 'boolean'
+        elif filter_type == 'pkmn' and filter_key == 'ct':
+            filter_value_type = 'boolean'
+        elif filter_type == 'pkmn' and filter_key == 'past':
+            filter_value_type = 'boolean'
+        elif filter_type == 'pkmn' and filter_key == 'm':
+            filter_value_type = 'list-move'
+        elif filter_type == 'pkmn' and filter_key == 'ml':
+            filter_value_type = 'list-move'
+        elif filter_type == 'pkmn' and filter_key == 'mm':
+            filter_value_type = 'list-move'
+        elif filter_type == 'pkmn' and filter_key == 'mb':
+            filter_value_type = 'list-move'
+        elif filter_type == 'pkmn' and filter_key == 'mt':
+            filter_value_type = 'list-move'
+        elif filter_type == 'pkmn' and filter_key == 'mtr':
+            filter_value_type = 'list-move'
+        elif filter_type == 'pkmn' and filter_key == 'mc':
+            filter_value_type = 'list-type'
+        elif filter_type == 'pkmn' and filter_key == 'mca':
+            filter_value_type = 'list-type'
+        elif filter_type == 'pkmn' and filter_key in self.valid_stats:
+            filter_value_type = ['list-comp-int','list-comp-stat']
+        elif filter_type == 'pkmn' and filter_key == 'o':
+            filter_value_type = ['stat','type','sort-pkmn']
+        elif filter_type == 'move' and filter_key == 'pow':
+            filter_value_type = 'int'
+        elif filter_type == 'move' and filter_key == 'acc':
+            filter_value_type = ['int','boolean']
+        elif filter_type == 'move' and filter_key == 'pp':
+            filter_value_type = 'int'
+        elif filter_type == 'move' and filter_key == 'priority':
+            filter_value_type = 'int'
+        elif filter_type == 'move' and filter_key == 'prio':
+            filter_value_type = 'int'
+        elif filter_type == 'move' and filter_key == 'p':
+            filter_value_type = 'int'
+        elif filter_type == 'move' and filter_key == 'c':
+            filter_value_type = 'list-category'
+        elif filter_type == 'move' and filter_key == 't':
+            filter_value_type = 'list-type'
+        elif filter_type == 'move' and filter_key == 'm':
+            filter_value_type = 'list-move'
+        elif filter_type == 'move' and filter_key == 'b':
+            filter_value_type = ['list-stat-b','boolean']
+        elif filter_type == 'move' and filter_key == 'bs':
+            filter_value_type = ['list-stat-b','boolean']
+        elif filter_type == 'move' and filter_key == 'bt':
+            filter_value_type = ['list-stat-b','boolean']
+        elif filter_type == 'move' and filter_key == 'l':
+            filter_value_type = ['list-stat-b','boolean']
+        elif filter_type == 'move' and filter_key == 'ls':
+            filter_value_type = ['list-stat-b','boolean']
+        elif filter_type == 'move' and filter_key == 'lt':
+            filter_value_type = ['list-stat-b','boolean']
+        elif filter_type == 'move' and filter_key == 'crit':
+            filter_value_type = 'boolean'
+        elif filter_type == 'move' and filter_key == 'cr':
+            filter_value_type = 'boolean'
+        elif filter_type == 'move' and filter_key == 'ohko':
+            filter_value_type = 'boolean'
+        elif filter_type == 'move' and filter_key == 'ko':
+            filter_value_type = 'boolean'
+        elif filter_type == 'move' and filter_key == 'multihit':
+            filter_value_type = 'boolean'
+        elif filter_type == 'move' and filter_key == 'mh':
+            filter_value_type = 'boolean'
+        elif filter_type == 'move' and filter_key == 'status':
+            filter_value_type = 'boolean'
+        elif filter_type == 'move' and filter_key == 'st':
+            filter_value_type = 'boolean'
+        elif filter_type == 'move' and filter_key == 'flags':
+            filter_value_type = 'list-move-flag'
+        elif filter_type == 'move' and filter_key == 'flag':
+            filter_value_type = 'list-move-flag'
+        elif filter_type == 'move' and filter_key == 'f':
+            filter_value_type = 'list-move-flag'
+        elif filter_type == 'move' and filter_key == 'secondary':
+            filter_value_type = 'boolean'
+        elif filter_type == 'move' and filter_key == 'sec':
+            filter_value_type = 'boolean'
+        elif filter_type == 'move' and filter_key == 's':
+            filter_value_type = 'boolean'
+        elif filter_type == 'move' and filter_key == 'recoil':
+            filter_value_type = 'boolean'
+        elif filter_type == 'move' and filter_key == 'rec':
+            filter_value_type = 'boolean'
+        elif filter_type == 'move' and filter_key == 'r':
+            filter_value_type = 'boolean'
+        elif filter_type == 'move' and filter_key == 'drain':
+            filter_value_type = 'boolean'
+        elif filter_type == 'move' and filter_key == 'dr':
+            filter_value_type = 'boolean'
+        elif filter_type == 'move' and filter_key == 'selfdestruct':
+            filter_value_type = 'boolean'
+        elif filter_type == 'move' and filter_key == 'sd':
+            filter_value_type = 'boolean'
+        elif filter_type == 'move' and filter_key == 'protect':
+            filter_value_type = 'boolean'
+        elif filter_type == 'move' and filter_key == 'pr':
+            filter_value_type = 'boolean'
+        elif filter_type == 'move' and filter_key == 'switch':
+            filter_value_type = 'boolean'
+        elif filter_type == 'move' and filter_key == 'sw':
+            filter_value_type = 'boolean'
+        elif filter_type == 'move' and filter_key == 'forceswitch':
+            filter_value_type = 'boolean'
+        elif filter_type == 'move' and filter_key == 'fsw':
+            filter_value_type = 'boolean'
+        elif filter_type == 'move' and filter_key == 'terrain':
+            filter_value_type = 'boolean'
+        elif filter_type == 'move' and filter_key == 'te':
+            filter_value_type = 'boolean'
+        elif filter_type == 'move' and filter_key == 'weather':
+            filter_value_type = 'boolean'
+        elif filter_type == 'move' and filter_key == 'w':
+            filter_value_type = 'boolean'
+        elif filter_type == 'move' and filter_key == 'room':
+            filter_value_type = 'boolean'
+        elif filter_type == 'move' and filter_key == 'rm':
+            filter_value_type = 'boolean'
+        elif filter_type == 'move' and filter_key == 'past':
+            filter_value_type = 'boolean'
+        elif filter_type == 'move' and filter_key == 'o':
+            filter_value_type = 'sort-move'
+        if filter_value_type is None:
+            return None
+        else:
+            validation_result = self.validate_value(filter_value, filter_value_type)
+            if not validation_result[0]:
+                return (False, self.format_error_message(validation_result[1], filter_value_type))
+            return validation_result

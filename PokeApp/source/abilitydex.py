@@ -30,7 +30,7 @@ class AbilityDex:
         if 'name' in ab:
             ab_name = ab['name']
 
-        entries = self.pokemongo.get_pokemon_with_ability(ability, full_entry=True, filters=filters)
+        entries = self.pokemongo.get_pokemon_with_ability(ability, print_to, full_entry=True, filters=filters)
         hidden_list = []
         nonhidden_list = []
         past_pokemon = False
