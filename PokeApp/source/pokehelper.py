@@ -55,6 +55,7 @@ class PokemonHelper:
             'amorphous',
             'monster',
             'ditto',
+            'dragon',
             'undiscovered'          
         ]
 
