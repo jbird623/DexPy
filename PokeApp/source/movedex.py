@@ -130,13 +130,13 @@ class MoveDex:
         if not show_past:
             filters['past'] = 'false'
 
-        breeding_entries = self.pokemongo.get_move_entries(print_to, learnset['breeding'], filters)
-        machine_entries = self.pokemongo.get_move_entries(print_to, learnset['machine'], filters)
-        levelup_entries = self.pokemongo.get_move_entries(print_to, learnset['levelup'], filters)
-        tutor_entries = self.pokemongo.get_move_entries(print_to, learnset['tutor'], filters)
+        breeding_entries = self.pokemongo.get_move_entries(learnset['breeding'], print_to, filters)
+        machine_entries = self.pokemongo.get_move_entries(learnset['machine'], print_to, filters)
+        levelup_entries = self.pokemongo.get_move_entries(learnset['levelup'], print_to, filters)
+        tutor_entries = self.pokemongo.get_move_entries(learnset['tutor'], print_to, filters)
         transfer_entries = []
         if show_transfers:
-            transfer_entries = self.pokemongo.get_transfer_move_entries(print_to, learnset['transfer'], filters)
+            transfer_entries = self.pokemongo.get_transfer_move_entries(learnset['transfer'], print_to, filters)
 
         all_moves = dict()
         for move in levelup_entries:
@@ -470,7 +470,7 @@ class MoveDex:
                 print(f'Error: {species} does not have {move_name} as an egg move, bzzzzrt!', file=print_to)
             if len(learnset['breeding']) > 0:
                 print(f'Available egg moves for {species}:', file=print_to)
-                all_moves = self.pokemongo.get_move_entries(print_to, learnset['breeding'])
+                all_moves = self.pokemongo.get_move_entries(learnset['breeding'], print_to)
                 for egg_move in all_moves:
                     print(f'  - {egg_move["name"]}', file=print_to)
             else:
