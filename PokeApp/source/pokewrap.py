@@ -296,7 +296,7 @@ class PokeMongo8:
 
     def get_pokedex_filter_keys(self):
         return [
-            'a', 'a-force', 'hp', 'atk', 'def', 'spa', 'spd', 'spe', 'bst',
+            'a', 'a-force', 'num', 'hp', 'atk', 'def', 'spa', 'spd', 'spe', 'bst',
             'o', 'evo', 'prevo', 'eg', 'eg-force', 'ega', 'c', 't', 'ta',
             'p', 'tr', 'base', 'ioa', 'ct', 'past'
         ]
@@ -321,6 +321,10 @@ class PokeMongo8:
                     new_filter = {'$nin':ab_ids}
                 else:
                     new_filter = {'$in':ab_ids}
+            elif ft == 'num':
+                num = self.get_simple_object_from_filter_value(filters[f].lower(), negate)
+                new_key = 'num'
+                new_filter = num
             elif ft == 'hp':
                 hp = self.get_object_from_filter_value('hp', filters[f].lower(), negate)
                 and_list.append(hp)

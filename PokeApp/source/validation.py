@@ -219,6 +219,8 @@ class Validators:
         filter_value_type = None
         if filter_type == 'pkmn' and filter_key == 'a':
             filter_value_type = 'list-ability'
+        elif filter_type == 'pkmn' and filter_key == 'num':
+            filter_value_type = 'comp-int'
         elif filter_type == 'pkmn' and filter_key == 'evo':
             filter_value_type = 'boolean'
         elif filter_type == 'pkmn' and filter_key == 'prevo':
@@ -266,17 +268,17 @@ class Validators:
         elif filter_type == 'pkmn' and filter_key == 'o':
             filter_value_type = ['stat','type','sort-pkmn']
         elif filter_type == 'move' and filter_key == 'pow':
-            filter_value_type = 'int'
+            filter_value_type = 'comp-int'
         elif filter_type == 'move' and filter_key == 'acc':
-            filter_value_type = ['int','boolean']
+            filter_value_type = ['comp-int','boolean']
         elif filter_type == 'move' and filter_key == 'pp':
-            filter_value_type = 'int'
+            filter_value_type = 'comp-int'
         elif filter_type == 'move' and filter_key == 'priority':
-            filter_value_type = 'int'
+            filter_value_type = 'comp-int'
         elif filter_type == 'move' and filter_key == 'prio':
-            filter_value_type = 'int'
+            filter_value_type = 'comp-int'
         elif filter_type == 'move' and filter_key == 'p':
-            filter_value_type = 'int'
+            filter_value_type = 'comp-int'
         elif filter_type == 'move' and filter_key == 'c':
             filter_value_type = 'list-category'
         elif filter_type == 'move' and filter_key == 't':
