@@ -4,8 +4,8 @@ import yaml
 
 class Validators:
 
-    def __init__(self, pokemongo8):
-        self.pokemongo = pokemongo8
+    def __init__(self, pokemongo9):
+        self.pokemongo = pokemongo9
         self.valid_pokemon = self.init_pokemon_list()
         self.valid_moves = self.init_move_list()
         self.valid_abilities = self.init_ability_list()

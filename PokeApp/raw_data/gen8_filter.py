@@ -136,7 +136,7 @@ def filter_pokedex():
         pokedex = yaml.load(input.read(), Loader=yaml.SafeLoader)
 
         ignore_list = ['basculinbluestriped','keldeoresolute','polteageistantique','sinisteaantique', 'floetteeternal',
-                       'giratinaorigin', 'hoopaunbound', 'pichuspikyeared', 'shayminsky', 'vivillonfancy', 'vivillonpokeball', 'zygarde10']
+                       'giratinaorigin', 'dialgaorigin', 'palkiaorigin', 'hoopaunbound', 'pichuspikyeared', 'shayminsky', 'vivillonfancy', 'vivillonpokeball', 'zygarde10']
         outputList = []
 
         for pokemon in pokedex:

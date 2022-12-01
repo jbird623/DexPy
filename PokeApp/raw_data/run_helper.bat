@@ -1,0 +1,2 @@
+python .\helper.py
+pause

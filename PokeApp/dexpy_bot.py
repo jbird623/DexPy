@@ -8,7 +8,7 @@ from source.movedex import MoveDex
 from source.pokedex import PokeDex
 from source.pokehelper import PokemonHelper
 from source.breedingbox import BreedingBox
-from source.pokewrap import PokeMongo8
+from source.pokewrap import PokeMongo9
 from source.validation import Validators
 from pprint import pprint
 
@@ -21,11 +21,11 @@ bot = commands.Bot(command_prefix=prefix)
 bot.remove_command('help')
 
 beta = False
-pokemongo = PokeMongo8()
+pokemongo = PokeMongo9()
 
 if len(sys.argv) > 1 and sys.argv[1] == '--beta':
     beta = True
-    pokemongo = PokeMongo8(beta=True)
+    pokemongo = PokeMongo9(beta=True)
 
 class MessageHelper:
     def __init__(self):
