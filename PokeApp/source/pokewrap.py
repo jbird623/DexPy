@@ -6,14 +6,14 @@ from .pokehelper import PokemonHelper
 from .validation import Validators
 from pprint import pprint
 
-class PokeMongo8:
+class PokeMongo9:
     def __init__(self, beta=False):
         if beta:
             self.client = MongoClient('localhost', 27018)
         else:
             self.client = MongoClient('localhost', 27017)
         self.pokehelper = PokemonHelper()
-        self.db = self.client['gen8']
+        self.db = self.client['gen9']
         self.ctx = self.client['user-ctx']
         self.pokedex = self.db.pokedex
         self.learnsets = self.db.learnsets

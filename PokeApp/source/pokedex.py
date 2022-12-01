@@ -2,7 +2,7 @@ import math
 import random
 import re
 
-from .pokewrap import PokeMongo8
+from .pokewrap import PokeMongo9
 from .pokehelper import PokemonHelper
 from pprint import pprint
 
@@ -110,7 +110,7 @@ class PokeDex:
             egg_groups.append(group.capitalize())
 
         if dex_entry['past_only']:
-            print('[NOTE: Bzzzzrt! This Pokemon is not transferrable to Gen 8 games!]\n', file=print_to)
+            print('[NOTE: Bzzzzrt! This Pokemon is not transferrable to Gen 9 games!]\n', file=print_to)
 
         print(f'{"Full" if verbose else "Abbreviated"} Pokedex entry for {species}, bzzzzrt:\n', file=print_to)
 
@@ -544,7 +544,7 @@ class PokeDex:
             print(f'  - {species}', file=print_to)
 
         if past_pokemon:
-            print('\n* Pokemon not available in Gen 8 games.', file=print_to)
+            print('\n* Pokemon not available in Gen 9 games.', file=print_to)
     
     def do_random_pokemon_function(self, filters, print_to):
         dex_entries = self.pokemongo.get_pokedex_entries_with_filters(print_to, full_entry=True, filters=filters)
@@ -630,6 +630,6 @@ class PokeDex:
 
         print(f'Retrieving shiny image for {species}, bzzzzrt!', file=print_to)
         if version == 'SM':
-            print(f'\n* This pokemon is not available in Gen 8 games', file=print_to)
+            print(f'\n* This pokemon is not available in Gen 9 games', file=print_to)
 
         return (species, shiny_link)

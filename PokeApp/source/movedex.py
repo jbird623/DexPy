@@ -1,4 +1,4 @@
-from .pokewrap import PokeMongo8
+from .pokewrap import PokeMongo9
 from .pokehelper import PokemonHelper
 from pprint import pprint
 
@@ -17,7 +17,7 @@ class MoveDex:
             return
 
         if m_entry['past_only']:
-            print('[NOTE: This move is not available in the Gen 8 games, bzzzzrt!]\n', file=print_to)
+            print('[NOTE: This move is not available in the Gen 9 games, bzzzzrt!]\n', file=print_to)
 
         print(f'Entry for {m_entry["name"]}:\n', file=print_to)
 
@@ -71,9 +71,9 @@ class MoveDex:
         past_pokemon = False
         if len(levelup_list) == 0 and len(machine_list) == 0 and len(breeding_list) == 0 and len(tutor_list) == 0:
             if len(filters) == 0:
-                print(f'No pokemon can learn {move_name} in Gen 8 games, bzzzzrt!', file=print_to)
+                print(f'No pokemon can learn {move_name} in Gen 9 games, bzzzzrt!', file=print_to)
             else:
-                print(f'No pokemon that fit the specified filters can learn {move_name} in Gen 8 games, bzzzzrt!', file=print_to)
+                print(f'No pokemon that fit the specified filters can learn {move_name} in Gen 9 games, bzzzzrt!', file=print_to)
             return
         if len(levelup_list) > 0:
             print(f'Pokemon that learn {move_name} by level up:', file=print_to)
@@ -113,7 +113,7 @@ class MoveDex:
             print('', file=print_to)
 
         if past_pokemon:
-            print('* Pokemon not available in Gen 8 games.', file=print_to)
+            print('* Pokemon not available in Gen 9 games.', file=print_to)
 
     def do_moves_function(self, pokemon, filters, show_stab=False, max_stab=5, ignore_stats=False, show_coverage=False, max_coverage=3,
                           show_transfers=False, show_past=False, atk_override=None, spa_override=None, def_override=None, accuracy_check=False, ability=None, print_to=None):
@@ -156,7 +156,7 @@ class MoveDex:
                     all_moves[move['_id']] = {'method':'Transfer', 'move':move}
 
         if dex_entry['past_only']:
-            print('[NOTE: This Pokemon is not transferrable to Gen 8 games, bzzzzrt!]\n', file=print_to)
+            print('[NOTE: This Pokemon is not transferrable to Gen 9 games, bzzzzrt!]\n', file=print_to)
 
         if show_stab:
             self.show_stab_moves(max_stab, ignore_stats, dex_entry, all_moves,
@@ -178,7 +178,7 @@ class MoveDex:
         self.show_all_moves(breeding_entries, machine_entries, levelup_entries, tutor_entries, transfer_entries, dex_entry, ability, ignore_stats, print_to)
 
         if show_past:
-            print('* Move not available in Gen 8 games.', file=print_to)
+            print('* Move not available in Gen 9 games.', file=print_to)
 
     def show_all_moves(self, breeding_entries, machine_entries, levelup_entries, tutor_entries, transfer_entries, dex_entry, ability, ignore_stats, print_to):
         print('Level Up Moves:', file=print_to)
@@ -212,7 +212,7 @@ class MoveDex:
                 self.print_move(move, ignore_stats, print_to)
 
         if past_moves:
-            print('\n* Move not available in Gen 8 games.', file=print_to)
+            print('\n* Move not available in Gen 9 games.', file=print_to)
 
     def show_stab_moves(self, max_stab, ignore_stats, dex_entry, all_moves, atk_override, spa_override, def_override, accuracy_check, ability, print_to):
         print(f'Top moves with STAB for {dex_entry["species"]}:', file=print_to)
@@ -603,7 +603,7 @@ class MoveDex:
             self.print_move(move, True, print_to)
 
         if past_moves:
-            print('\n* Move not available in Gen 8 games.', file=print_to)
+            print('\n* Move not available in Gen 9 games.', file=print_to)
 
     def do_random_move_function(self, filters, print_to):
         entries = self.pokemongo.get_move_entries_with_filters(print_to, filters)

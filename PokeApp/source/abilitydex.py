@@ -1,4 +1,4 @@
-from .pokewrap import PokeMongo8
+from .pokewrap import PokeMongo9
 from .pokehelper import PokemonHelper
 from pprint import pprint
 
@@ -16,7 +16,7 @@ class AbilityDex:
             return
 
         if ab['past_only']:
-            print('\n[NOTE: This ability is not available in the Gen 8 games, bzzzzrt!]\n', file=print_to)
+            print('\n[NOTE: This ability is not available in the Gen 9 games, bzzzzrt!]\n', file=print_to)
 
         desc = 'No description available.'
         if 'shortDesc' in ab:
@@ -58,7 +58,7 @@ class AbilityDex:
             print(f'  - {p_name}', file=print_to)
 
         if past_pokemon:
-            print('\n* Pokemon not available in Gen 8 games.', file=print_to)
+            print('\n* Pokemon not available in Gen 9 games.', file=print_to)
 
     def do_random_ability_function(self, print_to):
         # TODO: Maybe filter support here?

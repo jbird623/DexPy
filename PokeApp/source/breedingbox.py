@@ -1,4 +1,4 @@
-from .pokewrap import PokeMongo8
+from .pokewrap import PokeMongo9
 
 class BreedingBox:
     def __init__(self, pokemongo):
