@@ -14247,7 +14247,6 @@ revivalblessing:
   pp: 1
   priority: 0
   secondary: null
-  selfdestruct: ifHit
   shortDesc: Revives a fainted Pokemon to 50% HP.
   slotCondition: revivalblessing
   target: self

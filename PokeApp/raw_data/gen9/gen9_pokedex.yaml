@@ -22,6 +22,7 @@ abomasnow:
   formeOrder:
   - Abomasnow
   - Abomasnow-Mega
+  gen8: true
   heightm: 2.2
   num: 460
   otherFormes:
@@ -58,6 +59,7 @@ abra:
   - human-like
   evos:
   - kadabra
+  gen8: true
   genderRatio:
     F: 0.25
     M: 0.75
@@ -95,6 +97,7 @@ absol:
   formeOrder:
   - Absol
   - Absol-Mega
+  gen8: true
   heightm: 1.2
   isNonstandard: Past
   num: 359
@@ -130,6 +133,7 @@ accelgor:
   - bug
   evoCondition: with a Karrablast
   evoType: trade
+  gen8: true
   heightm: 0.8
   isNonstandard: Past
   num: 617
@@ -164,6 +168,7 @@ aegislash:
   formeOrder:
   - Aegislash
   - Aegislash-Blade
+  gen8: true
   heightm: 1.7
   isNonstandard: Past
   num: 681
@@ -202,6 +207,7 @@ aerodactyl:
   formeOrder:
   - Aerodactyl
   - Aerodactyl-Mega
+  gen8: true
   genderRatio:
     F: 0.125
     M: 0.875
@@ -243,6 +249,7 @@ aggron:
   formeOrder:
   - Aggron
   - Aggron-Mega
+  gen8: true
   heightm: 2.1
   isNonstandard: Past
   num: 306
@@ -280,6 +287,7 @@ aipom:
   - field
   evos:
   - ambipom
+  gen8: false
   heightm: 0.8
   isNonstandard: Past
   num: 190
@@ -315,6 +323,7 @@ alakazam:
   formeOrder:
   - Alakazam
   - Alakazam-Mega
+  gen8: true
   genderRatio:
     F: 0.25
     M: 0.75
@@ -374,6 +383,7 @@ alcremie:
   - Alcremie-Ruby-Swirl
   - Alcremie-Caramel-Swirl
   - Alcremie-Rainbow-Swirl
+  gen8: true
   gender: F
   heightm: 0.3
   isNonstandard: Past
@@ -408,6 +418,7 @@ alomomola:
   eggGroups:
   - water1
   - water2
+  gen8: false
   heightm: 1.2
   num: 594
   past_only: false
@@ -441,6 +452,7 @@ altaria:
   formeOrder:
   - Altaria
   - Altaria-Mega
+  gen8: true
   heightm: 1.1
   num: 334
   otherFormes:
@@ -475,6 +487,7 @@ amaura:
   - monster
   evos:
   - aurorus
+  gen8: true
   genderRatio:
     F: 0.125
     M: 0.875
@@ -512,6 +525,7 @@ ambipom:
   - field
   evoMove: Double Hit
   evoType: levelMove
+  gen8: false
   heightm: 1.2
   isNonstandard: Past
   num: 424
@@ -543,6 +557,7 @@ amoonguss:
   eggGroups:
   - grass
   evoLevel: 39
+  gen8: true
   heightm: 0.6
   num: 591
   past_only: false
@@ -578,6 +593,7 @@ ampharos:
   formeOrder:
   - Ampharos
   - Ampharos-Mega
+  gen8: false
   heightm: 1.4
   num: 181
   otherFormes:
@@ -613,6 +629,7 @@ annihilape:
   - field
   evoCondition: Use Rage Fist 20 times and level-up
   evoType: other
+  gen8: false
   heightm: 1.2
   num: 1010
   past_only: false
@@ -645,6 +662,7 @@ anorith:
   - water3
   evos:
   - armaldo
+  gen8: true
   genderRatio:
     F: 0.125
     M: 0.875
@@ -684,6 +702,7 @@ appletun:
   - dragon
   evoItem: Sweet Apple
   evoType: useItem
+  gen8: true
   heightm: 0.4
   num: 842
   past_only: false
@@ -720,6 +739,7 @@ applin:
   evos:
   - flapple
   - appletun
+  gen8: true
   heightm: 0.2
   num: 840
   past_only: false
@@ -754,6 +774,7 @@ araquanid:
   formeOrder:
   - Araquanid
   - Araquanid-Totem
+  gen8: true
   heightm: 1.8
   isNonstandard: Past
   num: 752
@@ -791,6 +812,7 @@ arbok:
   - field
   - dragon
   evoLevel: 22
+  gen8: false
   heightm: 3.5
   isNonstandard: Past
   num: 24
@@ -822,6 +844,7 @@ arboliva:
   eggGroups:
   - grass
   evoLevel: 35
+  gen8: false
   heightm: 1.4
   num: 937
   past_only: false
@@ -859,6 +882,7 @@ arcanine:
   formeOrder:
   - Arcanine
   - Arcanine-Hisui
+  gen8: true
   genderRatio:
     F: 0.25
     M: 0.75
@@ -899,6 +923,7 @@ arcaninehisui:
   evoItem: Fire Stone
   evoType: useItem
   forme: Hisui
+  gen8: false
   genderRatio:
     F: 0.25
     M: 0.75
@@ -951,6 +976,7 @@ arceus:
   - Arceus-Dragon
   - Arceus-Dark
   - Arceus-Fairy
+  gen8: false
   gender: N
   heightm: 3.2
   isNonstandard: Unobtainable
@@ -1002,6 +1028,7 @@ archen:
   - water3
   evos:
   - archeops
+  gen8: true
   genderRatio:
     F: 0.125
     M: 0.875
@@ -1035,6 +1062,7 @@ archeops:
   - flying
   - water3
   evoLevel: 37
+  gen8: true
   genderRatio:
     F: 0.125
     M: 0.875
@@ -1073,6 +1101,7 @@ arctibax:
   evoLevel: 35
   evos:
   - baxcalibur
+  gen8: false
   heightm: 0.8
   num: 950
   past_only: false
@@ -1105,6 +1134,7 @@ arctovish:
   color: Blue
   eggGroups:
   - undiscovered
+  gen8: true
   gender: N
   heightm: 2
   isNonstandard: Past
@@ -1138,6 +1168,7 @@ arctozolt:
   color: Blue
   eggGroups:
   - undiscovered
+  gen8: true
   gender: N
   heightm: 2.3
   isNonstandard: Past
@@ -1172,6 +1203,7 @@ ariados:
   eggGroups:
   - bug
   evoLevel: 22
+  gen8: false
   heightm: 1.1
   isNonstandard: Past
   num: 168
@@ -1204,6 +1236,7 @@ armaldo:
   eggGroups:
   - water3
   evoLevel: 40
+  gen8: true
   genderRatio:
     F: 0.125
     M: 0.875
@@ -1240,6 +1273,7 @@ armarouge:
   - human-like
   evoItem: Auspicious Armor
   evoType: useItem
+  gen8: false
   heightm: 1.5
   num: 1004
   past_only: false
@@ -1272,6 +1306,7 @@ aromatisse:
   - fairy
   evoItem: Sachet
   evoType: trade
+  gen8: true
   heightm: 0.8
   isNonstandard: Past
   num: 683
@@ -1306,6 +1341,7 @@ aron:
   - monster
   evos:
   - lairon
+  gen8: true
   heightm: 0.4
   isNonstandard: Past
   num: 304
@@ -1338,6 +1374,7 @@ arrokuda:
   - water2
   evos:
   - barraskewda
+  gen8: true
   heightm: 0.5
   num: 846
   past_only: false
@@ -1369,6 +1406,7 @@ articuno:
   formeOrder:
   - Articuno
   - Articuno-Galar
+  gen8: true
   gender: N
   heightm: 1.7
   isNonstandard: Unobtainable
@@ -1404,6 +1442,7 @@ articunogalar:
   eggGroups:
   - undiscovered
   forme: Galar
+  gen8: true
   gender: N
   heightm: 1.7
   isNonstandard: Unobtainable
@@ -1440,6 +1479,7 @@ audino:
   formeOrder:
   - Audino
   - Audino-Mega
+  gen8: true
   heightm: 1.1
   isNonstandard: Past
   num: 531
@@ -1473,6 +1513,7 @@ aurorus:
   - monster
   evoCondition: at night
   evoLevel: 39
+  gen8: true
   genderRatio:
     F: 0.125
     M: 0.875
@@ -1514,6 +1555,7 @@ avalugg:
   formeOrder:
   - Avalugg
   - Avalugg-Hisui
+  gen8: true
   heightm: 2
   num: 713
   otherFormes:
@@ -1551,6 +1593,7 @@ avalugghisui:
   - mineral
   evoLevel: 37
   forme: Hisui
+  gen8: false
   heightm: 1.4
   isNonstandard: Unobtainable
   num: 713
@@ -1587,6 +1630,7 @@ axew:
   - dragon
   evos:
   - fraxure
+  gen8: true
   heightm: 0.6
   num: 610
   past_only: false
@@ -1613,6 +1657,7 @@ azelf:
   color: Blue
   eggGroups:
   - undiscovered
+  gen8: true
   gender: N
   heightm: 0.3
   isNonstandard: Unobtainable
@@ -1649,6 +1694,7 @@ azumarill:
   - water1
   - fairy
   evoLevel: 18
+  gen8: true
   heightm: 0.8
   num: 184
   past_only: false
@@ -1684,6 +1730,7 @@ azurill:
   - undiscovered
   evos:
   - marill
+  gen8: true
   genderRatio:
     F: 0.75
     M: 0.25
@@ -1718,6 +1765,7 @@ bagon:
   - dragon
   evos:
   - shelgon
+  gen8: true
   heightm: 0.6
   num: 371
   past_only: false
@@ -1746,6 +1794,7 @@ baltoy:
   - mineral
   evos:
   - claydol
+  gen8: true
   gender: N
   heightm: 0.5
   isNonstandard: Past
@@ -1783,6 +1832,7 @@ banette:
   formeOrder:
   - Banette
   - Banette-Mega
+  gen8: false
   heightm: 1.1
   num: 354
   otherFormes:
@@ -1817,6 +1867,7 @@ barbaracle:
   eggGroups:
   - water3
   evoLevel: 39
+  gen8: true
   heightm: 1.3
   isNonstandard: Past
   num: 689
@@ -1852,6 +1903,7 @@ barboach:
   - water2
   evos:
   - whiscash
+  gen8: true
   heightm: 0.4
   num: 339
   past_only: false
@@ -1882,6 +1934,7 @@ barraskewda:
   eggGroups:
   - water2
   evoLevel: 26
+  gen8: true
   heightm: 1.3
   num: 847
   past_only: false
@@ -1919,6 +1972,7 @@ basculegion:
   formeOrder:
   - Basculegion
   - Basculegion-F
+  gen8: false
   gender: M
   heightm: 3
   isNonstandard: Unobtainable
@@ -1959,6 +2013,7 @@ basculegionf:
   evoCondition: Receive 294+ recoil without fainting
   evoType: other
   forme: F
+  gen8: false
   gender: F
   heightm: 3
   isNonstandard: Unobtainable
@@ -1998,6 +2053,7 @@ basculin:
   - Basculin
   - Basculin-Blue-Striped
   - Basculin-White-Striped
+  gen8: true
   heightm: 1
   num: 550
   otherFormes:
@@ -2037,6 +2093,7 @@ basculinwhitestriped:
   - basculegionf
   forme: White-Striped
   gen: 8
+  gen8: false
   heightm: 1
   isNonstandard: Unobtainable
   num: 550
@@ -2067,6 +2124,7 @@ bastiodon:
   eggGroups:
   - monster
   evoLevel: 30
+  gen8: false
   genderRatio:
     F: 0.125
     M: 0.875
@@ -2103,6 +2161,7 @@ baxcalibur:
   - dragon
   - mineral
   evoLevel: 54
+  gen8: false
   heightm: 2.1
   num: 951
   past_only: false
@@ -2137,6 +2196,7 @@ bayleef:
   evoLevel: 16
   evos:
   - meganium
+  gen8: false
   genderRatio:
     F: 0.125
     M: 0.875
@@ -2173,6 +2233,7 @@ beartic:
   eggGroups:
   - field
   evoLevel: 37
+  gen8: true
   heightm: 2.6
   num: 614
   past_only: false
@@ -2203,6 +2264,7 @@ beautifly:
   eggGroups:
   - bug
   evoLevel: 10
+  gen8: false
   heightm: 1
   isNonstandard: Past
   num: 267
@@ -2238,6 +2300,7 @@ beedrill:
   formeOrder:
   - Beedrill
   - Beedrill-Mega
+  gen8: false
   heightm: 1
   isNonstandard: Past
   num: 15
@@ -2274,6 +2337,7 @@ beheeyem:
   eggGroups:
   - human-like
   evoLevel: 42
+  gen8: true
   heightm: 1
   isNonstandard: Past
   num: 606
@@ -2306,6 +2370,7 @@ beldum:
   - mineral
   evos:
   - metang
+  gen8: true
   gender: N
   heightm: 0.6
   isNonstandard: Past
@@ -2341,6 +2406,7 @@ bellibolt:
   - water1
   evoItem: Thunder Stone
   evoType: useItem
+  gen8: false
   heightm: 1.2
   num: 941
   past_only: false
@@ -2372,6 +2438,7 @@ bellossom:
   - grass
   evoItem: Sun Stone
   evoType: useItem
+  gen8: true
   heightm: 0.4
   isNonstandard: Past
   num: 182
@@ -2404,6 +2471,7 @@ bellsprout:
   - grass
   evos:
   - weepinbell
+  gen8: false
   heightm: 0.7
   isNonstandard: Past
   num: 69
@@ -2440,6 +2508,7 @@ bergmite:
   evos:
   - avalugg
   - avalugghisui
+  gen8: true
   heightm: 1
   num: 712
   past_only: false
@@ -2471,6 +2540,7 @@ bewear:
   eggGroups:
   - field
   evoLevel: 27
+  gen8: true
   heightm: 2.1
   isNonstandard: Past
   num: 760
@@ -2506,6 +2576,7 @@ bibarel:
   - water1
   - field
   evoLevel: 15
+  gen8: false
   heightm: 1
   isNonstandard: Past
   num: 400
@@ -2542,6 +2613,7 @@ bidoof:
   - field
   evos:
   - bibarel
+  gen8: false
   heightm: 0.5
   isNonstandard: Past
   num: 399
@@ -2575,6 +2647,7 @@ binacle:
   - water3
   evos:
   - barbaracle
+  gen8: true
   heightm: 0.5
   isNonstandard: Past
   num: 688
@@ -2610,6 +2683,7 @@ bisharp:
   evoLevel: 52
   evos:
   - kingambit
+  gen8: true
   heightm: 1.6
   num: 625
   past_only: false
@@ -2638,6 +2712,7 @@ blacephalon:
   color: White
   eggGroups:
   - undiscovered
+  gen8: true
   gender: N
   heightm: 1.8
   isNonstandard: Past
@@ -2677,6 +2752,7 @@ blastoise:
   formeOrder:
   - Blastoise
   - Blastoise-Mega
+  gen8: true
   genderRatio:
     F: 0.125
     M: 0.875
@@ -2716,6 +2792,7 @@ blaziken:
   formeOrder:
   - Blaziken
   - Blaziken-Mega
+  gen8: true
   genderRatio:
     F: 0.125
     M: 0.875
@@ -2756,6 +2833,7 @@ blipbug:
   - bug
   evos:
   - dottler
+  gen8: true
   heightm: 0.4
   isNonstandard: Past
   num: 824
@@ -2788,6 +2866,7 @@ blissey:
   eggGroups:
   - fairy
   evoType: levelFriendship
+  gen8: true
   gender: F
   heightm: 1.5
   num: 242
@@ -2822,6 +2901,7 @@ blitzle:
   - field
   evos:
   - zebstrika
+  gen8: false
   heightm: 0.8
   isNonstandard: Past
   num: 522
@@ -2856,6 +2936,7 @@ boldore:
   evoLevel: 25
   evos:
   - gigalith
+  gen8: true
   heightm: 0.9
   isNonstandard: Past
   num: 525
@@ -2887,6 +2968,7 @@ boltund:
   eggGroups:
   - field
   evoLevel: 25
+  gen8: true
   heightm: 1
   isNonstandard: Past
   num: 836
@@ -2919,6 +3001,7 @@ bombirdier:
   color: White
   eggGroups:
   - flying
+  gen8: false
   heightm: 1.5
   num: 959
   past_only: false
@@ -2953,6 +3036,7 @@ bonsly:
   - undiscovered
   evos:
   - sudowoodo
+  gen8: true
   heightm: 0.5
   num: 438
   past_only: false
@@ -2983,6 +3067,7 @@ bouffalant:
   color: Brown
   eggGroups:
   - field
+  gen8: true
   heightm: 1.6
   isNonstandard: Past
   num: 626
@@ -3016,6 +3101,7 @@ bounsweet:
   - grass
   evos:
   - steenee
+  gen8: true
   gender: F
   heightm: 0.3
   num: 761
@@ -3048,6 +3134,7 @@ braixen:
   evoLevel: 16
   evos:
   - delphox
+  gen8: false
   genderRatio:
     F: 0.125
     M: 0.875
@@ -3083,6 +3170,7 @@ brambleghast:
   - grass
   evoCondition: Walk 1000 steps in Let's Go
   evoType: other
+  gen8: false
   heightm: 1.2
   num: 975
   past_only: false
@@ -3115,6 +3203,7 @@ bramblin:
   - grass
   evos:
   - brambleghast
+  gen8: false
   heightm: 0.6
   num: 974
   past_only: false
@@ -3150,6 +3239,7 @@ braviary:
   formeOrder:
   - Braviary
   - Braviary-Hisui
+  gen8: true
   gender: M
   heightm: 1.5
   num: 628
@@ -3188,6 +3278,7 @@ braviaryhisui:
   - flying
   evoLevel: 54
   forme: Hisui
+  gen8: false
   gender: M
   heightm: 1.7
   isNonstandard: Unobtainable
@@ -3224,6 +3315,7 @@ breloom:
   - fairy
   - grass
   evoLevel: 23
+  gen8: false
   heightm: 1.2
   num: 286
   past_only: false
@@ -3258,6 +3350,7 @@ brionne:
   evoLevel: 17
   evos:
   - primarina
+  gen8: true
   genderRatio:
     F: 0.125
     M: 0.875
@@ -3294,6 +3387,7 @@ bronzong:
   eggGroups:
   - mineral
   evoLevel: 33
+  gen8: true
   gender: N
   heightm: 1.3
   num: 437
@@ -3329,6 +3423,7 @@ bronzor:
   - mineral
   evos:
   - bronzong
+  gen8: true
   gender: N
   heightm: 0.5
   num: 436
@@ -3357,6 +3452,7 @@ brutebonnet:
   color: Gray
   eggGroups:
   - undiscovered
+  gen8: false
   gender: N
   heightm: 1.2
   num: 979
@@ -3389,6 +3485,7 @@ bruxish:
   color: Pink
   eggGroups:
   - water2
+  gen8: false
   heightm: 0.9
   num: 779
   past_only: false
@@ -3423,6 +3520,7 @@ budew:
   - undiscovered
   evos:
   - roselia
+  gen8: true
   heightm: 0.2
   isNonstandard: Past
   num: 406
@@ -3456,6 +3554,7 @@ buizel:
   - field
   evos:
   - floatzel
+  gen8: false
   heightm: 0.7
   num: 418
   past_only: false
@@ -3487,6 +3586,7 @@ bulbasaur:
   - grass
   evos:
   - ivysaur
+  gen8: true
   genderRatio:
     F: 0.125
     M: 0.875
@@ -3525,6 +3625,7 @@ buneary:
   - human-like
   evos:
   - lopunny
+  gen8: true
   heightm: 0.4
   isNonstandard: Past
   num: 427
@@ -3558,6 +3659,7 @@ bunnelby:
   - field
   evos:
   - diggersby
+  gen8: true
   heightm: 0.4
   isNonstandard: Past
   num: 659
@@ -3600,6 +3702,7 @@ burmy:
   - Burmy
   - Burmy-Sandy
   - Burmy-Trash
+  gen8: false
   heightm: 0.2
   isNonstandard: Past
   num: 412
@@ -3631,6 +3734,7 @@ butterfree:
   eggGroups:
   - bug
   evoLevel: 10
+  gen8: true
   heightm: 1.1
   isNonstandard: Past
   num: 12
@@ -3660,6 +3764,7 @@ buzzwole:
   color: Red
   eggGroups:
   - undiscovered
+  gen8: true
   gender: N
   heightm: 2.4
   isNonstandard: Past
@@ -3696,6 +3801,7 @@ cacnea:
   - human-like
   evos:
   - cacturne
+  gen8: false
   heightm: 0.4
   num: 331
   past_only: false
@@ -3726,6 +3832,7 @@ cacturne:
   - grass
   - human-like
   evoLevel: 32
+  gen8: false
   heightm: 1.3
   num: 332
   past_only: false
@@ -3758,6 +3865,7 @@ calyrex:
   - Calyrex
   - Calyrex-Ice
   - Calyrex-Shadow
+  gen8: true
   gender: N
   heightm: 1.1
   isNonstandard: Unobtainable
@@ -3795,6 +3903,7 @@ calyrexice:
   eggGroups:
   - undiscovered
   forme: Ice
+  gen8: true
   gender: N
   heightm: 2.4
   isNonstandard: Unobtainable
@@ -3827,6 +3936,7 @@ calyrexshadow:
   eggGroups:
   - undiscovered
   forme: Shadow
+  gen8: true
   gender: N
   heightm: 2.4
   isNonstandard: Unobtainable
@@ -3864,6 +3974,7 @@ camerupt:
   formeOrder:
   - Camerupt
   - Camerupt-Mega
+  gen8: false
   heightm: 1.9
   num: 323
   otherFormes:
@@ -3900,6 +4011,7 @@ capsakid:
   - grass
   evos:
   - scovillain
+  gen8: false
   heightm: 0.3
   num: 938
   past_only: false
@@ -3929,6 +4041,7 @@ carbink:
   eggGroups:
   - fairy
   - mineral
+  gen8: true
   gender: N
   heightm: 0.3
   isNonstandard: Unobtainable
@@ -3965,6 +4078,7 @@ carkol:
   evoLevel: 18
   evos:
   - coalossal
+  gen8: true
   heightm: 1.1
   num: 838
   past_only: false
@@ -3993,6 +4107,7 @@ carnivine:
   color: Green
   eggGroups:
   - grass
+  gen8: false
   heightm: 1.4
   isNonstandard: Past
   num: 455
@@ -4026,6 +4141,7 @@ carracosta:
   - water1
   - water3
   evoLevel: 37
+  gen8: true
   genderRatio:
     F: 0.125
     M: 0.875
@@ -4062,6 +4178,7 @@ carvanha:
   - water2
   evos:
   - sharpedo
+  gen8: true
   heightm: 0.8
   isNonstandard: Past
   num: 318
@@ -4093,6 +4210,7 @@ cascoon:
   evoLevel: 7
   evos:
   - dustox
+  gen8: false
   heightm: 0.7
   isNonstandard: Past
   num: 268
@@ -4127,6 +4245,7 @@ castform:
   - Castform-Sunny
   - Castform-Rainy
   - Castform-Snowy
+  gen8: false
   heightm: 0.3
   isNonstandard: Past
   num: 351
@@ -4162,6 +4281,7 @@ caterpie:
   - bug
   evos:
   - metapod
+  gen8: true
   heightm: 0.3
   isNonstandard: Past
   num: 10
@@ -4189,6 +4309,7 @@ celebi:
   color: Green
   eggGroups:
   - undiscovered
+  gen8: true
   gender: N
   heightm: 0.6
   isNonstandard: Past
@@ -4220,6 +4341,7 @@ celesteela:
   color: Green
   eggGroups:
   - undiscovered
+  gen8: true
   gender: N
   heightm: 9.2
   isNonstandard: Past
@@ -4257,6 +4379,7 @@ centiskorch:
   eggGroups:
   - bug
   evoLevel: 28
+  gen8: true
   heightm: 3
   isNonstandard: Past
   num: 851
@@ -4290,6 +4413,7 @@ ceruledge:
   - human-like
   evoItem: Malicious Armor
   evoType: useItem
+  gen8: false
   heightm: 1.6
   num: 1005
   past_only: false
@@ -4324,6 +4448,7 @@ cetitan:
   - field
   evoItem: Ice Stone
   evoType: useItem
+  gen8: false
   heightm: 4.5
   num: 948
   past_only: false
@@ -4357,6 +4482,7 @@ cetoddle:
   - field
   evos:
   - cetitan
+  gen8: false
   heightm: 1.2
   num: 947
   past_only: false
@@ -4389,6 +4515,7 @@ chandelure:
   - amorphous
   evoItem: Dusk Stone
   evoType: useItem
+  gen8: true
   heightm: 1
   isNonstandard: Past
   num: 609
@@ -4428,6 +4555,7 @@ chansey:
   evoType: levelHold
   evos:
   - blissey
+  gen8: true
   gender: F
   heightm: 1.1
   num: 113
@@ -4461,6 +4589,7 @@ charcadet:
   evos:
   - armarouge
   - ceruledge
+  gen8: false
   heightm: 0.6
   num: 1003
   past_only: false
@@ -4496,6 +4625,7 @@ charizard:
   - Charizard
   - Charizard-Mega-X
   - Charizard-Mega-Y
+  gen8: true
   genderRatio:
     F: 0.125
     M: 0.875
@@ -4534,6 +4664,7 @@ charjabug:
   evoLevel: 20
   evos:
   - vikavolt
+  gen8: true
   heightm: 0.5
   isNonstandard: Past
   num: 737
@@ -4568,6 +4699,7 @@ charmander:
   - dragon
   evos:
   - charmeleon
+  gen8: true
   genderRatio:
     F: 0.125
     M: 0.875
@@ -4604,6 +4736,7 @@ charmeleon:
   evoLevel: 16
   evos:
   - charizard
+  gen8: true
   genderRatio:
     F: 0.125
     M: 0.875
@@ -4639,6 +4772,7 @@ chatot:
   color: Black
   eggGroups:
   - flying
+  gen8: false
   heightm: 0.5
   isNonstandard: Past
   num: 441
@@ -4673,6 +4807,7 @@ cherrim:
   formeOrder:
   - Cherrim
   - Cherrim-Sunshine
+  gen8: true
   heightm: 0.5
   isNonstandard: Past
   num: 421
@@ -4706,6 +4841,7 @@ cherubi:
   - grass
   evos:
   - cherrim
+  gen8: true
   heightm: 0.4
   isNonstandard: Past
   num: 420
@@ -4736,6 +4872,7 @@ chesnaught:
   eggGroups:
   - field
   evoLevel: 36
+  gen8: false
   genderRatio:
     F: 0.125
     M: 0.875
@@ -4772,6 +4909,7 @@ chespin:
   - field
   evos:
   - quilladin
+  gen8: false
   genderRatio:
     F: 0.125
     M: 0.875
@@ -4809,6 +4947,7 @@ chewtle:
   - water1
   evos:
   - drednaw
+  gen8: true
   heightm: 0.3
   num: 833
   past_only: false
@@ -4835,6 +4974,7 @@ chienpao:
   color: White
   eggGroups:
   - undiscovered
+  gen8: false
   gender: N
   heightm: 1.9
   num: 995
@@ -4870,6 +5010,7 @@ chikorita:
   - grass
   evos:
   - bayleef
+  gen8: false
   genderRatio:
     F: 0.125
     M: 0.875
@@ -4905,6 +5046,7 @@ chimchar:
   - human-like
   evos:
   - monferno
+  gen8: false
   genderRatio:
     F: 0.125
     M: 0.875
@@ -4938,6 +5080,7 @@ chimecho:
   - amorphous
   evoCondition: at night
   evoType: levelFriendship
+  gen8: false
   heightm: 0.6
   isNonstandard: Past
   num: 358
@@ -4972,6 +5115,7 @@ chinchou:
   - water2
   evos:
   - lanturn
+  gen8: true
   heightm: 0.5
   isNonstandard: Past
   num: 170
@@ -5003,6 +5147,7 @@ chingling:
   - undiscovered
   evos:
   - chimecho
+  gen8: false
   heightm: 0.2
   isNonstandard: Past
   num: 433
@@ -5030,6 +5175,7 @@ chiyu:
   color: Red
   eggGroups:
   - undiscovered
+  gen8: false
   gender: N
   heightm: 0.4
   num: 997
@@ -5066,6 +5212,7 @@ cinccino:
   - field
   evoItem: Shiny Stone
   evoType: useItem
+  gen8: true
   genderRatio:
     F: 0.75
     M: 0.25
@@ -5102,6 +5249,7 @@ cinderace:
   - field
   - human-like
   evoLevel: 35
+  gen8: true
   genderRatio:
     F: 0.125
     M: 0.875
@@ -5138,6 +5286,7 @@ clamperl:
   evos:
   - huntail
   - gorebyss
+  gen8: false
   heightm: 0.4
   isNonstandard: Past
   num: 366
@@ -5168,6 +5317,7 @@ clauncher:
   - water3
   evos:
   - clawitzer
+  gen8: true
   heightm: 0.5
   num: 692
   past_only: false
@@ -5196,6 +5346,7 @@ clawitzer:
   - water1
   - water3
   evoLevel: 37
+  gen8: true
   heightm: 1.3
   num: 693
   past_only: false
@@ -5224,6 +5375,7 @@ claydol:
   eggGroups:
   - mineral
   evoLevel: 36
+  gen8: true
   gender: N
   heightm: 1.5
   isNonstandard: Past
@@ -5260,6 +5412,7 @@ clefable:
   - fairy
   evoItem: Moon Stone
   evoType: useItem
+  gen8: true
   genderRatio:
     F: 0.75
     M: 0.25
@@ -5298,6 +5451,7 @@ clefairy:
   evoType: levelFriendship
   evos:
   - clefable
+  gen8: true
   genderRatio:
     F: 0.75
     M: 0.25
@@ -5336,6 +5490,7 @@ cleffa:
   - undiscovered
   evos:
   - clefairy
+  gen8: true
   genderRatio:
     F: 0.75
     M: 0.25
@@ -5371,6 +5526,7 @@ clobbopus:
   - human-like
   evos:
   - grapploct
+  gen8: true
   heightm: 0.6
   isNonstandard: Past
   num: 852
@@ -5404,6 +5560,7 @@ clodsire:
   - water1
   - field
   evoLevel: 20
+  gen8: false
   heightm: 1.8
   num: 1009
   past_only: false
@@ -5438,6 +5595,7 @@ cloyster:
   - water3
   evoItem: Water Stone
   evoType: useItem
+  gen8: true
   heightm: 1.5
   num: 91
   past_only: false
@@ -5472,6 +5630,7 @@ coalossal:
   eggGroups:
   - mineral
   evoLevel: 34
+  gen8: true
   heightm: 2.8
   num: 839
   past_only: false
@@ -5500,6 +5659,7 @@ cobalion:
   color: Blue
   eggGroups:
   - undiscovered
+  gen8: true
   gender: N
   heightm: 2.1
   isNonstandard: Past
@@ -5533,6 +5693,7 @@ cofagrigus:
   - mineral
   - amorphous
   evoLevel: 34
+  gen8: true
   heightm: 1.7
   isNonstandard: Past
   num: 563
@@ -5565,6 +5726,7 @@ combee:
   - bug
   evos:
   - vespiquen
+  gen8: true
   genderRatio:
     F: 0.125
     M: 0.875
@@ -5600,6 +5762,7 @@ combusken:
   evoLevel: 16
   evos:
   - blaziken
+  gen8: true
   genderRatio:
     F: 0.125
     M: 0.875
@@ -5636,6 +5799,7 @@ comfey:
   color: Green
   eggGroups:
   - grass
+  gen8: true
   genderRatio:
     F: 0.75
     M: 0.25
@@ -5671,6 +5835,7 @@ conkeldurr:
   eggGroups:
   - human-like
   evoType: trade
+  gen8: true
   genderRatio:
     F: 0.25
     M: 0.75
@@ -5707,6 +5872,7 @@ copperajah:
   - field
   - mineral
   evoLevel: 34
+  gen8: true
   heightm: 3
   num: 879
   past_only: false
@@ -5741,6 +5907,7 @@ corphish:
   - water3
   evos:
   - crawdaunt
+  gen8: true
   heightm: 0.6
   isNonstandard: Past
   num: 341
@@ -5776,6 +5943,7 @@ corsola:
   formeOrder:
   - Corsola
   - Corsola-Galar
+  gen8: true
   genderRatio:
     F: 0.75
     M: 0.25
@@ -5816,6 +5984,7 @@ corsolagalar:
   evos:
   - cursola
   forme: Galar
+  gen8: true
   genderRatio:
     F: 0.75
     M: 0.25
@@ -5852,6 +6021,7 @@ corviknight:
   eggGroups:
   - flying
   evoLevel: 38
+  gen8: true
   heightm: 2.2
   num: 823
   past_only: false
@@ -5887,6 +6057,7 @@ corvisquire:
   evoLevel: 18
   evos:
   - corviknight
+  gen8: true
   heightm: 0.8
   num: 822
   past_only: false
@@ -5918,6 +6089,7 @@ cosmoem:
   evos:
   - solgaleo
   - lunala
+  gen8: true
   gender: N
   heightm: 0.1
   isNonstandard: Past
@@ -5951,6 +6123,7 @@ cosmog:
   - undiscovered
   evos:
   - cosmoem
+  gen8: true
   gender: N
   heightm: 0.2
   isNonstandard: Past
@@ -5988,6 +6161,7 @@ cottonee:
   - grass
   evos:
   - whimsicott
+  gen8: true
   heightm: 0.3
   isNonstandard: Past
   num: 546
@@ -6022,6 +6196,7 @@ crabominable:
   - water3
   evoCondition: at Mount Lanakila
   evoType: levelExtra
+  gen8: false
   heightm: 1.7
   num: 740
   past_only: false
@@ -6056,6 +6231,7 @@ crabrawler:
   - water3
   evos:
   - crabominable
+  gen8: false
   heightm: 0.6
   num: 739
   past_only: false
@@ -6085,6 +6261,7 @@ cradily:
   eggGroups:
   - water3
   evoLevel: 40
+  gen8: true
   genderRatio:
     F: 0.125
     M: 0.875
@@ -6122,6 +6299,7 @@ cramorant:
   - Cramorant
   - Cramorant-Gulping
   - Cramorant-Gorging
+  gen8: true
   heightm: 0.8
   isNonstandard: Past
   num: 845
@@ -6157,6 +6335,7 @@ cranidos:
   - monster
   evos:
   - rampardos
+  gen8: false
   genderRatio:
     F: 0.125
     M: 0.875
@@ -6193,6 +6372,7 @@ crawdaunt:
   - water1
   - water3
   evoLevel: 30
+  gen8: true
   heightm: 1.1
   isNonstandard: Past
   num: 342
@@ -6222,6 +6402,7 @@ cresselia:
   color: Yellow
   eggGroups:
   - undiscovered
+  gen8: true
   gender: F
   heightm: 1.5
   isNonstandard: Unobtainable
@@ -6258,6 +6439,7 @@ croagunk:
   - human-like
   evos:
   - toxicroak
+  gen8: true
   heightm: 0.7
   num: 453
   past_only: false
@@ -6288,6 +6470,7 @@ crobat:
   eggGroups:
   - flying
   evoType: levelFriendship
+  gen8: true
   heightm: 1.8
   isNonstandard: Past
   num: 169
@@ -6322,6 +6505,7 @@ crocalor:
   evoLevel: 16
   evos:
   - skeledirge
+  gen8: false
   genderRatio:
     F: 0.125
     M: 0.875
@@ -6358,6 +6542,7 @@ croconaw:
   evoLevel: 18
   evos:
   - feraligatr
+  gen8: false
   genderRatio:
     F: 0.125
     M: 0.875
@@ -6395,6 +6580,7 @@ crustle:
   - bug
   - mineral
   evoLevel: 34
+  gen8: true
   heightm: 1.4
   isNonstandard: Past
   num: 558
@@ -6424,6 +6610,7 @@ cryogonal:
   color: Blue
   eggGroups:
   - mineral
+  gen8: true
   gender: N
   heightm: 1.1
   num: 615
@@ -6457,6 +6644,7 @@ cubchoo:
   - field
   evos:
   - beartic
+  gen8: true
   heightm: 0.5
   num: 613
   past_only: false
@@ -6490,6 +6678,7 @@ cubone:
   evos:
   - marowak
   - marowakalola
+  gen8: true
   heightm: 0.4
   isNonstandard: Past
   num: 104
@@ -6522,6 +6711,7 @@ cufant:
   - mineral
   evos:
   - copperajah
+  gen8: true
   heightm: 1.2
   num: 878
   past_only: false
@@ -6552,6 +6742,7 @@ cursola:
   - water1
   - water3
   evoLevel: 38
+  gen8: true
   genderRatio:
     F: 0.75
     M: 0.25
@@ -6590,6 +6781,7 @@ cutiefly:
   - fairy
   evos:
   - ribombee
+  gen8: true
   heightm: 0.1
   isNonstandard: Past
   num: 742
@@ -6620,6 +6812,7 @@ cyclizar:
   color: Green
   eggGroups:
   - field
+  gen8: false
   heightm: 1.6
   num: 953
   past_only: false
@@ -6651,6 +6844,7 @@ cyndaquil:
   - field
   evos:
   - quilava
+  gen8: false
   genderRatio:
     F: 0.125
     M: 0.875
@@ -6685,6 +6879,7 @@ dachsbun:
   - field
   - mineral
   evoLevel: 26
+  gen8: false
   heightm: 0.5
   num: 971
   past_only: false
@@ -6712,6 +6907,7 @@ darkrai:
   color: Black
   eggGroups:
   - undiscovered
+  gen8: false
   gender: N
   heightm: 1.5
   isNonstandard: Past
@@ -6751,6 +6947,7 @@ darmanitan:
   - Darmanitan-Zen
   - Darmanitan-Galar
   - Darmanitan-Galar-Zen
+  gen8: true
   heightm: 1.3
   isNonstandard: Past
   num: 555
@@ -6789,6 +6986,7 @@ darmanitangalar:
   evoItem: Ice Stone
   evoType: useItem
   forme: Galar
+  gen8: true
   heightm: 1.7
   isNonstandard: Past
   num: 555
@@ -6823,6 +7021,7 @@ dartrix:
   evos:
   - decidueye
   - decidueyehisui
+  gen8: true
   genderRatio:
     F: 0.125
     M: 0.875
@@ -6862,6 +7061,7 @@ darumaka:
   formeOrder:
   - Darumaka
   - Darumaka-Galar
+  gen8: true
   heightm: 0.6
   isNonstandard: Past
   num: 554
@@ -6897,6 +7097,7 @@ darumakagalar:
   evos:
   - darmanitangalar
   forme: Galar
+  gen8: true
   heightm: 0.7
   isNonstandard: Past
   num: 554
@@ -6930,6 +7131,7 @@ decidueye:
   formeOrder:
   - Decidueye
   - Decidueye-Hisui
+  gen8: true
   genderRatio:
     F: 0.125
     M: 0.875
@@ -6969,6 +7171,7 @@ decidueyehisui:
   - flying
   evoLevel: 36
   forme: Hisui
+  gen8: false
   genderRatio:
     F: 0.125
     M: 0.875
@@ -7006,6 +7209,7 @@ dedenne:
   eggGroups:
   - field
   - fairy
+  gen8: true
   heightm: 0.2
   num: 702
   past_only: false
@@ -7049,6 +7253,7 @@ deerling:
   - Deerling-Summer
   - Deerling-Autumn
   - Deerling-Winter
+  gen8: false
   heightm: 0.6
   num: 585
   past_only: false
@@ -7078,6 +7283,7 @@ deino:
   - dragon
   evos:
   - zweilous
+  gen8: true
   heightm: 0.8
   num: 633
   past_only: false
@@ -7112,6 +7318,7 @@ delcatty:
   - fairy
   evoItem: Moon Stone
   evoType: useItem
+  gen8: false
   genderRatio:
     F: 0.75
     M: 0.25
@@ -7148,6 +7355,7 @@ delibird:
   eggGroups:
   - water1
   - field
+  gen8: true
   heightm: 0.9
   num: 225
   past_only: false
@@ -7178,6 +7386,7 @@ delphox:
   eggGroups:
   - field
   evoLevel: 36
+  gen8: false
   genderRatio:
     F: 0.125
     M: 0.875
@@ -7216,6 +7425,7 @@ deoxys:
   - Deoxys-Attack
   - Deoxys-Defense
   - Deoxys-Speed
+  gen8: false
   gender: N
   heightm: 1.7
   isNonstandard: Past
@@ -7256,6 +7466,7 @@ dewgong:
   - water1
   - field
   evoLevel: 34
+  gen8: false
   heightm: 1.7
   isNonstandard: Past
   num: 87
@@ -7291,6 +7502,7 @@ dewott:
   evos:
   - samurott
   - samurotthisui
+  gen8: false
   genderRatio:
     F: 0.125
     M: 0.875
@@ -7327,6 +7539,7 @@ dewpider:
   - bug
   evos:
   - araquanid
+  gen8: true
   heightm: 0.3
   isNonstandard: Past
   num: 751
@@ -7355,6 +7568,7 @@ dhelmise:
   color: Green
   eggGroups:
   - mineral
+  gen8: true
   gender: N
   heightm: 3.9
   isNonstandard: Past
@@ -7389,6 +7603,7 @@ dialga:
   formeOrder:
   - Dialga
   - Dialga-Origin
+  gen8: true
   gender: N
   heightm: 5.4
   isNonstandard: Unobtainable
@@ -7427,6 +7642,7 @@ dialgaorigin:
   - undiscovered
   forme: Origin
   gen: 8
+  gen8: false
   gender: N
   heightm: 7
   isNonstandard: Unobtainable
@@ -7459,6 +7675,7 @@ diancie:
   formeOrder:
   - Diancie
   - Diancie-Mega
+  gen8: true
   gender: N
   heightm: 0.7
   isNonstandard: Unobtainable
@@ -7497,6 +7714,7 @@ diggersby:
   eggGroups:
   - field
   evoLevel: 20
+  gen8: true
   heightm: 1
   isNonstandard: Past
   num: 660
@@ -7535,6 +7753,7 @@ diglett:
   formeOrder:
   - Diglett
   - Diglett-Alola
+  gen8: true
   heightm: 0.2
   num: 50
   otherFormes:
@@ -7571,6 +7790,7 @@ diglettalola:
   evos:
   - dugtrioalola
   forme: Alola
+  gen8: true
   heightm: 0.2
   isNonstandard: Unobtainable
   num: 50
@@ -7601,6 +7821,7 @@ ditto:
   color: Purple
   eggGroups:
   - ditto
+  gen8: true
   gender: N
   heightm: 0.3
   num: 132
@@ -7633,6 +7854,7 @@ dodrio:
   eggGroups:
   - flying
   evoLevel: 31
+  gen8: false
   heightm: 1.8
   isNonstandard: Past
   num: 85
@@ -7668,6 +7890,7 @@ doduo:
   - flying
   evos:
   - dodrio
+  gen8: false
   heightm: 1.4
   isNonstandard: Past
   num: 84
@@ -7701,6 +7924,7 @@ dolliv:
   evoLevel: 25
   evos:
   - arboliva
+  gen8: false
   heightm: 0.6
   num: 936
   past_only: false
@@ -7733,6 +7957,7 @@ dondozo:
   color: Blue
   eggGroups:
   - water2
+  gen8: false
   heightm: 12
   num: 931
   past_only: false
@@ -7762,6 +7987,7 @@ donphan:
   eggGroups:
   - field
   evoLevel: 25
+  gen8: false
   heightm: 1.1
   num: 232
   past_only: false
@@ -7796,6 +8022,7 @@ dottler:
   evoLevel: 10
   evos:
   - orbeetle
+  gen8: true
   heightm: 0.4
   isNonstandard: Past
   num: 825
@@ -7828,6 +8055,7 @@ doublade:
   evoLevel: 35
   evos:
   - aegislash
+  gen8: true
   heightm: 0.8
   isNonstandard: Past
   num: 680
@@ -7861,6 +8089,7 @@ dracovish:
   color: Green
   eggGroups:
   - undiscovered
+  gen8: true
   gender: N
   heightm: 2.3
   isNonstandard: Past
@@ -7894,6 +8123,7 @@ dracozolt:
   color: Green
   eggGroups:
   - undiscovered
+  gen8: true
   gender: N
   heightm: 1.8
   isNonstandard: Past
@@ -7929,6 +8159,7 @@ dragalge:
   - water1
   - dragon
   evoLevel: 48
+  gen8: true
   heightm: 1.8
   num: 691
   past_only: false
@@ -7963,6 +8194,7 @@ dragapult:
   - amorphous
   - dragon
   evoLevel: 60
+  gen8: true
   heightm: 3
   num: 887
   past_only: false
@@ -7997,6 +8229,7 @@ dragonair:
   evoLevel: 30
   evos:
   - dragonite
+  gen8: true
   heightm: 4
   num: 148
   past_only: false
@@ -8028,6 +8261,7 @@ dragonite:
   - water1
   - dragon
   evoLevel: 55
+  gen8: true
   heightm: 2.2
   num: 149
   past_only: false
@@ -8064,6 +8298,7 @@ drakloak:
   evoLevel: 50
   evos:
   - dragapult
+  gen8: true
   heightm: 1.4
   num: 886
   past_only: false
@@ -8097,6 +8332,7 @@ drampa:
   eggGroups:
   - monster
   - dragon
+  gen8: true
   heightm: 3
   isNonstandard: Past
   num: 780
@@ -8131,6 +8367,7 @@ drapion:
   - bug
   - water3
   evoLevel: 40
+  gen8: true
   heightm: 1.3
   isNonstandard: Past
   num: 452
@@ -8165,6 +8402,7 @@ dratini:
   - dragon
   evos:
   - dragonair
+  gen8: true
   heightm: 1.8
   num: 147
   past_only: false
@@ -8198,6 +8436,7 @@ drednaw:
   - monster
   - water1
   evoLevel: 22
+  gen8: true
   heightm: 1
   num: 834
   past_only: false
@@ -8233,6 +8472,7 @@ dreepy:
   - dragon
   evos:
   - drakloak
+  gen8: true
   heightm: 0.5
   num: 885
   past_only: false
@@ -8265,6 +8505,7 @@ drifblim:
   eggGroups:
   - amorphous
   evoLevel: 28
+  gen8: true
   heightm: 1.2
   num: 426
   past_only: false
@@ -8299,6 +8540,7 @@ drifloon:
   - amorphous
   evos:
   - drifblim
+  gen8: true
   heightm: 0.4
   num: 425
   past_only: false
@@ -8332,6 +8574,7 @@ drilbur:
   - field
   evos:
   - excadrill
+  gen8: true
   heightm: 0.3
   isNonstandard: Past
   num: 529
@@ -8365,6 +8608,7 @@ drizzile:
   evoLevel: 16
   evos:
   - inteleon
+  gen8: true
   genderRatio:
     F: 0.125
     M: 0.875
@@ -8402,6 +8646,7 @@ drowzee:
   - human-like
   evos:
   - hypno
+  gen8: false
   heightm: 1
   num: 96
   past_only: false
@@ -8433,6 +8678,7 @@ druddigon:
   eggGroups:
   - monster
   - dragon
+  gen8: true
   heightm: 1.6
   isNonstandard: Past
   num: 621
@@ -8465,6 +8711,7 @@ dubwool:
   eggGroups:
   - field
   evoLevel: 24
+  gen8: true
   heightm: 1.3
   isNonstandard: Past
   num: 832
@@ -8500,6 +8747,7 @@ ducklett:
   - flying
   evos:
   - swanna
+  gen8: false
   heightm: 0.5
   isNonstandard: Past
   num: 580
@@ -8538,6 +8786,7 @@ dudunsparce:
   formeOrder:
   - Dudunsparce
   - Dudunsparce-Three-Segment
+  gen8: false
   heightm: 3.6
   num: 917
   otherFormes:
@@ -8575,6 +8824,7 @@ dudunsparcethreesegment:
   evoMove: Hyper Drill
   evoType: levelMove
   forme: Three-Segment
+  gen8: false
   heightm: 4.5
   num: 917
   past_only: false
@@ -8609,6 +8859,7 @@ dugtrio:
   formeOrder:
   - Dugtrio
   - Dugtrio-Alola
+  gen8: true
   heightm: 0.7
   num: 51
   otherFormes:
@@ -8645,6 +8896,7 @@ dugtrioalola:
   - field
   evoLevel: 26
   forme: Alola
+  gen8: true
   heightm: 0.7
   isNonstandard: Unobtainable
   num: 51
@@ -8681,6 +8933,7 @@ dunsparce:
   evos:
   - dudunsparce
   - dudunsparcethreesegment
+  gen8: true
   heightm: 1.5
   num: 206
   past_only: false
@@ -8714,6 +8967,7 @@ duosion:
   evoLevel: 32
   evos:
   - reuniclus
+  gen8: true
   heightm: 0.6
   isNonstandard: Past
   num: 578
@@ -8748,6 +9002,7 @@ duraludon:
   eggGroups:
   - mineral
   - dragon
+  gen8: true
   heightm: 1.8
   isNonstandard: Past
   num: 884
@@ -8780,6 +9035,7 @@ durant:
   color: Gray
   eggGroups:
   - bug
+  gen8: true
   heightm: 0.3
   isNonstandard: Past
   num: 632
@@ -8813,6 +9069,7 @@ dusclops:
   evoLevel: 37
   evos:
   - dusknoir
+  gen8: true
   heightm: 1.6
   isNonstandard: Past
   num: 356
@@ -8845,6 +9102,7 @@ dusknoir:
   - amorphous
   evoItem: Reaper Cloth
   evoType: trade
+  gen8: true
   heightm: 2.2
   isNonstandard: Past
   num: 477
@@ -8877,6 +9135,7 @@ duskull:
   - amorphous
   evos:
   - dusclops
+  gen8: true
   heightm: 0.8
   isNonstandard: Past
   num: 355
@@ -8907,6 +9166,7 @@ dustox:
   eggGroups:
   - bug
   evoLevel: 10
+  gen8: false
   heightm: 1.2
   isNonstandard: Past
   num: 269
@@ -8943,6 +9203,7 @@ dwebble:
   - mineral
   evos:
   - crustle
+  gen8: true
   heightm: 0.3
   isNonstandard: Past
   num: 557
@@ -8974,6 +9235,7 @@ eelektrik:
   evoLevel: 39
   evos:
   - eelektross
+  gen8: false
   heightm: 1.2
   num: 603
   past_only: false
@@ -9003,6 +9265,7 @@ eelektross:
   - amorphous
   evoItem: Thunder Stone
   evoType: useItem
+  gen8: false
   heightm: 2.1
   num: 604
   past_only: false
@@ -9047,6 +9310,7 @@ eevee:
   formeOrder:
   - Eevee
   - Eevee-Starter
+  gen8: true
   genderRatio:
     F: 0.125
     M: 0.875
@@ -9082,6 +9346,7 @@ eiscue:
   formeOrder:
   - Eiscue
   - Eiscue-Noice
+  gen8: true
   heightm: 1.4
   num: 875
   otherFormes:
@@ -9117,6 +9382,7 @@ ekans:
   - dragon
   evos:
   - arbok
+  gen8: false
   heightm: 2
   isNonstandard: Past
   num: 23
@@ -9149,6 +9415,7 @@ eldegoss:
   eggGroups:
   - grass
   evoLevel: 20
+  gen8: true
   heightm: 0.5
   isNonstandard: Past
   num: 830
@@ -9182,6 +9449,7 @@ electabuzz:
   evoLevel: 30
   evos:
   - electivire
+  gen8: true
   genderRatio:
     F: 0.25
     M: 0.75
@@ -9217,6 +9485,7 @@ electivire:
   - human-like
   evoItem: Electirizer
   evoType: trade
+  gen8: true
   genderRatio:
     F: 0.25
     M: 0.75
@@ -9254,6 +9523,7 @@ electrike:
   - field
   evos:
   - manectric
+  gen8: true
   heightm: 0.6
   isNonstandard: Past
   num: 309
@@ -9289,6 +9559,7 @@ electrode:
   formeOrder:
   - Electrode
   - Electrode-Hisui
+  gen8: false
   gender: N
   heightm: 1.2
   num: 101
@@ -9327,6 +9598,7 @@ electrodehisui:
   evoItem: Leaf Stone
   evoType: useItem
   forme: Hisui
+  gen8: false
   gender: N
   heightm: 1.2
   isNonstandard: Unobtainable
@@ -9362,6 +9634,7 @@ elekid:
   - undiscovered
   evos:
   - electabuzz
+  gen8: true
   genderRatio:
     F: 0.25
     M: 0.75
@@ -9398,6 +9671,7 @@ elgyem:
   - human-like
   evos:
   - beheeyem
+  gen8: true
   heightm: 0.5
   isNonstandard: Past
   num: 605
@@ -9428,6 +9702,7 @@ emboar:
   eggGroups:
   - field
   evoLevel: 36
+  gen8: false
   genderRatio:
     F: 0.125
     M: 0.875
@@ -9462,6 +9737,7 @@ emolga:
   color: White
   eggGroups:
   - field
+  gen8: true
   heightm: 0.4
   isNonstandard: Past
   num: 587
@@ -9494,6 +9770,7 @@ empoleon:
   - water1
   - field
   evoLevel: 36
+  gen8: false
   genderRatio:
     F: 0.125
     M: 0.875
@@ -9532,6 +9809,7 @@ enamorus:
   formeOrder:
   - Enamorus
   - Enamorus-Therian
+  gen8: false
   gender: F
   heightm: 1.6
   isNonstandard: Unobtainable
@@ -9567,6 +9845,7 @@ entei:
   color: Brown
   eggGroups:
   - undiscovered
+  gen8: true
   gender: N
   heightm: 2.1
   isNonstandard: Past
@@ -9603,6 +9882,7 @@ escavalier:
   - bug
   evoCondition: with a Shelmet
   evoType: trade
+  gen8: true
   heightm: 1
   isNonstandard: Past
   num: 589
@@ -9637,6 +9917,7 @@ espathra:
   eggGroups:
   - flying
   evoLevel: 35
+  gen8: false
   heightm: 1.9
   num: 927
   past_only: false
@@ -9668,6 +9949,7 @@ espeon:
   - field
   evoCondition: during the day
   evoType: levelFriendship
+  gen8: true
   genderRatio:
     F: 0.125
     M: 0.875
@@ -9705,6 +9987,7 @@ espurr:
   evos:
   - meowstic
   - meowsticf
+  gen8: true
   heightm: 0.3
   isNonstandard: Past
   num: 677
@@ -9736,6 +10019,7 @@ eternatus:
   formeOrder:
   - Eternatus
   - Eternatus-Eternamax
+  gen8: true
   gender: N
   heightm: 20
   isNonstandard: Unobtainable
@@ -9772,6 +10056,7 @@ eternatuseternamax:
   eggGroups:
   - undiscovered
   forme: Eternamax
+  gen8: false
   gender: N
   heightm: 100
   isNonstandard: Past
@@ -9806,6 +10091,7 @@ excadrill:
   eggGroups:
   - field
   evoLevel: 31
+  gen8: true
   heightm: 0.7
   isNonstandard: Past
   num: 530
@@ -9840,6 +10126,7 @@ exeggcute:
   evos:
   - exeggutor
   - exeggutoralola
+  gen8: true
   heightm: 0.4
   isNonstandard: Past
   num: 102
@@ -9875,6 +10162,7 @@ exeggutor:
   formeOrder:
   - Exeggutor
   - Exeggutor-Alola
+  gen8: true
   heightm: 2
   isNonstandard: Past
   num: 103
@@ -9913,6 +10201,7 @@ exeggutoralola:
   evoRegion: Alola
   evoType: useItem
   forme: Alola
+  gen8: true
   heightm: 10.9
   isNonstandard: Past
   num: 103
@@ -9946,6 +10235,7 @@ exploud:
   - monster
   - field
   evoLevel: 40
+  gen8: true
   heightm: 1.5
   isNonstandard: Past
   num: 295
@@ -9977,6 +10267,7 @@ falinks:
   eggGroups:
   - fairy
   - mineral
+  gen8: true
   gender: N
   heightm: 3
   num: 870
@@ -10012,6 +10303,7 @@ farfetchd:
   formeOrder:
   - Farfetchd
   - Farfetchd-Galar
+  gen8: true
   heightm: 0.8
   isNonstandard: Past
   num: 83
@@ -10049,6 +10341,7 @@ farfetchdgalar:
   evos:
   - sirfetchd
   forme: Galar
+  gen8: true
   heightm: 0.8
   isNonstandard: Past
   num: 83
@@ -10082,6 +10375,7 @@ farigiraf:
   - field
   evoMove: Twin Beam
   evoType: levelMove
+  gen8: false
   heightm: 3.2
   num: 928
   past_only: false
@@ -10113,6 +10407,7 @@ fearow:
   eggGroups:
   - flying
   evoLevel: 20
+  gen8: false
   heightm: 1.2
   isNonstandard: Past
   num: 22
@@ -10149,6 +10444,7 @@ feebas:
   - dragon
   evos:
   - milotic
+  gen8: true
   heightm: 0.6
   isNonstandard: Past
   num: 349
@@ -10180,6 +10476,7 @@ fennekin:
   - field
   evos:
   - braixen
+  gen8: false
   genderRatio:
     F: 0.125
     M: 0.875
@@ -10214,6 +10511,7 @@ feraligatr:
   - monster
   - water1
   evoLevel: 30
+  gen8: false
   genderRatio:
     F: 0.125
     M: 0.875
@@ -10248,6 +10546,7 @@ ferroseed:
   - mineral
   evos:
   - ferrothorn
+  gen8: true
   heightm: 0.6
   isNonstandard: Past
   num: 597
@@ -10280,6 +10579,7 @@ ferrothorn:
   - grass
   - mineral
   evoLevel: 40
+  gen8: true
   heightm: 1
   isNonstandard: Past
   num: 598
@@ -10314,6 +10614,7 @@ fidough:
   - mineral
   evos:
   - dachsbun
+  gen8: false
   heightm: 0.3
   num: 970
   past_only: false
@@ -10343,6 +10644,7 @@ finizen:
   - water2
   evos:
   - palafin
+  gen8: false
   heightm: 1.3
   num: 933
   past_only: false
@@ -10375,6 +10677,7 @@ finneon:
   - water2
   evos:
   - lumineon
+  gen8: false
   heightm: 0.4
   num: 456
   past_only: false
@@ -10407,6 +10710,7 @@ flaaffy:
   evoLevel: 15
   evos:
   - ampharos
+  gen8: false
   heightm: 0.8
   num: 180
   past_only: false
@@ -10450,6 +10754,7 @@ flabebe:
   - Flabebe-Orange
   - Flabebe-White
   - Flabebe-Yellow
+  gen8: false
   gender: F
   heightm: 0.1
   num: 669
@@ -10481,6 +10786,7 @@ flamigo:
   color: Pink
   eggGroups:
   - flying
+  gen8: false
   heightm: 1.6
   num: 961
   past_only: false
@@ -10516,6 +10822,7 @@ flapple:
   - dragon
   evoItem: Tart Apple
   evoType: useItem
+  gen8: true
   heightm: 0.3
   num: 841
   past_only: false
@@ -10548,6 +10855,7 @@ flareon:
   - field
   evoItem: Fire Stone
   evoType: useItem
+  gen8: true
   genderRatio:
     F: 0.125
     M: 0.875
@@ -10583,6 +10891,7 @@ fletchinder:
   evoLevel: 17
   evos:
   - talonflame
+  gen8: true
   heightm: 0.7
   num: 662
   past_only: false
@@ -10615,6 +10924,7 @@ fletchling:
   - flying
   evos:
   - fletchinder
+  gen8: true
   heightm: 0.3
   num: 661
   past_only: false
@@ -10648,6 +10958,7 @@ flittle:
   - flying
   evos:
   - espathra
+  gen8: false
   heightm: 0.2
   num: 926
   past_only: false
@@ -10678,6 +10989,7 @@ floatzel:
   - water1
   - field
   evoLevel: 26
+  gen8: false
   heightm: 1.1
   num: 419
   past_only: false
@@ -10723,6 +11035,7 @@ floette:
   - Floette-White
   - Floette-Yellow
   - Floette-Eternal
+  gen8: false
   gender: F
   heightm: 0.2
   num: 670
@@ -10759,6 +11072,7 @@ floragato:
   evoLevel: 16
   evos:
   - meowscarada
+  gen8: false
   genderRatio:
     F: 0.125
     M: 0.875
@@ -10805,6 +11119,7 @@ florges:
   - Florges-Orange
   - Florges-White
   - Florges-Yellow
+  gen8: false
   gender: F
   heightm: 1.1
   num: 671
@@ -10833,6 +11148,7 @@ fluttermane:
   color: Gray
   eggGroups:
   - undiscovered
+  gen8: false
   gender: N
   heightm: 1.4
   num: 983
@@ -10863,6 +11179,7 @@ flygon:
   - bug
   - dragon
   evoLevel: 45
+  gen8: true
   heightm: 2
   isNonstandard: Past
   num: 330
@@ -10896,6 +11213,7 @@ fomantis:
   - grass
   evos:
   - lurantis
+  gen8: true
   heightm: 0.3
   num: 753
   past_only: false
@@ -10926,6 +11244,7 @@ foongus:
   - grass
   evos:
   - amoonguss
+  gen8: true
   heightm: 0.2
   num: 590
   past_only: false
@@ -10956,6 +11275,7 @@ forretress:
   eggGroups:
   - bug
   evoLevel: 31
+  gen8: false
   heightm: 1.2
   num: 205
   past_only: false
@@ -10992,6 +11312,7 @@ fraxure:
   evoLevel: 38
   evos:
   - haxorus
+  gen8: true
   heightm: 1
   num: 611
   past_only: false
@@ -11024,6 +11345,7 @@ frigibax:
   - mineral
   evos:
   - arctibax
+  gen8: false
   heightm: 0.5
   num: 949
   past_only: false
@@ -11057,6 +11379,7 @@ frillish:
   - amorphous
   evos:
   - jellicent
+  gen8: true
   heightm: 1.2
   isNonstandard: Past
   num: 592
@@ -11089,6 +11412,7 @@ froakie:
   - water1
   evos:
   - frogadier
+  gen8: false
   genderRatio:
     F: 0.125
     M: 0.875
@@ -11124,6 +11448,7 @@ frogadier:
   evoLevel: 16
   evos:
   - greninja
+  gen8: false
   genderRatio:
     F: 0.125
     M: 0.875
@@ -11160,6 +11485,7 @@ froslass:
   - mineral
   evoItem: Dawn Stone
   evoType: useItem
+  gen8: true
   gender: F
   heightm: 1.3
   num: 478
@@ -11193,6 +11519,7 @@ frosmoth:
   - bug
   evoCondition: at night
   evoType: levelFriendship
+  gen8: true
   heightm: 1.3
   num: 873
   past_only: false
@@ -11225,6 +11552,7 @@ fuecoco:
   - field
   evos:
   - crocalor
+  gen8: false
   genderRatio:
     F: 0.125
     M: 0.875
@@ -11276,6 +11604,7 @@ furfrou:
   - Furfrou-La Reine
   - Furfrou-Kabuki
   - Furfrou-Pharaoh
+  gen8: false
   heightm: 1.2
   isNonstandard: Past
   num: 676
@@ -11308,6 +11637,7 @@ furret:
   eggGroups:
   - field
   evoLevel: 15
+  gen8: false
   heightm: 1.8
   isNonstandard: Past
   num: 162
@@ -11342,6 +11672,7 @@ gabite:
   evoLevel: 24
   evos:
   - garchomp
+  gen8: true
   heightm: 1.4
   num: 444
   past_only: false
@@ -11380,6 +11711,7 @@ gallade:
   formeOrder:
   - Gallade
   - Gallade-Mega
+  gen8: true
   gender: M
   heightm: 1.6
   num: 475
@@ -11416,6 +11748,7 @@ galvantula:
   eggGroups:
   - bug
   evoLevel: 36
+  gen8: true
   heightm: 0.8
   isNonstandard: Past
   num: 596
@@ -11451,6 +11784,7 @@ garbodor:
   eggGroups:
   - mineral
   evoLevel: 36
+  gen8: true
   heightm: 1.9
   isNonstandard: Past
   num: 569
@@ -11486,6 +11820,7 @@ garchomp:
   formeOrder:
   - Garchomp
   - Garchomp-Mega
+  gen8: true
   heightm: 1.9
   num: 445
   otherFormes:
@@ -11525,6 +11860,7 @@ gardevoir:
   formeOrder:
   - Gardevoir
   - Gardevoir-Mega
+  gen8: true
   heightm: 1.6
   num: 282
   otherFormes:
@@ -11560,6 +11896,7 @@ garganacl:
   eggGroups:
   - mineral
   evoLevel: 38
+  gen8: false
   heightm: 2.5
   num: 965
   past_only: false
@@ -11589,6 +11926,7 @@ gastly:
   - amorphous
   evos:
   - haunter
+  gen8: true
   heightm: 1.3
   num: 92
   past_only: false
@@ -11628,6 +11966,7 @@ gastrodon:
   formeOrder:
   - Gastrodon
   - Gastrodon-East
+  gen8: true
   heightm: 0.9
   num: 423
   past_only: false
@@ -11662,6 +12001,7 @@ genesect:
   - Genesect-Shock
   - Genesect-Burn
   - Genesect-Chill
+  gen8: true
   gender: N
   heightm: 1.5
   isNonstandard: Past
@@ -11703,6 +12043,7 @@ gengar:
   formeOrder:
   - Gengar
   - Gengar-Mega
+  gen8: true
   heightm: 1.5
   num: 94
   otherFormes:
@@ -11742,6 +12083,7 @@ geodude:
   formeOrder:
   - Geodude
   - Geodude-Alola
+  gen8: false
   heightm: 0.4
   isNonstandard: Past
   num: 74
@@ -11780,6 +12122,7 @@ geodudealola:
   evos:
   - graveleralola
   forme: Alola
+  gen8: false
   heightm: 0.4
   isNonstandard: Past
   num: 74
@@ -11810,6 +12153,7 @@ gholdengo:
   - undiscovered
   evoCondition: Give 999 Coins
   evoType: other
+  gen8: false
   gender: N
   heightm: 1.2
   num: 977
@@ -11844,6 +12188,7 @@ gible:
   - dragon
   evos:
   - gabite
+  gen8: true
   heightm: 0.7
   num: 443
   past_only: false
@@ -11876,6 +12221,7 @@ gigalith:
   eggGroups:
   - mineral
   evoType: trade
+  gen8: true
   heightm: 1.7
   isNonstandard: Past
   num: 526
@@ -11910,6 +12256,7 @@ gimmighoul:
   formeOrder:
   - Gimmighoul
   - Gimmighoul-Roaming
+  gen8: false
   gender: N
   heightm: 0.3
   num: 976
@@ -11945,6 +12292,7 @@ girafarig:
   - field
   evos:
   - farigiraf
+  gen8: false
   heightm: 1.5
   num: 203
   past_only: false
@@ -11978,6 +12326,7 @@ giratina:
   formeOrder:
   - Giratina
   - Giratina-Origin
+  gen8: true
   gender: N
   heightm: 4.5
   isNonstandard: Unobtainable
@@ -12015,6 +12364,7 @@ glaceon:
   - field
   evoItem: Ice Stone
   evoType: useItem
+  gen8: true
   genderRatio:
     F: 0.125
     M: 0.875
@@ -12054,6 +12404,7 @@ glalie:
   formeOrder:
   - Glalie
   - Glalie-Mega
+  gen8: true
   heightm: 1.5
   num: 362
   otherFormes:
@@ -12089,6 +12440,7 @@ glameow:
   - field
   evos:
   - purugly
+  gen8: false
   genderRatio:
     F: 0.75
     M: 0.25
@@ -12119,6 +12471,7 @@ glastrier:
   color: White
   eggGroups:
   - undiscovered
+  gen8: true
   gender: N
   heightm: 2.2
   isNonstandard: Unobtainable
@@ -12155,6 +12508,7 @@ gligar:
   - bug
   evos:
   - gliscor
+  gen8: false
   heightm: 1.1
   isNonstandard: Past
   num: 207
@@ -12187,6 +12541,7 @@ glimmet:
   - mineral
   evos:
   - glimmora
+  gen8: false
   heightm: 0.7
   num: 966
   past_only: false
@@ -12217,6 +12572,7 @@ glimmora:
   eggGroups:
   - mineral
   evoLevel: 35
+  gen8: false
   heightm: 1.5
   num: 967
   past_only: false
@@ -12252,6 +12608,7 @@ gliscor:
   evoCondition: at night
   evoItem: Razor Fang
   evoType: levelHold
+  gen8: false
   heightm: 2
   isNonstandard: Past
   num: 472
@@ -12287,6 +12644,7 @@ gloom:
   evos:
   - vileplume
   - bellossom
+  gen8: true
   heightm: 0.8
   isNonstandard: Past
   num: 44
@@ -12319,6 +12677,7 @@ gogoat:
   eggGroups:
   - field
   evoLevel: 32
+  gen8: false
   heightm: 1.7
   num: 673
   past_only: false
@@ -12351,6 +12710,7 @@ golbat:
   evoLevel: 22
   evos:
   - crobat
+  gen8: true
   heightm: 1.6
   isNonstandard: Past
   num: 42
@@ -12386,6 +12746,7 @@ goldeen:
   - water2
   evos:
   - seaking
+  gen8: true
   heightm: 0.6
   isNonstandard: Past
   num: 118
@@ -12419,6 +12780,7 @@ golduck:
   - water1
   - field
   evoLevel: 33
+  gen8: true
   heightm: 1.7
   num: 55
   past_only: false
@@ -12454,6 +12816,7 @@ golem:
   formeOrder:
   - Golem
   - Golem-Alola
+  gen8: false
   heightm: 1.4
   isNonstandard: Past
   num: 76
@@ -12492,6 +12855,7 @@ golemalola:
   - mineral
   evoType: trade
   forme: Alola
+  gen8: false
   heightm: 1.7
   isNonstandard: Past
   num: 76
@@ -12527,6 +12891,7 @@ golett:
   - mineral
   evos:
   - golurk
+  gen8: true
   gender: N
   heightm: 1
   isNonstandard: Past
@@ -12558,6 +12923,7 @@ golisopod:
   - bug
   - water3
   evoLevel: 30
+  gen8: true
   heightm: 2
   isNonstandard: Past
   num: 768
@@ -12592,6 +12958,7 @@ golurk:
   eggGroups:
   - mineral
   evoLevel: 43
+  gen8: true
   gender: N
   heightm: 2.8
   isNonstandard: Past
@@ -12630,6 +12997,7 @@ goodra:
   formeOrder:
   - Goodra
   - Goodra-Hisui
+  gen8: true
   heightm: 2
   num: 706
   otherFormes:
@@ -12666,6 +13034,7 @@ goodrahisui:
   - dragon
   evoLevel: 50
   forme: Hisui
+  gen8: false
   heightm: 1.7
   isNonstandard: Unobtainable
   num: 706
@@ -12702,6 +13071,7 @@ goomy:
   evos:
   - sliggoo
   - sliggoohisui
+  gen8: true
   heightm: 0.3
   num: 704
   past_only: false
@@ -12732,6 +13102,7 @@ gorebyss:
   - water1
   evoItem: Deep Sea Scale
   evoType: trade
+  gen8: false
   heightm: 1.8
   isNonstandard: Past
   num: 368
@@ -12766,6 +13137,7 @@ gossifleur:
   - grass
   evos:
   - eldegoss
+  gen8: true
   heightm: 0.4
   isNonstandard: Past
   num: 829
@@ -12799,6 +13171,7 @@ gothita:
   - human-like
   evos:
   - gothorita
+  gen8: true
   genderRatio:
     F: 0.75
     M: 0.25
@@ -12833,6 +13206,7 @@ gothitelle:
   eggGroups:
   - human-like
   evoLevel: 41
+  gen8: true
   genderRatio:
     F: 0.75
     M: 0.25
@@ -12870,6 +13244,7 @@ gothorita:
   evoLevel: 32
   evos:
   - gothitelle
+  gen8: true
   genderRatio:
     F: 0.75
     M: 0.25
@@ -12911,6 +13286,7 @@ gourgeist:
   - Gourgeist-Small
   - Gourgeist-Large
   - Gourgeist-Super
+  gen8: true
   heightm: 0.9
   isNonstandard: Past
   num: 711
@@ -12949,6 +13325,7 @@ grafaiai:
   eggGroups:
   - field
   evoLevel: 28
+  gen8: false
   heightm: 0.7
   num: 969
   past_only: false
@@ -12983,6 +13360,7 @@ granbull:
   - field
   - fairy
   evoLevel: 23
+  gen8: false
   genderRatio:
     F: 0.75
     M: 0.25
@@ -13019,6 +13397,7 @@ grapploct:
   - human-like
   evoMove: Taunt
   evoType: levelMove
+  gen8: true
   heightm: 1.6
   isNonstandard: Past
   num: 853
@@ -13057,6 +13436,7 @@ graveler:
   formeOrder:
   - Graveler
   - Graveler-Alola
+  gen8: false
   heightm: 1
   isNonstandard: Past
   num: 75
@@ -13097,6 +13477,7 @@ graveleralola:
   evos:
   - golemalola
   forme: Alola
+  gen8: false
   heightm: 1
   isNonstandard: Past
   num: 75
@@ -13126,6 +13507,7 @@ greattusk:
   color: Purple
   eggGroups:
   - undiscovered
+  gen8: false
   gender: N
   heightm: 2.2
   num: 978
@@ -13158,6 +13540,7 @@ greavard:
   - field
   evos:
   - houndstone
+  gen8: false
   heightm: 0.6
   num: 924
   past_only: false
@@ -13187,6 +13570,7 @@ greedent:
   eggGroups:
   - field
   evoLevel: 24
+  gen8: true
   heightm: 0.6
   num: 820
   past_only: false
@@ -13222,6 +13606,7 @@ greninja:
   - Greninja
   - Greninja
   - Greninja-Ash
+  gen8: false
   genderRatio:
     F: 0.125
     M: 0.875
@@ -13265,6 +13650,7 @@ grimer:
   formeOrder:
   - Grimer
   - Grimer-Alola
+  gen8: false
   heightm: 0.9
   num: 88
   otherFormes:
@@ -13301,6 +13687,7 @@ grimeralola:
   evos:
   - mukalola
   forme: Alola
+  gen8: false
   heightm: 0.7
   isNonstandard: Unobtainable
   num: 88
@@ -13336,6 +13723,7 @@ grimmsnarl:
   - fairy
   - human-like
   evoLevel: 42
+  gen8: true
   gender: M
   heightm: 1.5
   num: 861
@@ -13370,6 +13758,7 @@ grookey:
   - grass
   evos:
   - thwackey
+  gen8: true
   genderRatio:
     F: 0.125
     M: 0.875
@@ -13406,6 +13795,7 @@ grotle:
   evoLevel: 18
   evos:
   - torterra
+  gen8: false
   genderRatio:
     F: 0.125
     M: 0.875
@@ -13440,6 +13830,7 @@ groudon:
   formeOrder:
   - Groudon
   - Groudon-Primal
+  gen8: true
   gender: N
   heightm: 3.5
   isNonstandard: Unobtainable
@@ -13478,6 +13869,7 @@ grovyle:
   evoLevel: 16
   evos:
   - sceptile
+  gen8: true
   genderRatio:
     F: 0.125
     M: 0.875
@@ -13518,6 +13910,7 @@ growlithe:
   formeOrder:
   - Growlithe
   - Growlithe-Hisui
+  gen8: true
   genderRatio:
     F: 0.25
     M: 0.75
@@ -13557,6 +13950,7 @@ growlithehisui:
   evos:
   - arcaninehisui
   forme: Hisui
+  gen8: false
   genderRatio:
     F: 0.25
     M: 0.75
@@ -13590,6 +13984,7 @@ grubbin:
   - bug
   evos:
   - charjabug
+  gen8: true
   heightm: 0.4
   isNonstandard: Past
   num: 736
@@ -13622,6 +14017,7 @@ grumpig:
   eggGroups:
   - field
   evoLevel: 32
+  gen8: false
   heightm: 0.9
   num: 326
   past_only: false
@@ -13655,6 +14051,7 @@ gulpin:
   - amorphous
   evos:
   - swalot
+  gen8: false
   heightm: 0.4
   num: 316
   past_only: false
@@ -13690,6 +14087,7 @@ gumshoos:
   formeOrder:
   - Gumshoos
   - Gumshoos-Totem
+  gen8: false
   heightm: 0.7
   num: 735
   otherFormes:
@@ -13726,6 +14124,7 @@ gurdurr:
   evoLevel: 25
   evos:
   - conkeldurr
+  gen8: true
   genderRatio:
     F: 0.25
     M: 0.75
@@ -13757,6 +14156,7 @@ guzzlord:
   color: Black
   eggGroups:
   - undiscovered
+  gen8: true
   gender: N
   heightm: 5.5
   isNonstandard: Past
@@ -13795,6 +14195,7 @@ gyarados:
   formeOrder:
   - Gyarados
   - Gyarados-Mega
+  gen8: true
   heightm: 6.5
   num: 130
   otherFormes:
@@ -13832,6 +14233,7 @@ hakamoo:
   evoLevel: 35
   evos:
   - kommoo
+  gen8: true
   heightm: 1.2
   isNonstandard: Past
   num: 783
@@ -13868,6 +14270,7 @@ happiny:
   - undiscovered
   evos:
   - chansey
+  gen8: true
   gender: F
   heightm: 0.6
   num: 440
@@ -13900,6 +14303,7 @@ hariyama:
   eggGroups:
   - human-like
   evoLevel: 24
+  gen8: false
   genderRatio:
     F: 0.25
     M: 0.75
@@ -13936,6 +14340,7 @@ hatenna:
   - fairy
   evos:
   - hattrem
+  gen8: true
   gender: F
   heightm: 0.4
   num: 856
@@ -13969,6 +14374,7 @@ hatterene:
   eggGroups:
   - fairy
   evoLevel: 42
+  gen8: true
   gender: F
   heightm: 2.1
   num: 858
@@ -14005,6 +14411,7 @@ hattrem:
   evoLevel: 32
   evos:
   - hatterene
+  gen8: true
   gender: F
   heightm: 0.6
   num: 857
@@ -14036,6 +14443,7 @@ haunter:
   evoLevel: 25
   evos:
   - gengar
+  gen8: true
   heightm: 1.6
   num: 93
   past_only: false
@@ -14069,6 +14477,7 @@ hawlucha:
   eggGroups:
   - flying
   - human-like
+  gen8: true
   heightm: 0.8
   num: 701
   past_only: false
@@ -14102,6 +14511,7 @@ haxorus:
   - monster
   - dragon
   evoLevel: 48
+  gen8: true
   heightm: 1.8
   num: 612
   past_only: false
@@ -14133,6 +14543,7 @@ heatmor:
   color: Red
   eggGroups:
   - field
+  gen8: true
   heightm: 1.4
   isNonstandard: Past
   num: 631
@@ -14162,6 +14573,7 @@ heatran:
   color: Brown
   eggGroups:
   - undiscovered
+  gen8: true
   heightm: 1.7
   isNonstandard: Unobtainable
   num: 485
@@ -14199,6 +14611,7 @@ heliolisk:
   - dragon
   evoItem: Sun Stone
   evoType: useItem
+  gen8: true
   heightm: 1
   isNonstandard: Past
   num: 695
@@ -14235,6 +14648,7 @@ helioptile:
   - dragon
   evos:
   - heliolisk
+  gen8: true
   heightm: 0.5
   isNonstandard: Past
   num: 694
@@ -14270,6 +14684,7 @@ heracross:
   formeOrder:
   - Heracross
   - Heracross-Mega
+  gen8: true
   heightm: 1.5
   num: 214
   otherFormes:
@@ -14306,6 +14721,7 @@ herdier:
   evoLevel: 16
   evos:
   - stoutland
+  gen8: true
   heightm: 0.9
   isNonstandard: Past
   num: 507
@@ -14338,6 +14754,7 @@ hippopotas:
   - field
   evos:
   - hippowdon
+  gen8: true
   heightm: 0.8
   num: 449
   past_only: false
@@ -14367,6 +14784,7 @@ hippowdon:
   eggGroups:
   - field
   evoLevel: 34
+  gen8: true
   heightm: 2
   num: 450
   past_only: false
@@ -14400,6 +14818,7 @@ hitmonchan:
   - human-like
   evoCondition: with an Atk stat < its Def stat
   evoLevel: 20
+  gen8: true
   gender: M
   heightm: 1.4
   isNonstandard: Past
@@ -14435,6 +14854,7 @@ hitmonlee:
   - human-like
   evoCondition: with an Atk stat > its Def stat
   evoLevel: 20
+  gen8: true
   gender: M
   heightm: 1.5
   isNonstandard: Past
@@ -14470,6 +14890,7 @@ hitmontop:
   - human-like
   evoCondition: with an Atk stat equal to its Def stat
   evoLevel: 20
+  gen8: true
   gender: M
   heightm: 1.4
   isNonstandard: Past
@@ -14505,6 +14926,7 @@ honchkrow:
   - flying
   evoItem: Dusk Stone
   evoType: useItem
+  gen8: false
   heightm: 0.9
   num: 430
   past_only: false
@@ -14535,6 +14957,7 @@ honedge:
   - mineral
   evos:
   - doublade
+  gen8: true
   heightm: 0.8
   isNonstandard: Past
   num: 679
@@ -14565,6 +14988,7 @@ hooh:
   color: Red
   eggGroups:
   - undiscovered
+  gen8: true
   gender: N
   heightm: 3.8
   isNonstandard: Past
@@ -14600,6 +15024,7 @@ hoopa:
   formeOrder:
   - Hoopa
   - Hoopa-Unbound
+  gen8: false
   gender: N
   heightm: 0.5
   isNonstandard: Unobtainable
@@ -14639,6 +15064,7 @@ hoothoot:
   - flying
   evos:
   - noctowl
+  gen8: true
   heightm: 0.7
   isNonstandard: Past
   num: 163
@@ -14674,6 +15100,7 @@ hoppip:
   - grass
   evos:
   - skiploom
+  gen8: false
   heightm: 0.4
   num: 187
   past_only: false
@@ -14708,6 +15135,7 @@ horsea:
   - dragon
   evos:
   - seadra
+  gen8: true
   heightm: 0.4
   isNonstandard: Past
   num: 116
@@ -14743,6 +15171,7 @@ houndoom:
   formeOrder:
   - Houndoom
   - Houndoom-Mega
+  gen8: false
   heightm: 1.4
   num: 229
   otherFormes:
@@ -14779,6 +15208,7 @@ houndour:
   - field
   evos:
   - houndoom
+  gen8: false
   heightm: 0.6
   num: 228
   past_only: false
@@ -14810,6 +15240,7 @@ houndstone:
   - field
   evoCondition: at night
   evoLevel: 30
+  gen8: false
   heightm: 2
   num: 925
   past_only: false
@@ -14841,6 +15272,7 @@ huntail:
   - water1
   evoItem: Deep Sea Tooth
   evoType: trade
+  gen8: false
   heightm: 1.7
   isNonstandard: Past
   num: 367
@@ -14870,6 +15302,7 @@ hydreigon:
   eggGroups:
   - dragon
   evoLevel: 64
+  gen8: true
   heightm: 1.8
   num: 635
   past_only: false
@@ -14903,6 +15336,7 @@ hypno:
   eggGroups:
   - human-like
   evoLevel: 26
+  gen8: false
   heightm: 1.6
   num: 97
   past_only: false
@@ -14937,6 +15371,7 @@ igglybuff:
   - undiscovered
   evos:
   - jigglypuff
+  gen8: true
   genderRatio:
     F: 0.75
     M: 0.25
@@ -14972,6 +15407,7 @@ illumise:
   eggGroups:
   - bug
   - human-like
+  gen8: false
   gender: F
   heightm: 0.6
   isNonstandard: Past
@@ -15007,6 +15443,7 @@ impidimp:
   - human-like
   evos:
   - morgrem
+  gen8: true
   gender: M
   heightm: 0.4
   num: 859
@@ -15038,6 +15475,7 @@ incineroar:
   eggGroups:
   - field
   evoLevel: 34
+  gen8: true
   genderRatio:
     F: 0.125
     M: 0.875
@@ -15078,6 +15516,7 @@ indeedee:
   formeOrder:
   - Indeedee
   - Indeedee-F
+  gen8: true
   gender: M
   heightm: 0.9
   num: 876
@@ -15114,6 +15553,7 @@ indeedeef:
   eggGroups:
   - fairy
   forme: F
+  gen8: true
   gender: F
   heightm: 0.9
   num: 876
@@ -15146,6 +15586,7 @@ infernape:
   - field
   - human-like
   evoLevel: 36
+  gen8: false
   genderRatio:
     F: 0.125
     M: 0.875
@@ -15185,6 +15626,7 @@ inkay:
   - water2
   evos:
   - malamar
+  gen8: true
   heightm: 0.4
   isNonstandard: Past
   num: 686
@@ -15218,6 +15660,7 @@ inteleon:
   - water1
   - field
   evoLevel: 35
+  gen8: true
   genderRatio:
     F: 0.125
     M: 0.875
@@ -15249,6 +15692,7 @@ ironbundle:
   color: Red
   eggGroups:
   - undiscovered
+  gen8: false
   gender: N
   heightm: 0.6
   num: 992
@@ -15277,6 +15721,7 @@ ironhands:
   color: Gray
   eggGroups:
   - undiscovered
+  gen8: false
   gender: N
   heightm: 1.8
   num: 989
@@ -15305,6 +15750,7 @@ ironjugulis:
   color: Blue
   eggGroups:
   - undiscovered
+  gen8: false
   gender: N
   heightm: 1.3
   num: 990
@@ -15333,6 +15779,7 @@ ironmoth:
   color: Yellow
   eggGroups:
   - undiscovered
+  gen8: false
   gender: N
   heightm: 1.2
   num: 988
@@ -15361,6 +15808,7 @@ ironthorns:
   color: Green
   eggGroups:
   - undiscovered
+  gen8: false
   gender: N
   heightm: 1.6
   num: 991
@@ -15389,6 +15837,7 @@ irontreads:
   color: Gray
   eggGroups:
   - undiscovered
+  gen8: false
   gender: N
   heightm: 0.9
   num: 986
@@ -15417,6 +15866,7 @@ ironvaliant:
   color: White
   eggGroups:
   - undiscovered
+  gen8: false
   gender: N
   heightm: 1.4
   num: 993
@@ -15451,6 +15901,7 @@ ivysaur:
   evoLevel: 16
   evos:
   - venusaur
+  gen8: true
   genderRatio:
     F: 0.125
     M: 0.875
@@ -15489,6 +15940,7 @@ jangmoo:
   - dragon
   evos:
   - hakamoo
+  gen8: true
   heightm: 0.6
   isNonstandard: Past
   num: 782
@@ -15521,6 +15973,7 @@ jellicent:
   eggGroups:
   - amorphous
   evoLevel: 40
+  gen8: true
   heightm: 2.2
   isNonstandard: Past
   num: 593
@@ -15557,6 +16010,7 @@ jigglypuff:
   evoType: levelFriendship
   evos:
   - wigglytuff
+  gen8: true
   genderRatio:
     F: 0.75
     M: 0.25
@@ -15588,6 +16042,7 @@ jirachi:
   color: Yellow
   eggGroups:
   - undiscovered
+  gen8: true
   gender: N
   heightm: 0.3
   isNonstandard: Past
@@ -15623,6 +16078,7 @@ jolteon:
   - field
   evoItem: Thunder Stone
   evoType: useItem
+  gen8: true
   genderRatio:
     F: 0.125
     M: 0.875
@@ -15659,6 +16115,7 @@ joltik:
   - bug
   evos:
   - galvantula
+  gen8: true
   heightm: 0.1
   isNonstandard: Past
   num: 595
@@ -15693,6 +16150,7 @@ jumpluff:
   - fairy
   - grass
   evoLevel: 27
+  gen8: false
   heightm: 0.8
   num: 189
   past_only: false
@@ -15726,6 +16184,7 @@ jynx:
   eggGroups:
   - human-like
   evoLevel: 30
+  gen8: true
   gender: F
   heightm: 1.4
   isNonstandard: Past
@@ -15763,6 +16222,7 @@ kabuto:
   - water3
   evos:
   - kabutops
+  gen8: true
   genderRatio:
     F: 0.125
     M: 0.875
@@ -15800,6 +16260,7 @@ kabutops:
   - water1
   - water3
   evoLevel: 40
+  gen8: true
   genderRatio:
     F: 0.125
     M: 0.875
@@ -15839,6 +16300,7 @@ kadabra:
   evoLevel: 16
   evos:
   - alakazam
+  gen8: true
   genderRatio:
     F: 0.25
     M: 0.75
@@ -15873,6 +16335,7 @@ kakuna:
   evoLevel: 7
   evos:
   - beedrill
+  gen8: false
   heightm: 0.6
   isNonstandard: Past
   num: 14
@@ -15909,6 +16372,7 @@ kangaskhan:
   formeOrder:
   - Kangaskhan
   - Kangaskhan-Mega
+  gen8: true
   gender: F
   heightm: 2.2
   isNonstandard: Past
@@ -15945,6 +16409,7 @@ karrablast:
   - bug
   evos:
   - escavalier
+  gen8: true
   heightm: 0.5
   isNonstandard: Past
   num: 588
@@ -15972,6 +16437,7 @@ kartana:
   color: White
   eggGroups:
   - undiscovered
+  gen8: true
   gender: N
   heightm: 0.3
   isNonstandard: Past
@@ -16005,6 +16471,7 @@ kecleon:
   color: Green
   eggGroups:
   - field
+  gen8: false
   heightm: 1
   isNonstandard: Past
   num: 352
@@ -16036,6 +16503,7 @@ keldeo:
   formeOrder:
   - Keldeo
   - Keldeo-Resolute
+  gen8: true
   gender: N
   heightm: 1.4
   isNonstandard: Past
@@ -16075,6 +16543,7 @@ kilowattrel:
   - water1
   - flying
   evoLevel: 25
+  gen8: false
   heightm: 1.4
   num: 958
   past_only: false
@@ -16109,6 +16578,7 @@ kingambit:
   - human-like
   evoCondition: Defeat 3 Bisharp leading Pawniard and level-up
   evoType: other
+  gen8: false
   heightm: 2
   num: 1008
   past_only: false
@@ -16144,6 +16614,7 @@ kingdra:
   - dragon
   evoItem: Dragon Scale
   evoType: trade
+  gen8: true
   heightm: 1.8
   isNonstandard: Past
   num: 230
@@ -16179,6 +16650,7 @@ kingler:
   eggGroups:
   - water3
   evoLevel: 28
+  gen8: true
   heightm: 1.3
   isNonstandard: Past
   num: 99
@@ -16216,6 +16688,7 @@ kirlia:
   evos:
   - gardevoir
   - gallade
+  gen8: true
   heightm: 0.8
   num: 281
   past_only: false
@@ -16251,6 +16724,7 @@ klang:
   evoLevel: 38
   evos:
   - klinklang
+  gen8: true
   gender: N
   heightm: 0.6
   isNonstandard: Past
@@ -16284,6 +16758,7 @@ klawf:
   color: Red
   eggGroups:
   - water3
+  gen8: false
   heightm: 1.3
   num: 962
   past_only: false
@@ -16316,6 +16791,7 @@ kleavor:
   - bug
   evoCondition: Black Augurite
   evoType: other
+  gen8: false
   heightm: 1.8
   isNonstandard: Unobtainable
   num: 900
@@ -16347,6 +16823,7 @@ klefki:
   color: Gray
   eggGroups:
   - mineral
+  gen8: true
   heightm: 0.2
   num: 707
   past_only: false
@@ -16380,6 +16857,7 @@ klink:
   - mineral
   evos:
   - klang
+  gen8: true
   gender: N
   heightm: 0.3
   isNonstandard: Past
@@ -16413,6 +16891,7 @@ klinklang:
   eggGroups:
   - mineral
   evoLevel: 49
+  gen8: true
   gender: N
   heightm: 0.6
   isNonstandard: Past
@@ -16449,6 +16928,7 @@ koffing:
   evos:
   - weezing
   - weezinggalar
+  gen8: true
   heightm: 0.6
   isNonstandard: Past
   num: 109
@@ -16476,6 +16956,7 @@ komala:
   color: Blue
   eggGroups:
   - field
+  gen8: false
   heightm: 0.4
   num: 775
   past_only: false
@@ -16510,6 +16991,7 @@ kommoo:
   formeOrder:
   - Kommo-o
   - Kommo-o-Totem
+  gen8: true
   heightm: 1.6
   isNonstandard: Past
   num: 784
@@ -16541,6 +17023,7 @@ koraidon:
   color: Red
   eggGroups:
   - undiscovered
+  gen8: false
   gender: N
   heightm: 2.5
   num: 998
@@ -16577,6 +17060,7 @@ krabby:
   - water3
   evos:
   - kingler
+  gen8: true
   heightm: 0.4
   isNonstandard: Past
   num: 98
@@ -16608,6 +17092,7 @@ kricketot:
   - bug
   evos:
   - kricketune
+  gen8: false
   heightm: 0.3
   num: 401
   past_only: false
@@ -16637,6 +17122,7 @@ kricketune:
   eggGroups:
   - bug
   evoLevel: 10
+  gen8: false
   heightm: 1
   num: 402
   past_only: false
@@ -16671,6 +17157,7 @@ krokorok:
   evoLevel: 29
   evos:
   - krookodile
+  gen8: true
   heightm: 1
   num: 552
   past_only: false
@@ -16704,6 +17191,7 @@ krookodile:
   eggGroups:
   - field
   evoLevel: 40
+  gen8: true
   heightm: 1.5
   num: 553
   past_only: false
@@ -16737,6 +17225,7 @@ kubfu:
   evos:
   - urshifu
   - urshifurapidstrike
+  gen8: true
   genderRatio:
     F: 0.125
     M: 0.875
@@ -16772,6 +17261,7 @@ kyogre:
   formeOrder:
   - Kyogre
   - Kyogre-Primal
+  gen8: true
   gender: N
   heightm: 4.5
   isNonstandard: Unobtainable
@@ -16808,6 +17298,7 @@ kyurem:
   - Kyurem
   - Kyurem-White
   - Kyurem-Black
+  gen8: true
   gender: N
   heightm: 3
   isNonstandard: Past
@@ -16845,6 +17336,7 @@ kyuremblack:
   eggGroups:
   - undiscovered
   forme: Black
+  gen8: true
   gender: N
   heightm: 3.3
   isNonstandard: Past
@@ -16877,6 +17369,7 @@ kyuremwhite:
   eggGroups:
   - undiscovered
   forme: White
+  gen8: true
   gender: N
   heightm: 3.6
   isNonstandard: Past
@@ -16913,6 +17406,7 @@ lairon:
   evoLevel: 32
   evos:
   - aggron
+  gen8: true
   heightm: 0.9
   isNonstandard: Past
   num: 305
@@ -16949,6 +17443,7 @@ lampent:
   evoLevel: 41
   evos:
   - chandelure
+  gen8: true
   heightm: 0.6
   isNonstandard: Past
   num: 608
@@ -16984,6 +17479,7 @@ landorus:
   formeOrder:
   - Landorus
   - Landorus-Therian
+  gen8: true
   gender: M
   heightm: 1.5
   isNonstandard: Unobtainable
@@ -17022,6 +17518,7 @@ lanturn:
   eggGroups:
   - water2
   evoLevel: 27
+  gen8: true
   heightm: 1.2
   isNonstandard: Past
   num: 171
@@ -17057,6 +17554,7 @@ lapras:
   eggGroups:
   - monster
   - water1
+  gen8: true
   heightm: 2.5
   isNonstandard: Past
   num: 131
@@ -17089,6 +17587,7 @@ larvesta:
   - bug
   evos:
   - volcarona
+  gen8: true
   heightm: 1.1
   num: 636
   past_only: false
@@ -17120,6 +17619,7 @@ larvitar:
   - monster
   evos:
   - pupitar
+  gen8: true
   heightm: 0.6
   num: 246
   past_only: false
@@ -17150,6 +17650,7 @@ latias:
   formeOrder:
   - Latias
   - Latias-Mega
+  gen8: true
   gender: F
   heightm: 1.4
   isNonstandard: Past
@@ -17186,6 +17687,7 @@ latios:
   formeOrder:
   - Latios
   - Latios-Mega
+  gen8: true
   gender: M
   heightm: 2
   isNonstandard: Past
@@ -17223,6 +17725,7 @@ leafeon:
   - field
   evoItem: Leaf Stone
   evoType: useItem
+  gen8: true
   genderRatio:
     F: 0.125
     M: 0.875
@@ -17258,6 +17761,7 @@ leavanny:
   eggGroups:
   - bug
   evoType: levelFriendship
+  gen8: false
   heightm: 1.2
   isNonstandard: Past
   num: 542
@@ -17294,6 +17798,7 @@ lechonk:
   evos:
   - oinkologne
   - oinkolognef
+  gen8: false
   heightm: 0.5
   num: 915
   past_only: false
@@ -17325,6 +17830,7 @@ ledian:
   eggGroups:
   - bug
   evoLevel: 18
+  gen8: false
   heightm: 1.4
   isNonstandard: Past
   num: 166
@@ -17360,6 +17866,7 @@ ledyba:
   - bug
   evos:
   - ledian
+  gen8: false
   heightm: 1
   isNonstandard: Past
   num: 165
@@ -17394,6 +17901,7 @@ lickilicky:
   - monster
   evoMove: Rollout
   evoType: levelMove
+  gen8: true
   heightm: 1.7
   isNonstandard: Past
   num: 463
@@ -17428,6 +17936,7 @@ lickitung:
   - monster
   evos:
   - lickilicky
+  gen8: true
   heightm: 1.2
   isNonstandard: Past
   num: 108
@@ -17460,6 +17969,7 @@ liepard:
   eggGroups:
   - field
   evoLevel: 20
+  gen8: true
   heightm: 1.1
   isNonstandard: Past
   num: 510
@@ -17492,6 +18002,7 @@ lileep:
   - water3
   evos:
   - cradily
+  gen8: true
   genderRatio:
     F: 0.125
     M: 0.875
@@ -17532,6 +18043,7 @@ lilligant:
   formeOrder:
   - Lilligant
   - Lilligant-Hisui
+  gen8: true
   gender: F
   heightm: 1.1
   num: 549
@@ -17570,6 +18082,7 @@ lilliganthisui:
   evoItem: Sun Stone
   evoType: useItem
   forme: Hisui
+  gen8: false
   gender: F
   heightm: 1.2
   isNonstandard: Unobtainable
@@ -17606,6 +18119,7 @@ lillipup:
   - field
   evos:
   - herdier
+  gen8: true
   heightm: 0.4
   isNonstandard: Past
   num: 506
@@ -17641,6 +18155,7 @@ linoone:
   formeOrder:
   - Linoone
   - Linoone-Galar
+  gen8: true
   heightm: 0.5
   isNonstandard: Past
   num: 264
@@ -17680,6 +18195,7 @@ linoonegalar:
   evos:
   - obstagoon
   forme: Galar
+  gen8: true
   heightm: 0.5
   isNonstandard: Past
   num: 264
@@ -17715,6 +18231,7 @@ litleo:
   - field
   evos:
   - pyroar
+  gen8: false
   genderRatio:
     F: 0.875
     M: 0.125
@@ -17749,6 +18266,7 @@ litten:
   - field
   evos:
   - torracat
+  gen8: true
   genderRatio:
     F: 0.125
     M: 0.875
@@ -17785,6 +18303,7 @@ litwick:
   - amorphous
   evos:
   - lampent
+  gen8: true
   heightm: 0.3
   isNonstandard: Past
   num: 607
@@ -17816,6 +18335,7 @@ lokix:
   eggGroups:
   - bug
   evoLevel: 24
+  gen8: false
   heightm: 1
   num: 921
   past_only: false
@@ -17852,6 +18372,7 @@ lombre:
   evoLevel: 14
   evos:
   - ludicolo
+  gen8: true
   heightm: 1.2
   isNonstandard: Past
   num: 271
@@ -17890,6 +18411,7 @@ lopunny:
   formeOrder:
   - Lopunny
   - Lopunny-Mega
+  gen8: true
   heightm: 1.2
   isNonstandard: Past
   num: 428
@@ -17927,6 +18449,7 @@ lotad:
   - grass
   evos:
   - lombre
+  gen8: true
   heightm: 0.5
   isNonstandard: Past
   num: 270
@@ -17961,6 +18484,7 @@ loudred:
   evoLevel: 20
   evos:
   - exploud
+  gen8: true
   heightm: 1
   isNonstandard: Past
   num: 294
@@ -17999,6 +18523,7 @@ lucario:
   formeOrder:
   - Lucario
   - Lucario-Mega
+  gen8: true
   genderRatio:
     F: 0.125
     M: 0.875
@@ -18039,6 +18564,7 @@ ludicolo:
   - grass
   evoItem: Water Stone
   evoType: useItem
+  gen8: true
   heightm: 1.5
   isNonstandard: Past
   num: 272
@@ -18070,6 +18596,7 @@ lugia:
   color: White
   eggGroups:
   - undiscovered
+  gen8: true
   gender: N
   heightm: 5.2
   isNonstandard: Past
@@ -18106,6 +18633,7 @@ lumineon:
   eggGroups:
   - water2
   evoLevel: 31
+  gen8: false
   heightm: 1.2
   num: 457
   past_only: false
@@ -18134,6 +18662,7 @@ lunala:
   eggGroups:
   - undiscovered
   evoLevel: 53
+  gen8: true
   gender: N
   heightm: 4
   isNonstandard: Past
@@ -18166,6 +18695,7 @@ lunatone:
   color: Yellow
   eggGroups:
   - mineral
+  gen8: true
   gender: N
   heightm: 1
   isNonstandard: Past
@@ -18202,6 +18732,7 @@ lurantis:
   formeOrder:
   - Lurantis
   - Lurantis-Totem
+  gen8: true
   heightm: 0.9
   num: 754
   otherFormes:
@@ -18233,6 +18764,7 @@ luvdisc:
   color: Pink
   eggGroups:
   - water2
+  gen8: false
   genderRatio:
     F: 0.75
     M: 0.25
@@ -18269,6 +18801,7 @@ luxio:
   evoLevel: 15
   evos:
   - luxray
+  gen8: true
   heightm: 0.9
   num: 404
   past_only: false
@@ -18301,6 +18834,7 @@ luxray:
   eggGroups:
   - field
   evoLevel: 30
+  gen8: true
   heightm: 1.4
   num: 405
   past_only: false
@@ -18339,6 +18873,7 @@ lycanroc:
   - Lycanroc
   - Lycanroc-Midnight
   - Lycanroc-Dusk
+  gen8: true
   heightm: 0.8
   num: 745
   otherFormes:
@@ -18373,6 +18908,7 @@ lycanrocdusk:
   evoCondition: from a special Rockruff
   evoLevel: 25
   forme: Dusk
+  gen8: true
   heightm: 0.8
   num: 745
   past_only: false
@@ -18408,6 +18944,7 @@ lycanrocmidnight:
   evoCondition: at night
   evoLevel: 25
   forme: Midnight
+  gen8: true
   heightm: 1.1
   num: 745
   past_only: false
@@ -18440,6 +18977,7 @@ mabosstiff:
   eggGroups:
   - field
   evoLevel: 30
+  gen8: false
   heightm: 1.1
   num: 973
   past_only: false
@@ -18473,6 +19011,7 @@ machamp:
   eggGroups:
   - human-like
   evoType: trade
+  gen8: true
   genderRatio:
     F: 0.25
     M: 0.75
@@ -18511,6 +19050,7 @@ machoke:
   evoLevel: 28
   evos:
   - machamp
+  gen8: true
   genderRatio:
     F: 0.25
     M: 0.75
@@ -18548,6 +19088,7 @@ machop:
   - human-like
   evos:
   - machoke
+  gen8: true
   genderRatio:
     F: 0.25
     M: 0.75
@@ -18583,6 +19124,7 @@ magby:
   - undiscovered
   evos:
   - magmar
+  gen8: true
   genderRatio:
     F: 0.25
     M: 0.75
@@ -18618,6 +19160,7 @@ magcargo:
   eggGroups:
   - amorphous
   evoLevel: 38
+  gen8: false
   heightm: 0.8
   isNonstandard: Past
   num: 219
@@ -18650,6 +19193,7 @@ magearna:
   formeOrder:
   - Magearna
   - Magearna-Original
+  gen8: true
   gender: N
   heightm: 1
   isNonstandard: Unobtainable
@@ -18685,6 +19229,7 @@ magearnaoriginal:
   eggGroups:
   - undiscovered
   forme: Original
+  gen8: true
   gender: N
   heightm: 1
   isNonstandard: Unobtainable
@@ -18718,6 +19263,7 @@ magikarp:
   - dragon
   evos:
   - gyarados
+  gen8: true
   heightm: 0.9
   num: 129
   past_only: false
@@ -18749,6 +19295,7 @@ magmar:
   evoLevel: 30
   evos:
   - magmortar
+  gen8: true
   genderRatio:
     F: 0.25
     M: 0.75
@@ -18784,6 +19331,7 @@ magmortar:
   - human-like
   evoItem: Magmarizer
   evoType: trade
+  gen8: true
   genderRatio:
     F: 0.25
     M: 0.75
@@ -18821,6 +19369,7 @@ magnemite:
   - mineral
   evos:
   - magneton
+  gen8: true
   gender: N
   heightm: 0.3
   num: 81
@@ -18856,6 +19405,7 @@ magneton:
   evoLevel: 30
   evos:
   - magnezone
+  gen8: true
   gender: N
   heightm: 1
   num: 82
@@ -18891,6 +19441,7 @@ magnezone:
   - mineral
   evoItem: Thunder Stone
   evoType: useItem
+  gen8: true
   gender: N
   heightm: 1.2
   num: 462
@@ -18926,6 +19477,7 @@ makuhita:
   - human-like
   evos:
   - hariyama
+  gen8: false
   genderRatio:
     F: 0.25
     M: 0.75
@@ -18962,6 +19514,7 @@ malamar:
   - water2
   evoCondition: with the console turned upside-down
   evoLevel: 30
+  gen8: true
   heightm: 1.5
   isNonstandard: Past
   num: 687
@@ -18997,6 +19550,7 @@ mamoswine:
   - field
   evoMove: Ancient Power
   evoType: levelMove
+  gen8: true
   heightm: 2.5
   isNonstandard: Past
   num: 473
@@ -19027,6 +19581,7 @@ manaphy:
   eggGroups:
   - water1
   - fairy
+  gen8: false
   gender: N
   heightm: 0.3
   isNonstandard: Past
@@ -19062,6 +19617,7 @@ mandibuzz:
   eggGroups:
   - flying
   evoLevel: 54
+  gen8: true
   gender: F
   heightm: 1.2
   isNonstandard: Past
@@ -19100,6 +19656,7 @@ manectric:
   formeOrder:
   - Manectric
   - Manectric-Mega
+  gen8: true
   heightm: 1.5
   isNonstandard: Past
   num: 310
@@ -19136,6 +19693,7 @@ mankey:
   - field
   evos:
   - primeape
+  gen8: false
   heightm: 0.5
   num: 56
   past_only: false
@@ -19169,6 +19727,7 @@ mantine:
   - water1
   evoCondition: with a Remoraid in party
   evoType: levelExtra
+  gen8: true
   heightm: 2.1
   isNonstandard: Past
   num: 226
@@ -19205,6 +19764,7 @@ mantyke:
   - undiscovered
   evos:
   - mantine
+  gen8: true
   heightm: 1
   isNonstandard: Past
   num: 458
@@ -19237,6 +19797,7 @@ maractus:
   color: Green
   eggGroups:
   - grass
+  gen8: true
   heightm: 1
   isNonstandard: Past
   num: 556
@@ -19270,6 +19831,7 @@ mareanie:
   - water1
   evos:
   - toxapex
+  gen8: true
   heightm: 0.4
   num: 747
   past_only: false
@@ -19302,6 +19864,7 @@ mareep:
   - field
   evos:
   - flaaffy
+  gen8: false
   heightm: 0.6
   num: 179
   past_only: false
@@ -19337,6 +19900,7 @@ marill:
   evoType: levelFriendship
   evos:
   - azumarill
+  gen8: true
   heightm: 0.4
   num: 183
   past_only: false
@@ -19374,6 +19938,7 @@ marowak:
   - Marowak
   - Marowak-Alola
   - Marowak-Alola-Totem
+  gen8: true
   heightm: 1
   isNonstandard: Past
   num: 105
@@ -19414,6 +19979,7 @@ marowakalola:
   evoLevel: 28
   evoRegion: Alola
   forme: Alola
+  gen8: true
   heightm: 1
   isNonstandard: Past
   num: 105
@@ -19443,6 +20009,7 @@ marshadow:
   color: Gray
   eggGroups:
   - undiscovered
+  gen8: true
   gender: N
   heightm: 0.7
   isNonstandard: Past
@@ -19480,6 +20047,7 @@ marshtomp:
   evoLevel: 16
   evos:
   - swampert
+  gen8: true
   genderRatio:
     F: 0.125
     M: 0.875
@@ -19518,6 +20086,7 @@ maschiff:
   - field
   evos:
   - mabosstiff
+  gen8: false
   heightm: 0.5
   num: 972
   past_only: false
@@ -19548,6 +20117,7 @@ masquerain:
   - water1
   - bug
   evoLevel: 22
+  gen8: false
   heightm: 0.8
   num: 284
   past_only: false
@@ -19586,6 +20156,7 @@ maushold:
   formeOrder:
   - Maushold
   - Maushold-Four
+  gen8: false
   gender: N
   heightm: 0.3
   num: 946
@@ -19624,6 +20195,7 @@ mausholdfour:
   - fairy
   evoLevel: 25
   forme: Four
+  gen8: false
   gender: N
   heightm: 0.3
   num: 946
@@ -19659,6 +20231,7 @@ mawile:
   formeOrder:
   - Mawile
   - Mawile-Mega
+  gen8: true
   heightm: 0.6
   isNonstandard: Past
   num: 303
@@ -19695,6 +20268,7 @@ medicham:
   formeOrder:
   - Medicham
   - Medicham-Mega
+  gen8: false
   heightm: 1.3
   num: 308
   otherFormes:
@@ -19729,6 +20303,7 @@ meditite:
   - human-like
   evos:
   - medicham
+  gen8: false
   heightm: 0.6
   num: 307
   past_only: false
@@ -19760,6 +20335,7 @@ meganium:
   - monster
   - grass
   evoLevel: 32
+  gen8: false
   genderRatio:
     F: 0.125
     M: 0.875
@@ -19792,6 +20368,7 @@ melmetal:
   color: Gray
   eggGroups:
   - undiscovered
+  gen8: true
   gender: N
   heightm: 2.5
   isNonstandard: Past
@@ -19826,6 +20403,7 @@ meloetta:
   formeOrder:
   - Meloetta
   - Meloetta-Pirouette
+  gen8: false
   gender: N
   heightm: 0.6
   isNonstandard: Unobtainable
@@ -19859,6 +20437,7 @@ meltan:
   color: Gray
   eggGroups:
   - undiscovered
+  gen8: true
   gender: N
   heightm: 0.2
   isNonstandard: Past
@@ -19893,6 +20472,7 @@ meowscarada:
   - field
   - grass
   evoLevel: 36
+  gen8: false
   genderRatio:
     F: 0.125
     M: 0.875
@@ -19933,6 +20513,7 @@ meowstic:
   formeOrder:
   - Meowstic
   - Meowstic-F
+  gen8: true
   gender: M
   heightm: 0.6
   isNonstandard: Past
@@ -19971,6 +20552,7 @@ meowsticf:
   - field
   evoLevel: 25
   forme: F
+  gen8: true
   gender: F
   heightm: 0.6
   isNonstandard: Past
@@ -20011,6 +20593,7 @@ meowth:
   - Meowth
   - Meowth-Alola
   - Meowth-Galar
+  gen8: true
   heightm: 0.4
   num: 52
   otherFormes:
@@ -20048,6 +20631,7 @@ meowthalola:
   evos:
   - persianalola
   forme: Alola
+  gen8: true
   heightm: 0.4
   isNonstandard: Unobtainable
   num: 52
@@ -20083,6 +20667,7 @@ meowthgalar:
   evos:
   - perrserker
   forme: Galar
+  gen8: true
   heightm: 0.4
   num: 52
   past_only: false
@@ -20109,6 +20694,7 @@ mesprit:
   color: Pink
   eggGroups:
   - undiscovered
+  gen8: true
   gender: N
   heightm: 0.3
   isNonstandard: Unobtainable
@@ -20145,6 +20731,7 @@ metagross:
   formeOrder:
   - Metagross
   - Metagross-Mega
+  gen8: true
   gender: N
   heightm: 1.6
   isNonstandard: Past
@@ -20182,6 +20769,7 @@ metang:
   evoLevel: 20
   evos:
   - metagross
+  gen8: true
   gender: N
   heightm: 1.2
   isNonstandard: Past
@@ -20215,6 +20803,7 @@ metapod:
   evoLevel: 7
   evos:
   - butterfree
+  gen8: true
   heightm: 0.7
   isNonstandard: Past
   num: 11
@@ -20243,6 +20832,7 @@ mew:
   color: Pink
   eggGroups:
   - undiscovered
+  gen8: true
   gender: N
   heightm: 0.4
   isNonstandard: Unobtainable
@@ -20279,6 +20869,7 @@ mewtwo:
   - Mewtwo
   - Mewtwo-Mega-X
   - Mewtwo-Mega-Y
+  gen8: true
   gender: N
   heightm: 2
   isNonstandard: Unobtainable
@@ -20319,6 +20910,7 @@ mienfoo:
   - human-like
   evos:
   - mienshao
+  gen8: true
   heightm: 0.9
   isNonstandard: Past
   num: 619
@@ -20352,6 +20944,7 @@ mienshao:
   - field
   - human-like
   evoLevel: 50
+  gen8: true
   heightm: 1.4
   isNonstandard: Past
   num: 620
@@ -20385,6 +20978,7 @@ mightyena:
   eggGroups:
   - field
   evoLevel: 18
+  gen8: false
   heightm: 1
   isNonstandard: Past
   num: 262
@@ -20418,6 +21012,7 @@ milcery:
   - amorphous
   evos:
   - alcremie
+  gen8: true
   gender: F
   heightm: 0.2
   isNonstandard: Past
@@ -20453,6 +21048,7 @@ milotic:
   - dragon
   evoItem: Prism Scale
   evoType: trade
+  gen8: true
   heightm: 6.2
   isNonstandard: Past
   num: 350
@@ -20485,6 +21081,7 @@ miltank:
   color: Pink
   eggGroups:
   - field
+  gen8: true
   gender: F
   heightm: 1.2
   isNonstandard: Past
@@ -20521,6 +21118,7 @@ mimejr:
   evos:
   - mrmime
   - mrmimegalar
+  gen8: true
   heightm: 0.6
   isNonstandard: Past
   num: 439
@@ -20555,6 +21153,7 @@ mimikyu:
   - Mimikyu-Busted
   - Mimikyu-Totem
   - Mimikyu-Busted-Totem
+  gen8: true
   heightm: 0.2
   num: 778
   otherFormes:
@@ -20592,6 +21191,7 @@ minccino:
   - field
   evos:
   - cinccino
+  gen8: true
   genderRatio:
     F: 0.75
     M: 0.25
@@ -20645,6 +21245,7 @@ minior:
   - Minior-Blue
   - Minior-Indigo
   - Minior-Violet
+  gen8: false
   gender: N
   heightm: 0.3
   isNonstandard: Past
@@ -20678,6 +21279,7 @@ minun:
   color: Yellow
   eggGroups:
   - fairy
+  gen8: false
   heightm: 0.4
   isNonstandard: Past
   num: 312
@@ -20705,6 +21307,7 @@ miraidon:
   color: Blue
   eggGroups:
   - undiscovered
+  gen8: false
   gender: N
   heightm: 3.5
   num: 999
@@ -20737,6 +21340,7 @@ misdreavus:
   - amorphous
   evos:
   - mismagius
+  gen8: false
   heightm: 0.7
   num: 200
   past_only: false
@@ -20765,6 +21369,7 @@ mismagius:
   - amorphous
   evoItem: Dusk Stone
   evoType: useItem
+  gen8: false
   heightm: 0.9
   num: 429
   past_only: false
@@ -20797,6 +21402,7 @@ moltres:
   formeOrder:
   - Moltres
   - Moltres-Galar
+  gen8: true
   gender: N
   heightm: 2
   isNonstandard: Unobtainable
@@ -20832,6 +21438,7 @@ moltresgalar:
   eggGroups:
   - undiscovered
   forme: Galar
+  gen8: true
   gender: N
   heightm: 2
   isNonstandard: Unobtainable
@@ -20867,6 +21474,7 @@ monferno:
   evoLevel: 14
   evos:
   - infernape
+  gen8: false
   genderRatio:
     F: 0.125
     M: 0.875
@@ -20905,6 +21513,7 @@ morelull:
   - grass
   evos:
   - shiinotic
+  gen8: true
   heightm: 0.2
   isNonstandard: Past
   num: 755
@@ -20941,6 +21550,7 @@ morgrem:
   evoLevel: 32
   evos:
   - grimmsnarl
+  gen8: true
   gender: M
   heightm: 0.8
   num: 860
@@ -20974,6 +21584,7 @@ morpeko:
   formeOrder:
   - Morpeko
   - Morpeko-Hangry
+  gen8: true
   heightm: 0.3
   isNonstandard: Past
   num: 877
@@ -21007,6 +21618,7 @@ mothim:
   eggGroups:
   - bug
   evoLevel: 20
+  gen8: false
   gender: M
   heightm: 0.9
   isNonstandard: Past
@@ -21047,6 +21659,7 @@ mrmime:
   formeOrder:
   - Mr. Mime
   - Mr. Mime-Galar
+  gen8: true
   heightm: 1.3
   isNonstandard: Past
   num: 122
@@ -21090,6 +21703,7 @@ mrmimegalar:
   evos:
   - mrrime
   forme: Galar
+  gen8: true
   heightm: 1.4
   isNonstandard: Past
   num: 122
@@ -21124,6 +21738,7 @@ mrrime:
   eggGroups:
   - human-like
   evoLevel: 42
+  gen8: true
   heightm: 1.5
   isNonstandard: Past
   num: 866
@@ -21159,6 +21774,7 @@ mudbray:
   - field
   evos:
   - mudsdale
+  gen8: true
   heightm: 1
   num: 749
   past_only: false
@@ -21190,6 +21806,7 @@ mudkip:
   - water1
   evos:
   - marshtomp
+  gen8: true
   genderRatio:
     F: 0.125
     M: 0.875
@@ -21225,6 +21842,7 @@ mudsdale:
   eggGroups:
   - field
   evoLevel: 30
+  gen8: true
   heightm: 2.5
   num: 750
   past_only: false
@@ -21260,6 +21878,7 @@ muk:
   formeOrder:
   - Muk
   - Muk-Alola
+  gen8: false
   heightm: 1.2
   num: 89
   otherFormes:
@@ -21296,6 +21915,7 @@ mukalola:
   - amorphous
   evoLevel: 38
   forme: Alola
+  gen8: false
   heightm: 1
   isNonstandard: Unobtainable
   num: 89
@@ -21332,6 +21952,7 @@ munchlax:
   - undiscovered
   evos:
   - snorlax
+  gen8: true
   genderRatio:
     F: 0.125
     M: 0.875
@@ -21368,6 +21989,7 @@ munna:
   - field
   evos:
   - musharna
+  gen8: true
   heightm: 0.6
   isNonstandard: Past
   num: 517
@@ -21401,6 +22023,7 @@ murkrow:
   - flying
   evos:
   - honchkrow
+  gen8: false
   heightm: 0.5
   num: 198
   past_only: false
@@ -21434,6 +22057,7 @@ musharna:
   - field
   evoItem: Moon Stone
   evoType: useItem
+  gen8: true
   heightm: 1.1
   isNonstandard: Past
   num: 518
@@ -21468,6 +22092,7 @@ nacli:
   - mineral
   evos:
   - naclstack
+  gen8: false
   heightm: 0.4
   num: 963
   past_only: false
@@ -21501,6 +22126,7 @@ naclstack:
   evoLevel: 24
   evos:
   - garganacl
+  gen8: false
   heightm: 0.5
   num: 964
   past_only: false
@@ -21530,6 +22156,7 @@ naganadel:
   - undiscovered
   evoMove: Dragon Pulse
   evoType: levelMove
+  gen8: true
   gender: N
   heightm: 3.6
   isNonstandard: Past
@@ -21568,6 +22195,7 @@ natu:
   - flying
   evos:
   - xatu
+  gen8: true
   heightm: 0.2
   isNonstandard: Past
   num: 177
@@ -21601,6 +22229,7 @@ necrozma:
   - Necrozma-Dusk-Mane
   - Necrozma-Dawn-Wings
   - Necrozma-Ultra
+  gen8: true
   gender: N
   heightm: 2.4
   isNonstandard: Past
@@ -21638,6 +22267,7 @@ necrozmadawnwings:
   eggGroups:
   - undiscovered
   forme: Dawn-Wings
+  gen8: true
   gender: N
   heightm: 4.2
   isNonstandard: Past
@@ -21670,6 +22300,7 @@ necrozmaduskmane:
   eggGroups:
   - undiscovered
   forme: Dusk-Mane
+  gen8: true
   gender: N
   heightm: 3.8
   isNonstandard: Past
@@ -21705,6 +22336,7 @@ nickit:
   - field
   evos:
   - thievul
+  gen8: true
   heightm: 0.6
   isNonstandard: Past
   num: 827
@@ -21739,6 +22371,7 @@ nidoking:
   - field
   evoItem: Moon Stone
   evoType: useItem
+  gen8: true
   gender: M
   heightm: 1.4
   isNonstandard: Past
@@ -21775,6 +22408,7 @@ nidoqueen:
   - undiscovered
   evoItem: Moon Stone
   evoType: useItem
+  gen8: true
   gender: F
   heightm: 1.3
   isNonstandard: Past
@@ -21812,6 +22446,7 @@ nidoranf:
   - field
   evos:
   - nidorina
+  gen8: true
   gender: F
   heightm: 0.4
   isNonstandard: Past
@@ -21847,6 +22482,7 @@ nidoranm:
   - field
   evos:
   - nidorino
+  gen8: true
   gender: M
   heightm: 0.5
   isNonstandard: Past
@@ -21882,6 +22518,7 @@ nidorina:
   evoLevel: 16
   evos:
   - nidoqueen
+  gen8: true
   gender: F
   heightm: 0.8
   isNonstandard: Past
@@ -21919,6 +22556,7 @@ nidorino:
   evoLevel: 16
   evos:
   - nidoking
+  gen8: true
   gender: M
   heightm: 0.9
   isNonstandard: Past
@@ -21948,6 +22586,7 @@ nihilego:
   color: White
   eggGroups:
   - undiscovered
+  gen8: true
   gender: N
   heightm: 1.2
   isNonstandard: Past
@@ -21984,6 +22623,7 @@ nincada:
   evos:
   - ninjask
   - shedinja
+  gen8: true
   heightm: 0.5
   isNonstandard: Past
   num: 290
@@ -22019,6 +22659,7 @@ ninetales:
   formeOrder:
   - Ninetales
   - Ninetales-Alola
+  gen8: true
   genderRatio:
     F: 0.75
     M: 0.25
@@ -22058,6 +22699,7 @@ ninetalesalola:
   evoItem: Ice Stone
   evoType: useItem
   forme: Alola
+  gen8: true
   genderRatio:
     F: 0.75
     M: 0.25
@@ -22093,6 +22735,7 @@ ninjask:
   eggGroups:
   - bug
   evoLevel: 20
+  gen8: true
   heightm: 0.8
   isNonstandard: Past
   num: 291
@@ -22127,6 +22770,7 @@ noctowl:
   eggGroups:
   - flying
   evoLevel: 20
+  gen8: true
   heightm: 1.6
   isNonstandard: Past
   num: 164
@@ -22163,6 +22807,7 @@ noibat:
   - dragon
   evos:
   - noivern
+  gen8: true
   heightm: 0.5
   num: 714
   past_only: false
@@ -22196,6 +22841,7 @@ noivern:
   - flying
   - dragon
   evoLevel: 48
+  gen8: true
   heightm: 1.5
   num: 715
   past_only: false
@@ -22230,6 +22876,7 @@ nosepass:
   - mineral
   evos:
   - probopass
+  gen8: false
   heightm: 1
   isNonstandard: Past
   num: 299
@@ -22263,6 +22910,7 @@ numel:
   - field
   evos:
   - camerupt
+  gen8: false
   heightm: 0.7
   num: 322
   past_only: false
@@ -22298,6 +22946,7 @@ nuzleaf:
   evoLevel: 14
   evos:
   - shiftry
+  gen8: true
   heightm: 1
   isNonstandard: Past
   num: 274
@@ -22331,6 +22980,7 @@ nymble:
   - bug
   evos:
   - lokix
+  gen8: false
   heightm: 0.2
   num: 920
   past_only: false
@@ -22363,6 +23013,7 @@ obstagoon:
   - field
   evoCondition: at night
   evoLevel: 35
+  gen8: true
   heightm: 1.6
   isNonstandard: Past
   num: 862
@@ -22398,6 +23049,7 @@ octillery:
   - water1
   - water2
   evoLevel: 25
+  gen8: true
   heightm: 0.9
   isNonstandard: Past
   num: 224
@@ -22430,6 +23082,7 @@ oddish:
   - grass
   evos:
   - gloom
+  gen8: true
   heightm: 0.5
   isNonstandard: Past
   num: 43
@@ -22467,6 +23120,7 @@ oinkologne:
   formeOrder:
   - Oinkologne
   - Oinkologne-F
+  gen8: false
   gender: M
   heightm: 1
   num: 916
@@ -22504,6 +23158,7 @@ oinkolognef:
   - field
   evoLevel: 18
   forme: F
+  gen8: false
   gender: F
   heightm: 1
   num: 916
@@ -22539,6 +23194,7 @@ omanyte:
   - water3
   evos:
   - omastar
+  gen8: true
   genderRatio:
     F: 0.125
     M: 0.875
@@ -22576,6 +23232,7 @@ omastar:
   - water1
   - water3
   evoLevel: 40
+  gen8: true
   genderRatio:
     F: 0.125
     M: 0.875
@@ -22614,6 +23271,7 @@ onix:
   - mineral
   evos:
   - steelix
+  gen8: true
   heightm: 8.8
   isNonstandard: Past
   num: 95
@@ -22646,6 +23304,7 @@ oranguru:
   color: White
   eggGroups:
   - field
+  gen8: true
   heightm: 1.5
   num: 765
   past_only: false
@@ -22679,6 +23338,7 @@ orbeetle:
   eggGroups:
   - bug
   evoLevel: 30
+  gen8: true
   heightm: 0.4
   isNonstandard: Past
   num: 826
@@ -22714,6 +23374,7 @@ oricorio:
   - Oricorio-Pom-Pom
   - Oricorio-Pa'u
   - Oricorio-Sensu
+  gen8: false
   genderRatio:
     F: 0.75
     M: 0.25
@@ -22750,6 +23411,7 @@ orthworm:
   color: Pink
   eggGroups:
   - field
+  gen8: false
   heightm: 2.5
   num: 944
   past_only: false
@@ -22780,6 +23442,7 @@ oshawott:
   - field
   evos:
   - dewott
+  gen8: false
   genderRatio:
     F: 0.125
     M: 0.875
@@ -22816,6 +23479,7 @@ overqwil:
   - water2
   evoCondition: Use Strong style Barb Barrage 20 times
   evoType: other
+  gen8: false
   heightm: 0.5
   isNonstandard: Unobtainable
   num: 904
@@ -22850,6 +23514,7 @@ pachirisu:
   eggGroups:
   - field
   - fairy
+  gen8: false
   heightm: 0.4
   num: 417
   past_only: false
@@ -22882,6 +23547,7 @@ palafin:
   formeOrder:
   - Palafin
   - Palafin-Hero
+  gen8: false
   heightm: 1.3
   num: 934
   otherFormes:
@@ -22916,6 +23582,7 @@ palkia:
   formeOrder:
   - Palkia
   - Palkia-Origin
+  gen8: true
   gender: N
   heightm: 4.2
   isNonstandard: Unobtainable
@@ -22954,6 +23621,7 @@ palkiaorigin:
   - undiscovered
   forme: Origin
   gen: 8
+  gen8: false
   gender: N
   heightm: 6.3
   isNonstandard: Unobtainable
@@ -22986,6 +23654,7 @@ palossand:
   eggGroups:
   - amorphous
   evoLevel: 42
+  gen8: true
   heightm: 1.3
   num: 770
   past_only: false
@@ -23021,6 +23690,7 @@ palpitoad:
   evoLevel: 25
   evos:
   - seismitoad
+  gen8: true
   heightm: 0.8
   isNonstandard: Past
   num: 536
@@ -23057,6 +23727,7 @@ pancham:
   - human-like
   evos:
   - pangoro
+  gen8: true
   heightm: 0.6
   isNonstandard: Past
   num: 674
@@ -23091,6 +23762,7 @@ pangoro:
   - human-like
   evoCondition: with a Dark-type in the party
   evoLevel: 32
+  gen8: true
   heightm: 2.1
   isNonstandard: Past
   num: 675
@@ -23124,6 +23796,7 @@ panpour:
   - field
   evos:
   - simipour
+  gen8: false
   genderRatio:
     F: 0.125
     M: 0.875
@@ -23158,6 +23831,7 @@ pansage:
   - field
   evos:
   - simisage
+  gen8: false
   genderRatio:
     F: 0.125
     M: 0.875
@@ -23192,6 +23866,7 @@ pansear:
   - field
   evos:
   - simisear
+  gen8: false
   genderRatio:
     F: 0.125
     M: 0.875
@@ -23229,6 +23904,7 @@ paras:
   - grass
   evos:
   - parasect
+  gen8: false
   heightm: 0.3
   isNonstandard: Past
   num: 46
@@ -23263,6 +23939,7 @@ parasect:
   - bug
   - grass
   evoLevel: 24
+  gen8: false
   heightm: 1
   isNonstandard: Past
   num: 47
@@ -23294,6 +23971,7 @@ passimian:
   color: White
   eggGroups:
   - field
+  gen8: true
   heightm: 2
   num: 766
   past_only: false
@@ -23326,6 +24004,7 @@ patrat:
   - field
   evos:
   - watchog
+  gen8: false
   heightm: 0.5
   isNonstandard: Past
   num: 504
@@ -23359,6 +24038,7 @@ pawmi:
   - field
   evos:
   - pawmo
+  gen8: false
   heightm: 0.3
   num: 954
   past_only: false
@@ -23392,6 +24072,7 @@ pawmo:
   evoLevel: 18
   evos:
   - pawmot
+  gen8: false
   heightm: 0.4
   num: 955
   past_only: false
@@ -23426,6 +24107,7 @@ pawmot:
   - field
   evoCondition: walk 1000 steps in Let's Go
   evoType: other
+  gen8: false
   heightm: 0.9
   num: 956
   past_only: false
@@ -23460,6 +24142,7 @@ pawniard:
   - human-like
   evos:
   - bisharp
+  gen8: true
   heightm: 0.5
   num: 624
   past_only: false
@@ -23493,6 +24176,7 @@ pelipper:
   - water1
   - flying
   evoLevel: 25
+  gen8: true
   heightm: 1.2
   num: 279
   past_only: false
@@ -23526,6 +24210,7 @@ perrserker:
   eggGroups:
   - field
   evoLevel: 28
+  gen8: true
   heightm: 0.8
   num: 863
   past_only: false
@@ -23561,6 +24246,7 @@ persian:
   formeOrder:
   - Persian
   - Persian-Alola
+  gen8: true
   heightm: 1
   num: 53
   otherFormes:
@@ -23597,6 +24283,7 @@ persianalola:
   - field
   evoType: levelFriendship
   forme: Alola
+  gen8: true
   heightm: 1.1
   isNonstandard: Unobtainable
   num: 53
@@ -23632,6 +24319,7 @@ petilil:
   evos:
   - lilligant
   - lilliganthisui
+  gen8: true
   gender: F
   heightm: 0.5
   num: 548
@@ -23663,6 +24351,7 @@ phanpy:
   - field
   evos:
   - donphan
+  gen8: false
   heightm: 0.5
   num: 231
   past_only: false
@@ -23696,6 +24385,7 @@ phantump:
   - amorphous
   evos:
   - trevenant
+  gen8: true
   heightm: 0.4
   isNonstandard: Past
   num: 708
@@ -23724,6 +24414,7 @@ pheromosa:
   color: White
   eggGroups:
   - undiscovered
+  gen8: true
   gender: N
   heightm: 1.8
   isNonstandard: Past
@@ -23756,6 +24447,7 @@ phione:
   eggGroups:
   - water1
   - fairy
+  gen8: false
   gender: N
   heightm: 0.4
   isNonstandard: Past
@@ -23794,6 +24486,7 @@ pichu:
   formeOrder:
   - Pichu
   - Pichu-Spiky-eared
+  gen8: true
   heightm: 0.3
   num: 172
   otherFormes:
@@ -23830,6 +24523,7 @@ pidgeot:
   formeOrder:
   - Pidgeot
   - Pidgeot-Mega
+  gen8: false
   heightm: 1.5
   isNonstandard: Past
   num: 18
@@ -23868,6 +24562,7 @@ pidgeotto:
   evoLevel: 18
   evos:
   - pidgeot
+  gen8: false
   heightm: 1.1
   isNonstandard: Past
   num: 17
@@ -23903,6 +24598,7 @@ pidgey:
   - flying
   evos:
   - pidgeotto
+  gen8: false
   heightm: 0.3
   isNonstandard: Past
   num: 16
@@ -23937,6 +24633,7 @@ pidove:
   - flying
   evos:
   - tranquill
+  gen8: true
   heightm: 0.3
   isNonstandard: Past
   num: 519
@@ -23970,6 +24667,7 @@ pignite:
   evoLevel: 17
   evos:
   - emboar
+  gen8: false
   genderRatio:
     F: 0.125
     M: 0.875
@@ -24027,6 +24725,7 @@ pikachu:
   - Pikachu-PhD
   - Pikachu-Libre
   - Pikachu-Cosplay
+  gen8: true
   heightm: 0.4
   num: 25
   otherFormes:
@@ -24076,6 +24775,7 @@ pikipek:
   - flying
   evos:
   - trumbeak
+  gen8: false
   heightm: 0.3
   isNonstandard: Past
   num: 731
@@ -24111,6 +24811,7 @@ piloswine:
   evoLevel: 33
   evos:
   - mamoswine
+  gen8: true
   heightm: 1.1
   isNonstandard: Past
   num: 221
@@ -24143,6 +24844,7 @@ pincurchin:
   eggGroups:
   - water1
   - amorphous
+  gen8: true
   heightm: 0.3
   num: 871
   past_only: false
@@ -24173,6 +24875,7 @@ pineco:
   - bug
   evos:
   - forretress
+  gen8: false
   heightm: 0.6
   num: 204
   past_only: false
@@ -24206,6 +24909,7 @@ pinsir:
   formeOrder:
   - Pinsir
   - Pinsir-Mega
+  gen8: true
   heightm: 1.5
   isNonstandard: Past
   num: 127
@@ -24240,6 +24944,7 @@ piplup:
   - field
   evos:
   - prinplup
+  gen8: false
   genderRatio:
     F: 0.125
     M: 0.875
@@ -24272,6 +24977,7 @@ plusle:
   color: Yellow
   eggGroups:
   - fairy
+  gen8: false
   heightm: 0.4
   isNonstandard: Past
   num: 311
@@ -24301,6 +25007,7 @@ poipole:
   - undiscovered
   evos:
   - naganadel
+  gen8: true
   gender: N
   heightm: 0.6
   isNonstandard: Past
@@ -24337,6 +25044,7 @@ politoed:
   - water1
   evoItem: King's Rock
   evoType: trade
+  gen8: true
   heightm: 1.1
   isNonstandard: Past
   num: 186
@@ -24371,6 +25079,7 @@ poliwag:
   - water1
   evos:
   - poliwhirl
+  gen8: true
   heightm: 0.6
   isNonstandard: Past
   num: 60
@@ -24406,6 +25115,7 @@ poliwhirl:
   evos:
   - poliwrath
   - politoed
+  gen8: true
   heightm: 1
   isNonstandard: Past
   num: 61
@@ -24440,6 +25150,7 @@ poliwrath:
   - water1
   evoItem: Water Stone
   evoType: useItem
+  gen8: true
   heightm: 1.3
   isNonstandard: Past
   num: 62
@@ -24478,6 +25189,7 @@ polteageist:
   formeOrder:
   - Polteageist
   - Polteageist-Antique
+  gen8: true
   gender: N
   heightm: 0.2
   num: 855
@@ -24517,6 +25229,7 @@ ponyta:
   formeOrder:
   - Ponyta
   - Ponyta-Galar
+  gen8: true
   heightm: 1
   isNonstandard: Past
   num: 77
@@ -24554,6 +25267,7 @@ ponytagalar:
   evos:
   - rapidashgalar
   forme: Galar
+  gen8: true
   heightm: 0.8
   isNonstandard: Past
   num: 77
@@ -24587,6 +25301,7 @@ poochyena:
   - field
   evos:
   - mightyena
+  gen8: false
   heightm: 0.5
   isNonstandard: Past
   num: 261
@@ -24619,6 +25334,7 @@ popplio:
   - field
   evos:
   - brionne
+  gen8: true
   genderRatio:
     F: 0.125
     M: 0.875
@@ -24655,6 +25371,7 @@ porygon:
   - mineral
   evos:
   - porygon2
+  gen8: true
   gender: N
   heightm: 0.8
   isNonstandard: Past
@@ -24691,6 +25408,7 @@ porygon2:
   evoType: trade
   evos:
   - porygonz
+  gen8: true
   gender: N
   heightm: 0.6
   isNonstandard: Past
@@ -24726,6 +25444,7 @@ porygonz:
   - mineral
   evoItem: Dubious Disc
   evoType: trade
+  gen8: true
   gender: N
   heightm: 0.9
   isNonstandard: Past
@@ -24759,6 +25478,7 @@ primarina:
   - water1
   - field
   evoLevel: 34
+  gen8: true
   genderRatio:
     F: 0.125
     M: 0.875
@@ -24798,6 +25518,7 @@ primeape:
   evoLevel: 28
   evos:
   - annihilape
+  gen8: false
   heightm: 1
   num: 57
   past_only: false
@@ -24831,6 +25552,7 @@ prinplup:
   evoLevel: 16
   evos:
   - empoleon
+  gen8: false
   genderRatio:
     F: 0.125
     M: 0.875
@@ -24868,6 +25590,7 @@ probopass:
   - mineral
   evoCondition: near a special magnetic field
   evoType: levelExtra
+  gen8: false
   heightm: 1.4
   isNonstandard: Past
   num: 476
@@ -24904,6 +25627,7 @@ psyduck:
   - field
   evos:
   - golduck
+  gen8: true
   heightm: 0.8
   num: 54
   past_only: false
@@ -24942,6 +25666,7 @@ pumpkaboo:
   - Pumpkaboo-Small
   - Pumpkaboo-Large
   - Pumpkaboo-Super
+  gen8: true
   heightm: 0.4
   isNonstandard: Past
   num: 710
@@ -24977,6 +25702,7 @@ pupitar:
   evoLevel: 30
   evos:
   - tyranitar
+  gen8: true
   heightm: 1.2
   num: 247
   past_only: false
@@ -25011,6 +25737,7 @@ purrloin:
   - field
   evos:
   - liepard
+  gen8: true
   heightm: 0.4
   isNonstandard: Past
   num: 509
@@ -25043,6 +25770,7 @@ purugly:
   eggGroups:
   - field
   evoLevel: 38
+  gen8: false
   genderRatio:
     F: 0.75
     M: 0.25
@@ -25079,6 +25807,7 @@ pyroar:
   eggGroups:
   - field
   evoLevel: 35
+  gen8: false
   genderRatio:
     F: 0.875
     M: 0.125
@@ -25112,6 +25841,7 @@ pyukumuku:
   color: Black
   eggGroups:
   - water1
+  gen8: true
   heightm: 0.3
   isNonstandard: Past
   num: 771
@@ -25145,6 +25875,7 @@ quagsire:
   - water1
   - field
   evoLevel: 20
+  gen8: true
   heightm: 1.4
   num: 195
   past_only: false
@@ -25177,6 +25908,7 @@ quaquaval:
   - flying
   - water1
   evoLevel: 36
+  gen8: false
   genderRatio:
     F: 0.125
     M: 0.875
@@ -25213,6 +25945,7 @@ quaxly:
   - water1
   evos:
   - quaxwell
+  gen8: false
   genderRatio:
     F: 0.125
     M: 0.875
@@ -25248,6 +25981,7 @@ quaxwell:
   evoLevel: 16
   evos:
   - quaquaval
+  gen8: false
   genderRatio:
     F: 0.125
     M: 0.875
@@ -25284,6 +26018,7 @@ quilava:
   evos:
   - typhlosion
   - typhlosionhisui
+  gen8: false
   genderRatio:
     F: 0.125
     M: 0.875
@@ -25320,6 +26055,7 @@ quilladin:
   evoLevel: 16
   evos:
   - chesnaught
+  gen8: false
   genderRatio:
     F: 0.125
     M: 0.875
@@ -25358,6 +26094,7 @@ qwilfish:
   formeOrder:
   - Qwilfish
   - Qwilfish-Hisui
+  gen8: true
   heightm: 0.5
   num: 211
   otherFormes:
@@ -25395,6 +26132,7 @@ qwilfishhisui:
   evos:
   - overqwil
   forme: Hisui
+  gen8: false
   heightm: 0.5
   isNonstandard: Unobtainable
   num: 211
@@ -25429,6 +26167,7 @@ raboot:
   evoLevel: 16
   evos:
   - cinderace
+  gen8: true
   genderRatio:
     F: 0.125
     M: 0.875
@@ -25464,6 +26203,7 @@ rabsca:
   - bug
   evoCondition: walk 1000 steps in Let's Go
   evoType: other
+  gen8: false
   heightm: 0.3
   num: 923
   past_only: false
@@ -25500,6 +26240,7 @@ raichu:
   formeOrder:
   - Raichu
   - Raichu-Alola
+  gen8: true
   heightm: 0.8
   num: 26
   otherFormes:
@@ -25535,6 +26276,7 @@ raichualola:
   evoRegion: Alola
   evoType: useItem
   forme: Alola
+  gen8: true
   heightm: 0.7
   isNonstandard: Unobtainable
   num: 26
@@ -25566,6 +26308,7 @@ raikou:
   color: Yellow
   eggGroups:
   - undiscovered
+  gen8: true
   gender: N
   heightm: 1.9
   isNonstandard: Past
@@ -25603,6 +26346,7 @@ ralts:
   - amorphous
   evos:
   - kirlia
+  gen8: true
   heightm: 0.4
   num: 280
   past_only: false
@@ -25633,6 +26377,7 @@ rampardos:
   eggGroups:
   - monster
   evoLevel: 30
+  gen8: false
   genderRatio:
     F: 0.125
     M: 0.875
@@ -25672,6 +26417,7 @@ rapidash:
   formeOrder:
   - Rapidash
   - Rapidash-Galar
+  gen8: true
   heightm: 1.7
   isNonstandard: Past
   num: 78
@@ -25709,6 +26455,7 @@ rapidashgalar:
   - field
   evoLevel: 40
   forme: Galar
+  gen8: true
   heightm: 1.7
   isNonstandard: Past
   num: 78
@@ -25747,6 +26494,7 @@ raticate:
   - Raticate
   - Raticate-Alola
   - Raticate-Alola-Totem
+  gen8: false
   heightm: 0.7
   isNonstandard: Past
   num: 20
@@ -25786,6 +26534,7 @@ raticatealola:
   evoCondition: at night
   evoLevel: 20
   forme: Alola
+  gen8: false
   heightm: 0.7
   isNonstandard: Past
   num: 20
@@ -25824,6 +26573,7 @@ rattata:
   formeOrder:
   - Rattata
   - Rattata-Alola
+  gen8: false
   heightm: 0.3
   isNonstandard: Past
   num: 19
@@ -25861,6 +26611,7 @@ rattataalola:
   evos:
   - raticatealola
   forme: Alola
+  gen8: false
   heightm: 0.3
   isNonstandard: Past
   num: 19
@@ -25892,6 +26643,7 @@ rayquaza:
   formeOrder:
   - Rayquaza
   - Rayquaza-Mega
+  gen8: true
   gender: N
   heightm: 7
   isNonstandard: Unobtainable
@@ -25927,6 +26679,7 @@ regice:
   color: Blue
   eggGroups:
   - undiscovered
+  gen8: true
   gender: N
   heightm: 1.8
   isNonstandard: Past
@@ -25957,6 +26710,7 @@ regidrago:
   color: Green
   eggGroups:
   - undiscovered
+  gen8: true
   gender: N
   heightm: 2.1
   isNonstandard: Unobtainable
@@ -25987,6 +26741,7 @@ regieleki:
   color: Yellow
   eggGroups:
   - undiscovered
+  gen8: true
   gender: N
   heightm: 1.2
   isNonstandard: Unobtainable
@@ -26017,6 +26772,7 @@ regigigas:
   color: White
   eggGroups:
   - undiscovered
+  gen8: true
   gender: N
   heightm: 3.7
   isNonstandard: Past
@@ -26049,6 +26805,7 @@ regirock:
   color: Brown
   eggGroups:
   - undiscovered
+  gen8: true
   gender: N
   heightm: 1.7
   isNonstandard: Past
@@ -26081,6 +26838,7 @@ registeel:
   color: Gray
   eggGroups:
   - undiscovered
+  gen8: true
   gender: N
   heightm: 1.9
   isNonstandard: Past
@@ -26116,6 +26874,7 @@ relicanth:
   eggGroups:
   - water1
   - water2
+  gen8: true
   genderRatio:
     F: 0.125
     M: 0.875
@@ -26151,6 +26910,7 @@ rellor:
   - bug
   evos:
   - rabsca
+  gen8: false
   heightm: 0.2
   num: 922
   past_only: false
@@ -26184,6 +26944,7 @@ remoraid:
   - water2
   evos:
   - octillery
+  gen8: true
   heightm: 0.6
   isNonstandard: Past
   num: 223
@@ -26211,6 +26972,7 @@ reshiram:
   color: White
   eggGroups:
   - undiscovered
+  gen8: true
   gender: N
   heightm: 3.2
   isNonstandard: Past
@@ -26247,6 +27009,7 @@ reuniclus:
   eggGroups:
   - amorphous
   evoLevel: 41
+  gen8: true
   heightm: 1
   isNonstandard: Past
   num: 579
@@ -26278,6 +27041,7 @@ revavroom:
   eggGroups:
   - mineral
   evoLevel: 40
+  gen8: false
   heightm: 1.8
   num: 943
   past_only: false
@@ -26314,6 +27078,7 @@ rhydon:
   evoLevel: 42
   evos:
   - rhyperior
+  gen8: true
   heightm: 1.9
   isNonstandard: Past
   num: 112
@@ -26350,6 +27115,7 @@ rhyhorn:
   - field
   evos:
   - rhydon
+  gen8: true
   heightm: 1
   isNonstandard: Past
   num: 111
@@ -26385,6 +27151,7 @@ rhyperior:
   - field
   evoItem: Protector
   evoType: trade
+  gen8: true
   heightm: 2.4
   isNonstandard: Past
   num: 464
@@ -26423,6 +27190,7 @@ ribombee:
   formeOrder:
   - Ribombee
   - Ribombee-Totem
+  gen8: true
   heightm: 0.2
   isNonstandard: Past
   num: 743
@@ -26459,6 +27227,7 @@ rillaboom:
   - field
   - grass
   evoLevel: 35
+  gen8: true
   genderRatio:
     F: 0.125
     M: 0.875
@@ -26497,6 +27266,7 @@ riolu:
   - undiscovered
   evos:
   - lucario
+  gen8: true
   genderRatio:
     F: 0.125
     M: 0.875
@@ -26526,6 +27296,7 @@ roaringmoon:
   color: Green
   eggGroups:
   - undiscovered
+  gen8: false
   gender: N
   heightm: 2
   num: 985
@@ -26567,6 +27338,7 @@ rockruff:
   formeOrder:
   - Rockruff
   - Rockruff
+  gen8: true
   heightm: 0.5
   num: 744
   past_only: false
@@ -26599,6 +27371,7 @@ roggenrola:
   - mineral
   evos:
   - boldore
+  gen8: true
   heightm: 0.4
   isNonstandard: Past
   num: 524
@@ -26632,6 +27405,7 @@ rolycoly:
   - mineral
   evos:
   - carkol
+  gen8: true
   heightm: 0.3
   num: 837
   past_only: false
@@ -26664,6 +27438,7 @@ rookidee:
   - flying
   evos:
   - corvisquire
+  gen8: true
   heightm: 0.2
   num: 821
   past_only: false
@@ -26700,6 +27475,7 @@ roselia:
   evoType: levelFriendship
   evos:
   - roserade
+  gen8: true
   heightm: 0.3
   isNonstandard: Past
   num: 315
@@ -26736,6 +27512,7 @@ roserade:
   - grass
   evoItem: Shiny Stone
   evoType: useItem
+  gen8: true
   heightm: 0.9
   isNonstandard: Past
   num: 407
@@ -26772,6 +27549,7 @@ rotom:
   - Rotom-Frost
   - Rotom-Fan
   - Rotom-Mow
+  gen8: true
   gender: N
   heightm: 0.3
   num: 479
@@ -26809,6 +27587,7 @@ rotomfan:
   eggGroups:
   - amorphous
   forme: Fan
+  gen8: true
   gender: N
   heightm: 0.3
   num: 479
@@ -26840,6 +27619,7 @@ rotomfrost:
   eggGroups:
   - amorphous
   forme: Frost
+  gen8: true
   gender: N
   heightm: 0.3
   num: 479
@@ -26871,6 +27651,7 @@ rotomheat:
   eggGroups:
   - amorphous
   forme: Heat
+  gen8: true
   gender: N
   heightm: 0.3
   num: 479
@@ -26902,6 +27683,7 @@ rotommow:
   eggGroups:
   - amorphous
   forme: Mow
+  gen8: true
   gender: N
   heightm: 0.3
   num: 479
@@ -26933,6 +27715,7 @@ rotomwash:
   eggGroups:
   - amorphous
   forme: Wash
+  gen8: true
   gender: N
   heightm: 0.3
   num: 479
@@ -26965,6 +27748,7 @@ rowlet:
   - flying
   evos:
   - dartrix
+  gen8: true
   genderRatio:
     F: 0.125
     M: 0.875
@@ -27003,6 +27787,7 @@ rufflet:
   evos:
   - braviary
   - braviaryhisui
+  gen8: true
   gender: M
   heightm: 0.5
   num: 627
@@ -27034,6 +27819,7 @@ runerigus:
   - amorphous
   evoCondition: Have 49+ HP lost and walk under stone sculpture in Dusty Bowl
   evoType: other
+  gen8: true
   heightm: 1.6
   isNonstandard: Past
   num: 867
@@ -27070,6 +27856,7 @@ sableye:
   formeOrder:
   - Sableye
   - Sableye-Mega
+  gen8: true
   heightm: 0.5
   num: 302
   otherFormes:
@@ -27105,6 +27892,7 @@ salamence:
   formeOrder:
   - Salamence
   - Salamence-Mega
+  gen8: true
   heightm: 1.5
   num: 373
   otherFormes:
@@ -27140,6 +27928,7 @@ salandit:
   - dragon
   evos:
   - salazzle
+  gen8: true
   genderRatio:
     F: 0.125
     M: 0.875
@@ -27177,6 +27966,7 @@ salazzle:
   formeOrder:
   - Salazzle
   - Salazzle-Totem
+  gen8: true
   gender: F
   heightm: 1.2
   num: 758
@@ -27214,6 +28004,7 @@ samurott:
   formeOrder:
   - Samurott
   - Samurott-Hisui
+  gen8: false
   genderRatio:
     F: 0.125
     M: 0.875
@@ -27252,6 +28043,7 @@ samurotthisui:
   - field
   evoLevel: 36
   forme: Hisui
+  gen8: false
   genderRatio:
     F: 0.125
     M: 0.875
@@ -27291,6 +28083,7 @@ sandaconda:
   - field
   - dragon
   evoLevel: 36
+  gen8: true
   heightm: 3.8
   num: 844
   past_only: false
@@ -27324,6 +28117,7 @@ sandile:
   - field
   evos:
   - krokorok
+  gen8: true
   heightm: 0.7
   num: 551
   past_only: false
@@ -27358,6 +28152,7 @@ sandshrew:
   formeOrder:
   - Sandshrew
   - Sandshrew-Alola
+  gen8: true
   heightm: 0.6
   isNonstandard: Past
   num: 27
@@ -27393,6 +28188,7 @@ sandshrewalola:
   evos:
   - sandslashalola
   forme: Alola
+  gen8: true
   heightm: 0.7
   isNonstandard: Past
   num: 27
@@ -27427,6 +28223,7 @@ sandslash:
   formeOrder:
   - Sandslash
   - Sandslash-Alola
+  gen8: true
   heightm: 1
   isNonstandard: Past
   num: 28
@@ -27463,6 +28260,7 @@ sandslashalola:
   evoItem: Ice Stone
   evoType: useItem
   forme: Alola
+  gen8: true
   heightm: 1.2
   isNonstandard: Past
   num: 28
@@ -27496,6 +28294,7 @@ sandygast:
   - amorphous
   evos:
   - palossand
+  gen8: true
   heightm: 0.5
   num: 769
   past_only: false
@@ -27523,6 +28322,7 @@ sandyshocks:
   color: Gray
   eggGroups:
   - undiscovered
+  gen8: false
   gender: N
   heightm: 2.3
   num: 981
@@ -27555,6 +28355,7 @@ sawk:
   color: Blue
   eggGroups:
   - human-like
+  gen8: true
   gender: M
   heightm: 1.4
   isNonstandard: Past
@@ -27598,6 +28399,7 @@ sawsbuck:
   - Sawsbuck-Summer
   - Sawsbuck-Autumn
   - Sawsbuck-Winter
+  gen8: false
   heightm: 1.9
   num: 586
   past_only: false
@@ -27632,6 +28434,7 @@ scatterbug:
   - bug
   evos:
   - spewpa
+  gen8: false
   heightm: 0.3
   num: 664
   past_only: false
@@ -27665,6 +28468,7 @@ sceptile:
   formeOrder:
   - Sceptile
   - Sceptile-Mega
+  gen8: true
   genderRatio:
     F: 0.125
     M: 0.875
@@ -27707,6 +28511,7 @@ scizor:
   formeOrder:
   - Scizor
   - Scizor-Mega
+  gen8: true
   heightm: 1.8
   num: 212
   otherFormes:
@@ -27742,6 +28547,7 @@ scolipede:
   eggGroups:
   - bug
   evoLevel: 30
+  gen8: true
   heightm: 2.5
   isNonstandard: Past
   num: 545
@@ -27776,6 +28582,7 @@ scorbunny:
   - human-like
   evos:
   - raboot
+  gen8: true
   genderRatio:
     F: 0.125
     M: 0.875
@@ -27813,6 +28620,7 @@ scovillain:
   evoItem: Fire Stone
   evoLevel: 30
   evoType: useItem
+  gen8: false
   heightm: 0.9
   num: 939
   past_only: false
@@ -27847,6 +28655,7 @@ scrafty:
   - field
   - dragon
   evoLevel: 39
+  gen8: true
   heightm: 1.1
   isNonstandard: Past
   num: 560
@@ -27883,6 +28692,7 @@ scraggy:
   - dragon
   evos:
   - scrafty
+  gen8: true
   heightm: 0.6
   isNonstandard: Past
   num: 559
@@ -27911,6 +28721,7 @@ screamtail:
   color: Pink
   eggGroups:
   - undiscovered
+  gen8: false
   gender: N
   heightm: 1.2
   num: 982
@@ -27946,6 +28757,7 @@ scyther:
   evos:
   - scizor
   - kleavor
+  gen8: true
   heightm: 1.5
   num: 123
   past_only: false
@@ -27981,6 +28793,7 @@ seadra:
   evoLevel: 32
   evos:
   - kingdra
+  gen8: true
   heightm: 1.2
   isNonstandard: Past
   num: 117
@@ -28014,6 +28827,7 @@ seaking:
   eggGroups:
   - water2
   evoLevel: 33
+  gen8: true
   heightm: 1.3
   isNonstandard: Past
   num: 119
@@ -28050,6 +28864,7 @@ sealeo:
   evoLevel: 32
   evos:
   - walrein
+  gen8: true
   heightm: 1.1
   isNonstandard: Past
   num: 364
@@ -28086,6 +28901,7 @@ seedot:
   - grass
   evos:
   - nuzleaf
+  gen8: true
   heightm: 0.5
   isNonstandard: Past
   num: 273
@@ -28120,6 +28936,7 @@ seel:
   - field
   evos:
   - dewgong
+  gen8: false
   heightm: 1.1
   isNonstandard: Past
   num: 86
@@ -28152,6 +28969,7 @@ seismitoad:
   eggGroups:
   - water1
   evoLevel: 36
+  gen8: true
   heightm: 1.5
   isNonstandard: Past
   num: 537
@@ -28187,6 +29005,7 @@ sentret:
   - field
   evos:
   - furret
+  gen8: false
   heightm: 0.8
   isNonstandard: Past
   num: 161
@@ -28218,6 +29037,7 @@ serperior:
   - field
   - grass
   evoLevel: 36
+  gen8: false
   genderRatio:
     F: 0.125
     M: 0.875
@@ -28255,6 +29075,7 @@ servine:
   evoLevel: 17
   evos:
   - serperior
+  gen8: false
   genderRatio:
     F: 0.125
     M: 0.875
@@ -28289,6 +29110,7 @@ seviper:
   eggGroups:
   - field
   - dragon
+  gen8: false
   heightm: 2.7
   num: 336
   past_only: false
@@ -28321,6 +29143,7 @@ sewaddle:
   - bug
   evos:
   - swadloon
+  gen8: false
   heightm: 0.3
   isNonstandard: Past
   num: 540
@@ -28355,6 +29178,7 @@ sharpedo:
   formeOrder:
   - Sharpedo
   - Sharpedo-Mega
+  gen8: true
   heightm: 1.8
   isNonstandard: Past
   num: 319
@@ -28390,6 +29214,7 @@ shaymin:
   formeOrder:
   - Shaymin
   - Shaymin-Sky
+  gen8: false
   gender: N
   heightm: 0.2
   isNonstandard: Past
@@ -28423,6 +29248,7 @@ shedinja:
   eggGroups:
   - mineral
   evoLevel: 20
+  gen8: true
   gender: N
   heightm: 0.8
   isNonstandard: Past
@@ -28459,6 +29285,7 @@ shelgon:
   evoLevel: 30
   evos:
   - salamence
+  gen8: true
   heightm: 1.1
   num: 372
   past_only: false
@@ -28492,6 +29319,7 @@ shellder:
   - water3
   evos:
   - cloyster
+  gen8: true
   heightm: 0.3
   num: 90
   past_only: false
@@ -28531,6 +29359,7 @@ shellos:
   formeOrder:
   - Shellos
   - Shellos-East
+  gen8: true
   heightm: 0.3
   num: 422
   past_only: false
@@ -28563,6 +29392,7 @@ shelmet:
   - bug
   evos:
   - accelgor
+  gen8: true
   heightm: 0.4
   isNonstandard: Past
   num: 616
@@ -28594,6 +29424,7 @@ shieldon:
   - monster
   evos:
   - bastiodon
+  gen8: false
   genderRatio:
     F: 0.125
     M: 0.875
@@ -28632,6 +29463,7 @@ shiftry:
   - grass
   evoItem: Leaf Stone
   evoType: useItem
+  gen8: true
   heightm: 1.3
   isNonstandard: Past
   num: 275
@@ -28666,6 +29498,7 @@ shiinotic:
   eggGroups:
   - grass
   evoLevel: 24
+  gen8: true
   heightm: 1
   isNonstandard: Past
   num: 756
@@ -28701,6 +29534,7 @@ shinx:
   - field
   evos:
   - luxio
+  gen8: true
   heightm: 0.5
   num: 403
   past_only: false
@@ -28733,6 +29567,7 @@ shroodle:
   - field
   evos:
   - grafaiai
+  gen8: false
   heightm: 0.2
   num: 968
   past_only: false
@@ -28767,6 +29602,7 @@ shroomish:
   - grass
   evos:
   - breloom
+  gen8: false
   heightm: 0.4
   num: 285
   past_only: false
@@ -28797,6 +29633,7 @@ shuckle:
   color: Yellow
   eggGroups:
   - bug
+  gen8: true
   heightm: 0.6
   isNonstandard: Past
   num: 213
@@ -28831,6 +29668,7 @@ shuppet:
   - amorphous
   evos:
   - banette
+  gen8: false
   heightm: 0.6
   num: 353
   past_only: false
@@ -28861,6 +29699,7 @@ sigilyph:
   color: Black
   eggGroups:
   - flying
+  gen8: true
   heightm: 1.4
   isNonstandard: Past
   num: 561
@@ -28892,6 +29731,7 @@ silcoon:
   evoLevel: 7
   evos:
   - beautifly
+  gen8: false
   heightm: 0.6
   isNonstandard: Past
   num: 266
@@ -28927,6 +29767,7 @@ silicobra:
   - dragon
   evos:
   - sandaconda
+  gen8: true
   heightm: 2.2
   num: 843
   past_only: false
@@ -28973,6 +29814,7 @@ silvally:
   - Silvally-Dragon
   - Silvally-Dark
   - Silvally-Fairy
+  gen8: true
   gender: N
   heightm: 2.3
   isNonstandard: Past
@@ -29026,6 +29868,7 @@ simipour:
   - field
   evoItem: Water Stone
   evoType: useItem
+  gen8: false
   genderRatio:
     F: 0.125
     M: 0.875
@@ -29061,6 +29904,7 @@ simisage:
   - field
   evoItem: Leaf Stone
   evoType: useItem
+  gen8: false
   genderRatio:
     F: 0.125
     M: 0.875
@@ -29096,6 +29940,7 @@ simisear:
   - field
   evoItem: Fire Stone
   evoType: useItem
+  gen8: false
   genderRatio:
     F: 0.125
     M: 0.875
@@ -29136,6 +29981,7 @@ sinistea:
   formeOrder:
   - Sinistea
   - Sinistea-Antique
+  gen8: true
   gender: N
   heightm: 0.1
   num: 854
@@ -29170,6 +30016,7 @@ sirfetchd:
   - field
   evoCondition: Land 3 critical hits in 1 battle
   evoType: other
+  gen8: true
   heightm: 0.8
   isNonstandard: Past
   num: 865
@@ -29204,6 +30051,7 @@ sizzlipede:
   - bug
   evos:
   - centiskorch
+  gen8: true
   heightm: 0.7
   isNonstandard: Past
   num: 850
@@ -29236,6 +30084,7 @@ skarmory:
   color: Gray
   eggGroups:
   - flying
+  gen8: true
   heightm: 1.7
   isNonstandard: Past
   num: 227
@@ -29267,6 +30116,7 @@ skeledirge:
   eggGroups:
   - field
   evoLevel: 36
+  gen8: false
   genderRatio:
     F: 0.125
     M: 0.875
@@ -29302,6 +30152,7 @@ skiddo:
   - field
   evos:
   - gogoat
+  gen8: false
   heightm: 0.9
   num: 672
   past_only: false
@@ -29336,6 +30187,7 @@ skiploom:
   evoLevel: 18
   evos:
   - jumpluff
+  gen8: false
   heightm: 0.6
   num: 188
   past_only: false
@@ -29371,6 +30223,7 @@ skitty:
   - fairy
   evos:
   - delcatty
+  gen8: false
   genderRatio:
     F: 0.75
     M: 0.25
@@ -29408,6 +30261,7 @@ skorupi:
   - water3
   evos:
   - drapion
+  gen8: true
   heightm: 0.8
   isNonstandard: Past
   num: 451
@@ -29443,6 +30297,7 @@ skrelp:
   - dragon
   evos:
   - dragalge
+  gen8: true
   heightm: 0.5
   num: 690
   past_only: false
@@ -29475,6 +30330,7 @@ skuntank:
   eggGroups:
   - field
   evoLevel: 34
+  gen8: true
   heightm: 1
   num: 435
   past_only: false
@@ -29507,6 +30363,7 @@ skwovet:
   - field
   evos:
   - greedent
+  gen8: true
   heightm: 0.3
   num: 819
   past_only: false
@@ -29534,6 +30391,7 @@ slaking:
   eggGroups:
   - field
   evoLevel: 36
+  gen8: false
   heightm: 2
   num: 289
   past_only: false
@@ -29563,6 +30421,7 @@ slakoth:
   - field
   evos:
   - vigoroth
+  gen8: false
   heightm: 0.8
   num: 287
   past_only: false
@@ -29599,6 +30458,7 @@ sliggoo:
   formeOrder:
   - Sliggoo
   - Sliggoo-Hisui
+  gen8: true
   heightm: 0.8
   num: 705
   otherFormes:
@@ -29637,6 +30497,7 @@ sliggoohisui:
   evos:
   - goodrahisui
   forme: Hisui
+  gen8: false
   heightm: 0.7
   isNonstandard: Unobtainable
   num: 705
@@ -29666,6 +30527,7 @@ slitherwing:
   color: Red
   eggGroups:
   - undiscovered
+  gen8: false
   gender: N
   heightm: 3.2
   num: 984
@@ -29704,6 +30566,7 @@ slowbro:
   - Slowbro
   - Slowbro-Mega
   - Slowbro-Galar
+  gen8: true
   heightm: 1.6
   num: 80
   otherFormes:
@@ -29744,6 +30607,7 @@ slowbrogalar:
   evoItem: Galarica Cuff
   evoType: useItem
   forme: Galar
+  gen8: true
   heightm: 1.6
   isNonstandard: Unobtainable
   num: 80
@@ -29783,6 +30647,7 @@ slowking:
   formeOrder:
   - Slowking
   - Slowking-Galar
+  gen8: true
   heightm: 2
   num: 199
   otherFormes:
@@ -29822,6 +30687,7 @@ slowkinggalar:
   evoItem: Galarica Wreath
   evoType: useItem
   forme: Galar
+  gen8: true
   heightm: 1.8
   isNonstandard: Unobtainable
   num: 199
@@ -29862,6 +30728,7 @@ slowpoke:
   formeOrder:
   - Slowpoke
   - Slowpoke-Galar
+  gen8: true
   heightm: 1.2
   num: 79
   otherFormes:
@@ -29901,6 +30768,7 @@ slowpokegalar:
   - slowbrogalar
   - slowkinggalar
   forme: Galar
+  gen8: true
   heightm: 1.2
   isNonstandard: Unobtainable
   num: 79
@@ -29934,6 +30802,7 @@ slugma:
   - amorphous
   evos:
   - magcargo
+  gen8: false
   heightm: 0.7
   isNonstandard: Past
   num: 218
@@ -29965,6 +30834,7 @@ slurpuff:
   - fairy
   evoItem: Whipped Dream
   evoType: trade
+  gen8: true
   heightm: 0.8
   isNonstandard: Past
   num: 685
@@ -29997,6 +30867,7 @@ smeargle:
   color: White
   eggGroups:
   - field
+  gen8: false
   heightm: 1.2
   isNonstandard: Past
   num: 235
@@ -30028,6 +30899,7 @@ smoliv:
   - grass
   evos:
   - dolliv
+  gen8: false
   heightm: 0.3
   num: 935
   past_only: false
@@ -30062,6 +30934,7 @@ smoochum:
   - undiscovered
   evos:
   - jynx
+  gen8: true
   gender: F
   heightm: 0.4
   isNonstandard: Past
@@ -30100,6 +30973,7 @@ sneasel:
   formeOrder:
   - Sneasel
   - Sneasel-Hisui
+  gen8: true
   heightm: 0.9
   num: 215
   otherFormes:
@@ -30137,6 +31011,7 @@ sneaselhisui:
   evos:
   - sneasler
   forme: Hisui
+  gen8: false
   heightm: 0.9
   isNonstandard: Unobtainable
   num: 215
@@ -30172,6 +31047,7 @@ sneasler:
   evoCondition: during the day
   evoItem: Razor Claw
   evoType: useItem
+  gen8: false
   heightm: 1.3
   isNonstandard: Unobtainable
   num: 903
@@ -30206,6 +31082,7 @@ snivy:
   - grass
   evos:
   - servine
+  gen8: false
   genderRatio:
     F: 0.125
     M: 0.875
@@ -30240,6 +31117,7 @@ snom:
   - bug
   evos:
   - frosmoth
+  gen8: true
   heightm: 0.3
   num: 872
   past_only: false
@@ -30274,6 +31152,7 @@ snorlax:
   eggGroups:
   - monster
   evoType: levelFriendship
+  gen8: true
   genderRatio:
     F: 0.125
     M: 0.875
@@ -30313,6 +31192,7 @@ snorunt:
   evos:
   - glalie
   - froslass
+  gen8: true
   heightm: 0.7
   num: 361
   past_only: false
@@ -30344,6 +31224,7 @@ snover:
   - grass
   evos:
   - abomasnow
+  gen8: true
   heightm: 1
   num: 459
   past_only: false
@@ -30378,6 +31259,7 @@ snubbull:
   - fairy
   evos:
   - granbull
+  gen8: false
   genderRatio:
     F: 0.75
     M: 0.25
@@ -30413,6 +31295,7 @@ sobble:
   - field
   evos:
   - drizzile
+  gen8: true
   genderRatio:
     F: 0.125
     M: 0.875
@@ -30444,6 +31327,7 @@ solgaleo:
   eggGroups:
   - undiscovered
   evoLevel: 53
+  gen8: true
   gender: N
   heightm: 3.4
   isNonstandard: Past
@@ -30482,6 +31366,7 @@ solosis:
   - amorphous
   evos:
   - duosion
+  gen8: true
   heightm: 0.3
   isNonstandard: Past
   num: 577
@@ -30509,6 +31394,7 @@ solrock:
   color: Red
   eggGroups:
   - mineral
+  gen8: true
   gender: N
   heightm: 1.2
   isNonstandard: Past
@@ -30542,6 +31428,7 @@ spearow:
   - flying
   evos:
   - fearow
+  gen8: false
   heightm: 0.3
   isNonstandard: Past
   num: 21
@@ -30570,6 +31457,7 @@ spectrier:
   color: Black
   eggGroups:
   - undiscovered
+  gen8: true
   gender: N
   heightm: 2
   isNonstandard: Unobtainable
@@ -30606,6 +31494,7 @@ spewpa:
   evos:
   - vivillon
   - vivillonfancy
+  gen8: false
   heightm: 0.3
   num: 665
   past_only: false
@@ -30640,6 +31529,7 @@ spheal:
   - field
   evos:
   - sealeo
+  gen8: true
   heightm: 0.8
   isNonstandard: Past
   num: 363
@@ -30671,6 +31561,7 @@ spidops:
   eggGroups:
   - bug
   evoLevel: 15
+  gen8: false
   heightm: 1
   num: 919
   past_only: false
@@ -30704,6 +31595,7 @@ spinarak:
   - bug
   evos:
   - ariados
+  gen8: false
   heightm: 0.5
   isNonstandard: Past
   num: 167
@@ -30737,6 +31629,7 @@ spinda:
   eggGroups:
   - field
   - human-like
+  gen8: false
   heightm: 1.1
   isNonstandard: Past
   num: 327
@@ -30766,6 +31659,7 @@ spiritomb:
   color: Purple
   eggGroups:
   - amorphous
+  gen8: true
   heightm: 1
   num: 442
   past_only: false
@@ -30799,6 +31693,7 @@ spoink:
   - field
   evos:
   - grumpig
+  gen8: false
   heightm: 0.7
   num: 325
   past_only: false
@@ -30830,6 +31725,7 @@ sprigatito:
   - grass
   evos:
   - floragato
+  gen8: false
   genderRatio:
     F: 0.125
     M: 0.875
@@ -30863,6 +31759,7 @@ spritzee:
   - fairy
   evos:
   - aromatisse
+  gen8: true
   heightm: 0.2
   isNonstandard: Past
   num: 682
@@ -30900,6 +31797,7 @@ squawkabilly:
   - Squawkabilly-Blue
   - Squawkabilly-Yellow
   - Squawkabilly-White
+  gen8: false
   heightm: 0.6
   num: 960
   otherFormes:
@@ -30937,6 +31835,7 @@ squawkabillyblue:
   eggGroups:
   - flying
   forme: Blue
+  gen8: false
   heightm: 0.6
   num: 960
   past_only: false
@@ -30969,6 +31868,7 @@ squawkabillywhite:
   eggGroups:
   - flying
   forme: White
+  gen8: false
   heightm: 0.6
   num: 960
   past_only: false
@@ -31001,6 +31901,7 @@ squawkabillyyellow:
   eggGroups:
   - flying
   forme: Yellow
+  gen8: false
   heightm: 0.6
   num: 960
   past_only: false
@@ -31032,6 +31933,7 @@ squirtle:
   - water1
   evos:
   - wartortle
+  gen8: true
   genderRatio:
     F: 0.125
     M: 0.875
@@ -31062,6 +31964,7 @@ stakataka:
   color: Gray
   eggGroups:
   - undiscovered
+  gen8: true
   gender: N
   heightm: 5.5
   isNonstandard: Past
@@ -31099,6 +32002,7 @@ stantler:
   - field
   evos:
   - wyrdeer
+  gen8: false
   heightm: 1.4
   num: 234
   past_only: false
@@ -31128,6 +32032,7 @@ staraptor:
   eggGroups:
   - flying
   evoLevel: 34
+  gen8: false
   heightm: 1.2
   num: 398
   past_only: false
@@ -31161,6 +32066,7 @@ staravia:
   evoLevel: 14
   evos:
   - staraptor
+  gen8: false
   heightm: 0.6
   num: 397
   past_only: false
@@ -31193,6 +32099,7 @@ starly:
   - flying
   evos:
   - staravia
+  gen8: false
   heightm: 0.3
   num: 396
   past_only: false
@@ -31226,6 +32133,7 @@ starmie:
   - water3
   evoItem: Water Stone
   evoType: useItem
+  gen8: true
   gender: N
   heightm: 1.1
   isNonstandard: Past
@@ -31262,6 +32170,7 @@ staryu:
   - water3
   evos:
   - starmie
+  gen8: true
   gender: N
   heightm: 0.8
   isNonstandard: Past
@@ -31299,6 +32208,7 @@ steelix:
   formeOrder:
   - Steelix
   - Steelix-Mega
+  gen8: true
   heightm: 9.2
   isNonstandard: Past
   num: 208
@@ -31337,6 +32247,7 @@ steenee:
   evoLevel: 18
   evos:
   - tsareena
+  gen8: true
   gender: F
   heightm: 0.7
   num: 762
@@ -31365,6 +32276,7 @@ stonjourner:
   color: Gray
   eggGroups:
   - mineral
+  gen8: true
   heightm: 2.5
   num: 874
   past_only: false
@@ -31396,6 +32308,7 @@ stoutland:
   eggGroups:
   - field
   evoLevel: 32
+  gen8: true
   heightm: 1.2
   isNonstandard: Past
   num: 508
@@ -31430,6 +32343,7 @@ stufful:
   - field
   evos:
   - bewear
+  gen8: true
   heightm: 0.5
   isNonstandard: Past
   num: 759
@@ -31466,6 +32380,7 @@ stunfisk:
   formeOrder:
   - Stunfisk
   - Stunfisk-Galar
+  gen8: true
   heightm: 0.7
   isNonstandard: Past
   num: 618
@@ -31499,6 +32414,7 @@ stunfiskgalar:
   - water1
   - amorphous
   forme: Galar
+  gen8: true
   heightm: 0.7
   isNonstandard: Past
   num: 618
@@ -31533,6 +32449,7 @@ stunky:
   - field
   evos:
   - skuntank
+  gen8: true
   heightm: 0.4
   num: 434
   past_only: false
@@ -31567,6 +32484,7 @@ sudowoodo:
   - mineral
   evoMove: Mimic
   evoType: levelMove
+  gen8: true
   heightm: 1.2
   num: 185
   past_only: false
@@ -31596,6 +32514,7 @@ suicune:
   color: Blue
   eggGroups:
   - undiscovered
+  gen8: true
   gender: N
   heightm: 2
   isNonstandard: Past
@@ -31632,6 +32551,7 @@ sunflora:
   - grass
   evoItem: Sun Stone
   evoType: useItem
+  gen8: false
   heightm: 0.8
   num: 192
   past_only: false
@@ -31665,6 +32585,7 @@ sunkern:
   - grass
   evos:
   - sunflora
+  gen8: false
   heightm: 0.3
   num: 191
   past_only: false
@@ -31696,6 +32617,7 @@ surskit:
   - bug
   evos:
   - masquerain
+  gen8: false
   heightm: 0.5
   num: 283
   past_only: false
@@ -31728,6 +32650,7 @@ swablu:
   - dragon
   evos:
   - altaria
+  gen8: true
   heightm: 0.4
   num: 333
   past_only: false
@@ -31762,6 +32685,7 @@ swadloon:
   evoLevel: 20
   evos:
   - leavanny
+  gen8: false
   heightm: 0.5
   isNonstandard: Past
   num: 541
@@ -31796,6 +32720,7 @@ swalot:
   eggGroups:
   - amorphous
   evoLevel: 26
+  gen8: false
   heightm: 1.7
   num: 317
   past_only: false
@@ -31830,6 +32755,7 @@ swampert:
   formeOrder:
   - Swampert
   - Swampert-Mega
+  gen8: true
   genderRatio:
     F: 0.125
     M: 0.875
@@ -31870,6 +32796,7 @@ swanna:
   - water1
   - flying
   evoLevel: 35
+  gen8: false
   heightm: 1.3
   isNonstandard: Past
   num: 581
@@ -31902,6 +32829,7 @@ swellow:
   eggGroups:
   - flying
   evoLevel: 22
+  gen8: false
   heightm: 0.7
   isNonstandard: Past
   num: 277
@@ -31937,6 +32865,7 @@ swinub:
   - field
   evos:
   - piloswine
+  gen8: true
   heightm: 0.4
   isNonstandard: Past
   num: 220
@@ -31969,6 +32898,7 @@ swirlix:
   - fairy
   evos:
   - slurpuff
+  gen8: true
   heightm: 0.4
   isNonstandard: Past
   num: 684
@@ -32002,6 +32932,7 @@ swoobat:
   - flying
   - field
   evoType: levelFriendship
+  gen8: true
   heightm: 0.9
   isNonstandard: Past
   num: 528
@@ -32035,6 +32966,7 @@ sylveon:
   - field
   evoCondition: with a Fairy-type move and two levels of Affection
   evoType: levelExtra
+  gen8: true
   genderRatio:
     F: 0.125
     M: 0.875
@@ -32071,6 +33003,7 @@ tadbulb:
   - water1
   evos:
   - bellibolt
+  gen8: false
   heightm: 0.3
   num: 940
   past_only: false
@@ -32101,6 +33034,7 @@ taillow:
   - flying
   evos:
   - swellow
+  gen8: false
   heightm: 0.3
   isNonstandard: Past
   num: 276
@@ -32132,6 +33066,7 @@ talonflame:
   eggGroups:
   - flying
   evoLevel: 35
+  gen8: true
   heightm: 1.2
   num: 663
   past_only: false
@@ -32168,6 +33103,7 @@ tandemaus:
   evos:
   - maushold
   - mausholdfour
+  gen8: false
   gender: N
   heightm: 0.3
   num: 945
@@ -32201,6 +33137,7 @@ tangela:
   - grass
   evos:
   - tangrowth
+  gen8: true
   heightm: 1
   isNonstandard: Past
   num: 114
@@ -32234,6 +33171,7 @@ tangrowth:
   - grass
   evoMove: Ancient Power
   evoType: levelMove
+  gen8: true
   heightm: 2
   isNonstandard: Past
   num: 465
@@ -32264,6 +33202,7 @@ tapubulu:
   color: Red
   eggGroups:
   - undiscovered
+  gen8: true
   gender: N
   heightm: 1.9
   isNonstandard: Past
@@ -32297,6 +33236,7 @@ tapufini:
   color: Purple
   eggGroups:
   - undiscovered
+  gen8: true
   gender: N
   heightm: 1.3
   isNonstandard: Past
@@ -32330,6 +33270,7 @@ tapukoko:
   color: Yellow
   eggGroups:
   - undiscovered
+  gen8: true
   gender: N
   heightm: 1.8
   isNonstandard: Past
@@ -32363,6 +33304,7 @@ tapulele:
   color: Pink
   eggGroups:
   - undiscovered
+  gen8: true
   gender: N
   heightm: 1.2
   isNonstandard: Past
@@ -32398,6 +33340,7 @@ tarountula:
   - bug
   evos:
   - spidops
+  gen8: false
   heightm: 0.3
   num: 918
   past_only: false
@@ -32434,6 +33377,7 @@ tatsugiri:
   - Tatsugiri
   - Tatsugiri-Droopy
   - Tatsugiri-Stretchy
+  gen8: false
   heightm: 0.3
   num: 952
   past_only: false
@@ -32470,6 +33414,7 @@ tauros:
   - Tauros-Paldea
   - Tauros-Paldea-Fire
   - Tauros-Paldea-Water
+  gen8: true
   gender: M
   heightm: 1.4
   isNonstandard: Unobtainable
@@ -32508,6 +33453,7 @@ taurospaldea:
   eggGroups:
   - field
   forme: Paldea
+  gen8: false
   gender: M
   heightm: 1.4
   num: 128
@@ -32541,6 +33487,7 @@ taurospaldeafire:
   eggGroups:
   - field
   forme: Paldea-Fire
+  gen8: false
   gender: M
   heightm: 1.4
   num: 128
@@ -32575,6 +33522,7 @@ taurospaldeawater:
   eggGroups:
   - field
   forme: Paldea-Water
+  gen8: false
   gender: M
   heightm: 1.4
   num: 128
@@ -32609,6 +33557,7 @@ teddiursa:
   - field
   evos:
   - ursaring
+  gen8: false
   heightm: 0.6
   num: 216
   past_only: false
@@ -32641,6 +33590,7 @@ tentacool:
   - water3
   evos:
   - tentacruel
+  gen8: true
   heightm: 0.9
   isNonstandard: Past
   num: 72
@@ -32674,6 +33624,7 @@ tentacruel:
   eggGroups:
   - water3
   evoLevel: 30
+  gen8: true
   heightm: 1.6
   isNonstandard: Past
   num: 73
@@ -32707,6 +33658,7 @@ tepig:
   - field
   evos:
   - pignite
+  gen8: false
   genderRatio:
     F: 0.125
     M: 0.875
@@ -32737,6 +33689,7 @@ terrakion:
   color: Gray
   eggGroups:
   - undiscovered
+  gen8: true
   gender: N
   heightm: 1.9
   isNonstandard: Past
@@ -32773,6 +33726,7 @@ thievul:
   eggGroups:
   - field
   evoLevel: 18
+  gen8: true
   heightm: 1.2
   isNonstandard: Past
   num: 828
@@ -32805,6 +33759,7 @@ throh:
   color: Red
   eggGroups:
   - human-like
+  gen8: true
   gender: M
   heightm: 1.3
   isNonstandard: Past
@@ -32839,6 +33794,7 @@ thundurus:
   formeOrder:
   - Thundurus
   - Thundurus-Therian
+  gen8: true
   gender: M
   heightm: 1.5
   isNonstandard: Unobtainable
@@ -32878,6 +33834,7 @@ thwackey:
   evoLevel: 16
   evos:
   - rillaboom
+  gen8: true
   genderRatio:
     F: 0.125
     M: 0.875
@@ -32915,6 +33872,7 @@ timburr:
   - human-like
   evos:
   - gurdurr
+  gen8: true
   genderRatio:
     F: 0.25
     M: 0.75
@@ -32945,6 +33903,7 @@ tinglu:
   color: Brown
   eggGroups:
   - undiscovered
+  gen8: false
   gender: N
   heightm: 2.7
   num: 994
@@ -32981,6 +33940,7 @@ tinkatink:
   - fairy
   evos:
   - tinkatuff
+  gen8: false
   gender: F
   heightm: 0.4
   num: 1000
@@ -33014,6 +33974,7 @@ tinkaton:
   eggGroups:
   - fairy
   evoLevel: 38
+  gen8: false
   gender: F
   heightm: 0.7
   num: 1002
@@ -33050,6 +34011,7 @@ tinkatuff:
   evoLevel: 24
   evos:
   - tinkaton
+  gen8: false
   gender: F
   heightm: 0.7
   num: 1001
@@ -33086,6 +34048,7 @@ tirtouga:
   - water3
   evos:
   - carracosta
+  gen8: true
   genderRatio:
     F: 0.125
     M: 0.875
@@ -33119,6 +34082,7 @@ toedscool:
   - field
   evos:
   - toedscruel
+  gen8: false
   heightm: 0.9
   num: 1006
   past_only: false
@@ -33147,6 +34111,7 @@ toedscruel:
   eggGroups:
   - field
   evoLevel: 30
+  gen8: false
   heightm: 1.9
   num: 1007
   past_only: false
@@ -33183,6 +34148,7 @@ togedemaru:
   formeOrder:
   - Togedemaru
   - Togedemaru-Totem
+  gen8: true
   heightm: 0.3
   isNonstandard: Past
   num: 777
@@ -33220,6 +34186,7 @@ togekiss:
   - fairy
   evoItem: Shiny Stone
   evoType: useItem
+  gen8: true
   genderRatio:
     F: 0.125
     M: 0.875
@@ -33259,6 +34226,7 @@ togepi:
   - undiscovered
   evos:
   - togetic
+  gen8: true
   genderRatio:
     F: 0.125
     M: 0.875
@@ -33297,6 +34265,7 @@ togetic:
   evoType: levelFriendship
   evos:
   - togekiss
+  gen8: true
   genderRatio:
     F: 0.125
     M: 0.875
@@ -33333,6 +34302,7 @@ torchic:
   - field
   evos:
   - combusken
+  gen8: true
   genderRatio:
     F: 0.125
     M: 0.875
@@ -33367,6 +34337,7 @@ torkoal:
   color: Brown
   eggGroups:
   - field
+  gen8: true
   heightm: 0.5
   num: 324
   past_only: false
@@ -33399,6 +34370,7 @@ tornadus:
   formeOrder:
   - Tornadus
   - Tornadus-Therian
+  gen8: true
   gender: M
   heightm: 1.5
   isNonstandard: Unobtainable
@@ -33436,6 +34408,7 @@ torracat:
   evoLevel: 17
   evos:
   - incineroar
+  gen8: true
   genderRatio:
     F: 0.125
     M: 0.875
@@ -33471,6 +34444,7 @@ torterra:
   - monster
   - grass
   evoLevel: 32
+  gen8: false
   genderRatio:
     F: 0.125
     M: 0.875
@@ -33508,6 +34482,7 @@ totodile:
   - water1
   evos:
   - croconaw
+  gen8: false
   genderRatio:
     F: 0.125
     M: 0.875
@@ -33543,6 +34518,7 @@ toucannon:
   eggGroups:
   - flying
   evoLevel: 28
+  gen8: false
   heightm: 1.1
   isNonstandard: Past
   num: 733
@@ -33577,6 +34553,7 @@ toxapex:
   eggGroups:
   - water1
   evoLevel: 38
+  gen8: true
   heightm: 0.7
   num: 748
   past_only: false
@@ -33613,6 +34590,7 @@ toxel:
   evos:
   - toxtricity
   - toxtricitylowkey
+  gen8: true
   heightm: 0.4
   num: 848
   past_only: false
@@ -33645,6 +34623,7 @@ toxicroak:
   eggGroups:
   - human-like
   evoLevel: 37
+  gen8: true
   heightm: 1.3
   num: 454
   past_only: false
@@ -33683,6 +34662,7 @@ toxtricity:
   formeOrder:
   - Toxtricity
   - Toxtricity-Low-Key
+  gen8: true
   heightm: 1.6
   num: 849
   otherFormes:
@@ -33721,6 +34701,7 @@ toxtricitylowkey:
   - human-like
   evoLevel: 30
   forme: Low-Key
+  gen8: true
   heightm: 1.6
   num: 849
   past_only: false
@@ -33756,6 +34737,7 @@ tranquill:
   evoLevel: 21
   evos:
   - unfezant
+  gen8: true
   heightm: 0.6
   isNonstandard: Past
   num: 520
@@ -33792,6 +34774,7 @@ trapinch:
   - dragon
   evos:
   - vibrava
+  gen8: true
   heightm: 0.7
   isNonstandard: Past
   num: 328
@@ -33824,6 +34807,7 @@ treecko:
   - dragon
   evos:
   - grovyle
+  gen8: true
   genderRatio:
     F: 0.125
     M: 0.875
@@ -33860,6 +34844,7 @@ trevenant:
   - grass
   - amorphous
   evoType: trade
+  gen8: true
   heightm: 1.5
   isNonstandard: Past
   num: 709
@@ -33894,6 +34879,7 @@ tropius:
   eggGroups:
   - monster
   - grass
+  gen8: false
   heightm: 2
   num: 357
   past_only: false
@@ -33927,6 +34913,7 @@ trubbish:
   - mineral
   evos:
   - garbodor
+  gen8: true
   heightm: 0.6
   isNonstandard: Past
   num: 568
@@ -33961,6 +34948,7 @@ trumbeak:
   evoLevel: 14
   evos:
   - toucannon
+  gen8: false
   heightm: 0.6
   isNonstandard: Past
   num: 732
@@ -33996,6 +34984,7 @@ tsareena:
   - grass
   evoMove: Stomp
   evoType: levelMove
+  gen8: true
   gender: F
   heightm: 1.2
   num: 763
@@ -34025,6 +35014,7 @@ turtonator:
   eggGroups:
   - monster
   - dragon
+  gen8: true
   heightm: 2
   isNonstandard: Past
   num: 776
@@ -34058,6 +35048,7 @@ turtwig:
   - grass
   evos:
   - grotle
+  gen8: false
   genderRatio:
     F: 0.125
     M: 0.875
@@ -34094,6 +35085,7 @@ tympole:
   - water1
   evos:
   - palpitoad
+  gen8: true
   heightm: 0.5
   isNonstandard: Past
   num: 535
@@ -34123,6 +35115,7 @@ tynamo:
   - amorphous
   evos:
   - eelektrik
+  gen8: false
   heightm: 0.2
   num: 602
   past_only: false
@@ -34151,6 +35144,7 @@ typenull:
   - undiscovered
   evos:
   - silvally
+  gen8: true
   gender: N
   heightm: 1.9
   isNonstandard: Past
@@ -34187,6 +35181,7 @@ typhlosion:
   formeOrder:
   - Typhlosion
   - Typhlosion-Hisui
+  gen8: false
   genderRatio:
     F: 0.125
     M: 0.875
@@ -34225,6 +35220,7 @@ typhlosionhisui:
   - field
   evoLevel: 36
   forme: Hisui
+  gen8: false
   genderRatio:
     F: 0.125
     M: 0.875
@@ -34263,6 +35259,7 @@ tyranitar:
   formeOrder:
   - Tyranitar
   - Tyranitar-Mega
+  gen8: true
   heightm: 2
   num: 248
   otherFormes:
@@ -34298,6 +35295,7 @@ tyrantrum:
   - dragon
   evoCondition: during the day
   evoLevel: 39
+  gen8: true
   genderRatio:
     F: 0.125
     M: 0.875
@@ -34339,6 +35337,7 @@ tyrogue:
   - hitmonlee
   - hitmonchan
   - hitmontop
+  gen8: true
   gender: M
   heightm: 0.7
   isNonstandard: Past
@@ -34372,6 +35371,7 @@ tyrunt:
   - dragon
   evos:
   - tyrantrum
+  gen8: true
   genderRatio:
     F: 0.125
     M: 0.875
@@ -34407,6 +35407,7 @@ umbreon:
   - field
   evoCondition: at night
   evoType: levelFriendship
+  gen8: true
   genderRatio:
     F: 0.125
     M: 0.875
@@ -34442,6 +35443,7 @@ unfezant:
   eggGroups:
   - flying
   evoLevel: 32
+  gen8: true
   heightm: 1.2
   isNonstandard: Past
   num: 521
@@ -34529,6 +35531,7 @@ unown:
   - Unown-Z
   - Unown-Exclamation
   - Unown-Question
+  gen8: false
   gender: N
   heightm: 0.5
   isNonstandard: Past
@@ -34563,6 +35566,7 @@ ursaluna:
   - field
   evoCondition: Peat Block when there's a full moon
   evoType: other
+  gen8: false
   heightm: 2.4
   isNonstandard: Unobtainable
   num: 901
@@ -34599,6 +35603,7 @@ ursaring:
   evoLevel: 30
   evos:
   - ursaluna
+  gen8: false
   heightm: 1.8
   num: 217
   past_only: false
@@ -34633,6 +35638,7 @@ urshifu:
   formeOrder:
   - Urshifu
   - Urshifu-Rapid-Strike
+  gen8: true
   genderRatio:
     F: 0.125
     M: 0.875
@@ -34674,6 +35680,7 @@ urshifurapidstrike:
   evoCondition: Defeat the Rapid Strike Tower
   evoType: other
   forme: Rapid-Strike
+  gen8: true
   genderRatio:
     F: 0.125
     M: 0.875
@@ -34706,6 +35713,7 @@ uxie:
   color: Yellow
   eggGroups:
   - undiscovered
+  gen8: true
   gender: N
   heightm: 0.3
   isNonstandard: Unobtainable
@@ -34743,6 +35751,7 @@ vanillish:
   evoLevel: 35
   evos:
   - vanilluxe
+  gen8: true
   heightm: 1.1
   isNonstandard: Past
   num: 583
@@ -34777,6 +35786,7 @@ vanillite:
   - mineral
   evos:
   - vanillish
+  gen8: true
   heightm: 0.4
   isNonstandard: Past
   num: 582
@@ -34809,6 +35819,7 @@ vanilluxe:
   eggGroups:
   - mineral
   evoLevel: 47
+  gen8: true
   heightm: 1.3
   isNonstandard: Past
   num: 584
@@ -34841,6 +35852,7 @@ vaporeon:
   - field
   evoItem: Water Stone
   evoType: useItem
+  gen8: true
   genderRatio:
     F: 0.125
     M: 0.875
@@ -34875,6 +35887,7 @@ varoom:
   - mineral
   evos:
   - revavroom
+  gen8: false
   heightm: 1
   num: 942
   past_only: false
@@ -34904,6 +35917,7 @@ veluza:
   color: Gray
   eggGroups:
   - water2
+  gen8: false
   heightm: 2.5
   num: 932
   past_only: false
@@ -34937,6 +35951,7 @@ venipede:
   - bug
   evos:
   - whirlipede
+  gen8: true
   heightm: 0.4
   isNonstandard: Past
   num: 543
@@ -34970,6 +35985,7 @@ venomoth:
   eggGroups:
   - bug
   evoLevel: 31
+  gen8: false
   heightm: 1.5
   num: 49
   past_only: false
@@ -35004,6 +36020,7 @@ venonat:
   - bug
   evos:
   - venomoth
+  gen8: false
   heightm: 1
   num: 48
   past_only: false
@@ -35039,6 +36056,7 @@ venusaur:
   formeOrder:
   - Venusaur
   - Venusaur-Mega
+  gen8: true
   genderRatio:
     F: 0.125
     M: 0.875
@@ -35076,6 +36094,7 @@ vespiquen:
   eggGroups:
   - bug
   evoLevel: 21
+  gen8: true
   gender: F
   heightm: 1.2
   num: 416
@@ -35109,6 +36128,7 @@ vibrava:
   evoLevel: 35
   evos:
   - flygon
+  gen8: true
   heightm: 1.1
   isNonstandard: Past
   num: 329
@@ -35138,6 +36158,7 @@ victini:
   color: Yellow
   eggGroups:
   - undiscovered
+  gen8: true
   gender: N
   heightm: 0.4
   isNonstandard: Unobtainable
@@ -35173,6 +36194,7 @@ victreebel:
   - grass
   evoItem: Leaf Stone
   evoType: useItem
+  gen8: false
   heightm: 1.7
   isNonstandard: Past
   num: 71
@@ -35205,6 +36227,7 @@ vigoroth:
   evoLevel: 18
   evos:
   - slaking
+  gen8: false
   heightm: 1.4
   num: 288
   past_only: false
@@ -35237,6 +36260,7 @@ vikavolt:
   formeOrder:
   - Vikavolt
   - Vikavolt-Totem
+  gen8: true
   heightm: 1.5
   isNonstandard: Past
   num: 738
@@ -35272,6 +36296,7 @@ vileplume:
   - grass
   evoItem: Leaf Stone
   evoType: useItem
+  gen8: true
   heightm: 1.2
   isNonstandard: Past
   num: 45
@@ -35301,6 +36326,7 @@ virizion:
   color: Green
   eggGroups:
   - undiscovered
+  gen8: true
   gender: N
   heightm: 2
   isNonstandard: Past
@@ -35377,6 +36403,7 @@ vivillon:
   - Vivillon-Jungle
   - Vivillon-Fancy
   - Vivillon-Pokeball
+  gen8: false
   heightm: 1.2
   isNonstandard: Unobtainable
   num: 666
@@ -35416,6 +36443,7 @@ vivillonfancy:
   - bug
   evoLevel: 12
   forme: Fancy
+  gen8: false
   heightm: 1.2
   num: 666
   past_only: false
@@ -35449,6 +36477,7 @@ volbeat:
   eggGroups:
   - bug
   - human-like
+  gen8: false
   gender: M
   heightm: 0.7
   isNonstandard: Past
@@ -35477,6 +36506,7 @@ volcanion:
   color: Brown
   eggGroups:
   - undiscovered
+  gen8: true
   gender: N
   heightm: 1.7
   isNonstandard: Unobtainable
@@ -35511,6 +36541,7 @@ volcarona:
   eggGroups:
   - bug
   evoLevel: 59
+  gen8: true
   heightm: 1.6
   num: 637
   past_only: false
@@ -35548,6 +36579,7 @@ voltorb:
   formeOrder:
   - Voltorb
   - Voltorb-Hisui
+  gen8: false
   gender: N
   heightm: 0.5
   num: 100
@@ -35585,6 +36617,7 @@ voltorbhisui:
   evos:
   - electrodehisui
   forme: Hisui
+  gen8: false
   gender: N
   heightm: 0.5
   isNonstandard: Unobtainable
@@ -35620,6 +36653,7 @@ vullaby:
   - flying
   evos:
   - mandibuzz
+  gen8: true
   gender: F
   heightm: 0.5
   isNonstandard: Past
@@ -35656,6 +36690,7 @@ vulpix:
   formeOrder:
   - Vulpix
   - Vulpix-Alola
+  gen8: true
   genderRatio:
     F: 0.75
     M: 0.25
@@ -35694,6 +36729,7 @@ vulpixalola:
   evos:
   - ninetalesalola
   forme: Alola
+  gen8: true
   genderRatio:
     F: 0.75
     M: 0.25
@@ -35731,6 +36767,7 @@ wailmer:
   - water2
   evos:
   - wailord
+  gen8: true
   heightm: 2
   isNonstandard: Past
   num: 320
@@ -35764,6 +36801,7 @@ wailord:
   - field
   - water2
   evoLevel: 40
+  gen8: true
   heightm: 14.5
   isNonstandard: Past
   num: 321
@@ -35798,6 +36836,7 @@ walrein:
   - water1
   - field
   evoLevel: 44
+  gen8: true
   heightm: 1.4
   isNonstandard: Past
   num: 365
@@ -35833,6 +36872,7 @@ wartortle:
   evoLevel: 16
   evos:
   - blastoise
+  gen8: true
   genderRatio:
     F: 0.125
     M: 0.875
@@ -35869,6 +36909,7 @@ watchog:
   eggGroups:
   - field
   evoLevel: 20
+  gen8: false
   heightm: 1.1
   isNonstandard: Past
   num: 505
@@ -35904,6 +36945,7 @@ wattrel:
   - flying
   evos:
   - kilowattrel
+  gen8: false
   heightm: 0.4
   num: 957
   past_only: false
@@ -35936,6 +36978,7 @@ weavile:
   evoCondition: at night
   evoItem: Razor Claw
   evoType: levelHold
+  gen8: true
   heightm: 1.1
   num: 461
   past_only: false
@@ -35968,6 +37011,7 @@ weedle:
   - bug
   evos:
   - kakuna
+  gen8: false
   heightm: 0.3
   isNonstandard: Past
   num: 13
@@ -36001,6 +37045,7 @@ weepinbell:
   evoLevel: 21
   evos:
   - victreebel
+  gen8: false
   heightm: 1
   isNonstandard: Past
   num: 70
@@ -36038,6 +37083,7 @@ weezing:
   formeOrder:
   - Weezing
   - Weezing-Galar
+  gen8: true
   heightm: 1.2
   isNonstandard: Past
   num: 110
@@ -36076,6 +37122,7 @@ weezinggalar:
   evoLevel: 35
   evoRegion: Galar
   forme: Galar
+  gen8: true
   heightm: 3
   isNonstandard: Past
   num: 110
@@ -36112,6 +37159,7 @@ whimsicott:
   - grass
   evoItem: Sun Stone
   evoType: useItem
+  gen8: true
   heightm: 0.7
   isNonstandard: Past
   num: 547
@@ -36148,6 +37196,7 @@ whirlipede:
   evoLevel: 22
   evos:
   - scolipede
+  gen8: true
   heightm: 1.2
   isNonstandard: Past
   num: 544
@@ -36182,6 +37231,7 @@ whiscash:
   eggGroups:
   - water2
   evoLevel: 30
+  gen8: true
   heightm: 0.9
   num: 340
   past_only: false
@@ -36215,6 +37265,7 @@ whismur:
   - field
   evos:
   - loudred
+  gen8: true
   heightm: 0.6
   isNonstandard: Past
   num: 293
@@ -36248,6 +37299,7 @@ wigglytuff:
   - fairy
   evoItem: Moon Stone
   evoType: useItem
+  gen8: true
   genderRatio:
     F: 0.75
     M: 0.25
@@ -36285,6 +37337,7 @@ wiglett:
   - water3
   evos:
   - wugtrio
+  gen8: false
   heightm: 1.2
   num: 929
   past_only: false
@@ -36314,6 +37367,7 @@ wimpod:
   - water3
   evos:
   - golisopod
+  gen8: true
   heightm: 0.5
   isNonstandard: Past
   num: 767
@@ -36349,6 +37403,7 @@ wingull:
   - flying
   evos:
   - pelipper
+  gen8: true
   heightm: 0.6
   num: 278
   past_only: false
@@ -36380,6 +37435,7 @@ wishiwashi:
   formeOrder:
   - Wishiwashi
   - Wishiwashi-School
+  gen8: true
   heightm: 0.2
   isNonstandard: Past
   num: 746
@@ -36413,6 +37469,7 @@ wobbuffet:
   eggGroups:
   - amorphous
   evoLevel: 15
+  gen8: true
   heightm: 1.3
   isNonstandard: Past
   num: 202
@@ -36441,6 +37498,7 @@ wochien:
   color: Brown
   eggGroups:
   - undiscovered
+  gen8: false
   gender: N
   heightm: 1.5
   num: 996
@@ -36478,6 +37536,7 @@ woobat:
   - field
   evos:
   - swoobat
+  gen8: true
   heightm: 0.4
   isNonstandard: Past
   num: 527
@@ -36512,6 +37571,7 @@ wooloo:
   - field
   evos:
   - dubwool
+  gen8: true
   heightm: 0.6
   isNonstandard: Past
   num: 831
@@ -36549,6 +37609,7 @@ wooper:
   formeOrder:
   - Wooper
   - Wooper-Paldea
+  gen8: true
   heightm: 0.4
   num: 194
   otherFormes:
@@ -36587,6 +37648,7 @@ wooperpaldea:
   evos:
   - clodsire
   forme: Paldea
+  gen8: false
   heightm: 0.4
   num: 194
   past_only: false
@@ -36622,6 +37684,7 @@ wormadam:
   - Wormadam
   - Wormadam-Sandy
   - Wormadam-Trash
+  gen8: false
   gender: F
   heightm: 0.5
   isNonstandard: Past
@@ -36660,6 +37723,7 @@ wormadamsandy:
   - bug
   evoLevel: 20
   forme: Sandy
+  gen8: false
   gender: F
   heightm: 0.5
   isNonstandard: Past
@@ -36695,6 +37759,7 @@ wormadamtrash:
   - bug
   evoLevel: 20
   forme: Trash
+  gen8: false
   gender: F
   heightm: 0.5
   isNonstandard: Past
@@ -36730,6 +37795,7 @@ wugtrio:
   eggGroups:
   - water3
   evoLevel: 26
+  gen8: false
   heightm: 1.2
   num: 930
   past_only: false
@@ -36762,6 +37828,7 @@ wurmple:
   evos:
   - silcoon
   - cascoon
+  gen8: false
   heightm: 0.3
   isNonstandard: Past
   num: 265
@@ -36794,6 +37861,7 @@ wynaut:
   - undiscovered
   evos:
   - wobbuffet
+  gen8: true
   heightm: 0.6
   isNonstandard: Past
   num: 360
@@ -36827,6 +37895,7 @@ wyrdeer:
   - field
   evoCondition: Use Agile style Psyshield Bash 20 times
   evoType: other
+  gen8: false
   heightm: 1.8
   isNonstandard: Unobtainable
   num: 899
@@ -36861,6 +37930,7 @@ xatu:
   eggGroups:
   - flying
   evoLevel: 25
+  gen8: true
   heightm: 1.5
   isNonstandard: Past
   num: 178
@@ -36894,6 +37964,7 @@ xerneas:
   formeOrder:
   - Xerneas-Neutral
   - Xerneas
+  gen8: true
   gender: N
   heightm: 3
   isNonstandard: Past
@@ -36926,6 +37997,7 @@ xurkitree:
   color: Black
   eggGroups:
   - undiscovered
+  gen8: true
   gender: N
   heightm: 3.8
   isNonstandard: Past
@@ -36962,6 +38034,7 @@ yamask:
   formeOrder:
   - Yamask
   - Yamask-Galar
+  gen8: true
   heightm: 0.5
   isNonstandard: Past
   num: 562
@@ -36996,6 +38069,7 @@ yamaskgalar:
   evos:
   - runerigus
   forme: Galar
+  gen8: true
   heightm: 0.5
   isNonstandard: Past
   num: 562
@@ -37028,6 +38102,7 @@ yamper:
   - field
   evos:
   - boltund
+  gen8: true
   heightm: 0.3
   isNonstandard: Past
   num: 835
@@ -37061,6 +38136,7 @@ yanma:
   - bug
   evos:
   - yanmega
+  gen8: false
   heightm: 1.2
   isNonstandard: Past
   num: 193
@@ -37095,6 +38171,7 @@ yungoos:
   - field
   evos:
   - gumshoos
+  gen8: false
   heightm: 0.4
   num: 734
   past_only: false
@@ -37121,6 +38198,7 @@ yveltal:
   color: Red
   eggGroups:
   - undiscovered
+  gen8: true
   gender: N
   heightm: 5.8
   isNonstandard: Past
@@ -37157,6 +38235,7 @@ zacian:
   formeOrder:
   - Zacian
   - Zacian-Crowned
+  gen8: true
   gender: N
   heightm: 2.8
   isNonstandard: Unobtainable
@@ -37194,6 +38273,7 @@ zamazenta:
   formeOrder:
   - Zamazenta
   - Zamazenta-Crowned
+  gen8: true
   gender: N
   heightm: 2.9
   isNonstandard: Unobtainable
@@ -37228,6 +38308,7 @@ zangoose:
   color: White
   eggGroups:
   - field
+  gen8: false
   heightm: 1.3
   num: 335
   past_only: false
@@ -37259,6 +38340,7 @@ zapdos:
   formeOrder:
   - Zapdos
   - Zapdos-Galar
+  gen8: true
   gender: N
   heightm: 1.6
   isNonstandard: Unobtainable
@@ -37294,6 +38376,7 @@ zapdosgalar:
   eggGroups:
   - undiscovered
   forme: Galar
+  gen8: true
   gender: N
   heightm: 1.6
   isNonstandard: Unobtainable
@@ -37326,6 +38409,7 @@ zarude:
   formeOrder:
   - Zarude
   - Zarude-Dada
+  gen8: true
   gender: N
   heightm: 1.8
   isNonstandard: Unobtainable
@@ -37361,6 +38445,7 @@ zarudedada:
   eggGroups:
   - undiscovered
   forme: Dada
+  gen8: true
   gender: N
   heightm: 1.8
   isNonstandard: Unobtainable
@@ -37394,6 +38479,7 @@ zebstrika:
   eggGroups:
   - field
   evoLevel: 27
+  gen8: false
   heightm: 1.6
   isNonstandard: Past
   num: 523
@@ -37422,6 +38508,7 @@ zekrom:
   color: Black
   eggGroups:
   - undiscovered
+  gen8: true
   gender: N
   heightm: 2.9
   isNonstandard: Past
@@ -37453,6 +38540,7 @@ zeraora:
   color: Yellow
   eggGroups:
   - undiscovered
+  gen8: true
   gender: N
   heightm: 1.5
   isNonstandard: Past
@@ -37492,6 +38580,7 @@ zigzagoon:
   formeOrder:
   - Zigzagoon
   - Zigzagoon-Galar
+  gen8: true
   heightm: 0.4
   isNonstandard: Past
   num: 263
@@ -37529,6 +38618,7 @@ zigzagoongalar:
   evos:
   - linoonegalar
   forme: Galar
+  gen8: true
   heightm: 0.4
   isNonstandard: Past
   num: 263
@@ -37561,6 +38651,7 @@ zoroark:
   formeOrder:
   - Zoroark
   - Zoroark-Hisui
+  gen8: true
   genderRatio:
     F: 0.125
     M: 0.875
@@ -37596,6 +38687,7 @@ zoroarkhisui:
   - field
   evoLevel: 30
   forme: Hisui
+  gen8: false
   genderRatio:
     F: 0.125
     M: 0.875
@@ -37633,6 +38725,7 @@ zorua:
   formeOrder:
   - Zorua
   - Zorua-Hisui
+  gen8: true
   genderRatio:
     F: 0.125
     M: 0.875
@@ -37668,6 +38761,7 @@ zoruahisui:
   evos:
   - zoroarkhisui
   forme: Hisui
+  gen8: false
   genderRatio:
     F: 0.125
     M: 0.875
@@ -37703,6 +38797,7 @@ zubat:
   - flying
   evos:
   - golbat
+  gen8: true
   heightm: 0.8
   isNonstandard: Past
   num: 41
@@ -37734,6 +38829,7 @@ zweilous:
   evoLevel: 50
   evos:
   - hydreigon
+  gen8: true
   heightm: 1.4
   num: 634
   past_only: false
@@ -37770,6 +38866,7 @@ zygarde:
   - Zygarde-10%
   - Zygarde
   - Zygarde-Complete
+  gen8: true
   gender: N
   heightm: 5
   isNonstandard: Past

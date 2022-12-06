@@ -168,10 +168,10 @@ class Validators:
         elif value_type == 'int':
             return (value.isnumeric(), value)
         elif value_type == 'sort-pkmn':
-            valid_sort_value = value in ['num','weight','w','height','h']
+            valid_sort_value = value in ['name','num','weight','w','height','h']
             return (valid_sort_value, value)
         elif value_type == 'sort-move':
-            valid_sort_value = value in ['num','power','pow','accuracy','acc','a','category','cat','c','priority','prio','p']
+            valid_sort_value = value in ['name','num','power','pow','accuracy','acc','a','category','cat','c','priority','prio','p']
             return (valid_sort_value, value)
         else:
             print(f'ERROR: Unknown value type \'{value_type}\'')
@@ -338,6 +338,12 @@ class Validators:
         elif filter_type == 'move' and filter_key == 'selfdestruct':
             filter_value_type = 'boolean'
         elif filter_type == 'move' and filter_key == 'sd':
+            filter_value_type = 'boolean'
+        elif filter_type == 'move' and filter_key == 'confusion':
+            filter_value_type = 'boolean'
+        elif filter_type == 'move' and filter_key == 'confuse':
+            filter_value_type = 'boolean'
+        elif filter_type == 'move' and filter_key == 'cf':
             filter_value_type = 'boolean'
         elif filter_type == 'move' and filter_key == 'protect':
             filter_value_type = 'boolean'

@@ -133,6 +133,7 @@ class MoveDex:
         breeding_entries = self.pokemongo.get_move_entries(learnset['breeding'], print_to, filters)
         machine_entries = self.pokemongo.get_move_entries(learnset['machine'], print_to, filters)
         levelup_entries = self.pokemongo.get_move_entries(learnset['levelup'], print_to, filters)
+        move_levels = learnset['movelevels']
         tutor_entries = self.pokemongo.get_move_entries(learnset['tutor'], print_to, filters)
         transfer_entries = []
         if show_transfers:
@@ -140,7 +141,8 @@ class MoveDex:
 
         all_moves = dict()
         for move in levelup_entries:
-            all_moves[move['_id']] = {'method':'Level Up', 'move':move}
+            level = move_levels[move['_id']]
+            all_moves[move['_id']] = {'method':"Evolve" if level == "0" else f'Level {level}', 'move':move}
         for move in machine_entries:
             if move['_id'] not in all_moves:
                 all_moves[move['_id']] = {'method':'TM/TR', 'move':move}
@@ -175,16 +177,16 @@ class MoveDex:
         if show_coverage or show_stab:
             return
                     
-        self.show_all_moves(breeding_entries, machine_entries, levelup_entries, tutor_entries, transfer_entries, dex_entry, ability, ignore_stats, print_to)
+        self.show_all_moves(breeding_entries, machine_entries, levelup_entries, move_levels, tutor_entries, transfer_entries, dex_entry, ability, ignore_stats, 'o' not in filters, print_to)
 
         if show_past:
             print('* Move not available in Gen 9 games.', file=print_to)
 
-    def show_all_moves(self, breeding_entries, machine_entries, levelup_entries, tutor_entries, transfer_entries, dex_entry, ability, ignore_stats, print_to):
+    def show_all_moves(self, breeding_entries, machine_entries, levelup_entries, move_levels, tutor_entries, transfer_entries, dex_entry, ability, ignore_stats, reorder, print_to):
         print('Level Up Moves:', file=print_to)
         if len(levelup_entries) == 0:
             print('  None', file=print_to)
-        for move in self.format_moves(levelup_entries, dex_entry, ability=ability, ignore_stats=ignore_stats):
+        for move in self.format_moves(levelup_entries, dex_entry, ability=ability, ignore_stats=ignore_stats, move_levels=move_levels, reorder=reorder):
             self.print_move(move, ignore_stats, print_to)
 
         print('\nTM/TR Moves:', file=print_to)
@@ -279,7 +281,7 @@ class MoveDex:
                 type_moves.append(type_move)
         return self.format_moves(type_moves, dex_entry, atk_override, spa_override, def_override, accuracy_check, ability, ignore_stats)
 
-    def format_moves(self, moves, dex_entry, atk_override=None, spa_override=None, def_override=None, accuracy_check=False, ability=None, ignore_stats=False, orderby_key=None):
+    def format_moves(self, moves, dex_entry, atk_override=None, spa_override=None, def_override=None, accuracy_check=False, ability=None, ignore_stats=False, orderby_key=None, move_levels=None, reorder=False):
         formatted_moves = []
         for move in moves:
             orderby_value = None
@@ -291,15 +293,19 @@ class MoveDex:
                         orderby_value = orderby_value[key]
                     except:
                         orderby_value = 'N/A'
-            method =''
+            method = ''
+            level = ''
             if 'method' in move:
                 method = move['method']
+            elif move_levels is not None and move['_id'] in move_levels:
+                level = move_levels[move['_id']]
+                method = "Evolve" if level == "0" else f'Level {level}'
             modified_power = int(move['basePower'])
             move_type = move['category']
             base_power_str = str(modified_power)
             acc = int(move['accuracy'])
             if dex_entry:
-                if 'useSourceDefensiveAsOffensive' in move:
+                if 'overrideOffensiveStat' in move:
                     if def_override is None:
                         attack_mod = int(dex_entry['baseStats']['def'])
                     else:
@@ -420,7 +426,10 @@ class MoveDex:
                                     'atk':attack_mod,
                                     'mpow':modified_power,
                                     'method':method,
+                                    'level':level,
                                     'o':orderby_value})
+        if move_levels is not None and reorder:
+            formatted_moves.sort(key=lambda m : m['level'])
         return formatted_moves
 
     def acc_sort(self, move):
@@ -438,9 +447,9 @@ class MoveDex:
         orderby = f' ({move["o"]}) ' if move['o'] is not None else ''
         if orderby != '':
             orderby = f'{orderby:7s}'
-        print(f'    - {move["name"]:28s} {orderby} {move["type"]:>8s} - {move["cat"]:12s} pow: {move["pow"]:>7s}  acc: {move["acc"]:>3s}'
-            + ('' if ignore_stats else f'    (mod: {move["mpow"]:5d}  stat: {move["atk"]:3d})')
-            + ('' if move['method'] == '' else f'   [{move["method"]}]'), file=print_to)
+        print(f'    - {move["name"]:28s} {orderby} {move["type"]:>8s} - {move["cat"]:12s} pow: {move["pow"]:>7s} acc: {move["acc"]:>3s}'
+            + ('' if ignore_stats else f' (stat: {move["atk"]:3d})')
+            + ('' if move['method'] == '' else f' [{move["method"]}]'), file=print_to)
 
     def find_egg_move_chain(self, pokemon, dex_entry, move, move_name, checked_mons, dex_name_map, print_to):
         pokemon = re.sub(r'\W+', '', pokemon.lower())
@@ -566,7 +575,7 @@ class MoveDex:
         possible_parents = self.find_egg_move_chain(pokemon, dex_entry, move, move_name, [], dex_name_map, print_to)
         if move != '[unspecified]':
             if possible_parents is not False and (possible_parents is None or len(possible_parents) == 0):
-                print(f'No possible parents found for {species} with {move_name}.', file=print_to)
+                print(f'No possible parents found for {species} with {move_name}. Mirror Herb required.', file=print_to)
             elif possible_parents is not False:
                 print(f'Potential parents for {species} with {move_name}:', file=print_to)
                 for parent in possible_parents:
@@ -637,3 +646,66 @@ class MoveDex:
             print(random_response, file=print_to)
         print('Let me get you the entry for this move...\n', file=print_to)
         self.do_move_search_function(random_entry['_id'], False, filters, print_to)
+
+    def do_wild_moveset_function(self, pokemon, level, print_to):
+        dex_entry = self.pokemongo.get_pokedex_entry(pokemon)
+        if dex_entry is None:
+            print(f'Error: No dex entry found for "{pokemon}", bzzzzrt!', file=print_to)
+            return
+
+        learnset = self.pokemongo.get_learnset(pokemon)
+        if learnset is None:
+            print(f'Error: No learnset found for "{pokemon}", bzzzzrt!', file=print_to)
+            return
+
+        move_levels = learnset['movelevels']
+        start_level = int(level)
+
+        levelup_moves = []
+        for move in move_levels:
+            levelup_moves.append({'id':move, 'lvl':move_levels[move]})
+        levelup_moves.sort(key=lambda e : e['lvl'])
+        levelup_moves.reverse()
+
+        wild_moves = []
+        current_level = start_level
+        while current_level > 0:
+            for move in levelup_moves:
+                if move['lvl'] == current_level:
+                    wild_moves.append(move['id'])
+            if len(wild_moves) >= 4:
+                break
+            current_level -= 1
+
+        wild_move_entries = self.pokemongo.get_move_entries(wild_moves, print_to)
+        print(f'Probable moves for a wild {dex_entry["species"]} at level {level}, bzzzzrt:', file=print_to)
+        for move in self.format_moves(wild_move_entries, dex_entry, move_levels=move_levels, reorder=True):
+            self.print_move(move, True, print_to)
+
+        move_warnings = []
+        for entry in wild_move_entries:
+            if 'self-heal' not in move_warnings:
+                if 'flags' in entry and 'heal' in entry['flags']:
+                    move_warnings.append('self-heal')
+            if 'recoil' not in move_warnings:
+                if 'recoil' in entry:
+                    move_warnings.append('recoil')
+            if 'confuse' not in move_warnings:
+                if 'self' in entry and 'volatileStatus' in entry['self'] and entry['self']['volatileStatus'] == 'lockedmove':
+                    move_warnings.append('confuse')
+            if 'self-destruct' not in move_warnings:
+                if 'selfdestruct' in entry:
+                    move_warnings.append('self-destruct')
+            if 'force-switch' not in move_warnings:
+                if 'forceSwitch' in entry:
+                    move_warnings.append('force-switch')
+
+        if len(move_warnings) > 0:
+            print('', file=print_to)
+            if 'self-heal' in move_warnings:
+                print(f'* Pokemon has moves that allow it to heal itself. Sleep or paralysis recommended, bzzzzrt!', file=print_to)
+            if 'recoil' in move_warnings or 'confuse' in move_warnings or 'self-destruct' in move_warnings:
+                print(f'* Pokemon has moves that might cause it to hurt itself!', file=print_to)
+            if 'force-switch' in move_warnings:
+                print(f'* Pokemon has moves that allow it to flee from battle!', file=print_to)
+

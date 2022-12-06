@@ -14,6 +14,7 @@ from pprint import pprint
 
 import sys
 import yaml
+import discord
 
 prefix = '!'
 bot = commands.Bot(command_prefix=prefix)
@@ -35,9 +36,11 @@ class MessageHelper:
         self.message += str
 
     async def send(self, ctx, bookend=None, embed=None):
-        if bookend is None:
+        if bookend is None and self.message is not None:
             bookend = '```'
-        message_lines = self.message.split('\n')
+        else:
+            bookend = ''
+        message_lines = self.message.split('\n') if self.message is not None else []
         message = ''
         while len(message_lines) > 0:
             new_message = message + f'\n{message_lines[0]}'
@@ -197,6 +200,7 @@ def get_option_string_value(options, full_opt, short_opt=None, default=None):
 
 @bot.event
 async def on_ready():
+    await bot.change_presence(activity=discord.Game("Pokemon Scarlet & Violet!"))
     if beta:
         print("\nDexPy running in developer mode, bzzzzrt!\n")
     else:
@@ -214,7 +218,7 @@ async def help(ctx, *raw_args):
     output = MessageHelper()
 
     embed = Embed()
-    embed.description = "User Docs can be found [here](https://docs.google.com/document/d/1dOJt6_xodsqWOFJPI2AY91mNmnrjLDyy7cRLki7G8qo/edit?usp=sharing)!"
+    embed.description = "User Docs can be found [here](https://docs.google.com/document/d/1z1JDyN-uGSJEWbqyPoWpsIWYUGQ_N4WsR3NlT621Uqc/edit?usp=sharing)!"
 
     opt = ['--force-channel','-f']
 
@@ -746,6 +750,47 @@ async def shiny(ctx, *raw_args):
     output = MessageHelper()
 
     pos_args = [('pokemon','pokemon')]
+    opt = ['--compare', '-c']
+
+    args = parse_arguments(raw_args, pos_args, options=opt)
+    if 'err' in args and len(args['err']) > 0:
+        for error in args['err']:
+            print(f'Error: {error}', file=output)
+        await output.send(ctx)
+        return
+
+    pokemon = args['pos']['pokemon'].lower().replace(' ','')
+    show_nonshiny = get_option(args['opt'], 'compare')
+
+    shiny_info = PokeDex(pokemongo).do_get_shiny_image_function(pokemon, output)
+    species = 'Missingno'
+    shiny_link = 'https://www.serebii.net/pokearth/sprites/rb/000.png'
+    if shiny_info is not None:
+        species = shiny_info[0]
+        shiny_link = shiny_info[1]
+        nonshiny_link = shiny_info[2]
+
+    if show_nonshiny:
+        embed = Embed()
+        embed.description = f'Image for non-shiny {species} sourced from [Serebii.net](https://www.serebii.net/)!'
+        embed.set_image(url=nonshiny_link)
+
+        await output.send(ctx, embed=embed)
+        output.message = None
+
+    embed = Embed()
+    embed.description = f'Image for shiny {species} sourced from [Serebii.net](https://www.serebii.net/)!'
+    embed.set_image(url=shiny_link)
+
+    await output.send(ctx, embed=embed)
+
+@bot.command(aliases=['wm','wild','w'])
+async def wildMoves(ctx, *raw_args):
+    message = ctx.message.content
+    print(f'\nWILDMOVES command triggered, bzzzzrt! Message details:\n{ctx.message.author} @ ({ctx.message.created_at}): {message}\n')
+    output = MessageHelper()
+
+    pos_args = [('pokemon','pokemon'),('level','int')]
 
     args = parse_arguments(raw_args, pos_args)
     if 'err' in args and len(args['err']) > 0:
@@ -755,19 +800,21 @@ async def shiny(ctx, *raw_args):
         return
 
     pokemon = args['pos']['pokemon'].lower().replace(' ','')
+    level = args['pos']['level']
+    try:
+        int_level = int(level)
+        if int_level < 1 or int_level > 100:
+            print(f'Error: Please choose a level between 1 and 100, bzzzzrt!', file=output)
+            await output.send(ctx)
+            return
+    except:
+        print(f'Error: Invalid level {level}, bzzzzrt!', file=output)
+        await output.send(ctx)
+        return
 
-    shiny_info = PokeDex(pokemongo).do_get_shiny_image_function(pokemon, output)
-    species = 'Missingno'
-    shiny_link = 'https://www.serebii.net/pokearth/sprites/rb/000.png'
-    if shiny_info is not None:
-        species = shiny_info[0]
-        shiny_link = shiny_info[1]
+    MoveDex(pokemongo).do_wild_moveset_function(pokemon, level, output)
 
-    embed = Embed()
-    embed.description = f'Image for {species} sourced from [Serebii.net](https://www.serebii.net/)!'
-    embed.set_image(url=shiny_link)
-
-    await output.send(ctx, embed=embed)
+    await output.send(ctx)
 
 @bot.command(aliases=['fp','pokemonfilters','filterpokemon'])
 async def pokemonFilters(ctx, *raw_args):

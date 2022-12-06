@@ -124,7 +124,7 @@ class PokeMongo9:
             lowercase_types.append(t.lower())
         lowercase_types.extend(self.pokehelper.get_stats())
         lowercase_types.extend([
-            'num',
+            'num', 'name',
             'weight', 'w', 'weightkg',
             'height', 'h', 'heightm'
         ])
@@ -298,7 +298,7 @@ class PokeMongo9:
         return [
             'a', 'a-force', 'num', 'hp', 'atk', 'def', 'spa', 'spd', 'spe', 'bst',
             'o', 'evo', 'prevo', 'eg', 'eg-force', 'ega', 'c', 't', 'ta',
-            'p', 'tr', 'base', 'ioa', 'ct', 'past'
+            'p', 'tr', 'base', 'past'
         ]
 
     def convert_pokedex_mongo_filters(self, filters, print_to, validated, exclude=[]):
@@ -421,18 +421,6 @@ class PokeMongo9:
                 if negate:
                     base = not base
                 new_filter = base
-            elif ft == 'ioa':
-                ioa = self.string_bool(filters[f])
-                new_key = 'isle_of_armor'
-                if negate:
-                    ioa = not ioa
-                new_filter = ioa
-            elif ft == 'ct':
-                ct = self.string_bool(filters[f])
-                new_key = 'crown_tundra'
-                if negate:
-                    ct = not ct
-                new_filter = ct
             elif ft == 'past':
                 past = self.string_bool(filters[f])
                 new_key = 'past_only'
@@ -694,6 +682,14 @@ class PokeMongo9:
                     sd = not sd
                 new_key = 'selfdestruct'
                 new_filter = {'$exists':sd}
+            elif ft == 'cf' or ft == 'confuse' or ft == 'confusion':
+                cf = self.string_bool(filters[f])
+                if negate:
+                    cf = not cf
+                if cf:
+                    and_list.append({'self.volatileStatus':'lockedmove'})
+                else:
+                    and_list.append({'self.volatileStatus':{'$not':{'$eq':'lockedmove'}}})
             elif ft == 'cr' or ft == 'crit':
                 cr = self.string_bool(filters[f])
                 if negate:

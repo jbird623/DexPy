@@ -180,10 +180,6 @@ class PokeDex:
                 availability = 'obtainable in base game'
             elif dex_entry['transfer_only']:
                 availability = 'only obtainable via transfer'
-            elif dex_entry['isle_of_armor']:
-                availability = 'added in Isle of Armor DLC'
-            elif dex_entry['crown_tundra']:
-                availability = 'added in Crown Tundra DLC'
             print(f'  Availability: {availability}', file=print_to)
             print('', file=print_to)
             print('Egg Groups:', file=print_to)
@@ -597,7 +593,8 @@ class PokeDex:
         num = dex_entry['num']
         species = dex_entry['species']
         modifier = ''
-        version = 'SWSH'
+        version = 'SV'
+        long_version = 'scarletviolet'
 
         break_early = [
             'toxtricity',
@@ -622,14 +619,20 @@ class PokeDex:
                 modifier = f'{modifier}{token}'
                 if species_tokens[0] in break_early:
                     break
-
+        
         if dex_entry['past_only']:
-            version = 'SM'
+            if dex_entry['gen8']:
+                version = 'SWSH'
+                long_version = 'swordshield'
+            else:
+                version = 'SM'
+                long_version = 'sunmoon'
 
+        nonshiny_link = f'https://www.serebii.net/{long_version}/pokemon/{num:03d}{modifier}.png'
         shiny_link = f'https://www.serebii.net/Shiny/{version}/{num:03d}{modifier}.png'
 
         print(f'Retrieving shiny image for {species}, bzzzzrt!', file=print_to)
-        if version == 'SM':
+        if version != 'SV':
             print(f'\n* This pokemon is not available in Gen 9 games', file=print_to)
 
-        return (species, shiny_link)
+        return (species, shiny_link, nonshiny_link)

@@ -6,7 +6,7 @@ from pprint import pprint
 source_dir = 'modified'
 destination_dir = 'gen9'
 
-def transform_entry(pokedex_entry, id, base_game_list, transfer_only_list):
+def transform_entry(pokedex_entry, id, base_game_list, transfer_only_list, gen8_list):
     abilities = pokedex_entry['abilities']
     ability_list = []
     if '0' in abilities:
@@ -36,6 +36,7 @@ def transform_entry(pokedex_entry, id, base_game_list, transfer_only_list):
     pokedex_entry['eggGroups'] = egg_group_list
     pokedex_entry['base_game'] = (id in base_game_list)
     pokedex_entry['transfer_only'] = (id in transfer_only_list)
+    pokedex_entry['gen8'] = (id in gen8_list)
     pokedex_entry['past_only'] = (id not in base_game_list and id not in transfer_only_list)
     return pokedex_entry
 
@@ -45,6 +46,7 @@ def transform_learnset(learnset):
     machine_moves = []
     egg_moves = []
     level_up_moves = []
+    move_levels = dict()
     tutor_moves = []
     all_moves = []
     transfer_moves = []
@@ -52,7 +54,7 @@ def transform_learnset(learnset):
     for move in moves:
         learn_array = moves[move]
         for learn_method in learn_array:
-            if learn_method[:1] == '8':
+            if learn_method[:1] == '9':
                 method = learn_method[1:]
                 if method == 'M':
                     machine_moves.append(move)
@@ -64,6 +66,8 @@ def transform_learnset(learnset):
                         all_moves.append(move)
                 elif method[:1] == 'L':
                     level_up_moves.append(move)
+                    level = method[1:]
+                    move_levels[move] = int(level)
                     if move not in all_moves:
                         all_moves.append(move)
                 elif method[:1] == 'T':
@@ -94,6 +98,7 @@ def transform_learnset(learnset):
     entry['machine'] = machine_moves
     entry['breeding'] = egg_moves
     entry['levelup'] = level_up_moves
+    entry['movelevels'] = move_levels
     entry['tutor'] = tutor_moves
     entry['allmoves'] = all_moves
     entry['transfer'] = transfer_moves
@@ -123,6 +128,17 @@ def filter_pokedex():
 
     with open(f'{source_dir}/transfer_only.yaml', 'r') as input:
         transfer_only_list = yaml.load(input.read(), Loader=yaml.SafeLoader)
+
+    with open(f'{source_dir}/gen8/base_game.yaml', 'r') as input:
+        gen8_base = yaml.load(input.read(), Loader=yaml.SafeLoader)
+    with open(f'{source_dir}/gen8/transfer_only.yaml', 'r') as input:
+        gen8_transfer = yaml.load(input.read(), Loader=yaml.SafeLoader)
+    with open(f'{source_dir}/gen8/isle_of_armor.yaml', 'r') as input:
+        gen8_ioa = yaml.load(input.read(), Loader=yaml.SafeLoader)
+    with open(f'{source_dir}/gen8/crown_tundra.yaml', 'r') as input:
+        gen8_ct = yaml.load(input.read(), Loader=yaml.SafeLoader)
+    
+    gen8_list = gen8_base + gen8_transfer + gen8_ioa + gen8_ct
 
     with open(f'{source_dir}/pokedex.yaml', 'r') as input:
         pokedex = yaml.load(input.read(), Loader=yaml.SafeLoader)
@@ -192,7 +208,7 @@ def filter_pokedex():
                 isGen9 = False
 
             if isGen9:
-                gen9dex[pokemon] = transform_entry(pokedex[pokemon], pokemon, base_game_list, transfer_only_list)
+                gen9dex[pokemon] = transform_entry(pokedex[pokemon], pokemon, base_game_list, transfer_only_list, gen8_list)
                 #print(pokemon)
 
         #for id in outputList:
